@@ -10,7 +10,7 @@ $dbtype = 'mysql';
 $UserID = 'root';
 $Password = 'nopass';
 $Server = 'localhost';
-$Database = 'softswitch';
+$Database = 'conference';
 
 $salt = 'DjhG83b0QyJfIxfs2gsVoUubWwVniR2G0FgaC9ny';
 $temp_dbtype = '';

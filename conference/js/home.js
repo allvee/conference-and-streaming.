@@ -76,7 +76,7 @@ else if (field_name == 'signOut') {
 else if (field_name == 'enterprise_conference') {
             display_content_custom('1811', '#modalData');
             //$('.tabtitle').hide();
-            $("#set_title").html('<img width="3%" src="softswitch/img/icon-setting.png"> <span style="font-weight:bold;">Conference </span>');
+            $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Conference </span>');
 
            var inputarray = [["Conference", "enterprise_conference", "active"], ["Admin", "enterprise_admin", "deactive"], ["Log Off", "enterprise_logoff", "deactive"]];
             tab_custom(inputarray, "tab_view");
@@ -85,7 +85,7 @@ else if (field_name == 'enterprise_conference') {
 else if (field_name == 'enterprise_admin') {
             display_content_custom('150', '#modalData');
             //$('.tabtitle').hide();
-            $("#set_title").html('<img width="3%" src="softswitch/img/icon-setting.png"> <span style="font-weight:bold;">Admin </span>');
+            $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Admin </span>');
 
             var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
             tab_custom(inputarray, "tab_view");
@@ -94,7 +94,7 @@ else if (field_name == 'enterprise_admin') {
 else if (field_name == 'enterprise_logoff') {
             display_content_custom('150', '#modalData');
             //$('.tabtitle').hide();
-            $("#set_title").html('<img width="3%" src="softswitch/img/icon-setting.png"> <span style="font-weight:bold;">Log Off </span>');
+            $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Log Off </span>');
 
             var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "deactive"], ["Log Off", "enterprise_logoff", "active"]];
             tab_custom(inputarray, "tab_view");

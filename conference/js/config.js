@@ -28,7 +28,7 @@ cms_service_url['get_header_footer'] = cms_service_url['cms_service_host'] + 'CM
  *  Cms structure url
  */
 cms_url = new Array();
-cms_url['get_cms_url'] = site_host + 'softswitch/'; // change with your folder name
+cms_url['get_cms_url'] = site_host + 'conference/'; // change with your folder name
 
 cms_url['cms_host'] = cms_url['get_cms_url'] + 'webservices/';
  
