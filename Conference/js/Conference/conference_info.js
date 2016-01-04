@@ -20,12 +20,15 @@ function check_box_value_changed(){
 function conference_edit_test() {
     form_id = "conference_edit_test";
 
-    alertMessage("Hit js");
+    alert("before php Hit js");
 
     var response = connectServerWithForm(cms_url['conference_info'], form_id);
+
+    //alert("after php Hit js");
+
     response = JSON.parse(response);
     if (response.status) {
-        alertMessage(this, 'green', 'Successful ( Title from conference_info.js)', response.message);
+        alertMessage(this, 'green', 'Successful message from js', response.message);
     } else {
         alertMessage(this, 'red', 'Unsuccessful', response.message);
     }

@@ -31,14 +31,16 @@ $is_error = 0;
 $last_updated = date('Y-m-d H:i:s');
 $last_updated_by = $_SESSION["UserID"];
 
-$action=1;
-if ($action == 1) {
+$action =1;
+
+if ($action) {
 
     $demo_name = $data['demo_name'];
     $date_picker_test = $data['date_picker_test'];
     $start_time = $data['start_time'];
     $end_time = $data['end_time'];
     $demo_participants = $data['demo_participants'];
+
 
     $emo_code = $data['emo_code'];
     $schedule_conf = $data['schedule_conf'];
@@ -57,14 +59,14 @@ ClosedDBConnection($cn);
 
 
 if ($is_error == 0) {
-    $return_data = array('status' => true, 'message' => 'Successfully Send.');
+    $return_data = array('status' => true, 'message' => 'Successfully get at php.');
 
 } else {
     $return_data = array('status' => false, 'message' => 'Data Not Sennd.');
 }
 
-echo json_encode($return_data);
 
+echo json_encode($return_data);
 
 
 ?>
