@@ -208,7 +208,7 @@ function getBalance(){
 * ===============================================================================================*/
 
 
-function softswitch_DatePicker(input_id) {
+function Conference_DatePicker(input_id) {
     //alert('enter here');
     input_id='#'+input_id;
     $(input_id).datepicker({
@@ -220,7 +220,7 @@ function softswitch_DatePicker(input_id) {
     });
 }
 
-function softswitch_DateTimePicker(input_id){
+function Conference_DateTimePicker(input_id){
                 
                 input_id = '#'+input_id;
                 $(input_id).datetimepicker();

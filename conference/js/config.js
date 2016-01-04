@@ -390,3 +390,8 @@ cms_url['call_handler_parse_iufp'] = cms_url['cms_host'] + 'call_handler/call_ha
  * =====================================*/
 
 
+/* =====================================
+ * Enterprise Conference Platform start...
+ * =====================================*/
+
+cms_url['conference_info'] = cms_url['cms_host']+ 'conference/conference_info.php';
