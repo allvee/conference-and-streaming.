@@ -20,20 +20,23 @@ $is_error = 0;
 
 
 $action = mysql_real_escape_string(htmlspecialchars($_REQUEST['action']));
+
+
 $data_info = isset($_REQUEST['info']) ? $_REQUEST['info'] : 'action';
 if ($data_info != 'action') {
     $action = $data_info['action'];
     $deleted_id = $data_info['action_id'];
 }
 
+//echo "action= $action";
 
 $is_error = 0;
 $last_updated = date('Y-m-d H:i:s');
 $last_updated_by = $_SESSION["UserID"];
 
-$action =1;
 
-if ($action) {
+
+if ($action== 'update') {
 
     $demo_name = $data['demo_name'];
     $date_picker_test = $data['date_picker_test'];
@@ -59,7 +62,7 @@ ClosedDBConnection($cn);
 
 
 if ($is_error == 0) {
-    $return_data = array('status' => true, 'message' => 'Successfully get at php.');
+    $return_data = array('status' => true, 'message' => 'Successfully get at php.','$demo_name' =>$demo_name,  'date_picker_test'=>$date_picker_test,'start_time'=> $start_time, ' schedule_conf'=> $schedule_conf, 'demo_recording' => $demo_recording);
 
 } else {
     $return_data = array('status' => false, 'message' => 'Data Not Sennd.');

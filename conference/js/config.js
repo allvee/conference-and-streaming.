@@ -395,3 +395,4 @@ cms_url['call_handler_parse_iufp'] = cms_url['cms_host'] + 'call_handler/call_ha
  * =====================================*/
 
 cms_url['conference_info'] = cms_url['cms_host']+ 'conference/conference_info.php';
+cms_url['admin_info'] = cms_url['cms_host']+ 'conference/admin_info.php';
