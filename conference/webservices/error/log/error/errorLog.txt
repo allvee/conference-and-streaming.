@@ -148,3 +148,9 @@ Message:  has faced this error and his User ID is   on Tuesday 16th of June 2015
 Message:  has faced this error and his User ID is   on Tuesday 16th of June 2015 05:07:50 AM  Error : 404 Not Found 
 Message:  has faced this error and his User ID is   on Tuesday 16th of June 2015 05:08:58 AM  Error : 404 Not Found 
 Message:  has faced this error and his User ID is   on Tuesday 16th of June 2015 05:09:01 AM  Error : 404 Not Found 
+Message:  has faced this error and his User ID is   on Tuesday 5th of January 2016 06:58:09 PM  Error : 500 Internal Server or Coding Error. Internal Server Error 
+Message:  has faced this error and his User ID is   on Tuesday 5th of January 2016 07:01:10 PM  Error : 500 Internal Server or Coding Error. Internal Server Error 
+Message:  has faced this error and his User ID is   on Tuesday 5th of January 2016 07:06:11 PM  Error : 500 Internal Server or Coding Error. Internal Server Error 
+Message:  has faced this error and his User ID is   on Tuesday 5th of January 2016 07:09:34 PM  Error : 500 Internal Server or Coding Error. Internal Server Error 
+Message:  has faced this error and his User ID is   on Tuesday 5th of January 2016 07:09:51 PM  Error : 500 Internal Server or Coding Error. Internal Server Error 
+Message:  has faced this error and his User ID is   on Tuesday 5th of January 2016 07:12:42 PM  Error : 500 Internal Server or Coding Error. Internal Server Error 

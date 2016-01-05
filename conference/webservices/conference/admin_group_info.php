@@ -26,14 +26,14 @@ if ($data_info != 'action') {
     $deleted_id = $data_info['action_id'];
 }
 
-$tbl = "tbl_user_management";
-$is_error = 0;
+$tbl = "tbl_group_management";
+
 $last_updated = date('Y-m-d H:i:s');
 $last_updated_by = $_SESSION["UserID"];
 
 
 
-if ($action != 'delete') {
+if ($action == 'save') {
 
     $group_name = $data['group_name'];
     $group_address = $data['group_address'];
@@ -41,27 +41,22 @@ if ($action != 'delete') {
     $admin_user_id = $data['admin_user_id'];
     $group_pass = $data['group_pass'];
     $retype_group_pass = $data['retype_group_pass'];
-
     $email_id = $data['email_id'];
+    /*
+        if($group_pass!=$retype_group_pass)
+        alert("Password not matched ! Enter again");*/
 
-
+        $qry = "INSERT INTO $tbl(Group_Name, Address, Contact, Admin_User_ID, Password, Email_Address)
+        VALUES('$group_name', '$group_address', '$group_contact', '$admin_user_id', '$group_pass', '$email_id')";
 }
 
 
-else if ($action == 'save') {
+try {
+   $res = Sql_exec($cn, $qry);
 
-    $qry = "insert into $tbl (User_ID, Name, Group_Name,Type, Password, Conference_Create, Conference_Edit, Conference_Delete,
-				User_rolr_Management) values ('$user_id','$user_name','$group_name',' $user_type',' $user_pass','$conferene_create','$conferene_edit',
-				' $conferene_edit','$conferene_delete','$user_role_management')";
+} catch (Exception $e) {
+
 }
-
-//try {
-//    $res = Sql_exec($cn, $qry);
-//
-//} catch (Exception $e) {
-//
-//
-//}
 
 ClosedDBConnection($cn);
 

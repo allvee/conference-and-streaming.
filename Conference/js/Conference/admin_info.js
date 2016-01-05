@@ -15,11 +15,10 @@ function add_new_group(){
 function create_user() {
     form_id = "create_user";
 
-    alert("before php Hit js");
+   // alert("before php Hit js");
 
     var response = connectServerWithForm(cms_url['admin_user_info'], form_id);
 
-    //alert("after php Hit js");
 
     response = JSON.parse(response);
     if (response.status) {
@@ -39,7 +38,7 @@ function create_group() {
 
     var response = connectServerWithForm(cms_url['admin_group_info'], form_id);
 
-    //alert("after php Hit js");
+    alert("after php Hit js");
 
     response = JSON.parse(response);
     if (response.status) {
