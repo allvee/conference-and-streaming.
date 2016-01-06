@@ -324,7 +324,7 @@ cms_url['softswitch_gw_inbound'] = cms_url['cms_host']+ 'softswitch/get_gw_inbou
 cms_url['softswitch_gw_outbound'] = cms_url['cms_host']+ 'softswitch/get_gw_outbound';
 
 cms_url['soft_dial_plan'] = cms_url['cms_host']+ 'softswitch/add_soft_dial_plan.php';
-cms_url['view_soft_dialplan'] = cms_url['cms_host']+ 'softswitch/view_softswitch_dialplan.php';
+
 
 
 
@@ -397,3 +397,4 @@ cms_url['call_handler_parse_iufp'] = cms_url['cms_host'] + 'call_handler/call_ha
 cms_url['conference_info'] = cms_url['cms_host']+ 'conference/conference_info.php';
 cms_url['admin_user_info'] = cms_url['cms_host']+ 'conference/admin_user_info.php';
 cms_url['admin_group_info'] = cms_url['cms_host']+ 'conference/admin_group_info.php';
+cms_url['user_list'] = cms_url['cms_host']+ 'conference/user_list.php';

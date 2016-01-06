@@ -67,7 +67,7 @@ function table_data_recharge_history(dataSet, table_id) {
         "order": [[0, "asc"]],
         dom: 'T<"clear">lfrtip',
         tableTools: {
-            "sSwfPath": "dhakagate/img/datatable/swf/copy_csv_xls_pdf.swf",
+            "sSwfPath": "dhakagate/img/datatable/conf/copy_csv_xls_pdf.conf",
             "sRowSelect": "multi",
             "aButtons": [
                 "select_all", "select_none", "copy", "csv",

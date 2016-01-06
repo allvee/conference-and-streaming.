@@ -70,7 +70,7 @@ var ZeroClipboard_TableTools = {
 	},
 
 	setMoviePath: function(path) {
-		// set path to ZeroClipboard.swf
+		// set path to ZeroClipboard.conf
 		this.moviePath = path;
 	},
 
@@ -1983,11 +1983,11 @@ TableTools.prototype = {
 
 
 	/**
-	 * Wait until the id is in the DOM before we "glue" the swf. Note that this function will call
+	 * Wait until the id is in the DOM before we "glue" the conf. Note that this function will call
 	 * itself (using setTimeout) until it completes successfully
 	 *  @method  _fnFlashGlue
 	 *  @param   {Object} clip Zero clipboard object
-	 *  @param   {Node} node node to glue swf to
+	 *  @param   {Node} node node to glue conf to
 	 *  @param   {String} text title of the flash movie
 	 *  @returns void
 	 *  @private 
@@ -3064,7 +3064,7 @@ TableTools.classes_themeroller = {
  * @namespace TableTools default settings for initialisation
  */
 TableTools.DEFAULTS = {
-	"sSwfPath":        "../swf/copy_csv_xls_pdf.swf",
+	"sSwfPath":        "../conf/copy_csv_xls_pdf.conf",
 	"sRowSelect":      "none",
 	"sRowSelector":    "tr",
 	"sSelectedClass":  null,

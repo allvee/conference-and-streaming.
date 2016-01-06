@@ -89,6 +89,9 @@ else if (field_name == 'enterprise_admin') {
 
             var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
             tab_custom(inputarray, "tab_view");
+
+    table_initialize_user_list();
+    report_menu_start_user_list();
         }
 
 else if (field_name == 'enterprise_logoff') {

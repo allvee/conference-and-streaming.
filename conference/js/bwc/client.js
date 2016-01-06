@@ -32,7 +32,7 @@ function table_bwc_client_dataset(dataSet) {
         "order": [[0, "asc"]],
         dom: 'T<"clear">lfrtip',
         tableTools: {
-            "sSwfPath": "rcportal/img/datatable/swf/copy_csv_xls_pdf.swf",
+            "sSwfPath": "rcportal/img/datatable/conf/copy_csv_xls_pdf.conf",
             "sRowSelect": "multi",
             "aButtons": [
                 "select_all", "select_none", "copy", "csv",
