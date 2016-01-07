@@ -75,13 +75,22 @@ else if (field_name == 'signOut') {
 
 
 else if (field_name == 'enterprise_conference') {
-            display_content_custom('1811', '#modalData');
+            display_content_custom('1817', '#modalData');
             //$('.tabtitle').hide();
             $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Conference </span>');
 
            var inputarray = [["Conference", "enterprise_conference", "active"], ["Admin", "enterprise_admin", "deactive"], ["Log Off", "enterprise_logoff", "deactive"]];
             tab_custom(inputarray, "tab_view");
         }
+
+else if (field_name == 'new_conference') {
+    display_content_custom('1811', '#modalData');
+    //$('.tabtitle').hide();
+    $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Conference </span>');
+
+    var inputarray = [["Conference", "enterprise_conference", "active"], ["Admin", "enterprise_admin", "deactive"], ["Log Off", "enterprise_logoff", "deactive"]];
+    tab_custom(inputarray, "tab_view");
+}
 
 else if (field_name == 'enterprise_admin') {
             display_content_custom('1813', '#modalData');

@@ -16,6 +16,10 @@ function check_box_value_changed(){
         document.getElementById('hidden_div').style.display = 'none';
 }
 
+function add_new_conference() {
+    showUserMenu('new_conference');
+
+}
 
 function conference_edit_test() {
     form_id = "conference_edit_test";
