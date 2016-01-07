@@ -11,6 +11,10 @@ function add_new_group(){
     showUserMenu('new_group');
 }
 
+function edit_user(){
+
+    showUserMenu('edit_user');
+}
 
 function create_user() {
     form_id = "create_user";
@@ -106,7 +110,7 @@ function table_data_user_list(dataSet) {
 
 function edit_user_list(obj, info) {
 
-    showUserMenu('enterprise_admin');
+    showUserMenu('edit_user');
 
     var data = info.split("|");
     $('#action_id').val(data[0]);

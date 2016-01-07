@@ -44,6 +44,7 @@ function set_group_brust_change()
 		  	$("#brust_bw").show();
 			}
  }
+
 function showUserMenu(field_name) {
 $('#tab_view').html('');
     message_clear();
@@ -113,6 +114,16 @@ else if (field_name == 'new_user') {
 }
 
 
+else if (field_name == 'edit_user') {
+    display_content_custom('1816', '#modalData');
+    //$('.tabtitle').hide();
+    $("#set_title").html(' <span style="font-weight:bold;">User Role Management</span>');
+
+    var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
+    tab_custom(inputarray, "tab_view");
+}
+
+
 else if (field_name == 'new_group') {
     display_content_custom('1815', '#modalData');
     //$('.tabtitle').hide();
@@ -126,7 +137,7 @@ else if (field_name == 'new_group') {
 		setTimeout(function() {
 			showDashboardInfo();
                      //loadGraph();
-		}, 1000);
+    }, 1000);
 		setTimeout(function() {
 			dropdown_chosen_style()
 		}, 1500);
