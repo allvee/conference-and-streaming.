@@ -11,11 +11,6 @@ function add_new_group(){
     showUserMenu('new_group');
 }
 
-function edit_user(){
-
-    showUserMenu('edit_user');
-}
-
 function create_user() {
     form_id = "create_user";
 
@@ -110,9 +105,21 @@ function table_data_user_list(dataSet) {
 
 function edit_user_list(obj, info) {
 
+    var data = [];
+    var table = document.getElementById('dataTables_user_list');
+    var index = obj.parentNode.parentNode.rowIndex;
+    var i = 0;
+    for (i = 0; i < 5; i++)
+        data[i] = table.rows[index].cells[i].innerHTML;
+
     showUserMenu('edit_user');
 
-    var data = info.split("|");
+
+/*
+
+    $('#remane_button_wa').html('Update');
+
+    //var data = info.split("|");
     $('#action_id').val(data[0]);
     $('#action').val("update");
 
@@ -123,6 +130,7 @@ function edit_user_list(obj, info) {
     $('#status').val(data[5]);
 
     dropdown_chosen_style();
+*/
 
 }
 
