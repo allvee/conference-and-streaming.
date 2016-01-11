@@ -20,6 +20,18 @@ function add_new_conference() {
     showUserMenu('new_conference');
 
 }
+function Conf_time_picker(id) {
+   /* day = new Date();
+
+    time = day.getTime();*/
+    $('#start_time').timepicker({
+        template: false,
+        showInputs: false,
+        minuteStep: 5
+    });
+
+}
+
 
 function conference_edit_test() {
     form_id = "conference_edit_test";
