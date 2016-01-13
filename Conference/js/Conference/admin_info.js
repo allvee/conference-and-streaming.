@@ -88,7 +88,7 @@ function table_data_user_list(dataSet) {
         "order": [[0, "asc"]],
         dom: 'T<"clear">lfrtip',
         tableTools: {
-            "sConferencePath": "conference/img/datatable/conf/copy_csv_xls_pdf.conf",
+            "sSwfPath": "conference\img\datatable\swf\copy_csv_xls_pdf.swf",
             "sRowSelect": "multi",
             "aButtons": [
                 "copy", "csv",

@@ -79,8 +79,11 @@ else if (field_name == 'enterprise_conference') {
             //$('.tabtitle').hide();
             $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Conference </span>');
 
-           var inputarray = [["Conference", "enterprise_conference", "active"], ["Admin", "enterprise_admin", "deactive"], ["Log Off", "enterprise_logoff", "deactive"]];
+           var inputarray = [["Conference", "enterprise_conference", "active"]];
             tab_custom(inputarray, "tab_view");
+
+            table_initialize_conference_list();
+            report_menu_start_conference_list();
         }
 
 else if (field_name == 'new_conference') {
@@ -88,9 +91,11 @@ else if (field_name == 'new_conference') {
     //$('.tabtitle').hide();
     $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Conference </span>');
 
-    var inputarray = [["Conference", "enterprise_conference", "active"], ["Admin", "enterprise_admin", "deactive"], ["Log Off", "enterprise_logoff", "deactive"]];
+    var inputarray = [["Conference", "enterprise_conference", "active"]];
     tab_custom(inputarray, "tab_view");
 }
+
+/*
 
 else if (field_name == 'enterprise_admin') {
             display_content_custom('1813', '#modalData');
@@ -141,6 +146,9 @@ else if (field_name == 'new_group') {
     var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
     tab_custom(inputarray, "tab_view");
 }
+        */
+
+
 		// dropdown_chosen_style();
 
 		setTimeout(function() {

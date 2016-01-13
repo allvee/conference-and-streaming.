@@ -224,7 +224,20 @@ function Conference_DateTimePicker(input_id){
                 
                 input_id = '#'+input_id;
                 $(input_id).datetimepicker();
-                                
+
+}
+
+
+function Conference_TimePicker(input_id){
+
+    input_id = '#'+input_id;
+    $(input_id).datetimepicker(
+        {
+            datepicker:false,
+            format:'H:i:s'
+        }
+    );
+
 }
 
 

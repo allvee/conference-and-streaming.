@@ -398,3 +398,4 @@ cms_url['conference_info'] = cms_url['cms_host']+ 'conference/conference_info.ph
 cms_url['admin_user_info'] = cms_url['cms_host']+ 'conference/admin_user_info.php';
 cms_url['admin_group_info'] = cms_url['cms_host']+ 'conference/admin_group_info.php';
 cms_url['user_list'] = cms_url['cms_host']+ 'conference/user_list.php';
+cms_url['conference_list'] = cms_url['cms_host']+ 'conference/conference_list.php';

@@ -19,6 +19,8 @@ while ($row = Sql_fetch_array($result)) {
 	$data[$i][$j++] = Sql_Result($row, "ID");
     $data[$i][$j++] = Sql_Result($row, "Name");
     $data[$i][$j++] = Sql_Result($row, "Type");
+  
+   // $data[$i][$j++] = '<span onclick="edit_user_list(this,\'' . Sql_Result($row, "ID") . '\'); return false;"> $tt </span>';
     $data[$i][$j++] = Sql_Result($row, "Create_Date");
     $data[$i][$j++] = Sql_Result($row, "Group_Name");
    	$data[$i][$j++] = Sql_Result($row, "Status");

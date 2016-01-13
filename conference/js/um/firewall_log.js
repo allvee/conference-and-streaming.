@@ -38,7 +38,7 @@ function table_data_firewall_log(dataSet) {
         "order": [[0, "asc"]],
         dom: 'T<"clear">lfrtip',
         tableTools: {
-            "sSwfPath": "rcportal/img/datatable/conf/copy_csv_xls_pdf.conf",
+            "sSwfPath": "rcportal/img/datatable/swf/copy_csv_xls_pdf.swf",
             "sRowSelect": "multi",
             "aButtons": [
                 "copy", "csv",
