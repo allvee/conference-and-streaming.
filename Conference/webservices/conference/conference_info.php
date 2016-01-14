@@ -41,6 +41,12 @@ if ($action != 'delete') {
     $demo_name = $data['demo_name'];
     $start_time = $data['start_time'];
     $end_time = $data['end_time'];
+
+    $dteStart = new DateTime($start_time);
+    $dteEnd   = new DateTime($end_time);
+    $dteDiff  = $dteStart->diff($dteEnd);
+    //$dteDiff->format("%H:%I:%S");
+
     $demo_participants = $data['demo_participants'];
     $schedule_conf = $data['schedule_conf_dropdown'];
     $demo_active = $data['demo_active'];
@@ -73,7 +79,7 @@ if($row = Sql_fetch_array($res))
     $long_number=Sql_Result($row, "msisdn");
 
 /*=============================== for room number and Web Link=====================*/
-    
+
     $room_tbl = "tbl_conference_room";
     $room_tbl_qry="SELECT room_number, web_link FROM $room_tbl
 	WHERE room_status='free' LIMIT 0, 1";
@@ -84,19 +90,18 @@ if($row = Sql_fetch_array($res))
     } catch (Exception $e) {
         $is_error = 1;
     }
+
     $data = array();
-    $i=0;
+
     while($row = Sql_fetch_array($result))
     {
-        //$data[i]=
-        $web_link=Sql_Result($row, "web_link");
 
-       // $data[i]=
+        $web_link=Sql_Result($row, "web_link");
         $room_number=Sql_Result($row, "room_number");
-        //  $i++;
+
     }
 
-
+   $user_id= $_SESSION['UserID'];
 
 
 }
@@ -125,7 +130,7 @@ else if ($action == "delete") {
 else {
     $msg = "Successfully Saved";
     $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel)
-	VALUES('$demo_name', '$long_number', 'admin', '$room_number', '$web_link', '1234', '$start_time', '$end_time', '$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
+	VALUES('$demo_name', '$long_number', '$user_id', '$room_number', '$web_link', '1234', '$start_time', '$end_time', '$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
 }
 
 
@@ -144,7 +149,9 @@ ClosedDBConnection($cn);
 
 
 if ($is_error == 0) {
-    $return_data = array('status' => true, 'message' => $msg , $room_number, $web_link );
+    $return_data = array('status' => true, $dteDiff,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_number, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    'Code' => '1234', 'Start_Time' => $start_time, 'End_Time' => $end_time, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
+    'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf, );
 
 } else {
     $return_data = array('status' => false, 'message' => 'Data Not Sennd.');

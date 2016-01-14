@@ -1,6 +1,12 @@
 /* =====================================
  * css needed for footer starts !
  * =====================================*/
+.error_strings{
+    font-family:Verdana;
+    font-size:14px;
+    color:#660000;
+    background-color:#ff0;
+}
 
 .footer-bg {
     background-image: url("../img/fot-bg.jpg");

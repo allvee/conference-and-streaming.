@@ -4,13 +4,14 @@
 
 
 var d = new Date,
-    dformat = [d.getFullYear(),
+    dformat = [
+            d.getFullYear(),
             (d.getMonth()+1),
-            d.getDate()].join('/')+
+            d.getDate(),
+            ].join('/')+
         ' ' +
         [ d.getHours(),
-            d.getMinutes(),
-            d.getSeconds()].join(':');
+            d.getMinutes()].join(':');
 
 console.log(dformat);
 
@@ -103,8 +104,19 @@ function conference_create_test() {
     console.log("get:"+response +"found");
 
     response = JSON.parse(response);
+
+    var notice="<br/>Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
+    +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
+    +"<br/>Code    : "+ response.Code +"<br/>Start Time     : " + response.Start_Time
+    +"<br/>End Time    : "+ response.End_Time
+    +"<br/>Conference Duration     : " +response.Conference_Duration.h+" : "+ response.Conference_Duration.i
+    +"<br/>No. of Participants  : "+ response.No_of_Participants +"<br/>Recording     : " + response.Recording
+    +"<br/>Stats   : "+ response.Stats +"<br/>Notification Channel     : " + response.Notification_Channel
+    +"<br/>Schedule Conf   : "+ response.Schedule_Conf;
+
     if (response.status) {
-        alertMessage(this, 'green', 'Successful message from js', response.message);
+        i=0;
+        alertMessage(this, 'green', '          Conference Conformation',notice );
     } else {
         alertMessage(this, 'red', 'Unsuccessful', response.message);
     }
@@ -196,3 +208,17 @@ function delete_confirm_conference_list(event) {
     }
 
 }
+
+//<![CDATA[
+//You should create the validator only after the definition of the HTML form
+var frmvalidator  = new Validator("conference_edit_test");
+frmvalidator.EnableOnPageErrorDisplay();
+frmvalidator.EnableMsgsTogether();
+
+frmvalidator.addValidation("demo_name","req","Please enter Conference Name");
+frmvalidator.addValidation("demo_name","maxlen=20",	"Max length for FirstName is 20");
+
+frmvalidator.addValidation("Email","maxlen=50");
+frmvalidator.addValidation("Email","req");
+frmvalidator.addValidation("Email","email");
+//]]>

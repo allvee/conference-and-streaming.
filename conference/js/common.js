@@ -223,7 +223,11 @@ function Conference_DatePicker(input_id) {
 function Conference_DateTimePicker(input_id){
                 
                 input_id = '#'+input_id;
-                $(input_id).datetimepicker();
+                $(input_id).datetimepicker(
+                    {
+                        format:"Y/m/d H:m"
+}
+                );
 
 }
 
