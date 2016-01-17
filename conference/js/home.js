@@ -93,6 +93,7 @@ else if (field_name == 'new_conference') {
 
     var inputarray = [["Conference", "enterprise_conference", "active"]];
     tab_custom(inputarray, "tab_view");
+    from_backend();
 }
 
 /*

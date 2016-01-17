@@ -20,7 +20,7 @@ $is_error = 0;
 
 
 $action = mysql_real_escape_string(htmlspecialchars($_REQUEST['action']));
-
+//$notification_channel = mysql_real_escape_string(htmlspecialchars($_REQUEST['notification_channel']));
 
 $data_info = isset($_REQUEST['info']) ? $_REQUEST['info'] : 'action';
 if ($data_info != 'action') {
@@ -51,7 +51,21 @@ if ($action != 'delete') {
     $schedule_conf = $data['schedule_conf_dropdown'];
     $demo_active = $data['demo_active'];
     $demo_recording = $data['demo_recording'];
-    $notification_channel= $data['notification_channel'];
+
+    $track_count = sizeof($_REQUEST['notification_channel']);
+    $flag = 0;
+
+    foreach ($_REQUEST['notification_channel'] as $value) {
+        $flag++;
+        if ($flag == $track_count) {
+            $notification_channel .= $value;
+
+
+        } else {
+            $notification_channel .= $value . ',';
+        }
+    }
+
 
     if (isset($demo_active)) {  }
     else {
@@ -149,7 +163,7 @@ ClosedDBConnection($cn);
 
 
 if ($is_error == 0) {
-    $return_data = array('status' => true, $dteDiff,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_number, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    $return_data = array('status' => true,$notification_channel, $dteDiff,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_number, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
     'Code' => '1234', 'Start_Time' => $start_time, 'End_Time' => $end_time, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
     'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf, );
 

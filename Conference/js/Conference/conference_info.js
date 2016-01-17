@@ -2,7 +2,7 @@
  * Created by Al-Amin on 1/4/2016.
  */
 
-
+var minDuration=30;
 var d = new Date,
     dformat = [
             d.getFullYear(),
@@ -12,6 +12,36 @@ var d = new Date,
         ' ' +
         [ d.getHours(),
             d.getMinutes()].join(':');
+
+    month = d.getMonth()+1;
+    day = d.getDate();
+    hour = d.getHours();
+    minute = d.getMinutes()+minDuration;
+if(minute >= 60)
+{
+    minute = minute % 60;
+    hour = hour + 1;
+
+    if(hour >= 24)
+    {
+        hour = hour % 24;
+        day = day+1;
+
+        if(day >= 31)
+        {
+            day = day % 31;
+            month = month+1;
+        }
+    }
+}
+
+
+lastDate = [
+        d.getFullYear(),
+        (d.getMonth()+1),
+        day, ].join('/')
+
+    + ' ' + [ hour,  minute].join(':');
 
 console.log(dformat);
 
@@ -36,12 +66,18 @@ function check_box_value_changed(){
     if($("#meet_now").is(":checked"))
     {
         $('#start_time').val(dformat);
+        $('#end_time').val(lastDate);
      }
 
     else
+    {
         $('#start_time').val("");
+        $('#end_time').val("");
+    }
 
 
+    console.log(lastDate);
+    /*
     if($("#SMS").is(":checked"))
     {
         $('#SMS').val('SMS');
@@ -69,7 +105,7 @@ function check_box_value_changed(){
     else
         var ivr="";
 
-    $('#notification_channel').val(sms+" "+email+" "+ivr);
+    $('#notification_channel').val(sms+" "+email+" "+ivr);*/
 
 }
 
@@ -78,11 +114,12 @@ function add_new_conference() {
     showUserMenu('new_conference');
 
 }
+/*
 
 function Conf_time_picker(id) {
-   /* day = new Date();
+   /!* day = new Date();
 
-    time = day.getTime();*/
+    time = day.getTime();*!/
     $('#start_time').timepicker({
         template: false,
         showInputs: false,
@@ -90,7 +127,15 @@ function Conf_time_picker(id) {
     });
 
 }
+*/
 
+function from_backend(){
+    var field = document.getElementById("user_id");
+    field.value = $.parseJSON( sessionStorage.getItem('cms_auth')).UserID;
+    //var user_id = window.sessionStorage.getItem("UserID");
+    $('#user_id').val(field.value);
+    console.log(field.value);
+}
 
 function conference_create_test() {
     form_id = "conference_edit_test";
@@ -100,10 +145,11 @@ function conference_create_test() {
 
     var response = connectServerWithForm(cms_url['conference_info'], form_id);
 
-    alert("after php Hit js");
-    console.log("get:"+response +"found");
+
+    console.log("get: "+response.Notification_Channel +" found");
 
     response = JSON.parse(response);
+    alert("after php Hit js"+response.Notification_Channel);
 
     var notice="<br/>Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
     +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
@@ -209,16 +255,3 @@ function delete_confirm_conference_list(event) {
 
 }
 
-//<![CDATA[
-//You should create the validator only after the definition of the HTML form
-var frmvalidator  = new Validator("conference_edit_test");
-frmvalidator.EnableOnPageErrorDisplay();
-frmvalidator.EnableMsgsTogether();
-
-frmvalidator.addValidation("demo_name","req","Please enter Conference Name");
-frmvalidator.addValidation("demo_name","maxlen=20",	"Max length for FirstName is 20");
-
-frmvalidator.addValidation("Email","maxlen=50");
-frmvalidator.addValidation("Email","req");
-frmvalidator.addValidation("Email","email");
-//]]>
