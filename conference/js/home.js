@@ -96,6 +96,17 @@ else if (field_name == 'new_conference') {
     from_backend();
 }
 
+
+else if (field_name == 'edit_conference') {
+    display_content_custom('1818', '#modalData');
+    //$('.tabtitle').hide();
+    $("#set_title").html(' <span style="font-weight:bold;">Edit Conference</span>');
+
+    var inputarray = [["Conference", "enterprise_conference", "active"]];
+    tab_custom(inputarray, "tab_view");
+    from_backend();
+}
+
 /*
 
 else if (field_name == 'enterprise_admin') {

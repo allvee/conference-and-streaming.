@@ -132,24 +132,24 @@ function Conf_time_picker(id) {
 function from_backend(){
     var field = document.getElementById("user_id");
     field.value = $.parseJSON( sessionStorage.getItem('cms_auth')).UserID;
-    //var user_id = window.sessionStorage.getItem("UserID");
-    $('#user_id').val(field.value);
+    document.getElementById("user_id").textContent=field.value;
     console.log(field.value);
 }
 
-function conference_create_test() {
-    form_id = "conference_edit_test";
+
+function conference_create_edit() {
+    form_id = "conference_create_edit";
 
 
-    alert("before php Hit js");
+    //alert("before php Hit js");
 
     var response = connectServerWithForm(cms_url['conference_info'], form_id);
-
+    alert(response);
 
     console.log("get: "+response.Notification_Channel +" found");
 
     response = JSON.parse(response);
-    alert("after php Hit js"+response.Notification_Channel);
+    alert("after php Hit js: "+response.status);
 
     var notice="<br/>Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
     +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
@@ -162,12 +162,10 @@ function conference_create_test() {
 
     if (response.status) {
         i=0;
-        alertMessage(this, 'green', '          Conference Conformation',notice );
+        alertMessage(this, 'green', '           Conference Conformation', notice );
     } else {
-        alertMessage(this, 'red', 'Unsuccessful', response.message);
+        alertMessage(this, 'red', 'Unsuccessful' , response.message);
     }
-
-
 }
 
 
@@ -207,7 +205,11 @@ function table_data_conference_list(dataSet) {
             {"title": "Recording", "class": "center"},
             {"title": "Notification Channel", "class": "center"},
             {"title": "Status", "class": "center"},
+            {"title": "Room Number", "class": "center"},
+            {"title": "Web Link", "class": "center"},
             {"title": "Edit/Delete", "class": "center"},
+
+
         ],
         "order": [[0, "asc"]],
         dom: 'T<"clear">lfrtip',
@@ -222,15 +224,52 @@ function table_data_conference_list(dataSet) {
                 }
             ],
             "filter": "applied"
-        }
+        },
+
+       /* "aoColumnDefs": [
+            { "bSearchable": false, "bVisible": false, "aTargets": [ 10 ] },
+            { "bSearchable": false, "bVisible": false, "aTargets": [ 11 ] }
+        ]*/
+
     });
 }
 
+function edit_conference_list(obj, info) {
 
-function delete_conference_list(obj, action_id) {
+    var data = [];
+    var table = document.getElementById('dataTables_conference_list');
+    var index = obj.parentNode.parentNode.rowIndex;
+    var i = 0;
+    for (i = 0; i < 11; i++)
+        data[i] = table.rows[index].cells[i].innerHTML;
+
+    showUserMenu('edit_conference');
+    document.getElementById("conference_id").textContent=data[0];
+
+    console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10] );
+
+     $('#action').val("update");
+     $('#action_id').val(data[0]);
+     $('#demo_name').val(data[1]);
+     $('#user_id').val(data[2]);
+     $('#start_time').val(data[3]);
+     $('#end_time').val(data[4]);
+     $('#demo_participants').val(data[5]);
+     $('#demo_recording').val(data[6]);
+     $('#notification_channel').val(data[7]);
+     $('#status').val(data[8]);
+    $('#room_number').val(data[9]);
+    $('#weblink').val(data[10]);
+     dropdown_chosen_style();
+
+
+}
+
+
+function delete_conference_list(obj, action_id, room_number) {
 
     confirmMessage(this, 'conference_list', 'Delete Confirmation', 'Do you want to delete ?');
-    var arrayInput = new Array(obj, action_id);
+    var arrayInput = new Array(obj, action_id, room_number);
     $('#conference_list').click({id: arrayInput}, delete_confirm_conference_list);
 
 }
@@ -241,9 +280,17 @@ function delete_confirm_conference_list(event) {
     var dataInfo = {}
     dataInfo['action'] = 'delete';
     dataInfo['action_id'] = arrayInput[1];
+    dataInfo['room_number'] = arrayInput[2];
+
+    alert(dataInfo['action']+"and"+ dataInfo['action_id'] +"and" +dataInfo['room_number']);
 
     var response = connectServer(cms_url['conference_info'], dataInfo);
+
+
+    alert("after php"+response+"b4json");
     response =JSON.parse(response);
+
+    alert("after php");
 
     if (response.status) {
         showUserMenu('enterprise_conference');
