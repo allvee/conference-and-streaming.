@@ -8,17 +8,12 @@
 
 $data = $_REQUEST;
 //exit( json_encode( array("alamin"=>"one","message"=>"No reasone","status"=>false) ));
-exit( json_encode( array($data) ));
+//echo json_encode( array($data) );
 
 require_once "../lib/config.php";
 require_once "../lib/common.php";
 
 $cn = connectDB();
-
-
-$arrayInput = $_REQUEST;
-$is_error = 0;
-
 
 
 $action = mysql_real_escape_string(htmlspecialchars($_REQUEST['action']));
@@ -30,10 +25,13 @@ if ($data_info != 'action') {
     $deleted_id = $data_info['action_id'];
 }
 
+//exit( json_encode( array($data_info) ));
+
 $tbl = "tbl_conference";
+$room_tbl = "tbl_conference_room";
 
 $is_error = 0;
-$last_updated = date('Y-m-d H:i:s');
+$last_updated = date('Y-m-d H:i');
 $last_updated_by = $_SESSION["UserID"];
 
 
@@ -132,9 +130,11 @@ else
 {
 
     /*=============================== for room number and Web Link for Delete =====================*/
+    $action = $data_info['action'];
+    $deleted_id = $data_info['action_id'];
+    $room_number = $data_info['room_number'];
 
-    $room_number=$data['room_number'];
-    $web_link=$data['weblink'];
+   // echo json_encode( array("action"=>$action,"deleted_id"=>$deleted_id,"room_number"=>$room_number) );
 }
 
 
@@ -147,12 +147,14 @@ if ($action == "update") {
             `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel'";
     $qry .= " WHERE ID='$action_id'";
 
-    $qry_to_room="UPDATE $room_tbl SET room_status='busy',last_update='$last_updated'";
-    $qry_to_room .= " WHERE room_number='3002'";
+    $qry_to_room="UPDATE $room_tbl SET `room_status`='busy',`last_update` ='$last_updated'";
+    $qry_to_room .= " WHERE `room_number` ='$room_number'";
 
 }
 
 else if ($action == "delete") {
+
+    $flag='delete';
     $msg = "Successfully Deleted";
     $action_id = $deleted_id;
     $qry = "DELETE from $tbl";
@@ -182,6 +184,9 @@ try {
 
 try {
     $res = Sql_exec($cn, $qry);
+    if($flag == 'delete')
+        $is_error = 2;
+    else
     $is_error = 0;
 } catch (Exception $e) {
     $is_error = 1;
@@ -199,8 +204,14 @@ if ($is_error == 0) {
     'Code' => '1234', 'Start_Time' => $start_time, 'End_Time' => $end_time, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
     'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf );
 
-} else {
-    $return_data = array('status' => false, 'message' => 'Data Not Sennd.');
+}
+else if ($is_error == 2){
+    $return_data = array('status' => true, 'message' => $msg);
+
+}
+
+else {
+    $return_data = array('status' => false, 'message' => 'Data Not Send.');
 }
 
 echo json_encode($return_data);

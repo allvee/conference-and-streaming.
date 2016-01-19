@@ -77,7 +77,7 @@ else if (field_name == 'signOut') {
 else if (field_name == 'enterprise_conference') {
             display_content_custom('1817', '#modalData');
             //$('.tabtitle').hide();
-            $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Conference435 </span>');
+            $("#set_title").html(' <span style="font-weight:bold;">Enterprise Conference</span>');
 
            var inputarray = [["Conference", "enterprise_conference", "active"]];
             tab_custom(inputarray, "tab_view");
@@ -106,6 +106,31 @@ else if (field_name == 'edit_conference') {
     tab_custom(inputarray, "tab_view");
     from_backend();
 }
+
+
+else if (field_name == 'participants_list') {
+    display_content_custom('1819', '#modalData');
+    //$('.tabtitle').hide();
+    $("#set_title").html(' <span style="font-weight:bold;">Participants List</span>');
+
+    var inputarray = [["Conference", "enterprise_conference", "active"]];
+    tab_custom(inputarray, "tab_view");
+
+    table_initialize_conference_list();
+    report_menu_start_conference_list();
+
+}
+
+else if (field_name == 'add_new_participant') {
+    display_content_custom('1820', '#modalData');
+    //$('.tabtitle').hide();
+    $("#set_title").html(' <span style="font-weight:bold;">Add New Participant</span>');
+
+    var inputarray = [["Conference", "enterprise_conference", "active"]];
+    tab_custom(inputarray, "tab_view");
+    from_backend();
+}
+
 
 /*
 

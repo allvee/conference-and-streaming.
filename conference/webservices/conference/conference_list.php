@@ -34,8 +34,8 @@ while ($row = Sql_fetch_array($result)) {
     $data[$i][$j++] = Sql_Result($row, "room_number");
     $data[$i][$j++] = Sql_Result($row, "weblink");
 
-    $data[$i][$j++] = '<span onclick="edit_conference_list(this,\'' . Sql_Result($row, "ID") .Sql_Result($row, "room_number") . '\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/pen.png" ></span>'
-        . '&nbsp&nbsp' . '<span onclick="delete_conference_list(this,' . Sql_Result($row, "ID") .Sql_Result($row, "room_number") .'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/cancel.png" ></span>';
+    $data[$i][$j++] = '<span onclick="edit_conference_list(this,  \'' . Sql_Result($row, "ID") .'\', \''.Sql_Result($row, "room_number") . '\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/pen.png" ></span>'
+        . '&nbsp&nbsp' . '<span onclick="delete_conference_list(this, \'' . Sql_Result($row, "ID") .'\', \''.Sql_Result($row, "room_number") .'\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/cancel.png" ></span>';
 
 
     $i++;
