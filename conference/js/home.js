@@ -117,7 +117,7 @@ else if (field_name == 'participants_list') {
     tab_custom(inputarray, "tab_view");
 
     table_initialize_conference_list();
-    report_menu_start_conference_list();
+    report_menu_start_participant_list();
 
 }
 

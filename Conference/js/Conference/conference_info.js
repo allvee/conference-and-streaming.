@@ -138,7 +138,56 @@ function table_initialize_conference_list() {
 
 }
 
+function report_menu_start_participant_list() {
 
+    var dataSet = [[]];
+    var dataInfo = {};
+     dataSet = connectServer(cms_url['participant_list'], dataInfo);
+     //alert(dataSet);
+     dataSet = JSON.parse(dataSet);
+    //alert(dataSet);
+    table_data_participant_list(dataSet);
+
+}
+
+function table_data_participant_list(dataSet) {
+
+    $('#dataTables_conference_list').dataTable({
+
+        "data": dataSet,
+        "columns": [
+            {"title": "ID", "class": "center"},
+            {"title": "Name", "class": "center"},
+            {"title": "Mobile Number", "class": "center"},
+            {"title": "Email", "class": "center"},
+            {"title": "Organization", "class": "center"},
+            {"title": "Conference Name", "class": "center"},
+            {"title": "Edit/Delete", "class": "center"},
+
+
+        ],
+        "order": [[0, "asc"]],
+        dom: 'T<"clear">lfrtip',
+        tableTools: {
+            "sSwfPath": "conference\img\datatable\swf\copy_csv_xls_pdf.swf",
+            "sRowSelect": "multi",
+            "aButtons": [
+                "copy", "csv",
+                {
+                    "sExtends": "xls",
+                    "sFileName": "*.xls"
+                }
+            ],
+            "filter": "applied"
+        },
+
+         "aoColumnDefs": [
+         { "bSearchable": false, "bVisible": false, "aTargets": [ 4 ] },
+         { "bSearchable": false, "bVisible": false, "aTargets": [ 5 ] }
+         ]
+
+    });
+}
 
 
 function report_menu_start_conference_list() {

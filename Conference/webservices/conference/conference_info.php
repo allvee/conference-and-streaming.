@@ -39,6 +39,9 @@ $last_updated_by = $_SESSION["UserID"];
 if ($action != 'delete') {
 
     $demo_name = $data['demo_name'];
+
+    $_SESSION['conf_name'] = $demo_name;
+
     $start_time = $data['start_time'];
     $end_time = $data['end_time'];
 
@@ -81,7 +84,7 @@ if ($action != 'delete') {
 
     /*=============================== for long number  =====================*/
 
-    $participants_tbl = "tbl_pariticipant";
+    $participants_tbl = "tbl_participant";
 
     $participants_tbl_qry="SELECT  msisdn FROM $participants_tbl WHERE conference_name='$demo_name'" ;
 

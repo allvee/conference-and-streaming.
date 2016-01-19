@@ -399,3 +399,5 @@ cms_url['admin_user_info'] = cms_url['cms_host']+ 'conference/admin_user_info.ph
 cms_url['admin_group_info'] = cms_url['cms_host']+ 'conference/admin_group_info.php';
 cms_url['user_list'] = cms_url['cms_host']+ 'conference/user_list.php';
 cms_url['conference_list'] = cms_url['cms_host']+ 'conference/conference_list.php';
+cms_url['participant_list'] = cms_url['cms_host']+ 'conference/participant_list.php';
+cms_url['participant_info'] = cms_url['cms_host']+ 'conference/participant_info.php';
