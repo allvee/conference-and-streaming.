@@ -62,9 +62,8 @@ if ($action == "update") {
     $msg = "Successfully Updated";
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
 
-    $qry = "UPDATE $tbl set `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
-            `CODE`='1234',`Start_Time`='$start_time',`End_Time`='$end_time',`Participants`='$demo_participants',`Recording`='$demo_recording',
-            `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel'";
+    $qry = "UPDATE $tbl set `participant_name`='$participant_name',`msisdn`='$participant_msisdn', `email`='$participant_email', `conference_name`='$participant_conference_name',
+            `organization`='$participant_organization'";
     $qry .= " WHERE ID='$action_id'";
 
 }
@@ -103,7 +102,7 @@ ClosedDBConnection($cn);
 
 
 if ($is_error == 0) {
-    $return_data = array('status' => true,'participant_name' => $participant_name, 'UserID' => $participant_msisdn , 'participant_email'=>$participant_email, 'participant_conference_name' => $participant_conference_name, 'participant_organization' => $participant_organization);
+    $return_data = array('status' => true,'admin' => $last_updated_by, 'participant_name' => $participant_name, 'msisdn' => $participant_msisdn , 'participant_email'=>$participant_email, 'participant_conference_name' => $participant_conference_name, 'participant_organization' => $participant_organization);
 
 }
 else if ($is_error == 2){

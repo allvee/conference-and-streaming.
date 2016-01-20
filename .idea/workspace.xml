@@ -21,12 +21,6 @@
     <option name="GROUP_BY_TYPE" value="true" />
     <option name="SORT_CHILDREN" value="false" />
     <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -34,17 +28,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conference/js/home.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="119" column="41" selection-start-line="119" selection-start-column="41" selection-end-line="119" selection-end-column="41" />
+              <caret line="136" column="55" selection-start-line="136" selection-start-column="55" selection-end-line="136" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="conference_info.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/conference/webservices/conference/conference_info.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4473684">
+              <caret line="164" column="70" selection-start-line="164" selection-start-column="70" selection-end-line="164" selection-end-column="70" />
               <folding>
-                <marker date="1453206847955" expanded="true" signature="1741:1758" placeholder="..." />
-                <marker date="1453206847955" expanded="true" signature="2247:2264" placeholder="..." />
-                <marker date="1453206847955" expanded="true" signature="2590:2607" placeholder="..." />
-                <marker date="1453206847955" expanded="true" signature="2939:2956" placeholder="..." />
-                <marker date="1453206847955" expanded="true" signature="3355:3372" placeholder="..." />
+                <element signature="e#6#89#0#PHP" expanded="true" />
+                <marker date="1453283685380" expanded="true" signature="2143:2215" placeholder="SELECT msisd..." />
+                <marker date="1453283685380" expanded="true" signature="2632:2715" placeholder="SELECT `room..tbl_conference_room..." />
+                <marker date="1453283685380" expanded="true" signature="3640:4011" placeholder="UPDATE ${$tb..." />
+                <marker date="1453283685380" expanded="true" signature="4071:4144" placeholder="UPDATE ${$ro..." />
+                <marker date="1453283685380" expanded="true" signature="4071:4177" placeholder="UPDATE ${$ro..." />
+                <marker date="1453283685380" expanded="true" signature="4374:4386" placeholder="DELETE from ..." />
+                <marker date="1453283685380" expanded="true" signature="4450:4519" placeholder="UPDATE ${$ro..." />
+                <marker date="1453283685380" expanded="true" signature="4450:4544" placeholder="UPDATE ${$ro..." />
+                <marker date="1453283685380" expanded="true" signature="4660:5042" placeholder="INSERT INTO ..." />
+                <marker date="1453283685380" expanded="true" signature="5064:5148" placeholder="UPDATE ${$ro..." />
+                <marker date="1453283685380" expanded="true" signature="5064:5161" placeholder="UPDATE ${$ro..." />
               </folding>
             </state>
           </provider>
@@ -54,7 +65,17 @@
         <entry file="file://$PROJECT_DIR$/conference/js/conference/participant_info.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+              <caret line="20" column="105" selection-start-line="20" selection-start-column="105" selection-end-line="20" selection-end-column="105" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="conference_info.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conference/js/conference/conference_info.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.310345">
+              <caret line="231" column="53" selection-start-line="231" selection-start-column="53" selection-end-line="231" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -63,12 +84,22 @@
       <file leaf-file-name="participant_info.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conference/webservices/conference/participant_info.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.576923">
-              <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+            <state vertical-scroll-proportion="-17.538462">
+              <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
               <folding>
                 <element signature="e#6#90#0#PHP" expanded="true" />
-                <marker date="1453211078017" expanded="true" signature="2025:2037" placeholder="DELETE from ..." />
-                <marker date="1453211078017" expanded="true" signature="2138:2354" placeholder="INSERT INTO ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="participant_list.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conference/webservices/conference/participant_list.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.346154">
+              <caret line="31" column="49" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="59" />
+              <folding>
+                <element signature="e#6#90#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,12 +108,11 @@
       <file leaf-file-name="conference_list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conference/webservices/conference/conference_list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.818182">
+              <caret line="39" column="170" selection-start-line="39" selection-start-column="170" selection-end-line="39" selection-end-column="170" />
               <folding>
                 <element signature="e#6#91#0#PHP" expanded="true" />
-                <marker date="1453182983677" expanded="true" signature="206:336" placeholder="SELECT ID, C..." />
-                <marker date="1453182983677" expanded="true" signature="1616:1661" placeholder="..." />
+                <marker date="1453287102091" expanded="true" signature="206:336" placeholder="SELECT ID, C..." />
               </folding>
             </state>
           </provider>
@@ -130,14 +160,14 @@
         <option value="/MySQL Fragment (conference_info.php:4565).sql" />
         <option value="/MySQL Fragment (conference_info.php:4566).sql" />
         <option value="/MySQL Fragment (conference_info.php:4578).sql" />
-        <option value="$PROJECT_DIR$/conference/webservices/conference/conference_list.php" />
-        <option value="$PROJECT_DIR$/conference/js/home.js" />
         <option value="$PROJECT_DIR$/conference/webservices/conference/participant_list.php" />
-        <option value="$PROJECT_DIR$/conference/js/conference/participant_info.js" />
         <option value="$PROJECT_DIR$/conference/js/config.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/conference/webservices/conference/conference_info.php" />
+        <option value="$PROJECT_DIR$/conference/js/home.js" />
         <option value="$PROJECT_DIR$/conference/webservices/conference/participant_info.php" />
+        <option value="$PROJECT_DIR$/conference/js/conference/participant_info.js" />
+        <option value="$PROJECT_DIR$/conference/webservices/conference/conference_info.php" />
+        <option value="$PROJECT_DIR$/conference/webservices/conference/conference_list.php" />
         <option value="$PROJECT_DIR$/conference/js/conference/conference_info.js" />
       </list>
     </option>
@@ -366,6 +396,7 @@
     <property name="SearchEverywhereHistoryKey" value="conference_&#9;null&#9;null&#10;frmLblNameAcc col-md-3&#9;null&#9;null&#10;dataTables_softswitch_gw_wrapper&#9;null&#9;null&#10;index&#9;FILE&#9;file://E:/OCM/ocmportal/server/Web Application/softswitch/index.html&#10;home&#9;FILE&#9;file://E:/OCM/ocmportal/server/Web Application/softswitch/softswitch/js/home.js" />
     <property name="FullScreen" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -422,23 +453,23 @@
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19119878" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20106222" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840723" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16995448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34811166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21961933" sideWeight="0.50574714" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34811166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -448,18 +479,19 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840723" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19750367" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15124816" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33990148" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34811166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21961933" sideWeight="0.50574714" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -742,6 +774,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="227" column="42" selection-start-line="227" selection-start-column="42" selection-end-line="227" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -759,18 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conference/webservices/conference/conference_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <marker date="1453182983677" expanded="true" signature="206:336" placeholder="SELECT ID, C..." />
-            <marker date="1453182983677" expanded="true" signature="1616:1661" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.53846157">
@@ -782,24 +803,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8783542">
           <caret line="402" column="79" selection-start-line="402" selection-start-column="79" selection-end-line="402" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conference/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="136" column="55" selection-start-line="136" selection-start-column="55" selection-end-line="136" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conference/webservices/conference/participant_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22326455">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state vertical-scroll-proportion="-10.346154">
+          <caret line="31" column="49" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="59" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conference/webservices/conference/participant_info.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.576923">
-          <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+        <state vertical-scroll-proportion="-17.538462">
+          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
           <folding>
             <element signature="e#6#90#0#PHP" expanded="true" />
-            <marker date="1453211078017" expanded="true" signature="2025:2037" placeholder="DELETE from ..." />
-            <marker date="1453211078017" expanded="true" signature="2138:2354" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -807,48 +838,47 @@
     <entry file="file://$PROJECT_DIR$/conference/js/conference/participant_info.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <caret line="20" column="105" selection-start-line="20" selection-start-column="105" selection-end-line="20" selection-end-column="105" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conference/webservices/conference/conference_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.818182">
+          <caret line="39" column="170" selection-start-line="39" selection-start-column="170" selection-end-line="39" selection-end-column="170" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1453287102091" expanded="true" signature="206:336" placeholder="SELECT ID, C..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conference/js/conference/conference_info.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39177102">
-          <caret line="112" column="101" selection-start-line="112" selection-start-column="101" selection-end-line="112" selection-end-column="101" />
+        <state vertical-scroll-proportion="3.310345">
+          <caret line="231" column="53" selection-start-line="231" selection-start-column="53" selection-end-line="231" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conference/webservices/conference/conference_info.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31894934">
-          <caret line="205" column="57" selection-start-line="205" selection-start-column="57" selection-end-line="205" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.4473684">
+          <caret line="164" column="70" selection-start-line="164" selection-start-column="70" selection-end-line="164" selection-end-column="70" />
           <folding>
             <element signature="e#6#89#0#PHP" expanded="true" />
-            <marker date="1453211077997" expanded="true" signature="-1:-1" placeholder="SELECT msisd..." />
-            <marker date="1453211077997" expanded="true" signature="-1:-1" placeholder="SELECT room_..." />
-            <marker date="1453211077997" expanded="true" signature="-1:-1" placeholder="UPDATE ${$tb..." />
-            <marker date="1453211077997" expanded="true" signature="-1:-1" placeholder="UPDATE ${$ro..." />
-            <marker date="1453211077997" expanded="true" signature="-1:-1" placeholder="DELETE from ..." />
-            <marker date="1453211077997" expanded="true" signature="-1:-1" placeholder="UPDATE ${$ro..." />
-            <marker date="1453211077997" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1453211077997" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1453211077997" expanded="true" signature="-1:-1" placeholder="UPDATE ${$ro..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conference/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="119" column="41" selection-start-line="119" selection-start-column="41" selection-end-line="119" selection-end-column="41" />
-          <folding>
-            <marker date="1453206847955" expanded="true" signature="1741:1758" placeholder="..." />
-            <marker date="1453206847955" expanded="true" signature="2247:2264" placeholder="..." />
-            <marker date="1453206847955" expanded="true" signature="2590:2607" placeholder="..." />
-            <marker date="1453206847955" expanded="true" signature="2939:2956" placeholder="..." />
-            <marker date="1453206847955" expanded="true" signature="3355:3372" placeholder="..." />
+            <marker date="1453283685380" expanded="true" signature="2143:2215" placeholder="SELECT msisd..." />
+            <marker date="1453283685380" expanded="true" signature="2632:2715" placeholder="SELECT `room..tbl_conference_room..." />
+            <marker date="1453283685380" expanded="true" signature="3640:4011" placeholder="UPDATE ${$tb..." />
+            <marker date="1453283685380" expanded="true" signature="4071:4144" placeholder="UPDATE ${$ro..." />
+            <marker date="1453283685380" expanded="true" signature="4071:4177" placeholder="UPDATE ${$ro..." />
+            <marker date="1453283685380" expanded="true" signature="4374:4386" placeholder="DELETE from ..." />
+            <marker date="1453283685380" expanded="true" signature="4450:4519" placeholder="UPDATE ${$ro..." />
+            <marker date="1453283685380" expanded="true" signature="4450:4544" placeholder="UPDATE ${$ro..." />
+            <marker date="1453283685380" expanded="true" signature="4660:5042" placeholder="INSERT INTO ..." />
+            <marker date="1453283685380" expanded="true" signature="5064:5148" placeholder="UPDATE ${$ro..." />
+            <marker date="1453283685380" expanded="true" signature="5064:5161" placeholder="UPDATE ${$ro..." />
           </folding>
         </state>
       </provider>

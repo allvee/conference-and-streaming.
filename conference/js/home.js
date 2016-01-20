@@ -116,7 +116,7 @@ else if (field_name == 'participants_list') {
     var inputarray = [["Conference", "enterprise_conference", "active"]];
     tab_custom(inputarray, "tab_view");
 
-    table_initialize_conference_list();
+    table_initialize_participant_list();
     report_menu_start_participant_list();
 
 }
@@ -131,59 +131,70 @@ else if (field_name == 'add_new_participant') {
     from_backend();
 }
 
+else if (field_name == 'edit_participant') {
+    display_content_custom('1821', '#modalData');
+    //$('.tabtitle').hide();
+    $("#set_title").html(' <span style="font-weight:bold;">Edit Participant</span>');
 
-/*
+    var inputarray = [["Conference", "enterprise_conference", "active"]];
+    tab_custom(inputarray, "tab_view");
+    from_backend();
+}
 
-else if (field_name == 'enterprise_admin') {
-            display_content_custom('1813', '#modalData');
+
+
+        /*
+
+        else if (field_name == 'enterprise_admin') {
+                    display_content_custom('1813', '#modalData');
+                    //$('.tabtitle').hide();
+                    $("#set_title").html(' <span style="font-weight:bold;">User Role Management</span>');
+
+                    var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
+                    tab_custom(inputarray, "tab_view");
+
+            table_initialize_user_list();
+            report_menu_start_user_list();
+                }
+
+        else if (field_name == 'enterprise_logoff') {
+                    display_content_custom('150', '#modalData');
+                    //$('.tabtitle').hide();
+                    $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Log Off </span>');
+
+                    var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "deactive"], ["Log Off", "enterprise_logoff", "active"]];
+                    tab_custom(inputarray, "tab_view");
+                }
+
+        else if (field_name == 'new_user') {
+            display_content_custom('1814', '#modalData');
             //$('.tabtitle').hide();
             $("#set_title").html(' <span style="font-weight:bold;">User Role Management</span>');
 
             var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
             tab_custom(inputarray, "tab_view");
-
-    table_initialize_user_list();
-    report_menu_start_user_list();
         }
 
-else if (field_name == 'enterprise_logoff') {
-            display_content_custom('150', '#modalData');
-            //$('.tabtitle').hide();
-            $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Log Off </span>');
 
-            var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "deactive"], ["Log Off", "enterprise_logoff", "active"]];
+        else if (field_name == 'edit_user') {
+            display_content_custom('1816', '#modalData');
+            //$('.tabtitle').hide();
+            $("#set_title").html(' <span style="font-weight:bold;">User Role Management</span>');
+
+            var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
             tab_custom(inputarray, "tab_view");
         }
 
-else if (field_name == 'new_user') {
-    display_content_custom('1814', '#modalData');
-    //$('.tabtitle').hide();
-    $("#set_title").html(' <span style="font-weight:bold;">User Role Management</span>');
 
-    var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
-    tab_custom(inputarray, "tab_view");
-}
+        else if (field_name == 'new_group') {
+            display_content_custom('1815', '#modalData');
+            //$('.tabtitle').hide();
+            $("#set_title").html(' <span style="font-weight:bold;">User Role Management</span>');
 
-
-else if (field_name == 'edit_user') {
-    display_content_custom('1816', '#modalData');
-    //$('.tabtitle').hide();
-    $("#set_title").html(' <span style="font-weight:bold;">User Role Management</span>');
-
-    var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
-    tab_custom(inputarray, "tab_view");
-}
-
-
-else if (field_name == 'new_group') {
-    display_content_custom('1815', '#modalData');
-    //$('.tabtitle').hide();
-    $("#set_title").html(' <span style="font-weight:bold;">User Role Management</span>');
-
-    var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
-    tab_custom(inputarray, "tab_view");
-}
-        */
+            var inputarray = [["Conference", "enterprise_conference", "deactive"], ["Admin", "enterprise_admin", "active"], ["Log Off", "enterprise_logoff", "deactive"]];
+            tab_custom(inputarray, "tab_view");
+        }
+                */
 
 
 		// dropdown_chosen_style();

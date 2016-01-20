@@ -103,8 +103,7 @@ if($row = Sql_fetch_array($res))
 
     if ($action != 'update'){
         $room_tbl = "tbl_conference_room";
-        $room_tbl_qry="SELECT room_number, web_link FROM `tbl_conference_room`
-	                    WHERE room_status='free' LIMIT 0, 1";
+        $room_tbl_qry="SELECT `room_number`, `web_link`FROM $room_tbl  WHERE room_status='free' LIMIT 0, 1";
 
         try {
             $result = Sql_exec($cn, $room_tbl_qry);
@@ -150,7 +149,7 @@ if ($action == "update") {
             `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel'";
     $qry .= " WHERE ID='$action_id'";
 
-    $qry_to_room="UPDATE $room_tbl SET `room_status`='busy',`last_update` ='$last_updated'";
+    $qry_to_room="UPDATE $room_tbl SET `room_status`='busy',`last_update` ='$last_updated', `conference_name` = '$demo_name'";
     $qry_to_room .= " WHERE `room_number` ='$room_number'";
 
 }
@@ -163,7 +162,7 @@ else if ($action == "delete") {
     $qry = "DELETE from $tbl";
     $qry .= " where ID='$action_id'";
 
-    $qry_to_room="UPDATE $room_tbl SET room_status='free',last_update='$last_updated'";
+    $qry_to_room="UPDATE $room_tbl SET room_status='free',last_update ='$last_updated',`conference_name` = 'N/A'";
     $qry_to_room .= " WHERE room_number='$room_number'";
 
 }
@@ -173,7 +172,7 @@ else {
     $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel)
 	VALUES('$demo_name', '$long_number', '$user_id', '$room_number', '$web_link', '1234', '$start_time', '$end_time', '$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
 
-    $qry_to_room="UPDATE $room_tbl SET room_status='busy',last_update='$last_updated'";
+    $qry_to_room="UPDATE $room_tbl SET room_status='busy',last_update='$last_updated',conference_name= '$demo_name'";
     $qry_to_room .= " WHERE room_number='$room_number'";
 }
 

@@ -83,11 +83,6 @@ function add_new_conference() {
 
 }
 
-function add_new_participant() {
-    showUserMenu('add_new_participant');
-
-}
-
 function from_backend(){
     var field = document.getElementById("user_id");
     field.value = $.parseJSON( sessionStorage.getItem('cms_auth')).UserID;
@@ -140,56 +135,6 @@ function table_initialize_conference_list() {
 
 }
 
-function report_menu_start_participant_list() {
-
-    var dataSet = [[]];
-    var dataInfo = {};
-     dataSet = connectServer(cms_url['participant_list'], dataInfo);
-     //alert(dataSet);
-     dataSet = JSON.parse(dataSet);
-    //alert(dataSet);
-    table_data_participant_list(dataSet);
-
-}
-
-function table_data_participant_list(dataSet) {
-
-    $('#dataTables_conference_list').dataTable({
-
-        "data": dataSet,
-        "columns": [
-            {"title": "ID", "class": "center"},
-            {"title": "Name", "class": "center"},
-            {"title": "Mobile Number", "class": "center"},
-            {"title": "Email", "class": "center"},
-            {"title": "Organization", "class": "center"},
-            {"title": "Conference Name", "class": "center"},
-            {"title": "Edit/Delete", "class": "center"},
-
-
-        ],
-        "order": [[0, "asc"]],
-        dom: 'T<"clear">lfrtip',
-        tableTools: {
-            "sSwfPath": "conference\img\datatable\swf\copy_csv_xls_pdf.swf",
-            "sRowSelect": "multi",
-            "aButtons": [
-                "copy", "csv",
-                {
-                    "sExtends": "xls",
-                    "sFileName": "*.xls"
-                }
-            ],
-            "filter": "applied"
-        },
-
-        /* "aoColumnDefs": [
-         { "bSearchable": false, "bVisible": false, "aTargets": [ 4 ] },
-         { "bSearchable": false, "bVisible": false, "aTargets": [ 5 ] }
-         ]*/
-
-    });
-}
 
 
 function report_menu_start_conference_list() {
@@ -220,8 +165,8 @@ function table_data_conference_list(dataSet) {
             {"title": "Recording", "class": "center"},
             {"title": "Notification Channel", "class": "center"},
             {"title": "Status", "class": "center"},
-            {"title": "Room Number", "class": "center"},
-            {"title": "Web Link", "class": "center"},
+            /*{"title": "Room Number", "class": "center"},
+            {"title": "Web Link", "class": "center"},*/
             {"title": "Edit/Delete", "class": "center"},
 
 
@@ -249,19 +194,19 @@ function table_data_conference_list(dataSet) {
     });
 }
 
-function edit_conference_list(obj, info, room_number) {
+function edit_conference_list(obj, info, room_number, weblink) {
 
     var data = [];
     var table = document.getElementById('dataTables_conference_list');
     var index = obj.parentNode.parentNode.rowIndex;
     var i = 0;
-    for (i = 0; i < 11; i++)
+    for (i = 0; i < 9; i++)
         data[i] = table.rows[index].cells[i].innerHTML;
 
     showUserMenu('edit_conference');
     document.getElementById("conference_id").textContent=data[0];
 
-    console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10] );
+    console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8], room_number, weblink );
 
      $('#action').val("update");
      $('#action_id').val(data[0]);
@@ -273,8 +218,8 @@ function edit_conference_list(obj, info, room_number) {
      $('#demo_recording').val(data[6]);
      $('#notification_channel').val(data[7]);
      $('#status').val(data[8]);
-    $('#room_number').val(data[9]);
-    $('#weblink').val(data[10]);
+     $('#room_number').val(room_number);
+     $('#weblink').val(weblink);
      dropdown_chosen_style();
 
 
