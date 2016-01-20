@@ -109,7 +109,9 @@ function conference_create_edit() {
     response = JSON.parse(response);
     alert("after php Hit js: "+response.status);
 
-    var notice="<br/>Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
+    var notice="<br/>Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+        +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+        +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
     +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
     +"<br/>Code    : "+ response.Code +"<br/>Start Time     : " + response.Start_Time
     +"<br/>End Time    : "+ response.End_Time
@@ -181,10 +183,10 @@ function table_data_participant_list(dataSet) {
             "filter": "applied"
         },
 
-         "aoColumnDefs": [
+        /* "aoColumnDefs": [
          { "bSearchable": false, "bVisible": false, "aTargets": [ 4 ] },
          { "bSearchable": false, "bVisible": false, "aTargets": [ 5 ] }
-         ]
+         ]*/
 
     });
 }
@@ -281,7 +283,7 @@ function edit_conference_list(obj, info, room_number) {
 
 function delete_conference_list(obj, action_id, room_number) {
 
-    confirmMessage(this, 'conference_list', obj+"/"+action_id+"/"+room_number+"/"+'Delete Confirmation', 'Do you want to delete ?');
+    confirmMessage(this, 'conference_list', 'Delete Confirmation', 'Do you want to delete ?');
     var arrayInput = new Array(obj, action_id, room_number);
     $('#conference_list').click({id: arrayInput}, delete_confirm_conference_list);
 
