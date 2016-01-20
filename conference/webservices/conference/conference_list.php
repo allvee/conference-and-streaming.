@@ -20,8 +20,7 @@ if (!$result) {
 }
 
 $data = array();
-$b=" ";
-$b=" ";
+
 $i=0;
 while ($row = Sql_fetch_array($result)) {
     $j=0;

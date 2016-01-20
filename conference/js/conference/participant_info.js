@@ -69,8 +69,8 @@ function table_data_participant_list(dataSet) {
             {"title": "Name", "class": "center"},
             {"title": "Mobile Number", "class": "center"},
             {"title": "Email", "class": "center"},
-            {"title": "Organization", "class": "center"},
-            {"title": "Conference Name", "class": "center"},
+           /* {"title": "Organization", "class": "center"},
+            {"title": "Conference Name", "class": "center"},*/
             {"title": "Edit/Delete", "class": "center"},
 
 
@@ -99,29 +99,65 @@ function table_data_participant_list(dataSet) {
 }
 
 
-function edit_participant_list(obj, info, conference_name) {
+function edit_participant_list(obj, info, conference_name, organization) {
 
     var data = [];
     var table = document.getElementById('dataTables_participant_list');
     var index = obj.parentNode.parentNode.rowIndex;
     var i = 0;
-    for (i = 0; i < 6; i++)
+    for (i = 0; i < 4; i++)
         data[i] = table.rows[index].cells[i].innerHTML;
 
     showUserMenu('edit_participant');
     //document.getElementById("conference_id").textContent=data[0];
 
-    console.log(data[0],data[1],data[2],data[3],data[4],data[5] );
+    console.log(data[0],data[1],data[2],data[3],conference_name, organization  );
 
     $('#action').val("update");
     $('#action_id').val(data[0]);
     $('#participant_name').val(data[1]);
     $('#participant_msisdn').val(data[2]);
     $('#participant_email').val(data[3]);
-    $('#participant_conference_name').val(data[4]);
-    $('#participant_organization').val(data[5]);
+    $('#participant_conference_name').val(conference_name);
+    $('#participant_organization').val(organization);
     dropdown_chosen_style();
 
+
+}
+
+
+function delete_participant_list(obj, action_id, conference_name, organization) {
+
+    confirmMessage(this, 'conference_list', 'Delete Confirmation', 'Do you want to delete ?');
+    var arrayInput = new Array(obj, action_id, conference_name, organization);
+    $('#conference_list').click({id: arrayInput}, delete_confirm_participant_list);
+
+}
+
+
+function delete_confirm_participant_list(event) {
+    var arrayInput = event.data.id;
+    var dataInfo = {}
+    dataInfo['action'] = 'delete';
+    dataInfo['action_id'] = arrayInput[1];
+    dataInfo['conference_name'] = arrayInput[2];
+    dataInfo['organization'] = arrayInput[3];
+
+    var response = connectServer(cms_url['participant_info'], dataInfo);
+
+
+     alert("after php get response: "+ response +"  b4json");
+    response =JSON.parse(response);
+
+    alert("after php"+"//"+response.status);
+
+    if (response.status) {
+        alertMessage(this, 'green', 'Successful', response.message);
+        showUserMenu('participants_list');
+    }
+    else {
+        alertMessage(this, 'red', 'Sorry!', 'Failed.');
+    }
 
 }
 

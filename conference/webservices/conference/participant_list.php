@@ -26,11 +26,11 @@ while ($row = Sql_fetch_array($result)) {
     $data[$i][$j++] = Sql_Result($row, "participant_name");
     $data[$i][$j++] = Sql_Result($row, "msisdn");
     $data[$i][$j++] = Sql_Result($row, "email");
-    $data[$i][$j++] = Sql_Result($row, "conference_name");
-    $data[$i][$j++] = Sql_Result($row, "organization");
+   // $data[$i][$j++] = Sql_Result($row, "conference_name");
+   // $data[$i][$j++] = Sql_Result($row, "organization");
 
-    $data[$i][$j++] = '<span onclick="edit_participant_list(this,  \'' . Sql_Result($row, "ID") .'\', \''.Sql_Result($row, "conference_name") . '\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/pen.png" ></span>'
-        . '&nbsp&nbsp' . '<span onclick="delete_participant_list(this, \'' . Sql_Result($row, "ID") .'\', \''.Sql_Result($row, "conference_name") .'\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/cancel.png" ></span>';
+    $data[$i][$j++] = '<span onclick="edit_participant_list(this,  \'' . Sql_Result($row, "ID") .'\', \''.Sql_Result($row, "conference_name") . '\', \''.Sql_Result($row, "organization") . '\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/pen.png" ></span>'
+        . '&nbsp&nbsp' . '<span onclick="delete_participant_list(this,  \'' . Sql_Result($row, "ID") .'\', \''.Sql_Result($row, "conference_name") . '\', \'' . Sql_Result($row, "organization") .'\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/cancel.png" ></span>';
 
 
     $i++;
