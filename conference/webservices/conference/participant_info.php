@@ -39,6 +39,7 @@ if ($action != 'delete') {
     $participant_name = $data['participant_name'];
     $participant_msisdn = $data['participant_msisdn'];
     $participant_email = $data['participant_email'];
+    $participant_type = $data['participant_type'];
 
     $participant_conference_name = $_SESSION['conf_name'];
     $participant_organization = 'ssd-tech';
@@ -63,7 +64,7 @@ if ($action == "update") {
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
 
     $qry = "UPDATE $tbl set `participant_name`='$participant_name',`msisdn`='$participant_msisdn', `email`='$participant_email', `conference_name`='$participant_conference_name',
-            `organization`='$participant_organization'";
+            `organization`='$participant_organization', `participant_type` ='$participant_type'";
     $qry .= " WHERE ID='$action_id'";
 
 }
@@ -80,8 +81,8 @@ else if ($action == "delete") {
 
 else {
     $msg = "Successfully Saved";
-    $qry = "INSERT INTO $tbl (participant_name, msisdn, email, conference_name, organization)
-	VALUES('$participant_name', '$participant_msisdn', '$participant_email', '$participant_conference_name', '$participant_organization')";
+    $qry = "INSERT INTO $tbl (`participant_name`, `msisdn`, `email`, `conference_name`, `organization`, `participant_type`)
+	VALUES('$participant_name', '$participant_msisdn', '$participant_email', '$participant_conference_name', '$participant_organization', $participant_type)";
 }
 
 try {
@@ -102,7 +103,7 @@ ClosedDBConnection($cn);
 
 
 if ($is_error == 0) {
-    $return_data = array('status' => true,'admin' => $last_updated_by, 'participant_name' => $participant_name, 'msisdn' => $participant_msisdn , 'participant_email'=>$participant_email, 'participant_conference_name' => $participant_conference_name, 'participant_organization' => $participant_organization);
+    $return_data = array('status' => true,'admin' => $last_updated_by, 'participant_name' => $participant_name, 'msisdn' => $participant_msisdn , 'participant_email'=>$participant_email, 'participant_type'=>$participant_type, 'participant_conference_name' => $participant_conference_name, 'participant_organization' => $participant_organization);
 
 }
 else if ($is_error == 2){

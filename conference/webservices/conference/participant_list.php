@@ -10,9 +10,10 @@ include_once "../lib/common.php";
 $cn = connectDB();
 
 $tbl = "tbl_participant";
+$participant_conference_name = $_SESSION['conf_name'];
 
 $arrayInput = array();
-$query = "SELECT ID, participant_name, msisdn, email, conference_name, organization FROM $tbl";
+$query = "SELECT ID, participant_name, msisdn, email, conference_name, organization, participant_type FROM $tbl where conference_name='$participant_conference_name'";
 $result = Sql_exec($cn, $query);
 if (!$result) {
     echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;
@@ -26,6 +27,7 @@ while ($row = Sql_fetch_array($result)) {
     $data[$i][$j++] = Sql_Result($row, "participant_name");
     $data[$i][$j++] = Sql_Result($row, "msisdn");
     $data[$i][$j++] = Sql_Result($row, "email");
+    $data[$i][$j++] = Sql_Result($row, "participant_type");
    // $data[$i][$j++] = Sql_Result($row, "conference_name");
    // $data[$i][$j++] = Sql_Result($row, "organization");
 

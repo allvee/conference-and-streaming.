@@ -19,7 +19,7 @@ function participant_add_edit(){
 
     var notice="<br/>Participant Name    : "+response.participant_name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"Conference Admin  : "+ response.admin
-        +"<br/>Mobile Number     : " + response.msisdn +"<br/>Email  : "+ response.participant_email
+        +"<br/>Mobile Number     : " + response.msisdn +"<br/>Email  : "+ response.participant_email+"<br/>Participant Type : "+ response.participant_type
         +"<br/>Listed to Conference    : " + response.participant_conference_name;
 
     if (response.status) {
@@ -69,6 +69,7 @@ function table_data_participant_list(dataSet) {
             {"title": "Name", "class": "center"},
             {"title": "Mobile Number", "class": "center"},
             {"title": "Email", "class": "center"},
+            {"title": "participant_type", "class": "center"},
            /* {"title": "Organization", "class": "center"},
             {"title": "Conference Name", "class": "center"},*/
             {"title": "Edit/Delete", "class": "center"},
@@ -105,7 +106,7 @@ function edit_participant_list(obj, info, conference_name, organization) {
     var table = document.getElementById('dataTables_participant_list');
     var index = obj.parentNode.parentNode.rowIndex;
     var i = 0;
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < 5; i++)
         data[i] = table.rows[index].cells[i].innerHTML;
 
     showUserMenu('edit_participant');
@@ -118,6 +119,7 @@ function edit_participant_list(obj, info, conference_name, organization) {
     $('#participant_name').val(data[1]);
     $('#participant_msisdn').val(data[2]);
     $('#participant_email').val(data[3]);
+    $('#participant_type').val(data[4]);
     $('#participant_conference_name').val(conference_name);
     $('#participant_organization').val(organization);
     dropdown_chosen_style();
