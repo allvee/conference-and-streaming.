@@ -1,30 +1,75 @@
 /**
  * Created by Al-Amin on 1/19/2016.
  */
+var notice='';
 
+
+function conference_done_popup()
+{
+    $('#action').val('retrieve');
+
+    alert("before php Hit action:" );
+
+    var dataSet = [[]];
+    var participant= [];
+    var dataInfo = {};
+    dataSet = connectServer(cms_url['retrieve_participant_info'], dataInfo);
+    dataSet = JSON.parse(dataSet);
+    alert(dataSet.data.length);
+    if(dataSet.status){
+        for(i=0;i<dataSet.data.length; i++)
+        {
+            console.log(dataSet.data[i][0]+": "+dataSet.data[i][1]+": "+dataSet.data[i][2]);
+            participant[i] = dataSet.data[i][0]+"  ||  "+dataSet.data[i][1]+"  ||  "+dataSet.data[i][2]
+            len=i;
+        }
+        for(i=0;i<=len; i++)
+        notice = notice+ participant[i]+ "</br> ";
+
+    } else {
+       alert("No Data");
+    }
+    console.log(len+notice);
+   alert(len+notice);
+
+    alertMessage(this, 'green', 'Successful',conference_notice+notice);
+    showUserMenu('enterprise_conference');
+}
+
+function Participant_from_backend(){
+    //var field = document.getElementById("conference_name");
+
+    document.getElementById("conference_name").textContent=conference_name;
+    $('#conference_id').val(conference_id);
+
+    alert("conference id:"+conference_id);
+    console.log("conf_Name:"+conference_name+"and conf_id:"+conference_id);
+}
 
 function participant_add_edit(){
 
     form_id = "participant_add_edit";
 
+    $('#conference_id').val(conference_id);
 
     alert("before php Hit js");
 
     var response = connectServerWithForm(cms_url['participant_info'], form_id);
+    alert("after php Hit js: "+response + "   found");
 
     console.log("get: "+response +" found");
 
     response = JSON.parse(response);
     alert("after php Hit js: "+response.status);
 
-    var notice="<br/>Participant Name    : "+response.participant_name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+    notice="<br/>Participant Name    : "+response.participant_name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"Conference Admin  : "+ response.admin
         +"<br/>Mobile Number     : " + response.msisdn +"<br/>Email  : "+ response.participant_email+"<br/>Participant Type : "+ response.participant_type
         +"<br/>Listed to Conference    : " + response.participant_conference_name;
 
     if (response.status) {
 
-        alertMessage(this, 'green', 'Participant Conformation',notice );
+       // alertMessage(this, 'green', 'Participant Conformation',notice );
         showUserMenu('participants_list');
     }
 
@@ -110,7 +155,7 @@ function edit_participant_list(obj, info, conference_name, organization) {
         data[i] = table.rows[index].cells[i].innerHTML;
 
     showUserMenu('edit_participant');
-    //document.getElementById("conference_id").textContent=data[0];
+    document.getElementById("participant_id").textContent=data[0];
 
     console.log(data[0],data[1],data[2],data[3],conference_name, organization  );
 

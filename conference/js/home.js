@@ -128,7 +128,7 @@ else if (field_name == 'add_new_participant') {
 
     var inputarray = [["Conference", "enterprise_conference", "active"]];
     tab_custom(inputarray, "tab_view");
-    from_backend();
+    Participant_from_backend();
 }
 
 else if (field_name == 'edit_participant') {
@@ -138,7 +138,7 @@ else if (field_name == 'edit_participant') {
 
     var inputarray = [["Conference", "enterprise_conference", "active"]];
     tab_custom(inputarray, "tab_view");
-    from_backend();
+    Participant_from_backend();
 }
 
 

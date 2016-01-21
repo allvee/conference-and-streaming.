@@ -1,6 +1,9 @@
 /**
  * Created by Al-Amin on 1/4/2016.
  */
+var conference_notice;
+var conference_name;
+var conference_id;
 
 var minDuration=30;
 var d = new Date,
@@ -104,20 +107,22 @@ function conference_create_edit() {
     response = JSON.parse(response);
     alert("after php Hit js: "+response.status);
 
-    var notice="<br/>Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+    conference_name=response.Name;
+    //conference_id = response.ID;
+
+    conference_notice="<br/>Conference Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
     +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
     +"<br/>Code    : "+ response.Code +"<br/>Start Time     : " + response.Start_Time
-    +"<br/>End Time    : "+ response.End_Time
-    +"<br/>Conference Duration     : " +response.Conference_Duration.h+" : "+ response.Conference_Duration.i
-    +"<br/>No. of Participants  : "+ response.No_of_Participants +"<br/>Recording     : " + response.Recording
-    +"<br/>Stats   : "+ response.Stats +"<br/>Notification Channel     : " + response.Notification_Channel
-    +"<br/>Schedule Conf   : "+ response.Schedule_Conf;
+    +"<br/>End Time    : "+ response.End_Time +"<br/>Conference Duration     : " +response.Conference_Duration.h+" : "+ response.Conference_Duration.i
+    +"<br/>Recording     : " + response.Recording +"<br/>Stats   : "+ response.Stats +"<br/>Notification Channel     : " + response.Notification_Channel
+    +"<br/>Schedule Conf   : "+ response.Schedule_Conf
+    +"<br/><b>Participants :</b> <br/>";
 
     if (response.status) {
 
-        alertMessage(this, 'green', '           Conference Conformation', notice );
+       // alertMessage(this, 'green', '           Conference Conformation', notice );
         showUserMenu('participants_list');
     }
 
@@ -205,7 +210,7 @@ function edit_conference_list(obj, info, room_number, weblink) {
 
     showUserMenu('edit_conference');
     document.getElementById("conference_id").textContent=data[0];
-
+    conference_id =data[0];
     console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8], room_number, weblink );
 
      $('#action').val("update");
