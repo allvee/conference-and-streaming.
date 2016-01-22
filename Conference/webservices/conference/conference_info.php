@@ -52,12 +52,16 @@ if ($action != 'delete') {
    // print_r($response) ;
 
     $status= $response["status"];
-    print_r( "status:"+$status);
+
 
     $long_code = $response["long_code"];
     $web_link = $response["web_link"];
     $room_pass = $response["room_pass"];
     $room_number = $response['room_number'];
+
+    $_SESSION['room_number'] = $room_number;
+
+   // print_r( "status:"+$status+"long code"+$long_code+"web link"+$web_link);
 
     $dteStart = new DateTime($start_time);
     $dteEnd   = new DateTime($end_time);
@@ -119,7 +123,7 @@ if ($action == "update") {
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
 
     $qry = "UPDATE $tbl set `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
-            `CODE`='1234',`Start_Time`='$start_time',`End_Time`='$end_time',`Participants`='$demo_participants',`Recording`='$demo_recording',
+            `CODE`='$room_pass',`Start_Time`='$start_time',`End_Time`='$end_time',`Participants`='$demo_participants',`Recording`='$demo_recording',
             `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel'";
     $qry .= " WHERE ID='$action_id'";
 
@@ -168,7 +172,17 @@ try {
     $is_error = 1;
 }
 
+/*
+$qry ="SELECT ID FROM tbl_conference WHERE  `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
+            `CODE`='$room_pass',`Start_Time`='$start_time',`End_Time`='$end_time',`Participants`='$demo_participants',`Recording`='$demo_recording',
+            `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel' ";
 
+$result = Sql_exec($cn, $qry);
+
+while ($row = Sql_fetch_array($result))
+{
+    $conf_id = Sql_Result($row, "ID");
+}*/
 
 ClosedDBConnection($cn);
 
@@ -176,7 +190,7 @@ ClosedDBConnection($cn);
 
 
 if ($is_error == 0) {
-    $return_data = array('status' => true,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    $return_data = array('status' => true,/*'conf_id' => $conf_id,*/'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
     'Code' => '$room_pass', 'Start_Time' => $start_time, 'End_Time' => $end_time, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
     'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf );
 

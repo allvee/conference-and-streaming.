@@ -41,7 +41,7 @@ if ($action != 'delete') {
     $participant_email = $data['participant_email'];
     $participant_type = $data['participant_type'];
     $conference_id =$data['conference_id'];
-
+    $long_code = $_SESSION['room_number'];
     $participant_conference_name = $_SESSION['conf_name'];
     $participant_organization = 'ssd-tech';
 
@@ -83,7 +83,7 @@ else if ($action == "delete") {
 else {
     $msg = "Successfully Saved";
     $qry = "INSERT INTO `$tbl` (`participant_name`, `msisdn`, `email`,`conference_ID`, `conference_name`, `long_code`,`organization`, `participant_type`)
-	VALUES('$participant_name', '$participant_msisdn', '$participant_email','$conference_id', '$participant_conference_name','3001', '$participant_organization', '$participant_type')";
+	VALUES('$participant_name', '$participant_msisdn', '$participant_email','$conference_id', '$participant_conference_name','$long_code', '$participant_organization', '$participant_type')";
 }
 
 try {

@@ -1,8 +1,6 @@
 /**
  * Created by Al-Amin on 1/19/2016.
  */
-var notice='';
-
 
 function conference_done_popup()
 {
@@ -20,9 +18,10 @@ function conference_done_popup()
         for(i=0;i<dataSet.data.length; i++)
         {
             console.log(dataSet.data[i][0]+": "+dataSet.data[i][1]+": "+dataSet.data[i][2]);
-            participant[i] = dataSet.data[i][0]+"  ||  "+dataSet.data[i][1]+"  ||  "+dataSet.data[i][2]
+            participant[i] = dataSet.data[i][0]+"  ||  "+dataSet.data[i][1]+"  ||  "+dataSet.data[i][2];
             len=i;
         }
+        notice=" ";
         for(i=0;i<=len; i++)
         notice = notice+ participant[i]+ "</br> ";
 
@@ -69,7 +68,8 @@ function participant_add_edit(){
 
     if (response.status) {
 
-       // alertMessage(this, 'green', 'Participant Conformation',notice );
+        alertMessage(this, 'green', 'Participant Conformation',notice );
+        notice=" ";
         showUserMenu('participants_list');
     }
 

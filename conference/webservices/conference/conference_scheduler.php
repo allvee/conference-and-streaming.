@@ -18,20 +18,21 @@ function check_scheduler($param_start_time,$para_end_time,$cn)
     //echo $request_start_time->format('Y-m-d H:i:s')." : : ".$request_end_time->format('Y-m-d H:i:s')."</br>";
 
     //echo __LINE__."</br>";
-    $qry = "Select room_number,room_pass,web_link from tbl_conference_room";
+    $qry = "Select room_caller, room_pass, web_link, room_caller from tbl_conference_room";
 //    echo $qry."</br>";
     $result = Sql_exec($cn,$qry);
 
     while ($row = Sql_fetch_array($result)) {
-        $room_number = $row['room_number'];
+        $room_number = $row['room_caller'];
         $room_password = $row['room_pass'];
         $web_link = $row['web_link'];
+        $room_caller = $row['room_caller'];
        // echo __LINE__."</br>";
         $qry = "select Start_Time, End_Time from tbl_conference where room_number='$room_number'";
         $ret = Sql_exec($cn,$qry);
 
         if( Sql_num_rows($ret) < 1) {
-            return array("status"=>true,"room_number"=>$room_number,"long_code"=>$room_number,"room_pass"=>$room_password,"web_link"=>$web_link);
+            return array("status"=>true,"room_number"=>$room_number,"long_code"=>$room_caller,"room_pass"=>$room_password,"web_link"=>$web_link);
         }
 
         while ($row2 = sql_fetch_array($ret)) {
@@ -39,7 +40,7 @@ function check_scheduler($param_start_time,$para_end_time,$cn)
             $end_time = new DateTime($row2['End_Time']);
            // echo $start_time->format('Y-m-d H:i:s') .":---:".$end_time->format('Y-m-d H:i:s')."</br>";
             if ($start_time > $request_end_time or $end_time < $request_start_time) {
-                return array("status"=>true,"room_number"=>$room_number,"long_code"=>$room_number,"room_pass"=>$room_password,"web_link"=>$web_link);
+                return array("status"=>true,"room_number"=>$room_number,"long_code"=>$room_caller,"room_pass"=>$room_password,"web_link"=>$web_link);
             }
         }
     }

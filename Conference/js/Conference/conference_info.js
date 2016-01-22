@@ -4,6 +4,7 @@
 var conference_notice;
 var conference_name;
 var conference_id;
+var No_of_participants;
 
 var minDuration=30;
 var d = new Date,
@@ -50,17 +51,6 @@ console.log(dformat);
 
 
 function check_box_value_changed(){
-
-  /* if($("#demo_active").is(":checked"))
-       $('#demo_active').val('active');
-   else
-        $('#demo_active').val('done');
-
-    if($("#demo_recording").is(":checked"))
-        $('#demo_recording').val('yes');
-
-    else
-        $('#demo_recording').val('no');*/
 
     if($("#meet_now").is(":checked"))
     {
@@ -110,7 +100,8 @@ function conference_create_edit() {
     alert("after php Hit js: "+response.status);
 
     conference_name=response.Name;
-    //conference_id = response.ID;
+    No_of_participants=response.No_of_Participants;
+   // conference_id = response.ID;
 
     conference_notice="<br/>Conference Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
