@@ -32,7 +32,7 @@ function conference_done_popup()
     console.log(len+notice);
    alert(len+notice);
 
-    alertMessage(this, 'green', 'Successful',conference_notice+notice);
+    custom_alertMessage(this, 'green', 'Successful',conference_notice+notice);
     showUserMenu('enterprise_conference');
 }
 

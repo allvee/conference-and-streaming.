@@ -130,6 +130,37 @@ function alertMessage(x, cls, heading, message) {
     });
 }
 
+
+
+/*================================================
+ * function custom alertMessage
+ * @param cls string defines css class
+ * @param heading string message header
+ * @param message string message body
+ * examples:
+ * cls 'blue' for normal alert
+ * cls 'red' for error alert
+ * cls 'green' for success alert
+ * cls 'yellow' for warning alert
+ * ================================================*/
+function custom_alertMessage(x,  cls, heading, message) {
+
+    $.confirm({
+        'title': heading,
+        'message': message,
+        'class': cls,
+        'buttons': {
+            'OK': {
+                'class': cls,
+                'action': function () {
+                }
+            }
+        }
+    });
+}
+
+
+
 /*================================================
  * function confirmMessage
  * @param id string defines button id for onclick function
