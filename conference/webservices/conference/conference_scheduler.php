@@ -31,7 +31,7 @@ function check_scheduler($param_start_time,$para_end_time,$cn)
         $ret = Sql_exec($cn,$qry);
 
         if( Sql_num_rows($ret) < 1) {
-            return array("status"=>true,"long_code"=>$room_number,"room_pass"=>$room_password,"web_link"=>$web_link);
+            return array("status"=>true,"room_number"=>$room_number,"long_code"=>$room_number,"room_pass"=>$room_password,"web_link"=>$web_link);
         }
 
         while ($row2 = sql_fetch_array($ret)) {
@@ -39,7 +39,7 @@ function check_scheduler($param_start_time,$para_end_time,$cn)
             $end_time = new DateTime($row2['End_Time']);
            // echo $start_time->format('Y-m-d H:i:s') .":---:".$end_time->format('Y-m-d H:i:s')."</br>";
             if ($start_time > $request_end_time or $end_time < $request_start_time) {
-                return array("status"=>true,"long_code"=>$room_number,"room_pass"=>$room_password,"web_link"=>$web_link);
+                return array("status"=>true,"room_number"=>$room_number,"long_code"=>$room_number,"room_pass"=>$room_password,"web_link"=>$web_link);
             }
         }
     }

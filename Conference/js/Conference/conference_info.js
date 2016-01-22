@@ -101,8 +101,9 @@ function conference_create_edit() {
     alert("before php Hit js");
 
     var response = connectServerWithForm(cms_url['conference_info'], form_id);
-
+    alert("after php Hit js");
     console.log("get: "+response +" found");
+
     alert("after php Hit js");
 
     response = JSON.parse(response);
