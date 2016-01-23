@@ -60,6 +60,7 @@ if ($action != 'delete') {
     $room_number = $response['room_number'];
 
     $_SESSION['room_number'] = $room_number;
+    $_SESSION['long_code'] = $long_code;
 
    // print_r( "status:"+$status+"long code"+$long_code+"web link"+$web_link);
 
@@ -127,6 +128,9 @@ if ($action == "update") {
             `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel'";
     $qry .= " WHERE ID='$action_id'";
 
+    $conf_id =$action_id;
+    $_SESSION['conf_id']=$action_id;
+
     $qry_to_room="UPDATE $room_tbl SET `room_pass`='$room_pass',`last_update` ='$last_updated', `conference_name` = '$demo_name'";
     $qry_to_room .= " WHERE `room_number` ='$room_number'";
 
@@ -139,6 +143,8 @@ else if ($action == "delete") {
     $action_id = $deleted_id;
     $qry = "DELETE from $tbl";
     $qry .= " where ID='$action_id'";
+
+
 
     $qry_to_room="UPDATE $room_tbl SET last_update ='$last_updated',`conference_name` = ' '";
     $qry_to_room .= " WHERE room_number='$room_number'";
@@ -161,7 +167,12 @@ else {
     while ($row = Sql_fetch_array($result))
     {
         $conf_id = $row['ID'];
+        echo $conf_id;
     }
+
+    $_SESSION['conf_id'] = $conf_id;
+
+    echo $conf_id;
 
     /*================================== for change in Room tbl ======================================================*/
 

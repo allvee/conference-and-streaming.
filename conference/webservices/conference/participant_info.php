@@ -40,12 +40,13 @@ if ($action != 'delete') {
     $participant_msisdn = $data['participant_msisdn'];
     $participant_email = $data['participant_email'];
     $participant_type = $data['participant_type'];
-    $conference_id =$data['conference_id'];
-    $long_code = $_SESSION['room_number'];
-    $participant_conference_name = $_SESSION['conf_name'];
+    //$conference_id =$data['conference_id'];
     $participant_organization = 'ssd-tech';
 
+    $long_code = $_SESSION['long_code'];
+    $participant_conference_name = $_SESSION['conf_name'];
     $user_id= $_SESSION['UserID'];
+    $conference_id = $_SESSION['conf_id'];
 
 }
 
@@ -65,7 +66,7 @@ if ($action == "update") {
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
 
     $qry = "UPDATE $tbl set `participant_name`='$participant_name',`msisdn`='$participant_msisdn', `email`='$participant_email',`conference_ID`='$conference_id', `conference_name`='$participant_conference_name',
-           `long_code`='3001', `organization`='$participant_organization', `participant_type` ='$participant_type'";
+           `long_code`='$long_code', `organization`='$participant_organization', `participant_type` ='$participant_type'";
     $qry .= " WHERE ID='$action_id'";
 
 }

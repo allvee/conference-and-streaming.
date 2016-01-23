@@ -11,9 +11,11 @@ $cn = connectDB();
 
 $tbl = "tbl_participant";
 $participant_conference_name = $_SESSION['conf_name'];
+$conference_id = $_SESSION['conf_id'];
 
 $arrayInput = array();
-$query = "SELECT ID, participant_name, msisdn, email, conference_name, organization, participant_type FROM $tbl where conference_name='$participant_conference_name'";
+$query = "SELECT ID, participant_name, msisdn, email, conference_name, organization, participant_type FROM $tbl
+          where conference_name='$participant_conference_name' and conference_ID ='$conference_id'";
 $result = Sql_exec($cn, $query);
 if (!$result) {
     echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;
@@ -37,6 +39,8 @@ while ($row = Sql_fetch_array($result)) {
 
     $i++;
 }
+
+
 Sql_Free_Result($result);
 ClosedDBConnection($cn);
 echo json_encode($data);

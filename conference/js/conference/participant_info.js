@@ -36,7 +36,6 @@ function conference_done_popup()
 }
 
 function Participant_from_backend(){
-    //var field = document.getElementById("conference_name");
 
     document.getElementById("conference_name").textContent=conference_name;
     $('#conference_id').val(conference_id);
@@ -48,8 +47,8 @@ function Participant_from_backend(){
 function participant_add_edit(){
 
     form_id = "participant_add_edit";
-
     $('#conference_id').val(conference_id);
+
 
     alert("before php Hit js");
 
@@ -61,10 +60,8 @@ function participant_add_edit(){
     response = JSON.parse(response);
     alert("after php Hit js: "+response.status);
 
-    notice="<br/>Participant Name    : "+response.participant_name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-        +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"Conference Admin  : "+ response.admin
-        +"<br/>Mobile Number     : " + response.msisdn +"<br/>Email  : "+ response.participant_email+"<br/>Participant Type : "+ response.participant_type
-        +"<br/>Listed to Conference    : " + response.participant_conference_name;
+    notice="<br/>Participant Name    : "+response.participant_name +"<br/>Mobile Number     : " + response.msisdn +"<br/>Email  : "+ response.participant_email
+        +"<br/>Participant Type : "+ response.participant_type +"<br/>Listed to Conference    : " + response.participant_conference_name;
 
     if (response.status) {
 
@@ -80,6 +77,28 @@ function participant_add_edit(){
 }
 
 function add_new_participant() {
+
+     var count =4;
+    alert("B4 PHP: No_of_participants:"+No_of_participants +" And I find count:"+count);
+    var dataInfo = {};
+    var count_response=[];
+
+    count_response = connectServer(cms_url['participant_count'], dataInfo);
+
+    alert("No_of_participants:"+No_of_participants +" And I find count:"+count);
+
+    count_response = JSON.parse(count_response);
+
+    alert("After parse:"+count_response);
+
+
+    if(No_of_participants<=count_response)
+    {
+        alert("No_of_participants:"+No_of_participants +" And I find count:"+count_response);
+        alertMessage(this, 'red', "   Sorry!!!", "Number of Participants of this Conference is Limited as: "+No_of_participants+"</br> Please Increase the Number of Participants !!");
+        showUserMenu('participants_list');
+    }
+    else
     showUserMenu('add_new_participant');
 
 }
@@ -99,7 +118,7 @@ function report_menu_start_participant_list() {
     dataSet = connectServer(cms_url['participant_list'], dataInfo);
     //alert(dataSet);
     dataSet = JSON.parse(dataSet);
-    //alert(dataSet);
+    alert("DataSet :"+dataSet);
     table_data_participant_list(dataSet);
 
 }
@@ -115,8 +134,6 @@ function table_data_participant_list(dataSet) {
             {"title": "Mobile Number", "class": "center"},
             {"title": "Email", "class": "center"},
             {"title": "participant_type", "class": "center"},
-           /* {"title": "Organization", "class": "center"},
-            {"title": "Conference Name", "class": "center"},*/
             {"title": "Edit/Delete", "class": "center"},
 
 
@@ -135,11 +152,6 @@ function table_data_participant_list(dataSet) {
             ],
             "filter": "applied"
         },
-
-        /* "aoColumnDefs": [
-         { "bSearchable": false, "bVisible": false, "aTargets": [ 4 ] },
-         { "bSearchable": false, "bVisible": false, "aTargets": [ 5 ] }
-         ]*/
 
     });
 }
