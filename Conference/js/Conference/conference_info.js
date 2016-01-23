@@ -101,7 +101,7 @@ function conference_create_edit() {
 
     conference_name=response.Name;
     No_of_participants=response.No_of_Participants;
-   // conference_id = response.ID;
+    conference_id = response.conf_id;
 
     conference_notice="<br/>Conference Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"

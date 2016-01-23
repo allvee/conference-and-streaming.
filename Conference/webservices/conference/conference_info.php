@@ -150,6 +150,21 @@ else {
     $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel)
 	VALUES('$demo_name', '$long_code', '$user_id', '$room_number', '$web_link', '$room_pass', '$start_time', '$end_time', '$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
 
+    /*================================== for conference id ======================================================*/
+
+    $query ="SELECT ID FROM `tbl_conference` WHERE  `Conf_Name`='$demo_name' AND `USER`='$user_id' AND `room_number`='$room_number' AND `weblink`='$web_link'
+            AND `CODE`='$room_pass' AND `Start_Time`='$start_time' AND `End_Time`='$end_time' AND `Participants`='$demo_participants' AND `Recording`='$demo_recording'
+            AND `STATUS`='$demo_active' AND `Schedule_Conf`='$schedule_conf' AND `Notification_Channel`='$notification_channel'";
+
+    $result = Sql_exec($cn, $query);
+
+    while ($row = Sql_fetch_array($result))
+    {
+        $conf_id = $row['ID'];
+    }
+
+    /*================================== for change in Room tbl ======================================================*/
+
     $qry_to_room="UPDATE $room_tbl SET last_update='$last_updated',conference_name= '$demo_name'";
     $qry_to_room .= " WHERE room_number='$room_number'";
 }
@@ -172,25 +187,10 @@ try {
     $is_error = 1;
 }
 
-/*
-$qry ="SELECT ID FROM tbl_conference WHERE  `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
-            `CODE`='$room_pass',`Start_Time`='$start_time',`End_Time`='$end_time',`Participants`='$demo_participants',`Recording`='$demo_recording',
-            `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel' ";
-
-$result = Sql_exec($cn, $qry);
-
-while ($row = Sql_fetch_array($result))
-{
-    $conf_id = Sql_Result($row, "ID");
-}*/
-
 ClosedDBConnection($cn);
 
-
-
-
 if ($is_error == 0) {
-    $return_data = array('status' => true,/*'conf_id' => $conf_id,*/'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    $return_data = array('status' => true,'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
     'Code' => '$room_pass', 'Start_Time' => $start_time, 'End_Time' => $end_time, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
     'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf );
 
