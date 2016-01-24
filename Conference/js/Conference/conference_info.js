@@ -128,10 +128,23 @@ function conference_create_edit() {
     }
 }
 
+function cancel_form_create_conference(){
 
+    display_content_custom('1817', '#modalData');
+    table_initialize_conference_list();
+    report_menu_start_conference_list();
+}
 
 function table_initialize_conference_list() {
 
+
+    $('#add_button').html('<div class="frmFldAcc  col-md-5"></div>' +
+        '<div class=" frmFldAcc col-md-2">' +
+        '<button type="button" class="btn btn-primary btn-test" style="margin-top: 7%; font-size: 17px; background-position: center center" onclick="add_new_conference(); return false;">' +
+        '<b>New </b>' + '</button> </div>' +
+        '<div class="frmFldAcc col-md-5"></div>');
+
+    $('#table_title').html('View');
     $('#tbl_view_table').html('<table class="table table-striped table-bordered table-hover responsive" id="dataTables_conference_list" width="100%"><tr><td  align="center"><img src="conference/img/31.gif"></td></tr></table>');
 
 }

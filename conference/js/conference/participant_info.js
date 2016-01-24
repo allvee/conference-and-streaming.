@@ -14,6 +14,7 @@ function conference_done_popup()
     dataSet = connectServer(cms_url['retrieve_participant_info'], dataInfo);
     dataSet = JSON.parse(dataSet);
     alert(dataSet.data.length);
+    len=0;
     if(dataSet.status){
         for(i=0;i<dataSet.data.length; i++)
         {
@@ -23,7 +24,12 @@ function conference_done_popup()
         }
         notice=" ";
         for(i=0;i<=len; i++)
-        notice = notice+ participant[i]+ "</br> ";
+        {
+            notice = notice+ participant[i]+ "</br> ";
+            if (len==0 && notice==" ")
+            notice = "";
+        }
+
 
     } else {
        alert("No Data");
@@ -106,8 +112,21 @@ function add_new_participant() {
 
 function table_initialize_participant_list() {
 
+    $('#add_button').html('<div class="frmFldAcc  col-md-5"></div>' +
+        '<div class=" frmFldAcc col-md-2">' +
+        '<button type="button" class="btn btn-primary btn-test" style="margin-top: 7%; font-size: 17px; background-position: center center" onclick="add_new_participant(); return false;">' +
+        '<b>New </b>' + '</button> </div>' +
+        '<div class="frmFldAcc col-md-5"></div>');
+
+    $('#table_title').html('View');
+
     $('#tbl_view_table').html('<table class="table table-striped table-bordered table-hover responsive" id="dataTables_participant_list" width="100%"><tr><td  align="center"><img src="conference/img/31.gif"></td></tr></table>');
 
+    $('#done_button').html('<div class="frmFldAcc  col-md-5"></div>' +
+        '<div class=" frmFldAcc col-md-2">' +
+        '<button type="button" class="btn btn-primary btn-test" style="margin-top: 7%; font-size: 17px; background-position: center center" onclick="conference_done_popup(); return false;">' +
+        '<b>Done </b>' + '</button> </div>' +
+        '<div class="frmFldAcc col-md-5"></div>');
 }
 
 

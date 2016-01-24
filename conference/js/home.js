@@ -75,20 +75,20 @@ else if (field_name == 'signOut') {
 
 
 else if (field_name == 'enterprise_conference') {
-            display_content_custom('1817', '#modalData');
-            //$('.tabtitle').hide();
-            $("#set_title").html(' <span style="font-weight:bold;">Enterprise Conference</span>');
+
+           // $('.tabtitle').hide();
+           // $("#set_title").html(' <span style="font-weight:bold;">Enterprise Conference</span>');
 
            var inputarray = [["Conference", "enterprise_conference", "active"]];
             tab_custom(inputarray, "tab_view");
-
+            display_content_custom('1817', '#modalData');
             table_initialize_conference_list();
             report_menu_start_conference_list();
         }
 
 else if (field_name == 'new_conference') {
     display_content_custom('1811', '#modalData');
-    //$('.tabtitle').hide();
+    $('.tabtitle').hide();
     $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Conference </span>');
 
     var inputarray = [["Conference", "enterprise_conference", "active"]];
@@ -109,13 +109,13 @@ else if (field_name == 'edit_conference') {
 
 
 else if (field_name == 'participants_list') {
-    display_content_custom('1819', '#modalData');
     //$('.tabtitle').hide();
-    $("#set_title").html(' <span style="font-weight:bold;">Participants List</span>');
+    //$("#set_title").html(' <span style="font-weight:bold;">Participants List</span>');
 
-    var inputarray = [["Conference", "enterprise_conference", "active"]];
+    var inputarray = [["Participants", "participants_list", "active"]];
     tab_custom(inputarray, "tab_view");
 
+    display_content_custom('1819', '#modalData');
     table_initialize_participant_list();
     report_menu_start_participant_list();
 
@@ -123,20 +123,20 @@ else if (field_name == 'participants_list') {
 
 else if (field_name == 'add_new_participant') {
     display_content_custom('1820', '#modalData');
-    //$('.tabtitle').hide();
+    $('.tabtitle').hide();
     $("#set_title").html(' <span style="font-weight:bold;">Add New Participant</span>');
 
-    var inputarray = [["Conference", "enterprise_conference", "active"]];
+    var inputarray = [["Participants", "participants_list", "active"]];
     tab_custom(inputarray, "tab_view");
     Participant_from_backend();
 }
 
 else if (field_name == 'edit_participant') {
     display_content_custom('1821', '#modalData');
-    //$('.tabtitle').hide();
+    $('.tabtitle').hide();
     $("#set_title").html(' <span style="font-weight:bold;">Edit Participant</span>');
 
-    var inputarray = [["Conference", "enterprise_conference", "active"]];
+    var inputarray = [["Participants", "participants_list", "active"]];
     tab_custom(inputarray, "tab_view");
     Participant_from_backend();
 }

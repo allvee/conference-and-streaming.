@@ -172,6 +172,7 @@ else {
     while ($row = Sql_fetch_array($result))
     {
         $conf_id = Sql_Result($row, "ID");
+        $conf_id = $row['ID'];
         echo $conf_id;
     }
 

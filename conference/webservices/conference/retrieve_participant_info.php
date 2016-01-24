@@ -11,9 +11,9 @@ $cn = connectDB();
 
 $tbl = "tbl_participant";
 $participant_conference_name = $_SESSION['conf_name'];
-
+$conference_id = $_SESSION['conf_id'];
 $arrayInput = array();
-$query = "SELECT  participant_name, msisdn, email FROM $tbl where conference_name='$participant_conference_name'";
+$query = "SELECT  participant_name, msisdn, email FROM $tbl where conference_ID ='$conference_id'";
 $result = Sql_exec($cn, $query);
 /*if (!$result) {
     echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;
