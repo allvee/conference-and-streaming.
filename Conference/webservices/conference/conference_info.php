@@ -141,9 +141,9 @@ else if ($action == "delete") {
     $flag='delete';
     $msg = "Successfully Deleted";
     $action_id = $deleted_id;
-    $qry = "DELETE from $tbl";
-    $qry .= " where ID='$action_id'";
+    $qry = "DELETE from $tbl where ID ='$action_id'";
 
+    $qry_participant="DELETE from tbl_participant WHERE conference_ID ='$action_id'";
 
 
     $qry_to_room="UPDATE $room_tbl SET last_update ='$last_updated',`conference_name` = ' '";
@@ -157,16 +157,21 @@ else {
 	VALUES('$demo_name', '$long_code', '$user_id', '$room_number', '$web_link', '$room_pass', '$start_time', '$end_time', '$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
 
     /*================================== for conference id ======================================================*/
-
+/*
     $query ="SELECT ID FROM `tbl_conference` WHERE  `Conf_Name`='$demo_name' AND `USER`='$user_id' AND `room_number`='$room_number' AND `weblink`='$web_link'
             AND `CODE`='$room_pass' AND `Start_Time`='$start_time' AND `End_Time`='$end_time' AND `Participants`='$demo_participants' AND `Recording`='$demo_recording'
             AND `STATUS`='$demo_active' AND `Schedule_Conf`='$schedule_conf' AND `Notification_Channel`='$notification_channel'";
 
-    $result = Sql_exec($cn, $query);
+    */
+    $qry_for_id ="SELECT ID FROM `tbl_conference` WHERE `Conf_Name`='$demo_name' and `long_number`= '$long_code' and `USER`='$user_id' and `room_number`='$room_number' and `weblink`='$web_link' and
+                  `CODE`='$room_pass'and `Start_Time`='$start_time' and `End_Time`='$end_time' and `Participants`='$demo_participants' and `Recording`='$demo_recording' and
+                 `STATUS`='$demo_active' and `Schedule_Conf`='$schedule_conf' and `Notification_Channel`='$notification_channel'";
+
+    $result = Sql_exec($cn, $qry_for_id);
 
     while ($row = Sql_fetch_array($result))
     {
-        $conf_id = $row['ID'];
+        $conf_id = Sql_Result($row, "ID");
         echo $conf_id;
     }
 
@@ -191,7 +196,11 @@ try {
 try {
     $res = Sql_exec($cn, $qry);
     if($flag == 'delete')
+    {
+        $res = Sql_exec($cn, $qry_participant);
         $is_error = 2;
+    }
+
     else
     $is_error = 0;
 } catch (Exception $e) {
