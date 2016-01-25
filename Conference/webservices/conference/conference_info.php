@@ -68,7 +68,7 @@ if ($action != 'delete') {
     $dteEnd   = new DateTime($end_time);
     $dteDiff  = $dteStart->diff($dteEnd);
 
-    //$dteDiff->format("%H:%I:%S");
+    $duration= (string) $dteDiff->format("%H:%I");
     //$web_link=$data['weblink'];
 
     $demo_participants = $data['demo_participants'];
@@ -124,7 +124,7 @@ if ($action == "update") {
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
 
     $qry = "UPDATE $tbl set `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
-            `CODE`='$room_pass',`Start_Time`='$start_time',`End_Time`='$end_time',`Participants`='$demo_participants',`Recording`='$demo_recording',
+            `CODE`='$room_pass',`Start_Time`='$start_time',`End_Time`='$end_time',`Conference_Duration`='$duration',`Participants`='$demo_participants',`Recording`='$demo_recording',
             `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel'";
     $qry .= " WHERE ID='$action_id'";
 
@@ -153,37 +153,8 @@ else if ($action == "delete") {
 
 else {
     $msg = "Successfully Saved";
-    $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel)
-	VALUES('$demo_name', '$long_code', '$user_id', '$room_number', '$web_link', '$room_pass', '$start_time', '$end_time', '$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
-
-    /*================================== for conference id ======================================================*/
-
-    $qry_for_id ="SELECT ID FROM `tbl_conference` WHERE `Conf_Name`='$demo_name' and `long_number`= '$long_code' and `USER`='$user_id' and `room_number`='$room_number' and `weblink`='$web_link' and
-                  `CODE`='$room_pass'and `Start_Time`='$start_time' and `End_Time`='$end_time' and `Participants`='$demo_participants' and `Recording`='$demo_recording' and
-                 `STATUS`='$demo_active' and  `Schedule_Conf`='$schedule_conf' and `Notification_Channel`='$notification_channel'";
-
-    $result = Sql_exec($cn, $qry_for_id);
-
-    if (!$result) {
-        echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;
-        exit;
-    }
-
-
-   while ($row = Sql_fetch_array($result))
-    {
-        $conf_id = Sql_Result($row, "ID");
-        $conf_id = $row['ID'];
-
-        print_r($conf_id);
-        echo $conf_id;
-    }
-
-    $_SESSION['conf_id'] = $conf_id;
-
-    echo $conf_id;
-
-    /*================================== for change in Room tbl ======================================================*/
+    $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Conference_Duration, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel)
+	VALUES('$demo_name', '$long_code', '$user_id', '$room_number', '$web_link', '$room_pass', '$start_time', '$end_time', '$duration' ,'$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
 
     $qry_to_room="UPDATE $room_tbl SET last_update='$last_updated',conference_name= '$demo_name'";
     $qry_to_room .= " WHERE room_number='$room_number'";

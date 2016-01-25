@@ -118,7 +118,7 @@ function conference_create_edit() {
 
     if (response.status) {
 
-       // alertMessage(this, 'green', '           Conference Conformation', notice );
+       // alertMessage(this, 'green', '           Conference Conformation', conference_notice );
         showUserMenu('participants_list');
     }
 
@@ -259,7 +259,7 @@ function delete_confirm_conference_list(event) {
     var response = connectServer(cms_url['conference_info'], dataInfo);
 
 
-   // alert("after php get response: "+ response +"  b4json");
+    alert("after php get response: "+ response +"  b4json");
     response =JSON.parse(response);
 
     alert("after php"+"//"+response.status);
