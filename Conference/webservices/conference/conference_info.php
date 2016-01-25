@@ -157,22 +157,25 @@ else {
 	VALUES('$demo_name', '$long_code', '$user_id', '$room_number', '$web_link', '$room_pass', '$start_time', '$end_time', '$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
 
     /*================================== for conference id ======================================================*/
-/*
-    $query ="SELECT ID FROM `tbl_conference` WHERE  `Conf_Name`='$demo_name' AND `USER`='$user_id' AND `room_number`='$room_number' AND `weblink`='$web_link'
-            AND `CODE`='$room_pass' AND `Start_Time`='$start_time' AND `End_Time`='$end_time' AND `Participants`='$demo_participants' AND `Recording`='$demo_recording'
-            AND `STATUS`='$demo_active' AND `Schedule_Conf`='$schedule_conf' AND `Notification_Channel`='$notification_channel'";
 
-    */
     $qry_for_id ="SELECT ID FROM `tbl_conference` WHERE `Conf_Name`='$demo_name' and `long_number`= '$long_code' and `USER`='$user_id' and `room_number`='$room_number' and `weblink`='$web_link' and
                   `CODE`='$room_pass'and `Start_Time`='$start_time' and `End_Time`='$end_time' and `Participants`='$demo_participants' and `Recording`='$demo_recording' and
-                 `STATUS`='$demo_active' and `Schedule_Conf`='$schedule_conf' and `Notification_Channel`='$notification_channel'";
+                 `STATUS`='$demo_active' and  `Schedule_Conf`='$schedule_conf' and `Notification_Channel`='$notification_channel'";
 
     $result = Sql_exec($cn, $qry_for_id);
 
-    while ($row = Sql_fetch_array($result))
+    if (!$result) {
+        echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;
+        exit;
+    }
+
+
+   while ($row = Sql_fetch_array($result))
     {
         $conf_id = Sql_Result($row, "ID");
         $conf_id = $row['ID'];
+
+        print_r($conf_id);
         echo $conf_id;
     }
 
@@ -206,6 +209,24 @@ try {
     $is_error = 0;
 } catch (Exception $e) {
     $is_error = 1;
+}
+
+/*================================== for conference id ======================================================*/
+
+if ($action == "save") {
+    $qry_for_id = "SELECT ID FROM `tbl_conference` WHERE `Conf_Name`='$demo_name' and `long_number`= '$long_code' and `USER`='$user_id' and `room_number`='$room_number' and `weblink`='$web_link' and
+                  `CODE`='$room_pass'and `Start_Time`='$start_time' and `End_Time`='$end_time' and `Participants`='$demo_participants' and `Recording`='$demo_recording' and
+                 `STATUS`='$demo_active' and  `Schedule_Conf`='$schedule_conf' and `Notification_Channel`='$notification_channel'";
+
+    $result = Sql_exec($cn, $qry_for_id);
+
+    while ($row = Sql_fetch_array($result)) {
+        $conf_id = Sql_Result($row, "ID");
+        //$conf_id = $row['ID'];
+    }
+
+    $_SESSION['conf_id'] = $conf_id;
+
 }
 
 ClosedDBConnection($cn);
