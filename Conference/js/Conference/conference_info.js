@@ -12,9 +12,11 @@ var d = new Date,
             d.getFullYear(),
             (d.getMonth()+1),
             d.getDate(),
-            ].join('/')+
-        ' ' +
-        [ d.getHours(),
+            ].join('-');
+
+        /*+ ' ' +*/
+var d = new Date,
+     strt_time = [ d.getHours(),
             d.getMinutes()].join(':');
 
     month = d.getMonth()+1;
@@ -43,9 +45,11 @@ if(minute >= 60)
 lastDate = [
         d.getFullYear(),
         (d.getMonth()+1),
-        day, ].join('/')
+        day, ].join('-');
 
-    + ' ' + [ hour,  minute].join(':');
+   /* + ' ' + */
+
+   end_time= [ hour,  minute].join(':');
 
 console.log(dformat);
 
@@ -54,8 +58,10 @@ function check_box_value_changed(){
 
     if($("#meet_now").is(":checked"))
     {
-        $('#start_time').val(dformat);
-        $('#end_time').val(lastDate);
+        $('#start_date').val(dformat);
+        $('#start_time').val(strt_time);
+        $('#end_date').val(lastDate);
+        $('#end_time').val(end_time);
      }
 
     else
@@ -224,7 +230,10 @@ function edit_conference_list(obj, info, room_number, weblink) {
 
      $('#action').val("update");
      $('#action_id').val(data[0]);
-     $('#demo_name').val(data[1]);
+     var test=data[1].split(">");
+     var test2=test[1].split("'");
+     console.log(test2);
+     $('#demo_name').val(test2[1]);
      $('#user_id').val(data[2]);
      $('#start_time').val(data[3]);
      $('#end_time').val(data[4]);
@@ -239,6 +248,10 @@ function edit_conference_list(obj, info, room_number, weblink) {
 
 }
 
+function conference_details(obj, conf_id){
+
+
+}
 
 function delete_conference_list(obj, action_id, room_number) {
 

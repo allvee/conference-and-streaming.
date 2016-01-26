@@ -209,7 +209,7 @@ function getBalance(){
 
 
 function Conference_DatePicker(input_id) {
-    //alert('enter here');
+   // alert('enter here');
     input_id='#'+input_id;
     $(input_id).datepicker({
         format: "yyyy-mm-dd",
@@ -238,7 +238,7 @@ function Conference_TimePicker(input_id){
     $(input_id).datetimepicker(
         {
             datepicker:false,
-            format:'H:i:s'
+            format:'H:i'
         }
     );
 

@@ -25,7 +25,8 @@ $i=0;
 while ($row = Sql_fetch_array($result)) {
     $j=0;
     $data[$i][$j++] = Sql_Result($row, "ID");
-    $data[$i][$j++] = Sql_Result($row, "Conf_Name");
+   // $data[$i][$j++] = Sql_Result($row, "Conf_Name");
+    $data[$i][$j++] = '<span onclick="conference_details(this,  \'' . Sql_Result($row, "ID") .'\'); return false;"> \'' . Sql_Result($row, "Conf_Name") .'\'</span>';
     $data[$i][$j++] = Sql_Result($row, "USER");
     $data[$i][$j++] = Sql_Result($row, "Start_Time");
     $data[$i][$j++] = Sql_Result($row, "End_Time");
