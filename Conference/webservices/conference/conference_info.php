@@ -48,10 +48,40 @@ if ($action != 'delete') {
     $end_date   =$data['end_date'];
     $start_time = $data['start_time'];
     $end_time = $data['end_time'];
+
     $start = $start_date . " ".$start_time;
     $end  = $end_date." ".$end_time;
-    $conference_code= $data['conf_code'];
 
+    $date_split= explode('-', $start);
+    $sDay = $date_split[2];
+    $sMonth = $date_split[1];
+    $sYear = $date_split[0];
+
+    $date_split= explode('-', $end);
+    $eDay = $date_split[2];
+    $eMonth = $date_split[1];
+    $eYear = $date_split[0];
+
+    $start_time_split=explode(':', $start_time);
+    if(!strcmp($start_time_split[0],0))
+        $start_time_split[0]= "00";
+    if(!strcmp($start_time_split[1],0))
+        $start_time_split[1]= "00";
+    $start_time1 = $start_time_split[0] . ":" .$start_time_split[1];
+
+    $end_time_split= explode(':', $end_time);
+    if(!strcmp($start_time_split[0],0))
+        $end_time_split[0]= "00";
+    if(!strcmp($start_time_split[1],0))
+        $end_time_split[1]= "00";
+    $end_time1 = $end_time_split[0]. ":".$end_time_split[1];
+
+    $dteStart = new DateTime($start);
+    $dteEnd   = new DateTime($end);
+    $dteDiff  = $dteStart->diff($dteEnd);
+    $duration= (string) $dteDiff->format("%H:%I");
+
+    $conference_code= $data['conf_code'];
     $response = check_scheduler($start_time, $end_time, $cn);
 
     $status= $response["status"];
@@ -63,13 +93,19 @@ if ($action != 'delete') {
     $_SESSION['room_number'] = $room_number;
     $_SESSION['long_code'] = $long_code;
 
+    /*===================select room number from conference_scheduler DB ==============================*/
+    $from_to=$start_time1. "_" .$end_time1;
+    $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND `$from_to`='Free' LIMIT 0,1 ";
+
+    $result = Sql_exec($cn, $query1);
+
+    while ($row = Sql_fetch_array($result)) {
+        $room_number1 = Sql_Result($row, "room_number");
+        }
+
+    $query2="UPDATE tbl_conference_scheduler set room_number= $room_number WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND `$from_to`='Free' ";
+
    // print_r( "status:"+$status+"long code"+$long_code+"web link"+$web_link);
-
-    $dteStart = new DateTime($start_time);
-    $dteEnd   = new DateTime($end_time);
-    $dteDiff  = $dteStart->diff($dteEnd);
-
-    $duration= (string) $dteDiff->format("%H:%I");
     //$web_link=$data['weblink'];
 
     $demo_participants = $data['demo_participants'];
@@ -199,8 +235,8 @@ if ($action == "save") {
 ClosedDBConnection($cn);
 
 if ($is_error == 0) {
-    $return_data = array('status' => true,'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
-    'Code' => '$room_pass', 'Start_Time' => $start_time, 'End_Time' => $end_time, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
+    $return_data = array('status' => true, 'room_number1'=>$room_number1,'start_time_split' => $start_time_split, 'end_time_split' => $end_time_split,'qry' =>$query1,'query2'=>$query2,'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    'Code' => '$room_pass', 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
     'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf );
 
 }
