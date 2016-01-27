@@ -14,7 +14,6 @@ var d = new Date,
             d.getDate(),
             ].join('-');
 
-        /*+ ' ' +*/
 var d = new Date,
      strt_time = [ d.getHours(),
             d.getMinutes()].join(':');
@@ -47,8 +46,6 @@ lastDate = [
         (d.getMonth()+1),
         day, ].join('-');
 
-   /* + ' ' + */
-
    end_time= [ hour,  minute].join(':');
 
 console.log(dformat);
@@ -66,14 +63,13 @@ function check_box_value_changed(){
 
     else
     {
+        $('#start_date').val("");
         $('#start_time').val("");
+        $('#end_date').val("");
         $('#end_time').val("");
     }
 
-
     console.log(lastDate);
-
-
 }
 
 
@@ -177,7 +173,7 @@ function table_data_conference_list(dataSet) {
         "data": dataSet,
         "columns": [
             {"title": "ID", "class": "center"},
-            {"title": "Conf Name", "class": "center"},
+            {"title": "Conference Name", "class": "center"},
             {"title": "User", "class": "center"},
             {"title": "Start Time", "class": "center"},
             {"title": "End Time", "class": "center"},
@@ -257,7 +253,7 @@ function edit_conference_list(obj, info, room_number, weblink) {
 
 function conference_details(obj, conf_id){
 
-    
+
 
 
 }
