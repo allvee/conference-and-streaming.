@@ -8,42 +8,41 @@
 
 include_once "../lib/common.php";
 $cn = connectDB();
+$data= $_REQUEST;
 
-$participant_conference_name = $_SESSION['conf_name'];
-$conference_id = $_SESSION['conf_id'];
+$conference_id= $data['info'];
+//print_r($conference_id);
 
-$query = "SELECT `Conf_Name`, `USER`, `Start_Time`, `End_Time`, `Conference_Duration`, `Participants`, `Recording`, `Notification_Channel`, `STATUS`, `room_number`, `weblink` FROM `tbl_conference` where `ID` ='$conference_id'";
+$query = "SELECT `Conf_Name`, `long_number`, `USER`, `room_number`, `CODE`, `Start_Time`, `End_Time`, `Conference_Duration`, `Participants`, `Recording`, `STATUS`, `Schedule_Conf`, `Notification_Channel`, `weblink` FROM `tbl_conference` where `ID` ='$conference_id'";
 $result = Sql_exec($cn, $query);
+
 if (!$result) {
     echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;
     exit;
 }
+//print_r(Sql_fetch_array($result));
 
-$data = array();
-
-$i=0;
 while ($row = Sql_fetch_array($result)) {
-    $j=0;
-    $data[$i][$j++] = Sql_Result($row, "ID");
-    // $data[$i][$j++] = Sql_Result($row, "Conf_Name");
-    $data[$i][$j++] = '<span onclick="conference_details(this,  \'' . Sql_Result($row, "ID") .'\'); return false;"> \'' . Sql_Result($row, "Conf_Name") .'\'</span>';
-    $data[$i][$j++] = Sql_Result($row, "USER");
-    $data[$i][$j++] = Sql_Result($row, "Start_Time");
-    $data[$i][$j++] = Sql_Result($row, "End_Time");
-    $data[$i][$j++] = Sql_Result($row, "Participants");
-    $data[$i][$j++] = Sql_Result($row, "Recording");
-    $data[$i][$j++] = Sql_Result($row, "Notification_Channel");
-    $data[$i][$j++] = Sql_Result($row, "STATUS");
-    //$a= Sql_Result($row, "room_number");
-    // $b= Sql_Result($row, "weblink");
 
-    $data[$i][$j++] = '<span onclick="edit_conference_list(this,  \'' . Sql_Result($row, "ID") .'\',\''.Sql_Result($row, "room_number") .'\',\''.Sql_Result($row, "weblink") .'\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/pen.png" ></span>'
-        . '&nbsp&nbsp' . '<span onclick="delete_conference_list(this, \'' . Sql_Result($row, "ID") .'\', \''.Sql_Result($row, "room_number") .'\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/cancel.png" ></span>';
+    $conf_name = Sql_Result($row, "Conf_Name");
+    $long_number = Sql_Result($row, "long_number");
+    $user = Sql_Result($row, "USER");
+    $weblink = Sql_Result($row, "weblink");
+    $code = Sql_Result($row, "CODE");
+    $Start_Time = Sql_Result($row, "Start_Time");
+    $End_Time = Sql_Result($row, "End_Time");
+    $Conference_Duration = Sql_Result($row, "Conference_Duration");
+    $Recording = Sql_Result($row, "Recording");
+    $Notification_Channel = Sql_Result($row, "Notification_Channel");
+    $Recording = Sql_Result($row, "Recording");
+    $Schedule_Conf = Sql_Result($row, "Schedule_Conf");
+    $STATUS = Sql_Result($row, "STATUS");
+    $Participants =  Sql_Result($row, "Participants");
 
-
-    $i++;
+    $is_error = 0;
 }
 
+/*
 $arrayInput = array();
 $query = "SELECT  participant_name, msisdn, email FROM `tbl_participant` where conference_ID ='$conference_id'";
 $result = Sql_exec($cn, $query);
@@ -55,18 +54,17 @@ while ($row = Sql_fetch_array($result)) {
     $data[$i][$j++] = Sql_Result($row, "msisdn");
     $data[$i][$j++] = Sql_Result($row, "email");
     $i++;
-}
+}*/
+
 Sql_Free_Result($result);
-
-
-
-
 
 ClosedDBConnection($cn);
 
 
 if ($is_error == 0) {
-    $return_data = array('status' => true, "data" => $data);
+    $return_data = array('status' => true, 'conference_id' =>$conference_id,"Conf_Name" => $conf_name, "long_number" => $long_number, "USER" => $user, "Notification_Channel" =>$Notification_Channel,
+        "weblink" => $weblink, "CODE" => $code, "Start_Time" => $Start_Time, "End_Time" => $End_Time, "Conference_Duration" => $Conference_Duration,
+        "STATUS" =>$STATUS, "Participants" =>$Participants, "Recording" =>$Recording, "Schedule_Conf" =>$Schedule_Conf);
 } else {
     $return_data = array('status' => false, 'message' => 'Data Not Send.');
 }

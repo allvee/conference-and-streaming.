@@ -90,23 +90,23 @@ function conference_create_edit() {
     form_id = "conference_create_edit";
 
 
-    alert("before php Hit js");
+  //  alert("before php Hit js");
 
     var response = connectServerWithForm(cms_url['conference_info'], form_id);
-    alert("after php Hit js");
+   // alert("after php Hit js");
     console.log("get: "+response +" found");
 
-    alert("after php Hit js");
+   // alert("after php Hit js");
 
     response = JSON.parse(response);
-    alert("after php Hit js: "+response.status);
+    //alert("after php Hit js: "+response.status);
 
     conference_name=response.Name;
     No_of_participants=response.No_of_Participants;
 
     conference_id = response.conf_id;
 
-    alert("conference_id:"+conference_id);
+   // alert("conference_id:"+conference_id);
 
     conference_notice="<br/>Conference Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
@@ -253,8 +253,55 @@ function edit_conference_list(obj, info, room_number, weblink) {
 
 function conference_details(obj, conf_id){
 
+    dataInfo = conf_id;
 
+   var response = connectServer(cms_url['conference_details'], dataInfo);
+    //alert(response);
+    response = JSON.parse(response);
+    console.log(response)
 
+    conference_notice="<br/>Conference Name    : "+response.Conf_Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+        +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+        +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.USER
+        +"<br/>Long Number     : " + response.long_number +"<br/>Web Link    : "+ response.weblink
+        +"<br/>Code    : "+ response.CODE +"<br/>Start Time     : " + response.Start_Time
+        +"<br/>End Time    : "+ response.End_Time +"<br/>Conference Duration     : " +response.Conference_Duration
+        +"<br/>Recording     : " + response.Recording +"<br/>Stats   : "+ response.STATUS +"<br/>Notification Channel     : " + response.Notification_Channel
+        +"<br/>Schedule Conf   : "+ response.Schedule_Conf
+        +"<br/><b>Participants :</b> "+ response.Participants+"<br/>";
+
+    var dataSet = [[]];
+    var participant= [];
+    dataSet = connectServer(cms_url['retrieve_participant_info'], dataInfo);
+    dataSet = JSON.parse(dataSet);
+  //  alert(dataSet.data.length);
+    len=0;
+    if(dataSet.status){
+        for(i=0;i<dataSet.data.length; i++)
+        {
+
+            participant[i] = dataSet.data[i][0]+"  ||  "+dataSet.data[i][1]+"  ||  "+dataSet.data[i][2];
+            console.log(participant[i]);
+            len=i;
+        }
+        notice=" ";
+        for(i=0;i<=len; i++)
+        {
+            notice = notice+ participant[i]+ "</br> ";
+            if (len==0 && notice==" ")
+                notice = "";
+        }
+   //  alert(notice);
+
+    } else {
+        alert("No Data");
+    }
+
+    if (response.status) {
+
+        alertMessage(this, 'green', '           Conference ID: &nbsp;'+response.conference_id+ '&nbsp; Details', conference_notice+notice );
+
+    }
 
 }
 
@@ -277,10 +324,10 @@ function delete_confirm_conference_list(event) {
     var response = connectServer(cms_url['conference_info'], dataInfo);
 
 
-    alert("after php get response: "+ response +"  b4json");
+   // alert("after php get response: "+ response +"  b4json");
     response =JSON.parse(response);
 
-    alert("after php"+"//"+response.status);
+  //  alert("after php"+"//"+response.status);
 
     if (response.status) {
         alertMessage(this, 'green', 'Successful', response.message);

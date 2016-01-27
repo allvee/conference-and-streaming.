@@ -11,7 +11,14 @@ $cn = connectDB();
 
 $tbl = "tbl_participant";
 $participant_conference_name = $_SESSION['conf_name'];
-$conference_id = $_SESSION['conf_id'];
+
+if(isset($_REQUEST['info']))
+    $conference_id= $_REQUEST['info'];
+else
+    $conference_id = $_SESSION['conf_id'];
+
+
+
 $arrayInput = array();
 $query = "SELECT  participant_name, msisdn, email FROM $tbl where conference_ID ='$conference_id'";
 $result = Sql_exec($cn, $query);

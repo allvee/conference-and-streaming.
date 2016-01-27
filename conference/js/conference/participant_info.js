@@ -6,14 +6,14 @@ function conference_done_popup()
 {
     $('#action').val('retrieve');
 
-    alert("before php Hit action:" );
+   // alert("before php Hit action:" );
 
     var dataSet = [[]];
     var participant= [];
     var dataInfo = {};
     dataSet = connectServer(cms_url['retrieve_participant_info'], dataInfo);
     dataSet = JSON.parse(dataSet);
-    alert(dataSet.data.length);
+    //alert(dataSet.data.length);
     len=0;
     if(dataSet.status){
         for(i=0;i<dataSet.data.length; i++)
@@ -35,7 +35,6 @@ function conference_done_popup()
        alert("No Data");
     }
     console.log(len+notice);
-   alert(len+notice);
 
     custom_alertMessage(this, 'green', 'Successful',conference_notice+notice);
     showUserMenu('enterprise_conference');
@@ -46,7 +45,7 @@ function Participant_from_backend(){
     document.getElementById("conference_name").textContent=conference_name;
     $('#conference_id').val(conference_id);
 
-    alert("conference id:"+conference_id);
+    //alert("conference id:"+conference_id);
     console.log("conf_Name:"+conference_name+"and conf_id:"+conference_id);
 }
 
@@ -56,15 +55,15 @@ function participant_add_edit(){
     $('#conference_id').val(conference_id);
 
 
-    alert("before php Hit js");
+   // alert("before php Hit js");
 
     var response = connectServerWithForm(cms_url['participant_info'], form_id);
-    alert("after php Hit js: "+response + "   found");
+   // alert("after php Hit js: "+response + "   found");
 
     console.log("get: "+response +" found");
 
     response = JSON.parse(response);
-    alert("after php Hit js: "+response.status);
+    //alert("after php Hit js: "+response.status);
 
     notice="<br/>Participant Name    : "+response.participant_name +"<br/>Mobile Number     : " + response.msisdn +"<br/>Email  : "+ response.participant_email
         +"<br/>Participant Type : "+ response.participant_type +"<br/>Listed to Conference    : " + response.participant_conference_name;
@@ -84,18 +83,16 @@ function participant_add_edit(){
 
 function add_new_participant() {
 
-     var count =4;
-    alert("B4 PHP: No_of_participants:"+No_of_participants +" And I find count:"+count);
     var dataInfo = {};
     var count_response=[];
 
     count_response = connectServer(cms_url['participant_count'], dataInfo);
 
-    alert("No_of_participants:"+No_of_participants +" And I find count:"+count);
+    //alert("No_of_participants:"+No_of_participants +" And I find count:"+count);
 
     count_response = JSON.parse(count_response);
 
-    alert("After parse:"+count_response);
+   // alert("After parse:"+count_response);
 
 
     if(No_of_participants<=count_response)
@@ -224,10 +221,10 @@ function delete_confirm_participant_list(event) {
     var response = connectServer(cms_url['participant_info'], dataInfo);
 
 
-     alert("after php get response: "+ response +"  b4json");
+    // alert("after php get response: "+ response +"  b4json");
     response =JSON.parse(response);
 
-    alert("after php"+"//"+response.status);
+   // alert("after php"+"//"+response.status);
 
     if (response.status) {
         alertMessage(this, 'green', 'Successful', response.message);
