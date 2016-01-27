@@ -180,7 +180,7 @@ function edit_participant_list(obj, info, conference_name, organization) {
     var index = obj.parentNode.parentNode.rowIndex;
     var i = 0;
     for (i = 0; i < 5; i++)
-        data[i] = table.rows[index].cells[i].innerHTML;
+       data[i] = table.rows[index].cells[i].innerHTML;
 
     showUserMenu('edit_participant');
     document.getElementById("participant_id").textContent=data[0];
