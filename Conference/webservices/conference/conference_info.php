@@ -41,19 +41,20 @@ $last_updated_by = $_SESSION["UserID"];
 if ($action != 'delete') {
 
     $demo_name = $data['demo_name'];
-
     $_SESSION['conf_name'] = $demo_name;
+    $user_id= $_SESSION['UserID'];
 
+    $start_date = $data['start_date'];
+    $end_date   =$data['end_date'];
     $start_time = $data['start_time'];
     $end_time = $data['end_time'];
+    $start = $start_date . " ".$start_time;
+    $end  = $end_date." ".$end_time;
+    $conference_code= $data['conf_code'];
 
     $response = check_scheduler($start_time, $end_time, $cn);
 
-   // print_r($response) ;
-
     $status= $response["status"];
-
-
     $long_code = $response["long_code"];
     $web_link = $response["web_link"];
     $room_pass = $response["room_pass"];
@@ -102,9 +103,6 @@ if ($action != 'delete') {
         $demo_recording= "no";
     }
 
-
-   $user_id= $_SESSION['UserID'];
-
 }
 
 else
@@ -124,40 +122,38 @@ if ($action == "update") {
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
 
     $qry = "UPDATE $tbl set `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
-            `CODE`='$room_pass',`Start_Time`='$start_time',`End_Time`='$end_time',`Conference_Duration`='$duration',`Participants`='$demo_participants',`Recording`='$demo_recording',
-            `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel'";
-    $qry .= " WHERE ID='$action_id'";
+            `CODE`='$conference_code',`Start_Time`='$start',`End_Time`='$end',`Conference_Duration`='$duration',`Participants`='$demo_participants',`Recording`='$demo_recording',
+            `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel' WHERE ID='$action_id'";
 
     $conf_id =$action_id;
     $_SESSION['conf_id']=$action_id;
 
-    $qry_to_room="UPDATE $room_tbl SET `room_pass`='$room_pass',`last_update` ='$last_updated', `conference_name` = '$demo_name'";
-    $qry_to_room .= " WHERE `room_number` ='$room_number'";
+    $qry_to_room="UPDATE $room_tbl SET `room_pass`='$conference_code',`last_update` ='$last_updated', `conference_name` = '$demo_name' WHERE `room_number` ='$room_number'";
 
 }
 
 else if ($action == "delete") {
 
     $flag='delete';
-    $msg = "Successfully Deleted";
+
     $action_id = $deleted_id;
     $qry = "DELETE from $tbl where ID ='$action_id'";
 
     $qry_participant="DELETE from tbl_participant WHERE conference_ID ='$action_id'";
 
+    $qry_to_room="UPDATE $room_tbl SET last_update ='$last_updated',`conference_name` = ' ' WHERE room_number='$room_number'";
 
-    $qry_to_room="UPDATE $room_tbl SET last_update ='$last_updated',`conference_name` = ' '";
-    $qry_to_room .= " WHERE room_number='$room_number'";
-
+    $msg = "Successfully Deleted";
 }
 
 else {
-    $msg = "Successfully Saved";
-    $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Conference_Duration, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel)
-	VALUES('$demo_name', '$long_code', '$user_id', '$room_number', '$web_link', '$room_pass', '$start_time', '$end_time', '$duration' ,'$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
 
-    $qry_to_room="UPDATE $room_tbl SET last_update='$last_updated',conference_name= '$demo_name'";
-    $qry_to_room .= " WHERE room_number='$room_number'";
+    $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Conference_Duration, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel)
+	VALUES('$demo_name', '$long_code', '$user_id', '$room_number', '$web_link', '$conference_code', '$start', '$end', '$duration' ,'$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
+
+    $qry_to_room="UPDATE $room_tbl SET last_update='$last_updated',conference_name= '$demo_name' WHERE room_number='$room_number'";
+
+    $msg = "Successfully Saved";
 }
 
 
@@ -186,7 +182,7 @@ try {
 
 if ($action == "save") {
     $qry_for_id = "SELECT ID FROM `tbl_conference` WHERE `Conf_Name`='$demo_name' and `long_number`= '$long_code' and `USER`='$user_id' and `room_number`='$room_number' and `weblink`='$web_link' and
-                  `CODE`='$room_pass'and `Start_Time`='$start_time' and `End_Time`='$end_time' and `Participants`='$demo_participants' and `Recording`='$demo_recording' and
+                  `CODE`='$room_pass'and `Start_Time`='$start' and `End_Time`='$end' and `Participants`='$demo_participants' and `Recording`='$demo_recording' and
                  `STATUS`='$demo_active' and  `Schedule_Conf`='$schedule_conf' and `Notification_Channel`='$notification_channel'";
 
     $result = Sql_exec($cn, $qry_for_id);

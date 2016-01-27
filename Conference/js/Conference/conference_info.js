@@ -230,13 +230,20 @@ function edit_conference_list(obj, info, room_number, weblink) {
 
      $('#action').val("update");
      $('#action_id').val(data[0]);
-     var test=data[1].split(">");
-     var test2=test[1].split("'");
-     console.log(test2);
-     $('#demo_name').val(test2[1]);
+     var str1=data[1].split(">");
+     var str2=str1[1].split("'");
+     console.log(str2);
+     $('#demo_name').val(str2[1]);
      $('#user_id').val(data[2]);
-     $('#start_time').val(data[3]);
-     $('#end_time').val(data[4]);
+     var datetime=data[3].split(" ");
+     var  hourmin= datetime[1].split(":")
+     $('#start_date').val(datetime[0]);
+     $('#start_time').val(hourmin[0]+":"+hourmin[1]);
+     var datetime=data[4].split(" ");
+     var  hourmin= datetime[1].split(":")
+     $('#end_date').val(datetime[0]);
+     $('#end_time').val(hourmin[0]+":"+hourmin[1]);
+
      $('#demo_participants').val(data[5]);
      $('#demo_recording').val(data[6]);
      $('#notification_channel').val(data[7]);
@@ -249,6 +256,8 @@ function edit_conference_list(obj, info, room_number, weblink) {
 }
 
 function conference_details(obj, conf_id){
+
+    
 
 
 }

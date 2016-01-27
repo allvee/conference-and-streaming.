@@ -137,7 +137,7 @@ function report_menu_start_participant_list() {
     dataSet = connectServer(cms_url['participant_list'], dataInfo);
     //alert(dataSet);
     dataSet = JSON.parse(dataSet);
-    alert("DataSet :"+dataSet);
+    //alert("DataSet :"+dataSet);
     table_data_participant_list(dataSet);
 
 }
