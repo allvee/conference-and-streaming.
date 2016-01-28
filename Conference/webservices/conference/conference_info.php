@@ -52,29 +52,63 @@ if ($action != 'delete') {
     $start = $start_date . " ".$start_time;
     $end  = $end_date." ".$end_time;
 
-    $date_split= explode('-', $start);
+    $date_split= explode('-', $start_date);
     $sDay = $date_split[2];
     $sMonth = $date_split[1];
     $sYear = $date_split[0];
 
-    $date_split= explode('-', $end);
+    $date_split= explode('-', $end_date);
     $eDay = $date_split[2];
     $eMonth = $date_split[1];
     $eYear = $date_split[0];
 
     $start_time_split=explode(':', $start_time);
     if(!strcmp($start_time_split[0],0))
-        $start_time_split[0]= "00";
+        $start_time_split[0]= "0".$start_time_split[0];
     if(!strcmp($start_time_split[1],0))
-        $start_time_split[1]= "00";
+        $start_time_split[1]= "0".$start_time_split[1];
     $start_time1 = $start_time_split[0] . ":" .$start_time_split[1];
 
     $end_time_split= explode(':', $end_time);
-    if(!strcmp($start_time_split[0],0))
-        $end_time_split[0]= "00";
+    if(!strcmp($end_time_split[0],0))
+        $end_time_split[0]= "0".$end_time_split[0];
     if(!strcmp($start_time_split[1],0))
-        $end_time_split[1]= "00";
+        $end_time_split[1]= "0".$end_time_split[1];
     $end_time1 = $end_time_split[0]. ":".$end_time_split[1];
+
+
+
+    $to_time = strtotime($start_time);
+    $from_time = strtotime($end_time);
+    $minute= round(abs($to_time - $from_time) / 60,2);
+    $slot=($minute+1)/30;
+
+    $start_q = array();
+    $end_q = array();
+    $total_column= " ";
+    $i=1;
+    $start_q[1]=$start_time;
+
+     for($i=1; $i<=$slot; $i++)
+     {
+         $start_time_split=explode(':', $start_q[i]);
+         $start_time_split[1]=$start_time_split[1]+29;
+         if($start_time_split[1]>59)
+         {
+             $start_time_split[0]=$start_time_split[0]+1;
+             $start_time_split[1]=0;
+         }
+         $end_q[$i]= $start_time_split[0].+":"+$start_time_split[1];
+
+         $end_time_split= explode(':', $end_q[$i]);
+         $end_time_split[1]=$end_time_split[1]+1;
+         $start_q[i+1] = $end_time_split[0]. ":".$end_time_split[1];
+         $column=$start_q[i]."_" .$end_q[$i] ;
+         $total_column= $total_column. ",".$column;
+     }
+
+//print_r(json_encode("start:"+$start+ "end:"+$end));
+
 
     $dteStart = new DateTime($start);
     $dteEnd   = new DateTime($end);
@@ -87,26 +121,23 @@ if ($action != 'delete') {
     $status= $response["status"];
     $long_code = $response["long_code"];
     $web_link = $response["web_link"];
-    $room_pass = $response["room_pass"];
-    $room_number = $response['room_number'];
+    //$room_pass = $response["room_pass"];
+    //$room_number = $response['room_number'];
 
-    $_SESSION['room_number'] = $room_number;
+
     $_SESSION['long_code'] = $long_code;
 
     /*===================select room number from conference_scheduler DB ==============================*/
     $from_to=$start_time1. "_" .$end_time1;
     $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND `$from_to`='Free' LIMIT 0,1 ";
-
+/*
     $result = Sql_exec($cn, $query1);
 
     while ($row = Sql_fetch_array($result)) {
-        $room_number1 = Sql_Result($row, "room_number");
-        }
+        $room_number = Sql_Result($row, "room_number");
+        $_SESSION['room_number'] = $room_number;
+        }*/
 
-    $query2="UPDATE tbl_conference_scheduler set room_number= $room_number WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND `$from_to`='Free' ";
-
-   // print_r( "status:"+$status+"long code"+$long_code+"web link"+$web_link);
-    //$web_link=$data['weblink'];
 
     $demo_participants = $data['demo_participants'];
     $schedule_conf = $data['schedule_conf_dropdown'];
@@ -218,7 +249,7 @@ try {
 
 if ($action == "save") {
     $qry_for_id = "SELECT ID FROM `tbl_conference` WHERE `Conf_Name`='$demo_name' and `long_number`= '$long_code' and `USER`='$user_id' and `room_number`='$room_number' and `weblink`='$web_link' and
-                  `CODE`='$room_pass'and `Start_Time`='$start' and `End_Time`='$end' and `Participants`='$demo_participants' and `Recording`='$demo_recording' and
+                  `CODE`='$conference_code'and `Start_Time`='$start' and `End_Time`='$end' and `Participants`='$demo_participants' and `Recording`='$demo_recording' and
                  `STATUS`='$demo_active' and  `Schedule_Conf`='$schedule_conf' and `Notification_Channel`='$notification_channel'";
 
     $result = Sql_exec($cn, $qry_for_id);
@@ -230,13 +261,22 @@ if ($action == "save") {
 
     $_SESSION['conf_id'] = $conf_id;
 
+    $query2="UPDATE tbl_conference_scheduler set  `$from_to`='$conf_id' WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND `$from_to`='Free' AND  `room_number`='$room_number' ";
+
+    /*try {
+        $update_result = Sql_exec($cn, $query2);
+        $is_error = 0;
+    } catch (Exception $e) {
+        $is_error = 1;
+    }*/
+
 }
 
 ClosedDBConnection($cn);
 
 if ($is_error == 0) {
-    $return_data = array('status' => true, 'room_number1'=>$room_number1,'start_time_split' => $start_time_split, 'end_time_split' => $end_time_split,'qry' =>$query1,'query2'=>$query2,'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
-    'Code' => '$room_pass', 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
+    $return_data = array('status' => true, 'minute' => $minute,'slot'=>$slot,'$total_column'=>$total_column, ' $start[1]'=>$start[1],'room_number1'=>$room_number,'start_time_split' => $start_time1, 'end_time_split' => $end_time1,'qry' =>$query1,'query2'=>$query2,'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    'Code' => '$conference_code', 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
     'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf );
 
 }
