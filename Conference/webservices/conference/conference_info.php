@@ -86,6 +86,7 @@ if ($action != 'delete') {
     $start_q = array();
     $end_q = array();
     $total_column= "";
+    $total_column_2= "";
     $i=1;
     array_push($start_q,"alamin");
     array_push($end_q,"alamin");
@@ -137,7 +138,8 @@ if ($action != 'delete') {
          echo "start_q:" .print_r($start_q[$i+1],1);
 
          $column=$start_q[$i]."_" .$end_q[$i] ;
-         $total_column= $total_column. " AND ".$column ."=". "'Free'";
+         $total_column= $total_column. " AND "."`".$column."`" ."=". "'Free'";
+         $total_column_2= $total_column_2."`".$column."`" ."=". "$conf_id"." AND ";
 
      }
     echo "total_column:" .print_r($total_column,1);
@@ -296,7 +298,7 @@ if ($action == "save") {
 
     $_SESSION['conf_id'] = $conf_id;
 
-    $query2="UPDATE tbl_conference_scheduler set  `$from_to`='$conf_id' WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' $total_column AND  `room_number`='$room_number' ";
+    $query2="UPDATE tbl_conference_scheduler set  $total_column_2 WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' $total_column AND  `room_number`='$room_number' ";
     echo "query2:".print_r($query2,1);
 
     try {
