@@ -19,10 +19,11 @@ if(d.getMinutes()>31)
 else if(d.getMinutes()<30)
     str_minute=01;
 
-var d = new Date,
-     strt_time = [ d.getHours(),
-         str_minute].join(':');
+var d = new Date();
+     start_time = [( d.getHours()<10)? str_hour="0"+d.getHours() : str_hour=d.getHours(),
+         ( d.getMinutes()<10)? str_min="01" : str_min = str_minute ].join(':');
 
+    console.log("Ready"+start_time);
 
     month = d.getMonth()+1;
     day = d.getDate();
@@ -52,9 +53,9 @@ lastDate = [
         (d.getMonth()+1),
         day, ].join('-');
 
-   end_time= [ hour,  minute].join(':');
+   end_time= [ ( hour <10)? end_hour="0"+hour : end_hour= hour, ( minute <10)? end_min="00" : end_min= minute].join(':');
 
-console.log(dformat);
+
 
 
 function check_box_value_changed(){
@@ -62,20 +63,38 @@ function check_box_value_changed(){
     if($("#meet_now").is(":checked"))
     {
         $('#start_date').val(dformat);
-        $('#start_time').val(strt_time);
+
+        console.log(dformat + " "+ start_time);
+        console.log("Start_time: "+start_time);
+        //alert(start_time);
+        $("#start_time option[value='" + start_time + "']").attr('selected', true);
+        $("#start_time").trigger("chosen:updated");
         $('#end_date').val(lastDate);
-        $('#end_time').val(end_time);
-     }
+
+        console.log(lastDate+" "+end_time);
+        console.log("end_time: "+end_time);
+       // alert(end_time);
+        $("#end_time option[value='" + end_time + "']").attr('selected', true);
+        $("#end_time").trigger("chosen:updated");
+
+        alert(document.getElementById("start_time").selectedIndex);
+        alert(document.getElementById("end_time").selectedIndex);
+        console.log(document.getElementById("start_time").selectedIndex);
+        console.log(document.getElementById("end_time").selectedIndex);
+    }
 
     else
     {
-        $('#start_date').val("");
-        $('#start_time').val("");
-        $('#end_date').val("");
-        $('#end_time').val("");
+        $('#start_date').val(" ");
+        $('#start_time').val(" ");
+        alert("I am here!");
+        $("#start_time").trigger("chosen:updated");
+        $('#end_date').val(" ");
+        $('#end_time').val(" ");
+        $("#end_time").trigger("chosen:updated");
+
     }
 
-    console.log(lastDate);
 }
 
 
@@ -241,17 +260,28 @@ function edit_conference_list(obj, info, room_number, weblink) {
      var datetime=data[3].split(" ");
      var  hourmin= datetime[1].split(":")
      $('#start_date').val(datetime[0]);
-     $('#start_time').val(hourmin[0]+":"+hourmin[1]);
+
+     console.log("start_time:"+hourmin[0]+":"+hourmin[1]);
+     $("#start_time option[value='" + hourmin[0]+":"+hourmin[1] + "']").attr('selected', true);
+     // $('#start_time').val(hourmin[0]+":"+hourmin[1]);
+
+
      var datetime=data[4].split(" ");
      var  hourmin= datetime[1].split(":")
      $('#end_date').val(datetime[0]);
-     $('#end_time').val(hourmin[0]+":"+hourmin[1]);
+
+     console.log("end_time:"+hourmin[0]+":"+hourmin[1]);
+     $("#end_time option[value='" + hourmin[0]+":"+hourmin[1] + "']").attr('selected', true);
 
      $('#demo_participants').val(data[5]);
      $('#demo_recording').val(data[6]);
-     $('#notification_channel').val(data[7]);
+
+     var track_array = data[7].split(',');
+     for (var i = 0; i < track_array.length; i++) {
+        $("#notification_channel option[value='" + track_array[i] + "']").attr('selected', true);
+     }
      $('#status').val(data[8]);
-    $('#schedule_conf_dropdown').val(data[9]);
+     $('#schedule_conf_dropdown').val(data[9]);
      $('#room_number').val(room_number);
      $('#weblink').val(weblink);
      dropdown_chosen_style();
