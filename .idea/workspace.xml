@@ -56,23 +56,23 @@
       <file leaf-file-name="conference_info.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_info.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5694444">
-              <caret line="109" column="2" selection-start-line="109" selection-start-column="2" selection-end-line="109" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.40079364">
+              <caret line="165" column="25" selection-start-line="165" selection-start-column="25" selection-end-line="165" selection-end-column="25" />
               <folding>
                 <element signature="e#6#89#0#PHP" expanded="true" />
-                <marker date="1453992996628" expanded="true" signature="3841:3895" placeholder="SELECT room_..tbl_conference_scheduler..." />
-                <marker date="1453992996628" expanded="true" signature="3841:3963" placeholder="SELECT room_..tbl_conference_scheduler..." />
-                <marker date="1453992996628" expanded="true" signature="3841:3988" placeholder="SELECT room_..tbl_conference_scheduler..." />
-                <marker date="1453992996628" expanded="true" signature="5426:5855" placeholder="UPDATE ${$tb..." />
-                <marker date="1453992996628" expanded="true" signature="5941:6093" placeholder="UPDATE ${$ro..." />
-                <marker date="1453992996628" expanded="true" signature="6196:6235" placeholder="DELETE from ..." />
-                <marker date="1453992996628" expanded="true" signature="6261:6322" placeholder="DELETE from ..." />
-                <marker date="1453992996628" expanded="true" signature="6344:6450" placeholder="UPDATE ${$ro..." />
-                <marker date="1453992996628" expanded="true" signature="6512:6928" placeholder="INSERT INTO ..." />
-                <marker date="1453992996628" expanded="true" signature="6950:7061" placeholder="UPDATE ${$ro..." />
-                <marker date="1453992996628" expanded="true" signature="7604:8082" placeholder="SELECT ID FR..tbl_conference..." />
-                <marker date="1453992996628" expanded="true" signature="8309:8460" placeholder="UPDATE tbl_c..." />
-                <marker date="1453992996628" expanded="true" signature="8309:8490" placeholder="UPDATE tbl_c..." />
+                <marker date="1453999595982" expanded="true" signature="5200:5254" placeholder="SELECT room_..tbl_conference_scheduler..." />
+                <marker date="1453999595982" expanded="true" signature="5200:5316" placeholder="SELECT room_..tbl_conference_scheduler..." />
+                <marker date="1453999595982" expanded="true" signature="5200:5339" placeholder="SELECT room_..tbl_conference_scheduler..." />
+                <marker date="1453999595982" expanded="true" signature="6812:7241" placeholder="UPDATE ${$tb..." />
+                <marker date="1453999595982" expanded="true" signature="7327:7479" placeholder="UPDATE ${$ro..." />
+                <marker date="1453999595982" expanded="true" signature="7582:7621" placeholder="DELETE from ..." />
+                <marker date="1453999595982" expanded="true" signature="7647:7708" placeholder="DELETE from ..." />
+                <marker date="1453999595982" expanded="true" signature="7730:7836" placeholder="UPDATE ${$ro..." />
+                <marker date="1453999595982" expanded="true" signature="7898:8314" placeholder="INSERT INTO ..." />
+                <marker date="1453999595982" expanded="true" signature="8336:8447" placeholder="UPDATE ${$ro..." />
+                <marker date="1453999595982" expanded="true" signature="8990:9468" placeholder="SELECT ID FR..tbl_conference..." />
+                <marker date="1453999595982" expanded="true" signature="9695:9838" placeholder="UPDATE tbl_c..." />
+                <marker date="1453999595982" expanded="true" signature="9695:9868" placeholder="UPDATE tbl_c..." />
               </folding>
             </state>
           </provider>
@@ -717,7 +717,7 @@
         <state vertical-scroll-proportion="-3.5">
           <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
           <folding>
-            <element signature="e#6#90#0#PHP" expanded="true" />
+            <element signature="e#6#90#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -805,23 +805,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_info.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5694444">
-          <caret line="109" column="2" selection-start-line="109" selection-start-column="2" selection-end-line="109" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.40079364">
+          <caret line="165" column="25" selection-start-line="165" selection-start-column="25" selection-end-line="165" selection-end-column="25" />
           <folding>
             <element signature="e#6#89#0#PHP" expanded="true" />
-            <marker date="1453992996628" expanded="true" signature="3841:3895" placeholder="SELECT room_..tbl_conference_scheduler..." />
-            <marker date="1453992996628" expanded="true" signature="3841:3963" placeholder="SELECT room_..tbl_conference_scheduler..." />
-            <marker date="1453992996628" expanded="true" signature="3841:3988" placeholder="SELECT room_..tbl_conference_scheduler..." />
-            <marker date="1453992996628" expanded="true" signature="5426:5855" placeholder="UPDATE ${$tb..." />
-            <marker date="1453992996628" expanded="true" signature="5941:6093" placeholder="UPDATE ${$ro..." />
-            <marker date="1453992996628" expanded="true" signature="6196:6235" placeholder="DELETE from ..." />
-            <marker date="1453992996628" expanded="true" signature="6261:6322" placeholder="DELETE from ..." />
-            <marker date="1453992996628" expanded="true" signature="6344:6450" placeholder="UPDATE ${$ro..." />
-            <marker date="1453992996628" expanded="true" signature="6512:6928" placeholder="INSERT INTO ..." />
-            <marker date="1453992996628" expanded="true" signature="6950:7061" placeholder="UPDATE ${$ro..." />
-            <marker date="1453992996628" expanded="true" signature="7604:8082" placeholder="SELECT ID FR..tbl_conference..." />
-            <marker date="1453992996628" expanded="true" signature="8309:8460" placeholder="UPDATE tbl_c..." />
-            <marker date="1453992996628" expanded="true" signature="8309:8490" placeholder="UPDATE tbl_c..." />
+            <marker date="1453999595982" expanded="true" signature="5200:5254" placeholder="SELECT room_..tbl_conference_scheduler..." />
+            <marker date="1453999595982" expanded="true" signature="5200:5316" placeholder="SELECT room_..tbl_conference_scheduler..." />
+            <marker date="1453999595982" expanded="true" signature="5200:5339" placeholder="SELECT room_..tbl_conference_scheduler..." />
+            <marker date="1453999595982" expanded="true" signature="6812:7241" placeholder="UPDATE ${$tb..." />
+            <marker date="1453999595982" expanded="true" signature="7327:7479" placeholder="UPDATE ${$ro..." />
+            <marker date="1453999595982" expanded="true" signature="7582:7621" placeholder="DELETE from ..." />
+            <marker date="1453999595982" expanded="true" signature="7647:7708" placeholder="DELETE from ..." />
+            <marker date="1453999595982" expanded="true" signature="7730:7836" placeholder="UPDATE ${$ro..." />
+            <marker date="1453999595982" expanded="true" signature="7898:8314" placeholder="INSERT INTO ..." />
+            <marker date="1453999595982" expanded="true" signature="8336:8447" placeholder="UPDATE ${$ro..." />
+            <marker date="1453999595982" expanded="true" signature="8990:9468" placeholder="SELECT ID FR..tbl_conference..." />
+            <marker date="1453999595982" expanded="true" signature="9695:9838" placeholder="UPDATE tbl_c..." />
+            <marker date="1453999595982" expanded="true" signature="9695:9868" placeholder="UPDATE tbl_c..." />
           </folding>
         </state>
       </provider>

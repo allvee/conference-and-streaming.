@@ -85,28 +85,62 @@ if ($action != 'delete') {
 
     $start_q = array();
     $end_q = array();
-    $total_column= " ";
+    $total_column= "";
     $i=1;
-    $start_q[1]=$start_time;
+    array_push($start_q,"alamin");
+    array_push($end_q,"alamin");
+    array_push($start_q,$start_time);
 
+//    print_r("start:"+$start_q+ "end:"+$end_q);
+     echo "start: ".print_r($start_q,1)."End:".print_r($end_q,1);
      for($i=1; $i<=$slot; $i++)
      {
-         $start_time_split=explode(':', $start_q[i]);
-         $start_time_split[1]=$start_time_split[1]+29;
-         if($start_time_split[1]>59)
+         $temp = "";
+         $start_time_split=explode(':', $start_q[$i]);
+        // echo "Time Explode: ".print_r($start_time_split,1);
+         //echo "Type: ".gettype($start_time_split[0]);
+
+          $start_time_split[1]= (int) $start_time_split[1]+29;
+         //echo "Time Explode1: ".print_r($start_time_split,1);
+         if((int) $start_time_split[1]>59)
          {
-             $start_time_split[0]=$start_time_split[0]+1;
-             $start_time_split[1]=0;
+             //echo "if";
+           $start_time_split[0]= (int) $start_time_split[0]+1;
+             $start_time_split[1]="00";
+             //echo "Time Explode2: ".print_r($start_time_split,1);
+             $temp =  $start_time_split[0].":". $start_time_split[1];
+             //echo "Inside loop:" .print_r($temp,1);
          }
-         $end_q[$i]= $start_time_split[0].+":"+$start_time_split[1];
+         else
+         {
+             //echo "else";
+             $temp= $start_time_split[0].":". $start_time_split[1];
+            // echo "Inside loop (else):" .print_r($temp,1);
+         }
+        // echo "\ntemp:".$temp."</br>";
+         //echo gettype($end_q[$i]);
+         $end_q[$i] = $temp;
+        // echo "\nvalue: ".$end_q[$i]."</br>";
+        // echo gettype($end_q[$i]);
+         echo "end_q:" .print_r($end_q[$i],1);
 
          $end_time_split= explode(':', $end_q[$i]);
-         $end_time_split[1]=$end_time_split[1]+1;
-         $start_q[i+1] = $end_time_split[0]. ":".$end_time_split[1];
-         $column=$start_q[i]."_" .$end_q[$i] ;
-         $total_column= $total_column. ",".$column;
-     }
+         //echo "end_time_split:" .print_r($end_time_split,1);
 
+         $end_time_split[1]= (int) $end_time_split[1]+1;
+         if((int)$end_time_split[1]<10 )
+             $end_time_split[1]="0".$end_time_split[1];
+
+        //echo "end_time_split:" .print_r($end_time_split,1);
+
+         $start_q[$i+1] = $end_time_split[0]. ":".$end_time_split[1];
+         echo "start_q:" .print_r($start_q[$i+1],1);
+
+         $column=$start_q[$i]."_" .$end_q[$i] ;
+         $total_column= $total_column. " AND ".$column ."=". "'Free'";
+
+     }
+    echo "total_column:" .print_r($total_column,1);
 //print_r(json_encode("start:"+$start+ "end:"+$end));
 
 
@@ -129,14 +163,15 @@ if ($action != 'delete') {
 
     /*===================select room number from conference_scheduler DB ==============================*/
     $from_to=$start_time1. "_" .$end_time1;
-    $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND `$from_to`='Free' LIMIT 0,1 ";
-/*
+    $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' $total_column LIMIT 0,1 ";
+    echo "query1:".print_r($query1,1);
+
     $result = Sql_exec($cn, $query1);
 
     while ($row = Sql_fetch_array($result)) {
         $room_number = Sql_Result($row, "room_number");
         $_SESSION['room_number'] = $room_number;
-        }*/
+        }
 
 
     $demo_participants = $data['demo_participants'];
@@ -261,21 +296,22 @@ if ($action == "save") {
 
     $_SESSION['conf_id'] = $conf_id;
 
-    $query2="UPDATE tbl_conference_scheduler set  `$from_to`='$conf_id' WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND `$from_to`='Free' AND  `room_number`='$room_number' ";
+    $query2="UPDATE tbl_conference_scheduler set  `$from_to`='$conf_id' WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' $total_column AND  `room_number`='$room_number' ";
+    echo "query2:".print_r($query2,1);
 
-    /*try {
+    try {
         $update_result = Sql_exec($cn, $query2);
         $is_error = 0;
     } catch (Exception $e) {
         $is_error = 1;
-    }*/
+    }
 
 }
 
 ClosedDBConnection($cn);
 
 if ($is_error == 0) {
-    $return_data = array('status' => true, 'minute' => $minute,'slot'=>$slot,'$total_column'=>$total_column, ' $start[1]'=>$start[1],'room_number1'=>$room_number,'start_time_split' => $start_time1, 'end_time_split' => $end_time1,'qry' =>$query1,'query2'=>$query2,'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    $return_data = array('status' => true, 'minute' => $minute,'slot'=>$slot,'$total_column'=>$total_column, ' $start_q[1]'=>$start[1],'room_number1'=>$room_number,'start_time_split' => $start_time1, 'end_time_split' => $end_time1,'qry' =>$query1,'query2'=>$query2,'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
     'Code' => '$conference_code', 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
     'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf );
 
