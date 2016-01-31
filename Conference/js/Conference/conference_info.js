@@ -343,10 +343,18 @@ function conference_details(obj, conf_id){
 
 }
 
-function delete_conference_list(obj, action_id, room_number) {
+function delete_conference_list(obj, action_id, room_number, start_date, end_date) {
 
     confirmMessage(this, 'conference_list', 'Delete Confirmation', 'Do you want to delete ?');
-    var arrayInput = new Array(obj, action_id, room_number);
+    var arrayInput = new Array(obj, action_id, room_number,start_date,end_date);
+
+    var datetime= start_time.split(" ");
+   // alert(datetime[0]+" and "+ datetime[1]);
+    var date= datetime[0].split("-");
+   // alert(date[0]+" and "+ date[1] + " and "+ date[2]);
+    var time= datetime[1].split(":");
+   // alert(time[0]+" and "+ time[1] + " and "+ time[2]);
+
     $('#conference_list').click({id: arrayInput}, delete_confirm_conference_list);
 
 }
@@ -358,6 +366,8 @@ function delete_confirm_conference_list(event) {
     dataInfo['action'] = 'delete';
     dataInfo['action_id'] = arrayInput[1];
     dataInfo['room_number'] = arrayInput[2];
+    dataInfo['start_date'] = arrayInput[3];
+    dataInfo['end_date'] = arrayInput[4];
 
     var response = connectServer(cms_url['conference_info'], dataInfo);
 
