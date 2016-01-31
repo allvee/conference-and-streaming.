@@ -39,78 +39,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="save_organization_user.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/organization_user/save_organization_user.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="save_firewall_user_role_association.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/user_role_association/save_firewall_user_role_association.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_vpn_menu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Conference/webservices/menu/view_vpn_menu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="32" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
-              <folding>
-                <element signature="e#6#92#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="firewall_organization.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Conference/js/Conference/role_management/firewall_organization.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="58" selection-start-line="111" selection-start-column="58" selection-end-line="111" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="save_organization.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/organization/save_organization.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="19" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_messages.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Conference/webservices/lib/activity_messages.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="has_permission.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Conference/webservices/menu/has_permission.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Conference/js/config.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -134,10 +62,26 @@
       <file leaf-file-name="conference_info.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_info.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33333334">
-              <caret line="397" column="181" selection-start-line="397" selection-start-column="179" selection-end-line="397" selection-end-column="181" />
+            <state vertical-scroll-proportion="0.64915574">
+              <caret line="312" column="44" selection-start-line="312" selection-start-column="44" selection-end-line="312" selection-end-column="44" />
               <folding>
                 <element signature="e#3037#4681#0#PHP" expanded="false" />
+                <marker date="1454249620024" expanded="true" signature="5440:5606" placeholder="SELECT room_..tbl_conference_scheduler..." />
+                <marker date="1454249620024" expanded="true" signature="5684:5824" placeholder="SELECT room_..tbl_conference_scheduler..." />
+                <marker date="1454249620024" expanded="true" signature="7959:8388" placeholder="UPDATE ${$tb..." />
+                <marker date="1454249620024" expanded="true" signature="8474:8626" placeholder="UPDATE ${$ro..." />
+                <marker date="1454249620024" expanded="true" signature="8729:8768" placeholder="DELETE from ..." />
+                <marker date="1454249620024" expanded="true" signature="8794:8855" placeholder="DELETE from ..." />
+                <marker date="1454249620024" expanded="true" signature="8877:8983" placeholder="UPDATE ${$ro..." />
+                <marker date="1454249620024" expanded="true" signature="9625:9828" placeholder="UPDATE tbl_c..." />
+                <marker date="1454249620024" expanded="true" signature="9946:10149" placeholder="UPDATE tbl_c..." />
+                <marker date="1454249620024" expanded="true" signature="10236:10413" placeholder="UPDATE tbl_c..." />
+                <marker date="1454249620024" expanded="true" signature="10670:11086" placeholder="INSERT INTO ..." />
+                <marker date="1454249620024" expanded="true" signature="11108:11219" placeholder="UPDATE ${$ro..." />
+                <marker date="1454249620024" expanded="true" signature="11762:12240" placeholder="SELECT ID FR..tbl_conference..." />
+                <marker date="1454249620024" expanded="true" signature="12811:13007" placeholder="UPDATE tbl_c..." />
+                <marker date="1454249620024" expanded="true" signature="13121:13317" placeholder="UPDATE tbl_c..." />
+                <marker date="1454249620024" expanded="true" signature="13394:13564" placeholder="UPDATE tbl_c..." />
               </folding>
             </state>
           </provider>
@@ -163,7 +107,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/conference/webservices/conference/participant_info.php" />
         <option value="$PROJECT_DIR$/conference/webservices/conference/participant_list.php" />
         <option value="$PROJECT_DIR$/conference/webservices/conference/participant_count.php" />
         <option value="$PROJECT_DIR$/conference/css/rcportal_custom_back.css" />
@@ -214,6 +157,7 @@
         <option value="$PROJECT_DIR$/conference/webservices/conference/role_management/organization/save_organization.php" />
         <option value="$PROJECT_DIR$/conference/js/config.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/Conference/webservices/conference/conference_info.php" />
       </list>
     </option>
   </component>
@@ -287,6 +231,100 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo_conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo_conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webservices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo_conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webservices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo_conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo_conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -321,6 +359,10 @@
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
       <method />
     </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
@@ -376,7 +418,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30181542" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21709532" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982906" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -681,6 +723,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.576923">
           <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -724,6 +767,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.1153846">
           <caret line="126" column="13" selection-start-line="126" selection-start-column="13" selection-end-line="126" selection-end-column="13" />
+          <folding>
+            <element signature="e#95#174#0#PHP" expanded="false" />
+            <element signature="n#curlRequest#0;n#!!top" expanded="false" />
+            <element signature="e#598#885#0#PHP" expanded="false" />
+            <element signature="e#640#725#0#PHP" expanded="false" />
+            <element signature="e#734#879#0#PHP" expanded="false" />
+            <element signature="n#encrypt_json#0;n#!!top" expanded="false" />
+            <element signature="n#decrypt_json#0;n#!!top" expanded="false" />
+            <element signature="e#2129#2203#0#PHP" expanded="false" />
+            <element signature="n#SecureData#0;n#!!top" expanded="false" />
+            <element signature="e#2250#2543#0#PHP" expanded="false" />
+            <element signature="e#2281#2462#0#PHP" expanded="false" />
+            <element signature="e#2327#2452#0#PHP" expanded="false" />
+            <element signature="e#2469#2543#0#PHP" expanded="false" />
+            <element signature="e#2565#2633#0#PHP" expanded="false" />
+            <element signature="e#2735#2788#0#PHP" expanded="false" />
+            <element signature="e#2983#3194#0#PHP" expanded="false" />
+            <element signature="e#3023#3084#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -785,22 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/user_role_association/save_firewall_user_role_association.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/organization_user/save_organization_user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Conference/js/Conference/role_management/firewall_organization.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -825,20 +871,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/webservices/menu/has_permission.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Conference/webservices/menu/view_vpn_menu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="83" column="32" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
           <folding>
             <element signature="e#6#92#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617">
+          <caret line="184" column="29" selection-start-line="184" selection-start-column="29" selection-end-line="184" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/webservices/menu/has_permission.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35084426">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/user_role_association/save_firewall_user_role_association.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
+          <folding>
+            <marker date="1454243061682" expanded="true" signature="-1:-1" placeholder="SELECT user_..user_role_association..." />
+            <marker date="1454243061682" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1454243061682" expanded="true" signature="-1:-1" placeholder="SELECT `logi..." />
+            <marker date="1454243061682" expanded="true" signature="-1:-1" placeholder="SELECT `name..." />
+            <marker date="1454243061682" expanded="true" signature="-1:-1" placeholder="SELECT user_..user_role_association..." />
+            <marker date="1454243061682" expanded="true" signature="-1:-1" placeholder="SELECT `logi..." />
+            <marker date="1454243061682" expanded="true" signature="-1:-1" placeholder="SELECT `name..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/organization_user/save_organization_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+          <folding>
+            <marker date="1454243060709" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1454243060709" expanded="true" signature="-1:-1" placeholder="insert into ..." />
           </folding>
         </state>
       </provider>
@@ -851,20 +932,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="184" column="29" selection-start-line="184" selection-start-column="29" selection-end-line="184" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_info.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="397" column="181" selection-start-line="397" selection-start-column="179" selection-end-line="397" selection-end-column="181" />
+        <state vertical-scroll-proportion="0.64915574">
+          <caret line="312" column="44" selection-start-line="312" selection-start-column="44" selection-end-line="312" selection-end-column="44" />
           <folding>
             <element signature="e#3037#4681#0#PHP" expanded="false" />
+            <marker date="1454249620024" expanded="true" signature="5440:5606" placeholder="SELECT room_..tbl_conference_scheduler..." />
+            <marker date="1454249620024" expanded="true" signature="5684:5824" placeholder="SELECT room_..tbl_conference_scheduler..." />
+            <marker date="1454249620024" expanded="true" signature="7959:8388" placeholder="UPDATE ${$tb..." />
+            <marker date="1454249620024" expanded="true" signature="8474:8626" placeholder="UPDATE ${$ro..." />
+            <marker date="1454249620024" expanded="true" signature="8729:8768" placeholder="DELETE from ..." />
+            <marker date="1454249620024" expanded="true" signature="8794:8855" placeholder="DELETE from ..." />
+            <marker date="1454249620024" expanded="true" signature="8877:8983" placeholder="UPDATE ${$ro..." />
+            <marker date="1454249620024" expanded="true" signature="9625:9828" placeholder="UPDATE tbl_c..." />
+            <marker date="1454249620024" expanded="true" signature="9946:10149" placeholder="UPDATE tbl_c..." />
+            <marker date="1454249620024" expanded="true" signature="10236:10413" placeholder="UPDATE tbl_c..." />
+            <marker date="1454249620024" expanded="true" signature="10670:11086" placeholder="INSERT INTO ..." />
+            <marker date="1454249620024" expanded="true" signature="11108:11219" placeholder="UPDATE ${$ro..." />
+            <marker date="1454249620024" expanded="true" signature="11762:12240" placeholder="SELECT ID FR..tbl_conference..." />
+            <marker date="1454249620024" expanded="true" signature="12811:13007" placeholder="UPDATE tbl_c..." />
+            <marker date="1454249620024" expanded="true" signature="13121:13317" placeholder="UPDATE tbl_c..." />
+            <marker date="1454249620024" expanded="true" signature="13394:13564" placeholder="UPDATE tbl_c..." />
           </folding>
         </state>
       </provider>

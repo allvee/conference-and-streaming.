@@ -301,11 +301,24 @@ else if ($action == "delete") {
 
     }
     if($Schedule_Conf=='Daily')
-    $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`>= '$sDay' AND  `Day`<='$valid_day' AND $total_column_was AND  `room_number`='$room_number' ";
-    //echo "query3:".print_r($query3,1);
+    {
+        $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`>= '$sDay' AND  `Day`<='$valid_day' AND $total_column_was AND  `room_number`='$room_number' ";
+        //echo "query3:".print_r($query3,1);
+    }
+
+
+    else if($schedule_conf=='Weekly')
+    {
+        $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`>= '$sDay' AND  `Day`<='$valid_day' AND $total_column_was AND  `room_number`='$room_number' ";
+        //echo "query3:".print_r($query3,1);
+    }
     else
-    $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND $total_column_was AND  `room_number`='$room_number' ";
-    //echo "query3:".print_r($query3,1);
+    {
+        $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND $total_column_was AND  `room_number`='$room_number' ";
+        //echo "query3:".print_r($query3,1);
+    }
+
+
 
     try {
         $update_result = Sql_exec($cn, $query3);
@@ -379,6 +392,12 @@ if ($action == "save") {
     $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`>= '$sDay' AND  `Day`<='$valid_day'  $total_column AND  `room_number`='$room_number' ";
     //echo "query2:".print_r($query2,1);
      }
+
+    else if($schedule_conf=='Weekly')
+    {
+        $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`>= '$sDay' AND  `Day`<='$valid_day'  $total_column AND  `room_number`='$room_number' ";
+        //echo "query2:".print_r($query2,1);
+    }
     else
     $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column AND  `room_number`='$room_number' ";
     //echo "query2:".print_r($query2,1);
@@ -401,7 +420,7 @@ if ($is_error == 0) {
 
 }
 else if ($is_error == 2){
-    $return_data = array('status' => true, 'message' => $msg);
+    $return_data = array('status' => true, 'message' => $msg, 'query3'=>$query3);
 
 }
 
