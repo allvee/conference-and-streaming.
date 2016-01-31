@@ -9,8 +9,8 @@ error_reporting(0);
 $dbtype = 'mysql';
 $UserID = 'root';
 $Password = 'nopass';
-$Server = 'localhost';
-$Database = 'conference';
+$Server = '192.168.245.46';
+$Database = 'conference_demo';
 
 $salt = 'DjhG83b0QyJfIxfs2gsVoUubWwVniR2G0FgaC9ny';
 $temp_dbtype = '';

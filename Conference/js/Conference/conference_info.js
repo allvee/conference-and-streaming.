@@ -343,12 +343,12 @@ function conference_details(obj, conf_id){
 
 }
 
-function delete_conference_list(obj, action_id, room_number, start_date, end_date) {
+function delete_conference_list(obj, action_id, room_number, start_date, end_date, Schedule_Conf) {
 
     confirmMessage(this, 'conference_list', 'Delete Confirmation', 'Do you want to delete ?');
-    var arrayInput = new Array(obj, action_id, room_number,start_date,end_date);
+    var arrayInput = new Array(obj, action_id, room_number, start_date, end_date, Schedule_Conf);
 
-    var datetime= start_time.split(" ");
+    var datetime= start_date.split(" ");
    // alert(datetime[0]+" and "+ datetime[1]);
     var date= datetime[0].split("-");
    // alert(date[0]+" and "+ date[1] + " and "+ date[2]);
@@ -368,6 +368,7 @@ function delete_confirm_conference_list(event) {
     dataInfo['room_number'] = arrayInput[2];
     dataInfo['start_date'] = arrayInput[3];
     dataInfo['end_date'] = arrayInput[4];
+    dataInfo['Schedule_Conf'] = arrayInput[5];
 
     var response = connectServer(cms_url['conference_info'], dataInfo);
 
