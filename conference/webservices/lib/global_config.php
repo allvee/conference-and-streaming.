@@ -109,3 +109,21 @@ $dir_softswitch_restart="sudo -u root /Softswitch1/Softswitch/restart.sh";
 
 //$dir_softswitch_ippbx_config = "/var/www/html/softswitch/softswitch/webservices/softswitch/";
 $dir_softswitch_ippbx_config="/Softswitch1/Softswitch/";
+
+/*
+ * API URL Section
+ * This section will contain all other module API URL
+ */
+$protocol = 'http';
+
+$baseURL = $protocol.'://192.168.245.34/';
+define('Marketplace_Add_USER', $baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/save_user.php');
+define('Marketplace_Login_USER', $baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/UserLogin.php');
+define('Marketplace_USER_OPTIONS', $baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/get_users.php');
+define('Marketplace_VIEW_USERS', $baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/view_users.php');
+define('Marketplace_USER_LIST', $baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/user_list.php');
+define('Marketplace_GET_USERINFO_API',$baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/api.php?');
+define('Marketplace_Add_ORG_API','/vpn/vpn/webservices/vpn/role_management/save_sync_organization.php');
+define('Marketplace_Add_ROLE_API','/vpn/vpn/webservices/vpn/role_management/save_sync_user_role.php');
+define('Marketplace_Add_ROLE_MENUS_API','/vpn/vpn/webservices/vpn/role_management/save_sync_role_menu.php');
+define('GET_REMOTE_HOST',$baseURL.'/ocmportal/rcportal/webservices/api/get_remote_host_api.php');

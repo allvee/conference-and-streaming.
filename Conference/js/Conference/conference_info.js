@@ -81,7 +81,7 @@ function check_box_value_changed(){
         alert(document.getElementById("end_time").selectedIndex);
         console.log(document.getElementById("start_time").selectedIndex);
         console.log(document.getElementById("end_time").selectedIndex);
-    }
+     }
 
     else
     {
