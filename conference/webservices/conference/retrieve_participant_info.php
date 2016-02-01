@@ -10,13 +10,15 @@ include_once "../lib/common.php";
 $cn = connectDB();
 
 $tbl = "tbl_participant";
-$participant_conference_name = $_SESSION['conf_name'];
+$participant_conference_name = $_SESSION['conference']['conf_name'];
 
-if(isset($_REQUEST['info']))
-    $conference_id= $_REQUEST['info'];
-else
-    $conference_id = $_SESSION['conf_id'];
+$conference_id=null;
 
+if (isset($_REQUEST['info'])) {
+    $conference_id = $_REQUEST['info'];
+} else {
+    $conference_id = $_SESSION['conference']['conf_id'];
+}
 
 
 $arrayInput = array();
@@ -26,6 +28,8 @@ $result = Sql_exec($cn, $query);
     echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;
     exit;
 }*/
+
+
 $data = array();
 $i = 0;
 while ($row = Sql_fetch_array($result)) {
@@ -34,13 +38,30 @@ while ($row = Sql_fetch_array($result)) {
     $data[$i][$j++] = Sql_Result($row, "msisdn");
     $data[$i][$j++] = Sql_Result($row, "email");
     $i++;
+    //print_r($_SESSION);
+    if ($_SESSION['conference']['notification']['IVR'] == true) {
+        $participant_name = $row['participant_name'];
+        $msisdn = $row['msisdn'];
+        $long_code = $_SESSION['conference']['long_code'];
+
+        $qry = "insert into $Call_Handler_DB.outdialque set MSISDN = '$msisdn',DisplayAno = '$long_code',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$conference_id', OutDialTime = NOW()";
+        //echo $qry.__LINE__.__FILE__."\n";
+        logcats("Query: ".$qry);
+        $ret = Sql_exec($cn,$qry);
+        logcats("Insert: ".$ret);
+        //echo $ret.__LINE__.__FILE__."\n";
+        Sql_Free_Result($ret);
+
+    }
 }
+
 Sql_Free_Result($result);
 ClosedDBConnection($cn);
 //$json_data = json_encode($data);
 
 if ($is_error == 0) {
-    $return_data = array('status' => true, "data" => $data);
+    $return_data = array('status' => true, 'data' => $data);
 } else {
     $return_data = array('status' => false, 'message' => 'Data Not Send.');
 }

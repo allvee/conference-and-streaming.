@@ -33,7 +33,6 @@ $last_updated = date('Y-m-d H:i');
 $last_updated_by = $_SESSION["UserID"];
 
 
-
 if ($action != 'delete') {
 
     $participant_name = $data['participant_name'];
@@ -43,21 +42,16 @@ if ($action != 'delete') {
     //$conference_id =$data['conference_id'];
     $participant_organization = 'ssd-tech';
 
-    $long_code = $_SESSION['long_code'];
-    $participant_conference_name = $_SESSION['conf_name'];
-    $user_id= $_SESSION['UserID'];
-    $conference_id = $_SESSION['conf_id'];
+    $long_code = $_SESSION['conference']['long_code'];
+    $participant_conference_name = $_SESSION['conference']['conf_name'];
+    $user_id = $_SESSION['conference']['UserID'];
+    $conference_id = $_SESSION['conference']['conf_id'];
 
-}
-
-else
-{
-
+} else {
     /*=============================== for room number and Web Link for Delete =====================*/
     $action = $data_info['action'];
     $deleted_id = $data_info['action_id'];
     $room_number = $data_info['room_number'];
-
 }
 
 
@@ -69,19 +63,15 @@ if ($action == "update") {
            `long_code`='$long_code', `organization`='$participant_organization', `participant_type` ='$participant_type'";
     $qry .= " WHERE ID='$action_id'";
 
-}
+} else if ($action == "delete") {
 
-else if ($action == "delete") {
-
-    $flag='delete';
+    $flag = 'delete';
     $msg = "Successfully Deleted";
     $action_id = $deleted_id;
     $qry = "DELETE from $tbl";
     $qry .= " where ID='$action_id'";
 
-}
-
-else {
+} else {
     $msg = "Successfully Saved";
     $qry = "INSERT INTO `$tbl` (`participant_name`, `msisdn`, `email`,`conference_ID`, `conference_name`, `long_code`,`organization`, `participant_type`)
 	VALUES('$participant_name', '$participant_msisdn', '$participant_email','$conference_id', '$participant_conference_name','$long_code', '$participant_organization', '$participant_type')";
@@ -89,7 +79,7 @@ else {
 
 try {
     $res = Sql_exec($cn, $qry);
-    if($flag == 'delete')
+    if ($flag == 'delete')
         $is_error = 2;
 
     else
@@ -101,23 +91,16 @@ try {
 ClosedDBConnection($cn);
 
 
-
-
 if ($is_error == 0) {
-    $return_data = array('status' => true, 'admin' => $last_updated_by, 'participant_name' => $participant_name, 'msisdn' => $participant_msisdn , 'participant_email'=>$participant_email, 'participant_type'=>$participant_type, 'participant_conference_name' => $participant_conference_name, 'participant_organization' => $participant_organization);
+    $return_data = array('status' => true, 'admin' => $last_updated_by, 'participant_name' => $participant_name, 'msisdn' => $participant_msisdn, 'participant_email' => $participant_email, 'participant_type' => $participant_type, 'participant_conference_name' => $participant_conference_name, 'participant_organization' => $participant_organization);
 
-}
-else if ($is_error == 2){
+} else if ($is_error == 2) {
     $return_data = array('status' => true, 'message' => $msg);
 
-}
-else if ($is_error == 3){
+} else if ($is_error == 3) {
     $return_data = array('status' => true, 'msisdn' => $msisdn, 'email' => $email);
 
-}
-
-
-else {
+} else {
     $return_data = array('status' => false, 'message' => 'Data Not Send.');
 }
 

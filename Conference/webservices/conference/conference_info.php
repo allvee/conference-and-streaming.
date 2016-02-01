@@ -30,98 +30,92 @@ $room_tbl = "tbl_conference_room";
 $is_error = 0;
 $last_updated = date('Y-m-d H:i');
 
-$start_array = array("00:01","00:31","01:01","01:31","02:01","02:31","03:01","03:31","04:01","04:31","05:01","05:31","06:01",
-                    "06:31","07:01","07:31","08:01","08:31","09:01","09:31","10:01","10:31","11:01","11:31","12:01","12:31",
-                    "13:01","13:31","14:01","14:31","15:01","15:31","16:01","16:31","17:01","17:31","18:01","18:31","19:01",
-                    "19:31","20:01","20:31","21:01","21:31","22:01","22:31","23:01","23:31");
+$start_array = array("00:01", "00:31", "01:01", "01:31", "02:01", "02:31", "03:01", "03:31", "04:01", "04:31", "05:01", "05:31", "06:01",
+    "06:31", "07:01", "07:31", "08:01", "08:31", "09:01", "09:31", "10:01", "10:31", "11:01", "11:31", "12:01", "12:31",
+    "13:01", "13:31", "14:01", "14:31", "15:01", "15:31", "16:01", "16:31", "17:01", "17:31", "18:01", "18:31", "19:01",
+    "19:31", "20:01", "20:31", "21:01", "21:31", "22:01", "22:31", "23:01", "23:31");
 
-$end_array = array("00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00",
-                "07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00",
-                "14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30",
-                "21:00","21:30","22:00","22:30","23:00","23:30","11:59");
+$end_array = array("00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00",
+    "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00",
+    "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30",
+    "21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "11:59");
 
-        $valid_day=30;
+$valid_day = 30;
 
 if ($action != 'delete') {
 
     $demo_name = $data['demo_name'];
-    $_SESSION['conf_name'] = $demo_name;
-    $user_id= $_SESSION['UserID'];
+    $_SESSION['conference']['conf_name'] = $demo_name;
+    $user_id = $_SESSION['conference']['UserID'];
 
     $start_date = $data['start_date'];
-    $end_date   =$data['end_date'];
+    $end_date = $data['end_date'];
     $start_time = $data['start_time'];
     $end_time = $data['end_time'];
 
     $key1 = array_search($start_time, $start_array);
     $key2 = array_search($end_time, $end_array);
 
-    $i=0;
-    $total_column="";
+    $i = 0;
+    $total_column = "";
 
-    for($i=$key1; $i<=$key2; $i++)
-    {
-        if(isset($total_column))
-            $total_column=$total_column." AND "."`".$start_array[$i]."_".$end_array[$i]."`"."="."'Free'";
+    for ($i = $key1; $i <= $key2; $i++) {
+        if (isset($total_column))
+            $total_column = $total_column . " AND " . "`" . $start_array[$i] . "_" . $end_array[$i] . "`" . "=" . "'Free'";
         else
-            $total_column= $total_column."`".$start_array[$i]."_".$end_array[$i]."`"."="."'Free'";
+            $total_column = $total_column . "`" . $start_array[$i] . "_" . $end_array[$i] . "`" . "=" . "'Free'";
 
     }
 
-    $start = $start_date . " ".$start_time;
-    $end  = $end_date." ".$end_time;
+    $start = $start_date . " " . $start_time;
+    $end = $end_date . " " . $end_time;
 
-    $date_split= explode('-', $start_date);
+    $date_split = explode('-', $start_date);
     $sDay = $date_split[2];
     $sMonth = $date_split[1];
     $sYear = $date_split[0];
 
-    $date_split= explode('-', $end_date);
+    $date_split = explode('-', $end_date);
     $eDay = $date_split[2];
     $eMonth = $date_split[1];
     $eYear = $date_split[0];
 
-    $interval= " ";
-    for($i= (int) $sDay,$j=0;$i<=$valid_day;$i=$i+7)
-    {
-        if($i<24)
-        $interval= $interval."'$i'". ",";
+    $interval = " ";
+    for ($i = (int)$sDay, $j = 0; $i <= $valid_day; $i = $i + 7) {
+        if ($i < 24)
+            $interval = $interval . "'$i'" . ",";
         else
-            $interval= $interval."'$i'";
+            $interval = $interval . "'$i'";
 
     }
-    $day= "`Day`"." "."in"."(".$interval.")";
+    $day = "`Day`" . " " . "in" . "(" . $interval . ")";
 
     $dteStart = new DateTime($start);
-    $dteEnd   = new DateTime($end);
-    $dteDiff  = $dteStart->diff($dteEnd);
-    $duration= (string) $dteDiff->format("%H:%I");
+    $dteEnd = new DateTime($end);
+    $dteDiff = $dteStart->diff($dteEnd);
+    $duration = (string)$dteDiff->format("%H:%I");
 
-    $conference_code= $data['conf_code'];
+    $conference_code = $data['conf_code'];
     $response = check_scheduler($start_time, $end_time, $cn);
 
-    $status= $response["status"];
+    $status = $response["status"];
     $long_code = $response["long_code"];
     $web_link = $response["web_link"];
-    $_SESSION['long_code'] = $long_code;
+    $_SESSION['conference']['long_code'] = $long_code;
+    /*$_SESSION['conference']['Start_time']*/
 
     $schedule_conf = $data['schedule_conf_dropdown'];
 
     /*===================select room number from conference_scheduler DB ==============================*/
 
-    if($schedule_conf=='Daily')
-    {
-        $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day  $total_column LIMIT 0,1 ";
+    if ($schedule_conf == 'Daily') {
+        $query1 = "SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day  $total_column LIMIT 0,1 ";
         //echo "query1:".print_r($query1,1);
-    }
-    else if($schedule_conf=='Weekly')
-    {
-        $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  $day  $total_column LIMIT 0,1 ";
+    } else if ($schedule_conf == 'Weekly') {
+        $query1 = "SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  $day  $total_column LIMIT 0,1 ";
         //echo "query1:".print_r($query1,1);
-    }
-    else
-    {
-        $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column LIMIT 0,1 ";
+    } else {
+        $query1 = "SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column LIMIT 0,1 ";
         //echo "query1:".print_r($query1,1);
     }
 
@@ -129,8 +123,8 @@ if ($action != 'delete') {
 
     while ($row = Sql_fetch_array($result)) {
         $room_number = Sql_Result($row, "room_number");
-        $_SESSION['room_number'] = $room_number;
-        }
+        $_SESSION['conference']['room_number'] = $room_number;
+    }
 
 
     $demo_participants = $data['demo_participants'];
@@ -139,7 +133,16 @@ if ($action != 'delete') {
     $demo_active = $data['demo_active'];
     $demo_active = "active";
 
-    $demo_recording = $data['demo_recording'];
+    $demo_recording = null;
+
+    if (isset($data['demo_recording']) && $data['demo_recording']=='yes') {
+        $demo_recording = "yes";
+    } else {
+        $demo_recording = "no";
+    }
+    /*echo __LINE__ . ": " . $data['demo_recording'];
+    echo __LINE__ . ": " . $demo_recording;*/
+
 
     $track_count = sizeof($_REQUEST['notification_channel']);
     $flag = 0;
@@ -149,26 +152,41 @@ if ($action != 'delete') {
         if ($flag == $track_count) {
             $notification_channel .= $value;
 
-
         } else {
             $notification_channel .= $value . ',';
+        }
+        if ($value == "IVR") {
+            $_SESSION['conference']['notification']['IVR'] = true;
+            //$qry = "insert into $callHandlerDB.outdialque set MSISDN";
+        } else {
+            $_SESSION['conference']['notification']['IVR'] = false;
+        }
+
+        if ($value == "SMS") {
+            $_SESSION['conference']['notification']['SMS'] = true;
+            //$qry = "insert into $callHandlerDB.outdialque set MSISDN";
+        } else {
+            $_SESSION['conference']['notification']['SMS'] = false;
+        }
+
+        if ($value == "EMAIL") {
+            $_SESSION['conference']['notification']['EMAIL'] = true;
+            //$qry = "insert into $callHandlerDB.outdialque set MSISDN";
+        } else {
+            $_SESSION['conference']['notification']['EMAIL'] = false;
         }
     }
 
 
-    if (isset($demo_active)) {  }
-    else {
-        $demo_active= "done";
-    }
-    if (isset($demo_recording)) {  }
-    else {
-        $demo_recording= "no";
+    if (isset($demo_active)) {
+
+    } else {
+        $demo_active = "done";
     }
 
-}
+    /*echo __LINE__ . ": " . $demo_recording;*/
 
-else
-{
+} else {
     /*===============================  for Delete =====================*/
     $action = $data_info['action'];
     $deleted_id = $data_info['action_id'];
@@ -177,38 +195,37 @@ else
     $end_date_time = $data_info['end_date'];
     $Schedule_Conf = $data_info['Schedule_Conf'];
 
-    $date_time_split= explode(' ', $start_date_time);
+    $date_time_split = explode(' ', $start_date_time);
     $date_split = explode('-', $date_time_split[0]);
-    $sDay =(int) $date_split[2];
-    $sMonth = (int) $date_split[1];
-    $sYear = (int) $date_split[0];
+    $sDay = (int)$date_split[2];
+    $sMonth = (int)$date_split[1];
+    $sYear = (int)$date_split[0];
 
     $time_split = explode(':', $date_time_split[1]);
-    $start_time= $time_split[0].":".$time_split[1];
+    $start_time = $time_split[0] . ":" . $time_split[1];
 
-    $date_time_split= explode(' ', $end_date_time);
+    $date_time_split = explode(' ', $end_date_time);
     $time_split = explode(':', $date_time_split[1]);
-    $end_time= $time_split[0].":".$time_split[1];
+    $end_time = $time_split[0] . ":" . $time_split[1];
 
     $key1 = array_search($start_time, $start_array);
     $key2 = array_search($end_time, $end_array);
 
 
-    $interval= " ";
-    for($i= (int) $sDay,$j=0;$i<=$valid_day;$i=$i+7)
-    {
-        if($i<24)
-            $interval= $interval."'$i'". ",";
+    $interval = " ";
+    for ($i = (int)$sDay, $j = 0; $i <= $valid_day; $i = $i + 7) {
+        if ($i < 24)
+            $interval = $interval . "'$i'" . ",";
         else
-            $interval= $interval."'$i'";
+            $interval = $interval . "'$i'";
 
     }
-    $day= "`Day`"." "."in"."(".$interval.")";
+    $day = "`Day`" . " " . "in" . "(" . $interval . ")";
 
     // echo json_encode( array("action"=>$action,"deleted_id"=>$deleted_id,"room_number"=>$room_number) );
 }
 
-
+$run_record_qry = false;
 if ($action == "update") {
 
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
@@ -216,61 +233,53 @@ if ($action == "update") {
     $qry = "UPDATE $tbl set `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
             `CODE`='$conference_code',`Start_Time`='$start',`End_Time`='$end',`Conference_Duration`='$duration',`Participants`='$demo_participants',`Recording`='$demo_recording',
             `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel' WHERE ID='$action_id'";
+    /*echo __LINE__ . $qry;*/
+    $conf_id = $action_id;
+    $_SESSION['conference']['conf_id'] = $action_id;
 
-    $conf_id =$action_id;
-    $_SESSION['conf_id']=$action_id;
+    $qry_to_room = "UPDATE $room_tbl SET `room_pass`='$conference_code',`last_update` ='$last_updated', `conference_name` = '$demo_name' WHERE `room_number` ='$room_number'";
 
-    $qry_to_room="UPDATE $room_tbl SET `room_pass`='$conference_code',`last_update` ='$last_updated', `conference_name` = '$demo_name' WHERE `room_number` ='$room_number'";
-
-
+    if ($demo_recording == 'no') {
+        $record_qry = "Delete from $Call_Handler_DB.outdialque where UserId = $conf_id";
+        $run_record_qry = true;
+        echo $record_qry ."line: ". __LINE__;
+    }
 
     $msg = "Successfully Updated";
-}
+} else if ($action == "delete") {
 
-else if ($action == "delete") {
-
-    $flag='delete';
+    $flag = 'delete';
 
     $action_id = $deleted_id;
     $qry = "DELETE from $tbl where ID ='$action_id'";
 
-    $qry_participant="DELETE from tbl_participant WHERE conference_ID ='$action_id'";
+    $qry_participant = "DELETE from tbl_participant WHERE conference_ID ='$action_id'";
 
-    $qry_to_room="UPDATE $room_tbl SET last_update ='$last_updated',`conference_name` = ' ' WHERE room_number='$room_number'";
+    $qry_to_room = "UPDATE $room_tbl SET last_update ='$last_updated',`conference_name` = ' ' WHERE room_number='$room_number'";
 
 
-    $total_column_set="";
-    $total_column_was="";
-    for($i=$key1; $i<=$key2; $i++)
-    {
-        $column=$start_array[$i]."_".$end_array[$i] ;
-        if($i<$key2)
-        {
-            $total_column_set= $total_column_set."`".$column."`" ."=". "'Free'"." , ";
-            $total_column_was = $total_column_was."`".$column."`" ."=". "'$action_id'"." AND ";
-        }
-
-        else
-        {
-            $total_column_set= $total_column_set."`".$column."`" ."=". "'Free'";
-            $total_column_was = $total_column_was."`".$column."`" ."=". "'$action_id'";
+    $total_column_set = "";
+    $total_column_was = "";
+    for ($i = $key1; $i <= $key2; $i++) {
+        $column = $start_array[$i] . "_" . $end_array[$i];
+        if ($i < $key2) {
+            $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'Free'" . " , ";
+            $total_column_was = $total_column_was . "`" . $column . "`" . "=" . "'$action_id'" . " AND ";
+        } else {
+            $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'Free'";
+            $total_column_was = $total_column_was . "`" . $column . "`" . "=" . "'$action_id'";
         }
 
 
     }
-    if($Schedule_Conf=='Daily')
-    {
-        $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day AND $total_column_was AND  `room_number`='$room_number' ";
+    if ($Schedule_Conf == 'Daily') {
+        $query3 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day AND $total_column_was AND  `room_number`='$room_number' ";
         //echo "query3:".print_r($query3,1);
-    }
-    else if($Schedule_Conf=='Weekly')
-    {
-        $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND $day AND $total_column_was AND  `room_number`='$room_number' ";
+    } else if ($Schedule_Conf == 'Weekly') {
+        $query3 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND $day AND $total_column_was AND  `room_number`='$room_number' ";
         //echo "query3:".print_r($query3,1);
-    }
-    else
-    {
-        $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND $total_column_was AND  `room_number`='$room_number' ";
+    } else {
+        $query3 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND $total_column_was AND  `room_number`='$room_number' ";
         //echo "query3:".print_r($query3,1);
 
     }
@@ -282,15 +291,16 @@ else if ($action == "delete") {
         $is_error = 1;
     }
 
-    $msg = "Successfully Deleted";
-}
+    $record_qry = "Delete from $Call_Handler_DB.outdialque where UserId = $conf_id";
 
-else {
+    $msg = "Successfully Deleted";
+} else {
 
     $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Conference_Duration, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel)
 	VALUES('$demo_name', '$long_code', '$user_id', '$room_number', '$web_link', '$conference_code', '$start', '$end', '$duration' ,'$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel')";
 
-    $qry_to_room="UPDATE $room_tbl SET last_update='$last_updated',conference_name= '$demo_name' WHERE room_number='$room_number'";
+    $qry_to_room = "UPDATE $room_tbl SET last_update='$last_updated',conference_name= '$demo_name' WHERE room_number='$room_number'";
+
 
     $msg = "Successfully Saved";
 }
@@ -305,16 +315,25 @@ try {
 
 try {
     $res = Sql_exec($cn, $qry);
-    if($flag == 'delete')
-    {
+    if ($flag == 'delete') {
         $res = Sql_exec($cn, $qry_participant);
         $is_error = 2;
-    }
-
-    else
-    $is_error = 0;
+    } else
+        $is_error = 0;
 } catch (Exception $e) {
     $is_error = 1;
+}
+
+if ($run_record_qry) {
+    try {
+        $ret = Sql_exec($cn, $record_qry);
+        logcats("Query: " . $record_qry);
+        logcats("Result: " . $ret);
+        $is_error = 0;
+    } catch (Exception $e) {
+        $is_error = 1;
+        $msg = $e;
+    }
 }
 
 /*================================== for conference id ======================================================*/
@@ -330,34 +349,46 @@ if ($action == "save") {
     }
 
     /*================================== Set conference id to Scheduler table ======================================================*/
-    $_SESSION['conf_id'] = $conf_id;
-    $total_column_set="";
-    for($i=$key1; $i<=$key2; $i++)
-    {
-        $column=$start_array[$i]."_".$end_array[$i] ;
-        if($i<$key2)
-             $total_column_set= $total_column_set."`".$column."`" ."=". "'$conf_id'"." , ";
+    $_SESSION['conference']['conf_id'] = $conf_id;
+    $total_column_set = "";
+    for ($i = $key1; $i <= $key2; $i++) {
+        $column = $start_array[$i] . "_" . $end_array[$i];
+        if ($i < $key2)
+            $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'$conf_id'" . " , ";
         else
-            $total_column_set= $total_column_set."`".$column."`" ."=". "'$conf_id'";
+            $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'$conf_id'";
 
     }
-    if($schedule_conf=='Daily')
-     {
-         $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day  $total_column AND  `room_number`='$room_number' ";
+
+    if ($schedule_conf == 'Daily') {
+        $query2 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day  $total_column AND  `room_number`='$room_number' ";
         //echo "query2:".print_r($query2,1);
-     }
-
-    else if($schedule_conf=='Weekly')
-       {
-         $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  $day  $total_column AND  `room_number`='$room_number' ";
-             //echo "query2:".print_r($query2,1);
-      }
-
-    else
-    {
-        $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column AND  `room_number`='$room_number' ";
+    } else if ($schedule_conf == 'Weekly') {
+        $query2 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  $day  $total_column AND  `room_number`='$room_number' ";
+        //echo "query2:".print_r($query2,1);
+    } else {
+        $query2 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column AND  `room_number`='$room_number' ";
         //echo "query2:".print_r($query2,1);
     }
+
+    if ($demo_recording == 'yes') {
+        $record_qry = "insert into $Call_Handler_DB.outdialque set MSISDN = '$room_number',DisplayAno = '$long_code',OriginalAno = '2008',
+ServiceId = 'record_conference', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$conference_id', OutDialTime = '$start_date_time'";
+        $run_record_qry = true;
+    }
+
+    if ($run_record_qry) {
+        try {
+            $ret = Sql_exec($cn, $record_qry);
+            logcats("Query: " . $record_qry);
+            logcats("Result: " . $ret);
+            $is_error = 0;
+        } catch (Exception $e) {
+            $is_error = 1;
+            $msg = $e;
+        }
+    }
+
 
     try {
         $update_result = Sql_exec($cn, $query2);
@@ -371,18 +402,15 @@ if ($action == "save") {
 ClosedDBConnection($cn);
 
 if ($is_error == 0) {
-    $return_data = array('status' => true,'query1'=>$query1,'query2'=>$query2, 'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
-    'Code' => '$conference_code', 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
-    'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf );
+    $return_data = array('status' => true, 'query1' => $query1, 'query2' => $query2, 'conf_id' => $conf_id, 'Name' => $demo_name, 'UserID' => $user_id, 'Long_Number' => $long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+        'Code' => '$conference_code', 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants, 'Recording' => $demo_recording,
+        'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf);
 
-}
-else if ($is_error == 2){
-    $return_data = array('status' => true,'query3'=>$query3, 'message' => $msg);
+} else if ($is_error == 2) {
+    $return_data = array('status' => true, 'query3' => $query3, 'message' => $msg);
 
-}
-
-else {
-    $return_data = array('status' => false, 'message' => 'Data Not Send.');
+} else {
+    $return_data = array('status' => false, 'message' => 'Data Not Send.Error: ' . $msg);
 }
 
 echo json_encode($return_data);

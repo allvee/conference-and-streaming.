@@ -284,6 +284,7 @@ function edit_conference_list(obj, info, room_number, weblink) {
 
      $('#demo_participants').val(data[5]);
      $('#demo_recording').val(data[6]);
+     if(data[6]=='yes') $('#demo_recording').attr("checked",checked);
 
      var track_array = data[7].split(',');
      for (var i = 0; i < track_array.length; i++) {

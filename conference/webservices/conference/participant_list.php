@@ -10,8 +10,8 @@ include_once "../lib/common.php";
 $cn = connectDB();
 
 $tbl = "tbl_participant";
-$participant_conference_name = $_SESSION['conf_name'];
-$conference_id = $_SESSION['conf_id'];
+$participant_conference_name = $_SESSION['conference']['conf_name'];
+$conference_id = $_SESSION['conference']['conf_id'];
 
 $arrayInput = array();
 $query = "SELECT ID, participant_name, msisdn, email, conference_name, organization, participant_type FROM $tbl
