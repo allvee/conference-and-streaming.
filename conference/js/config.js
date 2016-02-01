@@ -404,3 +404,4 @@ cms_url['participant_info'] = cms_url['cms_host']+ 'conference/participant_info.
 cms_url['retrieve_participant_info'] = cms_url['cms_host']+ 'conference/retrieve_participant_info.php';
 cms_url['participant_count'] = cms_url['cms_host']+ 'conference/participant_count.php';
 cms_url['conference_details'] = cms_url['cms_host']+ 'conference/conference_details.php';
+cms_url['check_room_number'] = cms_url['cms_host']+ 'conference/check_room_number.php';

@@ -112,47 +112,56 @@ function from_backend(){
 
 
 function conference_create_edit() {
+
     form_id = "conference_create_edit";
+    var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
+    Check_response = JSON.parse(Check_response);
 
 
-    alert("before php Hit js");
+    if (Check_response.status) {
 
-    var response = connectServerWithForm(cms_url['conference_info'], form_id);
-    alert("after php Hit js");
-    console.log("get: "+response +" found");
+        alert("before php Hit js");
 
-   // alert("after php Hit js");
+        var response = connectServerWithForm(cms_url['conference_info'], form_id);
 
-    response = JSON.parse(response);
-    //alert("after php Hit js: "+response.status);
+        console.log("get: "+response +" found");
+        response = JSON.parse(response);
 
-    conference_name=response.Name;
-    No_of_participants=response.No_of_Participants;
+        conference_name=response.Name;
+        No_of_participants=response.No_of_Participants;
 
-    conference_id = response.conf_id;
+        conference_id = response.conf_id;
 
-   // alert("conference_id:"+conference_id);
+        // alert("conference_id:"+conference_id);
 
-    conference_notice="<br/>Conference Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-        +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-        +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
-    +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
-    +"<br/>Code    : "+ response.Code +"<br/>Start Time     : " + response.Start_Time
-    +"<br/>End Time    : "+ response.End_Time +"<br/>Conference Duration     : " +response.Conference_Duration.h+" : "+ response.Conference_Duration.i
-    +"<br/>Recording     : " + response.Recording +"<br/>Stats   : "+ response.Stats +"<br/>Notification Channel     : " + response.Notification_Channel
-    +"<br/>Schedule Conf   : "+ response.Schedule_Conf
-    +"<br/><b>Participants :</b> <br/>";
+        conference_notice="<br/>Conference Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
+            +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
+            +"<br/>Code    : "+ response.Code +"<br/>Start Time     : " + response.Start_Time
+            +"<br/>End Time    : "+ response.End_Time +"<br/>Conference Duration     : " +response.Conference_Duration.h+" : "+ response.Conference_Duration.i
+            +"<br/>Recording     : " + response.Recording +"<br/>Stats   : "+ response.Stats +"<br/>Notification Channel     : " + response.Notification_Channel
+            +"<br/>Schedule Conf   : "+ response.Schedule_Conf
+            +"<br/><b>Participants :</b> <br/>";
 
-    if (response.status) {
+        if (response.status) {
 
-       // alertMessage(this, 'green', '           Conference Conformation', conference_notice );
-        showUserMenu('participants_list');
+            // alertMessage(this, 'green', '           Conference Conformation', conference_notice );
+            showUserMenu('participants_list');
+        }
+
+        else
+        {
+            alertMessage(this, 'red', 'Unsuccessful' , response.message);
+        }
+
     }
 
     else
     {
-        alertMessage(this, 'red', 'Unsuccessful' , response.message);
+        alertMessage(this, 'red', 'Sorry!!' , response.message);
     }
+
 }
 
 function cancel_form_create_conference(){

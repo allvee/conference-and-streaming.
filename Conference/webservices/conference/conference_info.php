@@ -442,7 +442,7 @@ if ($action == "save") {
 ClosedDBConnection($cn);
 
 if ($is_error == 0) {
-    $return_data = array('status' => true,'interval'=>$interval,'query1'=>$query1,'query2'=>$query2, 'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    $return_data = array('status' => true,'query1'=>$query1,'query2'=>$query2, 'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
     'Code' => '$conference_code', 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
     'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf );
 
