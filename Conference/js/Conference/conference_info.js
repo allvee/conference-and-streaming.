@@ -370,6 +370,7 @@ function delete_confirm_conference_list(event) {
     dataInfo['end_date'] = arrayInput[4];
     dataInfo['Schedule_Conf'] = arrayInput[5];
 
+    //console.log(dataInfo);
     var response = connectServer(cms_url['conference_info'], dataInfo);
 
 

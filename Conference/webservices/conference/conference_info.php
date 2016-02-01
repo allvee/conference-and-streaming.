@@ -48,7 +48,7 @@ $end_array = array("00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:0
                 "14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30",
                 "21:00","21:30","22:00","22:30","23:00","23:30","11:59");
 //echo print_r($end_array);
-
+        $valid_day=30;
 
 if ($action != 'delete') {
 
@@ -77,7 +77,6 @@ if ($action != 'delete') {
     }
 //echo print_r($total_column);
 
-
     $start = $start_date . " ".$start_time;
     $end  = $end_date." ".$end_time;
 
@@ -91,6 +90,16 @@ if ($action != 'delete') {
     $eMonth = $date_split[1];
     $eYear = $date_split[0];
 
+    $interval= " ";
+    for($i= (int) $sDay,$j=0;$i<=$valid_day;$i=$i+7)
+    {
+        if($i<24)
+        $interval= $interval."'$i'". ",";
+        else
+            $interval= $interval."'$i'";
+
+    }
+    $day= "`Day`"." "."in"."(".$interval.")";
 
 
    /* $to_time = strtotime($start_time);
@@ -168,16 +177,22 @@ if ($action != 'delete') {
 
     /*===================select room number from conference_scheduler DB ==============================*/
 
-    $valid_day=30;
+
     if($schedule_conf=='Daily')
     {
-        $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`>= '$sDay' AND  `Day`<='$valid_day'  $total_column LIMIT 0,1 ";
+        $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day  $total_column LIMIT 0,1 ";
         //echo "query1:".print_r($query1,1);
     }
-
+    else if($schedule_conf=='Weekly')
+    {
+        $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  $day  $total_column LIMIT 0,1 ";
+        //echo "query1:".print_r($query1,1);
+    }
     else
-    $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column LIMIT 0,1 ";
-    //echo "query1:".print_r($query1,1);
+    {
+        $query1="SELECT room_number FROM tbl_conference_scheduler WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column LIMIT 0,1 ";
+        //echo "query1:".print_r($query1,1);
+    }
 
     $result = Sql_exec($cn, $query1);
 
@@ -232,11 +247,13 @@ else
     $end_date_time = $data_info['end_date'];
     $Schedule_Conf = $data_info['Schedule_Conf'];
 
+
     $date_time_split= explode(' ', $start_date_time);
     $date_split = explode('-', $date_time_split[0]);
     $sDay =(int) $date_split[2];
     $sMonth = (int) $date_split[1];
     $sYear = (int) $date_split[0];
+
     $time_split = explode(':', $date_time_split[1]);
     $start_time= $time_split[0].":".$time_split[1];
 
@@ -248,6 +265,17 @@ else
     $key1 = array_search($start_time, $start_array);
     $key2 = array_search($end_time, $end_array);
 
+
+    $interval= " ";
+    for($i= (int) $sDay,$j=0;$i<=$valid_day;$i=$i+7)
+    {
+        if($i<24)
+            $interval= $interval."'$i'". ",";
+        else
+            $interval= $interval."'$i'";
+
+    }
+    $day= "`Day`"." "."in"."(".$interval.")";
 
 
     // echo json_encode( array("action"=>$action,"deleted_id"=>$deleted_id,"room_number"=>$room_number) );
@@ -301,11 +329,21 @@ else if ($action == "delete") {
 
     }
     if($Schedule_Conf=='Daily')
-    $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`>= '$sDay' AND  `Day`<='$valid_day' AND $total_column_was AND  `room_number`='$room_number' ";
-    //echo "query3:".print_r($query3,1);
+    {
+        $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day AND $total_column_was AND  `room_number`='$room_number' ";
+        //echo "query3:".print_r($query3,1);
+    }
+    else if($Schedule_Conf=='Weekly')
+    {
+        $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND $day AND $total_column_was AND  `room_number`='$room_number' ";
+        //echo "query3:".print_r($query3,1);
+    }
     else
-    $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND $total_column_was AND  `room_number`='$room_number' ";
-    //echo "query3:".print_r($query3,1);
+    {
+        $query3="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay' AND $total_column_was AND  `room_number`='$room_number' ";
+        //echo "query3:".print_r($query3,1);
+
+    }
 
     try {
         $update_result = Sql_exec($cn, $query3);
@@ -375,13 +413,22 @@ if ($action == "save") {
 
     }
     if($schedule_conf=='Daily')
-    {
-    $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`>= '$sDay' AND  `Day`<='$valid_day'  $total_column AND  `room_number`='$room_number' ";
-    //echo "query2:".print_r($query2,1);
+     {
+         $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day  $total_column AND  `room_number`='$room_number' ";
+        //echo "query2:".print_r($query2,1);
      }
+
+    else if($schedule_conf=='Weekly')
+       {
+         $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  $day  $total_column AND  `room_number`='$room_number' ";
+             //echo "query2:".print_r($query2,1);
+      }
+
     else
-    $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column AND  `room_number`='$room_number' ";
-    //echo "query2:".print_r($query2,1);
+    {
+        $query2="UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column AND  `room_number`='$room_number' ";
+        //echo "query2:".print_r($query2,1);
+    }
 
     try {
         $update_result = Sql_exec($cn, $query2);
@@ -395,13 +442,13 @@ if ($action == "save") {
 ClosedDBConnection($cn);
 
 if ($is_error == 0) {
-    $return_data = array('status' => true,'query1'=>$query1,'query2'=>$query2, 'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    $return_data = array('status' => true,'interval'=>$interval,'query1'=>$query1,'query2'=>$query2, 'conf_id' => $conf_id,'Name' => $demo_name, 'UserID' => $user_id , 'Long_Number'=>$long_code, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
     'Code' => '$conference_code', 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants,'Recording' => $demo_recording,
     'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf );
 
 }
 else if ($is_error == 2){
-    $return_data = array('status' => true, 'message' => $msg);
+    $return_data = array('status' => true,'query3'=>$query3, 'message' => $msg);
 
 }
 
@@ -410,4 +457,3 @@ else {
 }
 
 echo json_encode($return_data);
-
