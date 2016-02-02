@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1054205375">
-    <data-source source="LOCAL" name="MySQL - conference@192.168.245.46" uuid="ed30148c-3c10-41ad-a463-97d9fa363b35">
+  <component name="DataSourceManagerImpl" format="xml" hash="47998887">
+    <data-source source="LOCAL" name="MySQL - conference@192.168.246.85" uuid="ed30148c-3c10-41ad-a463-97d9fa363b35">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://192.168.245.46:3306/conference</jdbc-url>
+      <jdbc-url>jdbc:mysql://192.168.246.85:3306/conference</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />

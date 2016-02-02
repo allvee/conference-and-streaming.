@@ -130,9 +130,9 @@ function conference_create_edit() {
 
     form_id = "conference_create_edit";
     var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
-
+	
     Check_response = JSON.parse(Check_response);
-
+	alert("Room Found:"+Check_response.Room_Number);
     if (Check_response.status && Check_response.Room_Number) {
 
         alert("before php Hit js");

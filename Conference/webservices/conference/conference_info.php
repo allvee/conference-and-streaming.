@@ -235,7 +235,7 @@ if ($action == "update") {
     $qry = "UPDATE $tbl set `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
             `CODE`='$conference_code',`Start_Time`='$start',`End_Time`='$end',`Conference_Duration`='$duration',`Participants`='$demo_participants',`Recording`='$demo_recording',
             `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel' WHERE ID='$action_id'";
-
+    /*echo __LINE__ . $qry;*/
     $conf_id = $action_id;
     $_SESSION['conference']['conf_id'] = $action_id;
 

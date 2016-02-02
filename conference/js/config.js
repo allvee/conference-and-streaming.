@@ -28,8 +28,9 @@ cms_service_url['get_header_footer'] = cms_service_url['cms_service_host'] + 'CM
  *  Cms structure url
  */
 cms_url = new Array();
-cms_url['get_cms_url'] = site_host + 'conference/'; // change with your folder name
 
+cms_url['MarketplaceURL'] = 'http://192.168.245.34/';
+cms_url['get_cms_url'] = site_host + 'conference/'; // change with your folder name
 cms_url['cms_host'] = cms_url['get_cms_url'] + 'webservices/';
  
 /* =====================================
@@ -405,3 +406,90 @@ cms_url['retrieve_participant_info'] = cms_url['cms_host']+ 'conference/retrieve
 cms_url['participant_count'] = cms_url['cms_host']+ 'conference/participant_count.php';
 cms_url['conference_details'] = cms_url['cms_host']+ 'conference/conference_details.php';
 cms_url['check_room_number'] = cms_url['cms_host']+ 'conference/check_room_number.php';
+
+
+/* =====================================
+ * Enterprise Conference Platform End...
+ * =====================================*/
+
+/* =====================================
+ * Single User Signin start...
+ * =====================================*/
+
+cms_url['site_host_destroy'] = site_host + 'destroy.php';
+cms_url['get_session_data'] = cms_url['cms_host'] + 'UserLogin/get_server_session.php';
+cms_url['check_server_session'] = cms_url['cms_host'] + 'UserLogin/is_session_exist.php';
+cms_url['UserLogin'] = cms_url['cms_host'] + 'UserLogin/UserLogin.php';
+
+/* =====================================
+ * Single User Signin END...
+ * =====================================*/
+
+
+/* =====================================
+ * Role Management Start...
+ * =====================================*/
+
+cms_url['save_organization'] = cms_url['cms_host'] + 'conference/role_management/organization/save_organization.php';
+cms_url['view_organization'] = cms_url['cms_host'] + 'conference/role_management/organization/view_organization.php';
+cms_url['get_organizations'] = cms_url['cms_host'] + 'conference/role_management/organization/get_organizations.php';
+
+
+cms_url['dropdoen_org_user_name']= cms_url['cms_host'] + 'conference/role_management/organization_user/dropdoen_org_user_name.php';
+cms_url['dropdown_org_user_organization_name']= cms_url['cms_host'] + 'conference/role_management/organization_user/dropdown_org_user_organization_name.php';
+cms_url['save_organization_user']=cms_url['cms_host'] + 'conference/role_management/organization_user/save_organization_user.php';
+cms_url['view_organization_user']=cms_url['cms_host'] + 'conference/role_management/organization_user/view_organization_user.php';
+
+cms_url['save_role'] = cms_url['cms_host'] + 'conference/role_management/role/save_role.php';
+cms_url['view_role'] = cms_url['cms_host'] + 'conference/role_management/role/view_role.php';
+cms_url['role_organization_dropdown']=cms_url['cms_host'] + 'conference/role_management/role/dropdown_role.php';
+
+
+cms_url['rcportal_firewall_get_roles'] = cms_url['cms_host'] + 'conference/role_management/role_menu/get_all_roles_option.php';
+cms_url['rcportal_firewall_get_menu'] =  cms_url['cms_host'] + 'conference/role_management/role_menu/get_menu.php';
+/*cms_url['save_role'] = cms_url['cms_host'] + 'firewall/role/save_role.php';
+ cms_url['view_role'] = cms_url['cms_host'] + 'firewall/role/view_role.php';*/
+cms_url['rcportal_firewall_save_menu'] = cms_url['cms_host'] + 'conference/role_management/role_menu/save_menu.php';
+
+
+cms_url['rcportal_firewall_rule'] = cms_url['cms_host'] + 'conference/role_management/rule/view_firewall_rule.php';
+cms_url['rcportal_firewall_rule_submit'] = cms_url['cms_host'] + 'conference/role_management/rule/save_firewall_rule.php';
+cms_url['rcportal_firewall_rule_send'] = cms_url['cms_host'] + 'conference/role_management/rule_patch/patch_firewall_rules.php';
+cms_url['rcportal_firewall_group_ip'] = cms_url['cms_host'] + 'conference/role_management/rule/get_firewall_group_ip.php';
+cms_url['rcportal_firewall_group_host'] = cms_url['cms_host'] + 'conference/role_management/rule/get_firewall_group_host.php';
+cms_url['rcportal_firewall_group_mac'] = cms_url['cms_host'] + 'conference/role_management/rule/get_firewall_group_mac.php';
+
+
+cms_url['user_role_association_full_name_dropdown']= cms_url['cms_host'] + 'conference/role_management/user_role_association/user_role_association_full_name_dropdown.php';
+cms_url['user_role_association_role_name_dropdown']= cms_url['cms_host'] + 'conference/role_management/user_role_association/user_role_association_role_name_dropdown.php';
+cms_url['save_firewall_user_role_association']=cms_url['cms_host'] + 'conference/role_management/user_role_association/save_firewall_user_role_association.php';
+cms_url['view_firewall_user_role_association']=cms_url['cms_host'] + 'conference/role_management/user_role_association/view_firewall_user_role_association.php';
+
+
+
+cms_url['save_users'] = cms_url['cms_host'] + 'conference/role_management/users/save_users.php';
+cms_url['view_users'] = cms_url['cms_host'] + 'conference/role_management/users/view_users.php';
+cms_url['get_users'] = cms_url['cms_host'] + 'conference/role_management/users/get_users.php';
+cms_url['get_user_type'] = cms_url['cms_host'] + 'conference/role_management/users/get_user_type.php';
+cms_url['rcportal_firewall_check_if_superuser'] =  cms_url['cms_host'] + 'conference/role_management/users/check_if_superuser.php';
+
+
+cms_url['firewall_config'] = cms_url['cms_host'] +'conference/role_management/firewall_config.php';
+cms_url['show_data'] = cms_url['cms_host'] +'conference/role_management/show_data.php';
+
+cms_url['firewall_has_menu_permission'] = cms_url['cms_host'] + 'menu/has_permission.php';
+cms_url['change_password'] = cms_url['cms_host'] + 'change_password/change_password.php';
+
+
+cms_url['rcportal_check_available_version'] = cms_url['cms_host']  + 'version_control/version_check_locally.php';
+cms_url['rcportal_update_available_version'] = cms_url['cms_host']  + 'version_control/version_update.php';
+
+
+
+cms_url['view_vpn_menu'] = cms_url['cms_host'] + 'menu/view_vpn_menu.php';
+cms_url['activity_log'] = cms_url['cms_host'] + 'lib/write_activity_log.php';
+cms_url['view_role_mgmt_sync_log'] = cms_url['cms_host'] + 'conference/role_management/view_role_mgmt_sync_status_log.php';
+
+/* =====================================
+ * Role Management End...
+ * =====================================*/
