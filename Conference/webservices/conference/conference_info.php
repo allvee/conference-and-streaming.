@@ -186,6 +186,7 @@ if ($action != 'delete') {
         $demo_active = "done";
     }
 
+    $_SESSION['conference']['conference_status'] = $demo_active;
     /*echo __LINE__ . ": " . $demo_recording;*/
 
 } else {

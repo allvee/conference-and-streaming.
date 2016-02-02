@@ -130,7 +130,7 @@ function conference_create_edit() {
 
     form_id = "conference_create_edit";
     var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
-
+    alert(Check_response);
     Check_response = JSON.parse(Check_response);
 
     if (Check_response.status && Check_response.Room_Number) {
@@ -419,3 +419,8 @@ function delete_confirm_conference_list(event) {
 
 }
 
+function conference_record_download(){
+
+    alert("i am here!");
+
+}

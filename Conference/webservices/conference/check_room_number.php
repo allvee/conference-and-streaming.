@@ -57,9 +57,9 @@ $start = $start_date . " ".$start_time;
 $end  = $end_date." ".$end_time;
 
 $date_split= explode('-', $start_date);
-$sDay = $date_split[2];
-$sMonth = $date_split[1];
-$sYear = $date_split[0];
+$sDay =(int) $date_split[2];
+$sMonth = (int) $date_split[1];
+$sYear = (int) $date_split[0];
 
 $interval= " ";
 for($i= (int) $sDay,$j=0;$i<=$valid_day;$i=$i+7)

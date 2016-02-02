@@ -46,6 +46,7 @@ if ($action != 'delete') {
     $participant_conference_name = $_SESSION['conference']['conf_name'];
     $user_id = $_SESSION['conference']['UserID'];
     $conference_id = $_SESSION['conference']['conf_id'];
+    $conference_status = $_SESSION['conference']['conference_status'];
 
 } else {
     /*=============================== for room number and Web Link for Delete =====================*/
@@ -60,7 +61,7 @@ if ($action == "update") {
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
 
     $qry = "UPDATE $tbl set `participant_name`='$participant_name',`msisdn`='$participant_msisdn', `email`='$participant_email',`conference_ID`='$conference_id', `conference_name`='$participant_conference_name',
-           `long_code`='$long_code', `organization`='$participant_organization', `participant_type` ='$participant_type'";
+           `long_code`='$long_code', `organization`='$participant_organization', `participant_type` ='$participant_type',`conference_status`='$conference_status'";
     $qry .= " WHERE ID='$action_id'";
 
 } else if ($action == "delete") {
@@ -73,8 +74,8 @@ if ($action == "update") {
 
 } else {
     $msg = "Successfully Saved";
-    $qry = "INSERT INTO `$tbl` (`participant_name`, `msisdn`, `email`,`conference_ID`, `conference_name`, `long_code`,`organization`, `participant_type`)
-	VALUES('$participant_name', '$participant_msisdn', '$participant_email','$conference_id', '$participant_conference_name','$long_code', '$participant_organization', '$participant_type')";
+    $qry = "INSERT INTO `$tbl` (`participant_name`, `msisdn`, `email`,`conference_ID`, `conference_name`, `long_code`,`organization`, `participant_type`,`conference_status`)
+	VALUES('$participant_name', '$participant_msisdn', '$participant_email','$conference_id', '$participant_conference_name','$long_code', '$participant_organization', '$participant_type','$conference_status')";
 }
 
 try {
