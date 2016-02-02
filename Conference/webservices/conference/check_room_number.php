@@ -100,15 +100,22 @@ while ($row = Sql_fetch_array($result)) {
     $room_number = Sql_Result($row, "room_number");
 }
 
+$msg="Free Room for Conference is not found at your given time" . "<br/>Please Try at different Time";
+
 ClosedDBConnection($cn);
 
-if ($is_error == 0) {
+if ($is_error == 0 && isset($room_number)) {
     $return_data = array('status' => true,'query1'=>$query1,'Room_Number' => $room_number);
+
+}
+else if ($is_error == 0 && !(isset($room_number))) {
+    $return_data = array('status' => true,'query1'=>$query1,'Room_Number' => $room_number,'message' => $msg);
 
 }
 
 else {
-    $return_data = array('status' => false, 'query1'=>$query1, 'message' => 'Free Conference Room not found'+'<br/>Please Try for another Time');
+    $return_data = array('status' => false, 'query1' => $query1, 'message' => $msg);
+
 }
 
-echo json_encode($return_data);
+    echo json_encode($return_data);

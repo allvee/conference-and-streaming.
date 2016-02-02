@@ -106,6 +106,7 @@ if ($action != 'delete') {
 
     $schedule_conf = $data['schedule_conf_dropdown'];
 
+
     /*===================select room number from conference_scheduler DB ==============================*/
 
     if ($schedule_conf == 'Daily') {
@@ -133,16 +134,17 @@ if ($action != 'delete') {
     $demo_active = $data['demo_active'];
     $demo_active = "active";
 
-    $demo_recording = null;
+    $demo_recording = $data['demo_recording'];
 
-    if (isset($data['demo_recording']) && $data['demo_recording']=='yes') {
-        $demo_recording = "yes";
-    } else {
-        $demo_recording = "no";
-    }
-    /*echo __LINE__ . ": " . $data['demo_recording'];
-    echo __LINE__ . ": " . $demo_recording;*/
-
+        if (isset($data['demo_recording']) && ($data['demo_recording']== "yes" )) {
+            $demo_recording = "yes";
+        }
+        else if(isset($data['demo_recording']) && ($data['demo_recording']== "no" )){
+            $demo_recording = "no";
+        }
+        else {
+            $demo_recording = "no";
+        }
 
     $track_count = sizeof($_REQUEST['notification_channel']);
     $flag = 0;
@@ -233,7 +235,7 @@ if ($action == "update") {
     $qry = "UPDATE $tbl set `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
             `CODE`='$conference_code',`Start_Time`='$start',`End_Time`='$end',`Conference_Duration`='$duration',`Participants`='$demo_participants',`Recording`='$demo_recording',
             `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel' WHERE ID='$action_id'";
-    /*echo __LINE__ . $qry;*/
+
     $conf_id = $action_id;
     $_SESSION['conference']['conf_id'] = $action_id;
 
@@ -242,7 +244,7 @@ if ($action == "update") {
     if ($demo_recording == 'no') {
         $record_qry = "Delete from $Call_Handler_DB.outdialque where UserId = $conf_id";
         $run_record_qry = true;
-        echo $record_qry ."line: ". __LINE__;
+       // echo $record_qry ."line: ". __LINE__;
     }
 
     $msg = "Successfully Updated";

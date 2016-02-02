@@ -76,9 +76,6 @@ else if (field_name == 'signOut') {
 
 else if (field_name == 'enterprise_conference') {
 
-           // $('.tabtitle').hide();
-           // $("#set_title").html(' <span style="font-weight:bold;">Enterprise Conference</span>');
-
            var inputarray = [["Conference", "enterprise_conference", "active"]];
             tab_custom(inputarray, "tab_view");
             display_content_custom('1817', '#modalData');
@@ -140,6 +137,21 @@ else if (field_name == 'edit_participant') {
     tab_custom(inputarray, "tab_view");
     Participant_from_backend();
 }
+
+else if (field_name == 'view_report') {
+
+    var inputarray = [["Conference", "enterprise_conference", "deactive"],["Report", "view_report", "active"]];
+    tab_custom(inputarray, "tab_view");
+
+    display_content_custom('1822', '#modalData');
+    //$('.tabtitle').hide();
+    $("#set_title").html(' <span style="font-weight:bold;">View Report</span>');
+
+    table_initialize_live_conference_list();
+    report_menu_start_participant_list();
+
+}
+
 
 
 

@@ -1,0 +1,142 @@
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: Delete from vsdp_2_1_1.outdialque where UserId = 10
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: Delete from vsdp_2_1_1.outdialque where UserId = 10
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+Query: Delete from vsdp_2_1_1.outdialque where UserId = 10
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: Delete from vsdp_2_1_1.outdialque where UserId = 10
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+Query: Delete from vsdp_2_1_1.outdialque where UserId = 10
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+Query: Delete from vsdp_2_1_1.outdialque where UserId = 10
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+Query: Delete from vsdp_2_1_1.outdialque where UserId = 10
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: Delete from vsdp_2_1_1.outdialque where UserId = 10
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****

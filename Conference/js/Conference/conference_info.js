@@ -56,6 +56,21 @@ lastDate = [
    end_time= [ ( hour <10)? end_hour="0"+hour : end_hour= hour, ( minute <10)? end_min="00" : end_min= minute].join(':');
 
 
+function check_box_check(){
+
+    if($("#demo_recording").is(":checked"))
+    {
+        var a= document.getElementById("demo_recording").checked = "yes";
+        $('#demo_recording').val(a);
+        alert(a);
+    }
+    else
+    {
+       var a= document.getElementById("demo_recording").unchecked = "no";
+        $('#demo_recording').val(a);
+        alert(a);
+    }
+}
 
 
 function check_box_value_changed(){
@@ -115,17 +130,19 @@ function conference_create_edit() {
 
     form_id = "conference_create_edit";
     var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
+
     Check_response = JSON.parse(Check_response);
 
-
-    if (Check_response.status) {
+    if (Check_response.status && Check_response.Room_Number) {
 
         alert("before php Hit js");
+        check_box_check();
 
         var response = connectServerWithForm(cms_url['conference_info'], form_id);
-
+        alert("after php Hit js");
         console.log("get: "+response +" found");
         response = JSON.parse(response);
+        //alert("after php Hit js");
 
         conference_name=response.Name;
         No_of_participants=response.No_of_Participants;
@@ -159,7 +176,8 @@ function conference_create_edit() {
 
     else
     {
-        alertMessage(this, 'red', 'Sorry!!' , response.message);
+        alert("No Room!");
+        alertMessage(this, 'red', 'Sorry!!' , Check_response.message);
     }
 
 }
@@ -267,6 +285,7 @@ function edit_conference_list(obj, info, room_number, weblink) {
      $('#demo_name').val(str2[1]);
      $('#user_id').val(data[2]);
      var datetime=data[3].split(" ");
+     var date=datetime[0].split("-");
      var  hourmin= datetime[1].split(":")
      $('#start_date').val(datetime[0]);
 
@@ -283,8 +302,9 @@ function edit_conference_list(obj, info, room_number, weblink) {
      $("#end_time option[value='" + hourmin[0]+":"+hourmin[1] + "']").attr('selected', true);
 
      $('#demo_participants').val(data[5]);
+    /*
      $('#demo_recording').val(data[6]);
-     if(data[6]=='yes') $('#demo_recording').attr("checked",checked);
+     if(data[6]=='yes') $('#demo_recording').attr("checked",checked);*/
 
      var track_array = data[7].split(',');
      for (var i = 0; i < track_array.length; i++) {
