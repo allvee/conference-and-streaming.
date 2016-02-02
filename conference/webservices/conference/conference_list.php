@@ -31,7 +31,8 @@ while ($row = Sql_fetch_array($result)) {
     $data[$i][$j++] = Sql_Result($row, "Start_Time");
     $data[$i][$j++] = Sql_Result($row, "End_Time");
     $data[$i][$j++] = Sql_Result($row, "Participants");
-    $data[$i][$j++] = Sql_Result($row, "Recording");
+   // $data[$i][$j++] = Sql_Result($row, "Recording");
+    $data[$i][$j++] = '<span onclick="conference_record_download(this,  \'' . Sql_Result($row, "ID") .'\'); return false;"> \'' . Sql_Result($row, "Recording") .'\'</span>';
     $data[$i][$j++] = Sql_Result($row, "Notification_Channel");
     $data[$i][$j++] = Sql_Result($row, "STATUS");
     $data[$i][$j++] = Sql_Result($row, "Schedule_Conf");

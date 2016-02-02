@@ -147,6 +147,27 @@ function showUserMenu(field_name) {
             Participant_from_backend();
         }
 
+        else if (field_name == 'download_record') {
+            display_content_custom('1823', '#modalData');
+            //$('.tabtitle').hide();
+            $("#set_title").html(' <span style="font-weight:bold;">Download record</span>');
+
+            var inputarray = [["Participants", "participants_list", "active"]];
+            tab_custom(inputarray, "tab_view");
+        }
+
+        else if (field_name == 'download_list') {
+            display_content_custom('1822', '#modalData');
+            //$('.tabtitle').hide();
+            $("#set_title").html(' <span style="font-weight:bold;">Download record</span>');
+
+            var inputarray = [["Participants", "participants_list", "active"]];
+            tab_custom(inputarray, "tab_view");
+            table_initialize_download_list();
+            report_menu_start_download_list();
+
+        }
+
         /////////////////////////*** Role Management Start ******/
 
         else if (field_name == 'firewall_organization_view') {

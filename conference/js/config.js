@@ -406,7 +406,8 @@ cms_url['retrieve_participant_info'] = cms_url['cms_host']+ 'conference/retrieve
 cms_url['participant_count'] = cms_url['cms_host']+ 'conference/participant_count.php';
 cms_url['conference_details'] = cms_url['cms_host']+ 'conference/conference_details.php';
 cms_url['check_room_number'] = cms_url['cms_host']+ 'conference/check_room_number.php';
-
+cms_url['download'] = cms_url['cms_host']+ 'conference/download.php';
+cms_url['record_file'] = cms_url['cms_host']+ 'conference/record_file.php';
 
 /* =====================================
  * Enterprise Conference Platform End...
