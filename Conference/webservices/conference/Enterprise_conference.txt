@@ -268,3 +268,97 @@ Result: 1
 ***New_Call****
 ***New_Call****
 ***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '2003',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '24', OutDialTime = NOW()
+Insert: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '2002',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '26', OutDialTime = NOW()
+Insert: 1
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '2002',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '26', OutDialTime = NOW()
+Insert: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '2002',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '26', OutDialTime = NOW()
+Insert: 1
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '2002',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '26', OutDialTime = NOW()
+Insert: 1
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '2003',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '26', OutDialTime = NOW()
+Insert: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '2002',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '26', OutDialTime = NOW()
+Insert: 1
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '2002',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '26', OutDialTime = NOW()
+Insert: 1
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '2003',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '26', OutDialTime = NOW()
+Insert: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '3003',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'record_conference', OutDialStatus = 'QUE', RetTryCount='1',UserId = '', OutDialTime = ''
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '3003',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'record_conference', OutDialStatus = 'QUE', RetTryCount='1',UserId = '', OutDialTime = ''
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****

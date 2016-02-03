@@ -47,7 +47,7 @@ if ($action != 'delete') {
     $demo_name = $data['demo_name'];
     $_SESSION['conference']['conf_name'] = $demo_name;
     $user_id = $_SESSION['conference']['id'];
-
+    $long_number= $data['long_number'];
     $start_date = $data['start_date'];
     $end_date = $data['end_date'];
     $start_time = $data['start_time'];
@@ -133,9 +133,12 @@ if ($action != 'delete') {
     $result = Sql_exec($cn,$qry);
 
     while ($row = Sql_fetch_array($result)) {
-        $web_link = $row['web_link'];
-        $long_number = $row['room_caller'];
+        $_SESSION['conference']['web_link'] = $row['web_link'];
+        $_SESSION['conference']['room_caller'] = $row['room_caller'];
     }
+
+    $web_link = $_SESSION['conference']['web_link'];
+    $long_number = $_SESSION['conference']['room_caller'];
 
     $demo_participants = $data['demo_participants'];
     $demo_active = $data['demo_active'];

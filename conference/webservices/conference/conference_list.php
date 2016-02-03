@@ -12,7 +12,7 @@ $cn = connectDB();
 $tbl = "tbl_conference";
 
 $arrayInput = array();
-$query = "SELECT ID, Conf_Name, USER, Start_Time, End_Time, Participants, Recording, Notification_Channel, STATUS,room_number, weblink, Schedule_Conf FROM $tbl";
+$query = "SELECT ID, long_number, Conf_Name, USER, Start_Time, End_Time, Participants, Recording, Notification_Channel, STATUS,room_number, weblink, Schedule_Conf FROM $tbl";
 $result = Sql_exec($cn, $query);
 if (!$result) {
     echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;
@@ -28,6 +28,7 @@ while ($row = Sql_fetch_array($result)) {
    // $data[$i][$j++] = Sql_Result($row, "Conf_Name");
     $data[$i][$j++] = '<span style="color:green;" onclick="conference_details(this,  \'' . Sql_Result($row, "ID") .'\'); return false;"> \'' . Sql_Result($row, "Conf_Name") .'\'</span>';
     $data[$i][$j++] = Sql_Result($row, "USER");
+   // $data[$i][$j++] = Sql_Result($row, "long_number");
     $data[$i][$j++] = Sql_Result($row, "Start_Time");
     $data[$i][$j++] = Sql_Result($row, "End_Time");
     $data[$i][$j++] = Sql_Result($row, "Participants");
@@ -43,8 +44,8 @@ while ($row = Sql_fetch_array($result)) {
     $data[$i][$j++] = Sql_Result($row, "Schedule_Conf");
     //$a= Sql_Result($row, "room_number");
    // $b= Sql_Result($row, "weblink");
-
-    $data[$i][$j++] = '<span onclick="edit_conference_list(this,  \'' . Sql_Result($row, "ID") .'\',\''.Sql_Result($row, "room_number") .'\',\''.Sql_Result($row, "weblink") .'\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/pen.png" ></span>'
+    //$data[$i][$j++] = Sql_Result($row, "weblink");
+    $data[$i][$j++] = '<span onclick="edit_conference_list(this,  \'' . Sql_Result($row, "ID") .'\',\''.Sql_Result($row, "room_number") .'\',\''.Sql_Result($row, "long_number") .'\',\''.Sql_Result($row, "weblink") .'\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/pen.png" ></span>'
         . '&nbsp&nbsp' . '<span onclick="delete_conference_list(this, \'' . Sql_Result($row, "ID") .'\', \''.Sql_Result($row, "room_number") .'\' ,\''.Sql_Result($row, "Start_Time").'\',\''.Sql_Result($row, "End_Time") .'\',\''.Sql_Result($row, "Schedule_Conf").'\'); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="conference/img/cancel.png" ></span>';
 
 

@@ -14,16 +14,15 @@ var d = new Date,
             d.getDate(),
             ].join('-');
 
-if(d.getMinutes()>31)
+if(parseInt(d.getMinutes())>31)
     str_minute=31;
-else if(d.getMinutes()<30)
-    str_minute=01;
+else if(parseInt(d.getMinutes())<30)
+    str_minute=1;
 
-var d = new Date();
-     start_time = [( d.getHours()<10)? str_hour="0"+d.getHours() : str_hour=d.getHours(),
-         ( d.getMinutes()<10)? str_min="01" : str_min = str_minute ].join(':');
+     start_time = [(parseInt(d.getHours()) <10)? str_hour="0"+d.getHours().toString() : str_hour=d.getHours().toString(),
+         ( (parseInt(str_minute)<10)? str_min="01": str_min = str_minute.toString() )].join(':');
 
-    console.log("Ready"+start_time);
+    console.log("Ready start_time:"+start_time);
 
     month = d.getMonth()+1;
     day = d.getDate();
@@ -53,8 +52,8 @@ lastDate = [
         (d.getMonth()+1),
         day, ].join('-');
 
-   end_time= [ ( hour <10)? end_hour="0"+hour : end_hour= hour, ( minute <10)? end_min="00" : end_min= minute].join(':');
-
+   end_time= [ ( parseInt(hour) <10)? end_hour="0"+hour.toString() : end_hour= hour.toString(),
+                ( parseInt(minute) <10)? end_min="00" : end_min= minute.toString()].join(':');
 
 function check_box_check(){
 
@@ -92,8 +91,6 @@ function check_box_value_changed(){
         $("#end_time option[value='" + end_time + "']").attr('selected', true);
         $("#end_time").trigger("chosen:updated");
 
-        alert(document.getElementById("start_time").selectedIndex);
-        alert(document.getElementById("end_time").selectedIndex);
         console.log(document.getElementById("start_time").selectedIndex);
         console.log(document.getElementById("end_time").selectedIndex);
     }
@@ -227,6 +224,7 @@ function table_data_conference_list(dataSet) {
             {"title": "ID", "class": "center"},
             {"title": "Conference Name", "class": "center"},
             {"title": "User", "class": "center"},
+            //{"title": "Long Number", "class": "center"},
             {"title": "Start Time", "class": "center"},
             {"title": "End Time", "class": "center"},
             {"title": "Participants", "class": "center"},
@@ -263,7 +261,7 @@ function table_data_conference_list(dataSet) {
     });
 }
 
-function edit_conference_list(obj, info, room_number, weblink) {
+function edit_conference_list(obj, info, room_number, long_number, weblink) {
 
     var data = [];
     var table = document.getElementById('dataTables_conference_list');
@@ -275,7 +273,7 @@ function edit_conference_list(obj, info, room_number, weblink) {
     showUserMenu('edit_conference');
     document.getElementById("conference_id").textContent=data[0];
     conference_id =data[0];
-    console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9], room_number, weblink );
+    console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9], room_number,long_number, weblink );
 
      $('#action').val("update");
      $('#action_id').val(data[0]);
@@ -314,6 +312,7 @@ function edit_conference_list(obj, info, room_number, weblink) {
      $('#schedule_conf_dropdown').val(data[9]);
      $('#room_number').val(room_number);
      $('#weblink').val(weblink);
+    $('#long_number').val(long_number);
      dropdown_chosen_style();
 
 
