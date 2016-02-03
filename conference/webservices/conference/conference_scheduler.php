@@ -18,7 +18,7 @@ function check_scheduler($param_start_time,$para_end_time,$cn)
     //echo $request_start_time->format('Y-m-d H:i:s')." : : ".$request_end_time->format('Y-m-d H:i:s')."</br>";
 
     //echo __LINE__."</br>";
-    $qry = "Select room_caller, room_pass, web_link, room_caller from tbl_conference_room";
+    $qry = "Select room_caller, room_pass, web_link from tbl_conference_room";
 //    echo $qry."</br>";
     $result = Sql_exec($cn,$qry);
 

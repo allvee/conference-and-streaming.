@@ -189,3 +189,41 @@ Insert: 1
 ***New_Call****
 ***New_Call****
 ***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '3001',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'record_conference', OutDialStatus = 'QUE', RetTryCount='1',UserId = '', OutDialTime = ''
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+***New_Call****
+Query: insert into vsdp_2_1_1.outdialque set MSISDN = '3001',DisplayAno = '',OriginalAno = '2008',
+ServiceId = 'record_conference', OutDialStatus = 'QUE', RetTryCount='1',UserId = '', OutDialTime = ''
+Result: 1
+***New_Call****
+***New_Call****
+***New_Call****
