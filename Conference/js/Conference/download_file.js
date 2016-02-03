@@ -12,7 +12,7 @@ function set_download_url( file_name) {
 
 function conference_record_download(){
 
-    alert("i am here!");
+   // alert("i am here!");
    // showUserMenu('download_record');
     showUserMenu('download_list');
 

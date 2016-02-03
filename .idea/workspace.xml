@@ -43,8 +43,20 @@
         <entry file="file://$PROJECT_DIR$/Conference/js/Conference/download_file.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="conference_list.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_list.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.1153846">
+              <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+              <folding>
+                <marker date="1454488010309" expanded="true" signature="206:351" placeholder="SELECT ID, C..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,55 +64,42 @@
       <file leaf-file-name="conference_info.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Conference/js/Conference/conference_info.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="421" column="0" selection-start-line="421" selection-start-column="0" selection-end-line="421" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.6896553">
+              <caret line="157" column="45" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="45" />
               <folding>
-                <marker date="1454422334732" expanded="true" signature="5837:5904" placeholder="..." />
+                <marker date="1454492390677" expanded="true" signature="5851:5918" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conference_info.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="conference_info.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_info.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4868421">
-              <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+            <state vertical-scroll-proportion="-9.346154">
+              <caret line="413" column="45" selection-start-line="413" selection-start-column="45" selection-end-line="413" selection-end-column="45" />
               <folding>
-                <marker date="1454481984907" expanded="true" signature="3712:3873" placeholder="SELECT room_..tbl_conference_scheduler..." />
-                <marker date="1454481984907" expanded="true" signature="3986:4117" placeholder="SELECT room_..tbl_conference_scheduler..." />
-                <marker date="1454481984907" expanded="true" signature="4198:4338" placeholder="SELECT room_..tbl_conference_scheduler..." />
-                <marker date="1454481984907" expanded="true" signature="4617:4709" placeholder="Select `room..tbl_conference_room..." />
-                <marker date="1454481984907" expanded="true" signature="8076:8505" placeholder="UPDATE ${$tb..." />
-                <marker date="1454481984907" expanded="true" signature="8639:8791" placeholder="UPDATE ${$ro..." />
-                <marker date="1454481984907" expanded="true" signature="8853:8908" placeholder="Delete from ..." />
-                <marker date="1454481984907" expanded="true" signature="9141:9180" placeholder="DELETE from ..." />
-                <marker date="1454481984907" expanded="true" signature="9208:9269" placeholder="DELETE from ..." />
-                <marker date="1454481984907" expanded="true" signature="9293:9399" placeholder="UPDATE ${$ro..." />
-                <marker date="1454481984907" expanded="true" signature="10068:10266" placeholder="UPDATE tbl_c..." />
-                <marker date="1454481984907" expanded="true" signature="10379:10546" placeholder="UPDATE tbl_c..." />
-                <marker date="1454481984907" expanded="true" signature="10627:10804" placeholder="UPDATE tbl_c..." />
-                <marker date="1454481984907" expanded="true" signature="11021:11076" placeholder="Delete from ..." />
-                <marker date="1454481984907" expanded="true" signature="11145:11563" placeholder="INSERT INTO ..." />
-                <marker date="1454481984907" expanded="true" signature="11587:11698" placeholder="UPDATE ${$ro..." />
-                <marker date="1454481984907" expanded="true" signature="12494:12974" placeholder="SELECT ID FR..tbl_conference..." />
-                <marker date="1454481984907" expanded="true" signature="13729:13920" placeholder="UPDATE tbl_c..." />
-                <marker date="1454481984907" expanded="true" signature="14033:14194" placeholder="UPDATE tbl_c..." />
-                <marker date="1454481984907" expanded="true" signature="14275:14445" placeholder="UPDATE tbl_c..." />
-                <marker date="1454481984907" expanded="true" signature="14560:14807" placeholder="insert into ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="conference_scheduler.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_scheduler.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.576923">
-              <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="25" selection-end-column="43" />
-              <folding>
-                <marker date="1454479832880" expanded="true" signature="498:562" placeholder="Select room_..tbl_conference_room..." />
-                <marker date="1454479832880" expanded="true" signature="890:970" placeholder="select Start..tbl_conference..." />
+                <marker date="1454493382989" expanded="true" signature="3712:3873" placeholder="SELECT room_..tbl_conference_scheduler..." />
+                <marker date="1454493382989" expanded="true" signature="3986:4117" placeholder="SELECT room_..tbl_conference_scheduler..." />
+                <marker date="1454493382989" expanded="true" signature="4198:4338" placeholder="SELECT room_..tbl_conference_scheduler..." />
+                <marker date="1454493382989" expanded="true" signature="4617:4709" placeholder="Select `room..tbl_conference_room..." />
+                <marker date="1454493382989" expanded="true" signature="8135:8564" placeholder="UPDATE ${$tb..." />
+                <marker date="1454493382989" expanded="true" signature="8698:8850" placeholder="UPDATE ${$ro..." />
+                <marker date="1454493382989" expanded="true" signature="8912:8967" placeholder="Delete from ..." />
+                <marker date="1454493382989" expanded="true" signature="9200:9239" placeholder="DELETE from ..." />
+                <marker date="1454493382989" expanded="true" signature="9267:9328" placeholder="DELETE from ..." />
+                <marker date="1454493382989" expanded="true" signature="9352:9458" placeholder="UPDATE ${$ro..." />
+                <marker date="1454493382989" expanded="true" signature="10127:10325" placeholder="UPDATE tbl_c..." />
+                <marker date="1454493382989" expanded="true" signature="10438:10605" placeholder="UPDATE tbl_c..." />
+                <marker date="1454493382989" expanded="true" signature="10686:10863" placeholder="UPDATE tbl_c..." />
+                <marker date="1454493382989" expanded="true" signature="11080:11135" placeholder="Delete from ..." />
+                <marker date="1454493382989" expanded="true" signature="11204:11622" placeholder="INSERT INTO ..." />
+                <marker date="1454493382989" expanded="true" signature="11646:11757" placeholder="UPDATE ${$ro..." />
+                <marker date="1454493382989" expanded="true" signature="12553:13033" placeholder="SELECT ID FR..tbl_conference..." />
+                <marker date="1454493382989" expanded="true" signature="13788:13979" placeholder="UPDATE tbl_c..." />
+                <marker date="1454493382989" expanded="true" signature="14092:14253" placeholder="UPDATE tbl_c..." />
+                <marker date="1454493382989" expanded="true" signature="14334:14504" placeholder="UPDATE tbl_c..." />
+                <marker date="1454493382989" expanded="true" signature="14619:14866" placeholder="insert into ..." />
               </folding>
             </state>
           </provider>
@@ -109,24 +108,22 @@
       <file leaf-file-name="record_file.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/record_file.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.423077">
-              <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+            <state vertical-scroll-proportion="-16.346153">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
-                <marker date="1454425496016" expanded="true" signature="226:257" placeholder="SELECT recor..." />
-                <marker date="1454425496016" expanded="true" signature="226:285" placeholder="SELECT `reco..." />
+                <marker date="1454482316567" expanded="true" signature="226:257" placeholder="SELECT recor..." />
+                <marker date="1454482316567" expanded="true" signature="226:285" placeholder="SELECT `reco..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="download.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="download.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/download.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1923075">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding>
-                <element signature="e#6#89#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.63909775">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -151,7 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="/MySQL Fragment (token.php:767).sql" />
         <option value="$PROJECT_DIR$/token.php" />
         <option value="$PROJECT_DIR$/conference/webservices/UserLogin/get_server_session.php" />
         <option value="$PROJECT_DIR$/destroy.php" />
@@ -193,15 +189,16 @@
         <option value="$PROJECT_DIR$/conference/js/UserLogin.js" />
         <option value="$PROJECT_DIR$/conference/webservices/UserLogin/UserLogin.php" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/Conference/js/Conference/conference_info.js" />
-        <option value="$PROJECT_DIR$/Conference/js/home.js" />
         <option value="$PROJECT_DIR$/Conference/js/config.js" />
-        <option value="$PROJECT_DIR$/Conference/webservices/conference/record_file.php" />
-        <option value="$PROJECT_DIR$/Conference/webservices/conference/download.php" />
-        <option value="$PROJECT_DIR$/Conference/webservices/conference/conference_list.php" />
-        <option value="$PROJECT_DIR$/Conference/js/Conference/download_file.js" />
         <option value="$PROJECT_DIR$/Conference/webservices/conference/conference_scheduler.php" />
+        <option value="$PROJECT_DIR$/Conference/webservices/conference/record_file.php" />
+        <option value="$PROJECT_DIR$/Conference/js/home.js" />
+        <option value="$PROJECT_DIR$/Conference/webservices/conference/conference_list.php" />
+        <option value="$PROJECT_DIR$/Conference/webservices/conference/participant_info.php" />
+        <option value="$PROJECT_DIR$/Conference/js/Conference/download_file.js" />
+        <option value="$PROJECT_DIR$/Conference/js/Conference/conference_info.js" />
         <option value="$PROJECT_DIR$/Conference/webservices/conference/conference_info.php" />
+        <option value="$PROJECT_DIR$/Conference/webservices/conference/download.php" />
       </list>
     </option>
   </component>
@@ -271,118 +268,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo_conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo_conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webservices" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo_conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webservices" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo_conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PDF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo_conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo_conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Conference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Conference" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -510,21 +395,21 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34700856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3982906" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982906" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982906" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3982906" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -532,7 +417,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34017095" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24281392" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20789075" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34700856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21961933" sideWeight="0.50574714" order="4" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -582,20 +467,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Conference/js/Conference/role_management/firewall_rule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3680431">
-          <caret line="50" column="5" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/role/view_role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1636364">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/user_role_association/view_firewall_user_role_association.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.0363636">
@@ -874,60 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/download.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#89#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38345864">
-          <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
-          <folding>
-            <marker date="1454479063908" expanded="true" signature="-1:-1" placeholder="SELECT ID, C..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/record_file.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.423077">
-          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-          <folding>
-            <marker date="1454425496016" expanded="true" signature="226:257" placeholder="SELECT recor..." />
-            <marker date="1454425496016" expanded="true" signature="226:285" placeholder="SELECT `reco..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4874552">
-          <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#defaultViewController#0" expanded="false" />
-            <element signature="n#!!block;n#set_brust_change#0" expanded="false" />
-            <element signature="e#8624#8929#0" expanded="false" />
-            <element signature="e#14657#17093#0" expanded="false" />
-            <element signature="e#17164#17235#0" expanded="false" />
-            <element signature="e#17275#17322#0" expanded="false" />
-            <element signature="e#17376#17429#0" expanded="false" />
-            <marker date="1454422895933" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1454422895933" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1454422895933" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1454422895933" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1454422895933" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1454422895933" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1454422895933" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2236842">
@@ -949,62 +766,136 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/js/Conference/download_file.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_scheduler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.576923">
           <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="25" selection-end-column="43" />
           <folding>
-            <marker date="1454479832880" expanded="true" signature="498:562" placeholder="Select room_..tbl_conference_room..." />
-            <marker date="1454479832880" expanded="true" signature="890:970" placeholder="select Start..tbl_conference..." />
+            <marker date="1454479832880" expanded="true" signature="-1:-1" placeholder="Select room_..tbl_conference_room..." />
+            <marker date="1454479832880" expanded="true" signature="-1:-1" placeholder="select Start..tbl_conference..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5788531">
+          <caret line="163" column="81" selection-start-line="163" selection-start-column="81" selection-end-line="163" selection-end-column="81" />
+          <folding>
+            <element signature="n#!!doc;n#defaultViewController#0" expanded="false" />
+            <element signature="n#!!block;n#set_brust_change#0" expanded="false" />
+            <element signature="e#8626#8931#0" expanded="false" />
+            <element signature="e#14659#17095#0" expanded="false" />
+            <element signature="e#17166#17237#0" expanded="false" />
+            <element signature="e#17277#17324#0" expanded="false" />
+            <element signature="e#17378#17431#0" expanded="false" />
+            <marker date="1454487032997" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1454487032997" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1454487032997" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1454487032997" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1454487032997" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1454487032997" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1454487032997" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/js/Conference/download_file.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1453889428000" expanded="true" signature="-1:-1" placeholder="SELECT `Conf..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/participant_info.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53759396">
+          <caret line="63" column="37" selection-start-line="63" selection-start-column="37" selection-end-line="63" selection-end-column="37" />
+          <folding>
+            <marker date="1454490017662" expanded="true" signature="-1:-1" placeholder="UPDATE ${$tb..." />
+            <marker date="1454490017662" expanded="true" signature="-1:-1" placeholder="DELETE from ..." />
+            <marker date="1454490017662" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.1153846">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding>
+            <marker date="1454488010309" expanded="true" signature="206:351" placeholder="SELECT ID, C..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/record_file.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.346153">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1454482316567" expanded="true" signature="226:257" placeholder="SELECT recor..." />
+            <marker date="1454482316567" expanded="true" signature="226:285" placeholder="SELECT `reco..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Conference/js/Conference/conference_info.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="421" column="0" selection-start-line="421" selection-start-column="0" selection-end-line="421" selection-end-column="0" />
+        <state vertical-scroll-proportion="-7.6896553">
+          <caret line="157" column="45" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="45" />
           <folding>
-            <marker date="1454422334732" expanded="true" signature="5837:5904" placeholder="..." />
+            <marker date="1454492390677" expanded="true" signature="5851:5918" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_info.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4868421">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+        <state vertical-scroll-proportion="-9.346154">
+          <caret line="413" column="45" selection-start-line="413" selection-start-column="45" selection-end-line="413" selection-end-column="45" />
           <folding>
-            <marker date="1454481984907" expanded="true" signature="3712:3873" placeholder="SELECT room_..tbl_conference_scheduler..." />
-            <marker date="1454481984907" expanded="true" signature="3986:4117" placeholder="SELECT room_..tbl_conference_scheduler..." />
-            <marker date="1454481984907" expanded="true" signature="4198:4338" placeholder="SELECT room_..tbl_conference_scheduler..." />
-            <marker date="1454481984907" expanded="true" signature="4617:4709" placeholder="Select `room..tbl_conference_room..." />
-            <marker date="1454481984907" expanded="true" signature="8076:8505" placeholder="UPDATE ${$tb..." />
-            <marker date="1454481984907" expanded="true" signature="8639:8791" placeholder="UPDATE ${$ro..." />
-            <marker date="1454481984907" expanded="true" signature="8853:8908" placeholder="Delete from ..." />
-            <marker date="1454481984907" expanded="true" signature="9141:9180" placeholder="DELETE from ..." />
-            <marker date="1454481984907" expanded="true" signature="9208:9269" placeholder="DELETE from ..." />
-            <marker date="1454481984907" expanded="true" signature="9293:9399" placeholder="UPDATE ${$ro..." />
-            <marker date="1454481984907" expanded="true" signature="10068:10266" placeholder="UPDATE tbl_c..." />
-            <marker date="1454481984907" expanded="true" signature="10379:10546" placeholder="UPDATE tbl_c..." />
-            <marker date="1454481984907" expanded="true" signature="10627:10804" placeholder="UPDATE tbl_c..." />
-            <marker date="1454481984907" expanded="true" signature="11021:11076" placeholder="Delete from ..." />
-            <marker date="1454481984907" expanded="true" signature="11145:11563" placeholder="INSERT INTO ..." />
-            <marker date="1454481984907" expanded="true" signature="11587:11698" placeholder="UPDATE ${$ro..." />
-            <marker date="1454481984907" expanded="true" signature="12494:12974" placeholder="SELECT ID FR..tbl_conference..." />
-            <marker date="1454481984907" expanded="true" signature="13729:13920" placeholder="UPDATE tbl_c..." />
-            <marker date="1454481984907" expanded="true" signature="14033:14194" placeholder="UPDATE tbl_c..." />
-            <marker date="1454481984907" expanded="true" signature="14275:14445" placeholder="UPDATE tbl_c..." />
-            <marker date="1454481984907" expanded="true" signature="14560:14807" placeholder="insert into ..." />
+            <marker date="1454493382989" expanded="true" signature="3712:3873" placeholder="SELECT room_..tbl_conference_scheduler..." />
+            <marker date="1454493382989" expanded="true" signature="3986:4117" placeholder="SELECT room_..tbl_conference_scheduler..." />
+            <marker date="1454493382989" expanded="true" signature="4198:4338" placeholder="SELECT room_..tbl_conference_scheduler..." />
+            <marker date="1454493382989" expanded="true" signature="4617:4709" placeholder="Select `room..tbl_conference_room..." />
+            <marker date="1454493382989" expanded="true" signature="8135:8564" placeholder="UPDATE ${$tb..." />
+            <marker date="1454493382989" expanded="true" signature="8698:8850" placeholder="UPDATE ${$ro..." />
+            <marker date="1454493382989" expanded="true" signature="8912:8967" placeholder="Delete from ..." />
+            <marker date="1454493382989" expanded="true" signature="9200:9239" placeholder="DELETE from ..." />
+            <marker date="1454493382989" expanded="true" signature="9267:9328" placeholder="DELETE from ..." />
+            <marker date="1454493382989" expanded="true" signature="9352:9458" placeholder="UPDATE ${$ro..." />
+            <marker date="1454493382989" expanded="true" signature="10127:10325" placeholder="UPDATE tbl_c..." />
+            <marker date="1454493382989" expanded="true" signature="10438:10605" placeholder="UPDATE tbl_c..." />
+            <marker date="1454493382989" expanded="true" signature="10686:10863" placeholder="UPDATE tbl_c..." />
+            <marker date="1454493382989" expanded="true" signature="11080:11135" placeholder="Delete from ..." />
+            <marker date="1454493382989" expanded="true" signature="11204:11622" placeholder="INSERT INTO ..." />
+            <marker date="1454493382989" expanded="true" signature="11646:11757" placeholder="UPDATE ${$ro..." />
+            <marker date="1454493382989" expanded="true" signature="12553:13033" placeholder="SELECT ID FR..tbl_conference..." />
+            <marker date="1454493382989" expanded="true" signature="13788:13979" placeholder="UPDATE tbl_c..." />
+            <marker date="1454493382989" expanded="true" signature="14092:14253" placeholder="UPDATE tbl_c..." />
+            <marker date="1454493382989" expanded="true" signature="14334:14504" placeholder="UPDATE tbl_c..." />
+            <marker date="1454493382989" expanded="true" signature="14619:14866" placeholder="insert into ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/download.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63909775">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

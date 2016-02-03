@@ -62,13 +62,13 @@ function check_box_check(){
     {
         var a= document.getElementById("demo_recording").checked = "yes";
         $('#demo_recording').val(a);
-        alert(a);
+        //alert(a);
     }
     else
     {
        var a= document.getElementById("demo_recording").unchecked = "no";
         $('#demo_recording').val(a);
-        alert(a);
+        //alert(a);
     }
 }
 
@@ -102,7 +102,7 @@ function check_box_value_changed(){
     {
         $('#start_date').val(" ");
         $('#start_time').val(" ");
-        alert("I am here!");
+       // alert("I am here!");
         $("#start_time").trigger("chosen:updated");
         $('#end_date').val(" ");
         $('#end_time').val(" ");
@@ -132,14 +132,14 @@ function conference_create_edit() {
     var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
 	
     Check_response = JSON.parse(Check_response);
-	alert("Room Found:"+Check_response.Room_Number);
+//	alert("Room Found:"+Check_response.Room_Number);
     if (Check_response.status && Check_response.Room_Number) {
 
-        alert("before php Hit js");
+      //  alert("before php Hit js");
         check_box_check();
 
         var response = connectServerWithForm(cms_url['conference_info'], form_id);
-        alert("after php Hit js");
+        //alert("after php Hit js");
         console.log("get: "+response +" found");
         response = JSON.parse(response);
         //alert("after php Hit js");
@@ -176,7 +176,7 @@ function conference_create_edit() {
 
     else
     {
-        alert("No Room!");
+        //alert("No Room!");
         alertMessage(this, 'red', 'Sorry!!' , Check_response.message);
     }
 
@@ -362,7 +362,7 @@ function conference_details(obj, conf_id){
    //  alert(notice);
 
     } else {
-        alert("No Data");
+       // alert("No Data");
     }
 
     if (response.status) {

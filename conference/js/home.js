@@ -161,7 +161,7 @@ function showUserMenu(field_name) {
             //$('.tabtitle').hide();
             $("#set_title").html(' <span style="font-weight:bold;">Download record</span>');
 
-            var inputarray = [["Participants", "participants_list", "active"]];
+            var inputarray = [["Conference", "enterprise_conference", "active"]];
             tab_custom(inputarray, "tab_view");
             table_initialize_download_list();
             report_menu_start_download_list();

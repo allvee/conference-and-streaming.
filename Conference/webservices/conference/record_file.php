@@ -24,7 +24,7 @@ while ($row = Sql_fetch_array($result)) {
     $name= Sql_Result($row, "record_file_path");
     $date_wav = explode('/', $name);
 $dir='/cs/Demo/Conference/webservices/conference/download.php';
-    $data[$i][$j++] = '<a href="'.$dir.'?name='.$date_wav[6].'">' . $date_wav[6].'\'</a>';
+    $data[$i][$j++] = '<a style="color:green;" href="'.$dir.'?name='.$date_wav[6].'">' . $date_wav[6].'\'</a>';
 
 
     $i++;
