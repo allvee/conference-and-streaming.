@@ -12,7 +12,7 @@ function set_download_url( file_name) {
 
 function conference_record_download(){
 
-   // alert("i am here!");
+    //alert("i am here!");
    // showUserMenu('download_record');
     showUserMenu('download_list');
 
@@ -25,7 +25,7 @@ function table_initialize_download_list() {
 
     $('#tbl_view_table').html('<table class="table table-striped table-bordered table-hover responsive" id="dataTables_download_list" width="100%"><tr><td  align="center"><img src="conference/img/31.gif"></td></tr></table>');
 
-
+  
 }
 
 
@@ -34,9 +34,9 @@ function report_menu_start_download_list() {
     var dataSet = [[]];
     var dataInfo = {};
     dataSet = connectServer(cms_url['record_file'], dataInfo);
-    //alert(dataSet);
+   console.log("Get File Name:"+dataSet);
     dataSet = JSON.parse(dataSet);
-    //alert("DataSet :"+dataSet);
+   console.log("DataSet :"+dataSet);
     table_data_download_list(dataSet);
 
 }

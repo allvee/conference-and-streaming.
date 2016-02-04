@@ -10,6 +10,7 @@ $dbtype = 'mysql';
 $UserID = 'root';
 $Password = 'nopass';
 $Server = '192.168.245.46';
+$SMS_server = '103.239.252.163';
 $Database = 'conference_demo';
 $Call_Handler_DB = 'vsdp_2_1_1';
 

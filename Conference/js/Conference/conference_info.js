@@ -24,6 +24,9 @@ else if(parseInt(d.getMinutes())<30)
 
     console.log("Ready start_time:"+start_time);
 
+console.log(dformat + " "+ start_time);
+console.log("Start_time: "+start_time);
+
     month = d.getMonth()+1;
     day = d.getDate();
     hour = d.getHours();
@@ -77,16 +80,11 @@ function check_box_value_changed(){
     if($("#meet_now").is(":checked"))
     {
         $('#start_date').val(dformat);
-
-        console.log(dformat + " "+ start_time);
-        console.log("Start_time: "+start_time);
         //alert(start_time);
         $("#start_time option[value='" + start_time + "']").attr('selected', true);
         $("#start_time").trigger("chosen:updated");
         $('#end_date').val(lastDate);
 
-        console.log(lastDate+" "+end_time);
-        console.log("end_time: "+end_time);
        // alert(end_time);
         $("#end_time option[value='" + end_time + "']").attr('selected', true);
         $("#end_time").trigger("chosen:updated");
@@ -99,7 +97,7 @@ function check_box_value_changed(){
     {
         $('#start_date').val(" ");
         $('#start_time').val(" ");
-       // alert("I am here!");
+        //alert("I am here!");
         $("#start_time").trigger("chosen:updated");
         $('#end_date').val(" ");
         $('#end_time').val(" ");
@@ -129,10 +127,10 @@ function conference_create_edit() {
     var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
 	
     Check_response = JSON.parse(Check_response);
-//	alert("Room Found:"+Check_response.Room_Number);
+	//alert("Room Found:"+Check_response.Room_Number);
     if (Check_response.status && Check_response.Room_Number) {
 
-      //  alert("before php Hit js");
+        //alert("before php Hit js");
         check_box_check();
 
         var response = connectServerWithForm(cms_url['conference_info'], form_id);
@@ -224,7 +222,6 @@ function table_data_conference_list(dataSet) {
             {"title": "ID", "class": "center"},
             {"title": "Conference Name", "class": "center"},
             {"title": "User", "class": "center"},
-            //{"title": "Long Number", "class": "center"},
             {"title": "Start Time", "class": "center"},
             {"title": "End Time", "class": "center"},
             {"title": "Participants", "class": "center"},
@@ -261,7 +258,7 @@ function table_data_conference_list(dataSet) {
     });
 }
 
-function edit_conference_list(obj, info, room_number, long_number, weblink) {
+function edit_conference_list(obj, info, room_number, weblink) {
 
     var data = [];
     var table = document.getElementById('dataTables_conference_list');
@@ -273,7 +270,7 @@ function edit_conference_list(obj, info, room_number, long_number, weblink) {
     showUserMenu('edit_conference');
     document.getElementById("conference_id").textContent=data[0];
     conference_id =data[0];
-    console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9], room_number,long_number, weblink );
+    console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9], room_number, weblink );
 
      $('#action').val("update");
      $('#action_id').val(data[0]);
@@ -312,7 +309,6 @@ function edit_conference_list(obj, info, room_number, long_number, weblink) {
      $('#schedule_conf_dropdown').val(data[9]);
      $('#room_number').val(room_number);
      $('#weblink').val(weblink);
-    $('#long_number').val(long_number);
      dropdown_chosen_style();
 
 
@@ -361,7 +357,7 @@ function conference_details(obj, conf_id){
    //  alert(notice);
 
     } else {
-       // alert("No Data");
+        //alert("No Data");
     }
 
     if (response.status) {

@@ -147,16 +147,7 @@ function showUserMenu(field_name) {
             Participant_from_backend();
         }
 
-        else if (field_name == 'download_record') {
-            display_content_custom('1823', '#modalData');
-            //$('.tabtitle').hide();
-            $("#set_title").html(' <span style="font-weight:bold;">Download record</span>');
-
-            var inputarray = [["Participants", "participants_list", "active"]];
-            tab_custom(inputarray, "tab_view");
-        }
-
-        else if (field_name == 'download_list') {
+ 	 else if (field_name == 'download_list') {
             display_content_custom('1822', '#modalData');
             //$('.tabtitle').hide();
             $("#set_title").html(' <span style="font-weight:bold;">Download record</span>');
@@ -288,6 +279,16 @@ function showUserMenu(field_name) {
 
         /////////////////////////*** Role Management END ******/
 
+        else if(field_name == 'view_report'){
+            write_activity_log('view_report', 'FIREWALL ORGANIZATION USER ROLE MENU ASSOCIATION', cms_url['activity_log']);
+            display_content_custom("100", "#modalData");
+            $("#role_menu").html('<div class="frmLblNameAcc col-md-3"></div>' +
+                '<div class="frmLblNameAcc col-md-3">Choose Conference</div>' +
+                '<div class="frmFldAcc col-md-3"><select id="choose_conference_id" class="chosen-select" onchange="load_current_conference_list();" style="width: 100%;" name="choose_conference_id"></select></div>' +
+                '<div class="frmLblNameAcc col-md-3"></div>');
+
+            fetchDropDownOption("#choose_conference_id", cms_url['conference_get_view_report_list'], '');
+        }
 
 
         /*

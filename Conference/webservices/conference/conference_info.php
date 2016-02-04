@@ -47,9 +47,11 @@ if ($action != 'delete') {
     $demo_name = $data['demo_name'];
     $_SESSION['conference']['conf_name'] = $demo_name;
     $user_id = $_SESSION['conference']['id'];
-    $long_number= $data['long_number'];
+
     $start_date = $data['start_date'];
+    $_SESSION['conference']['start_date'] = $start_date;
     $end_date = $data['end_date'];
+    $_SESSION['conference']['end_date'] = $end_date;
     $start_time = $data['start_time'];
     $end_time = $data['end_time'];
 
@@ -141,60 +143,53 @@ if ($action != 'delete') {
     $long_number = $_SESSION['conference']['room_caller'];
 
     $demo_participants = $data['demo_participants'];
-    $demo_active = $data['demo_active'];
+    /*$demo_active = $data['demo_active'];*/
     $demo_active = "active";
-    if (isset($demo_active)) {
+    /*if (isset($demo_active)) {
 
     } else {
         $demo_active = "done";
-    }
-    $_SESSION['conference']['conf_status'] = $demo_active;
+    }*/
 
     $demo_recording = $data['demo_recording'];
 
-        if (isset($data['demo_recording']) && ($data['demo_recording']== "yes" )) {
-            $demo_recording = "yes";
-        }
-        else if(isset($data['demo_recording']) && ($data['demo_recording']== "no" )){
-            $demo_recording = "no";
-        }
-        else {
-            $demo_recording = "no";
-        }
+    if (isset($data['demo_recording']) && ($data['demo_recording']== "yes" )) {
+        $demo_recording = "yes";
+    }
+    else if(isset($data['demo_recording']) && ($data['demo_recording']== "no" )){
+        $demo_recording = "no";
+    }
+    else {
+        $demo_recording = "no";
+    }
 
     $track_count = sizeof($_REQUEST['notification_channel']);
     $flag = 0;
 
+	$_SESSION['conference']['notification']['SMS'] = false;
+	$_SESSION['conference']['notification']['IVR'] = false;
+	$_SESSION['conference']['notification']['EMAIL'] = false;
+	
     foreach ($_REQUEST['notification_channel'] as $value) {
         $flag++;
         if ($flag == $track_count) {
             $notification_channel .= $value;
-
         } else {
             $notification_channel .= $value . ',';
         }
+		
         if ($value == "IVR") {
-            $_SESSION['conference']['notification']['IVR'] = true;
-            //$qry = "insert into $callHandlerDB.outdialque set MSISDN";
-        } else {
-            $_SESSION['conference']['notification']['IVR'] = false;
+            $_SESSION['conference']['notification']['IVR'] = true;           
         }
-
+		
         if ($value == "SMS") {
             $_SESSION['conference']['notification']['SMS'] = true;
-            //$qry = "insert into $callHandlerDB.outdialque set MSISDN";
-        } else {
-            $_SESSION['conference']['notification']['SMS'] = false;
         }
 
         if ($value == "EMAIL") {
             $_SESSION['conference']['notification']['EMAIL'] = true;
-            //$qry = "insert into $callHandlerDB.outdialque set MSISDN";
-        } else {
-            $_SESSION['conference']['notification']['EMAIL'] = false;
         }
     }
-
 
 } else {
     /*===============================  for Delete =====================*/
@@ -252,7 +247,7 @@ if ($action == "update") {
     if ($demo_recording == 'no') {
         $record_qry = "Delete from $Call_Handler_DB.outdialque where UserId = $conf_id";
         $run_record_qry = true;
-       // echo $record_qry ."line: ". __LINE__;
+        // echo $record_qry ."line: ". __LINE__;
     }
 
     $msg = "Successfully Updated";
@@ -367,7 +362,6 @@ if ($action == "save") {
             $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'$conf_id'" . " , ";
         else
             $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'$conf_id'";
-
     }
 
     if ($schedule_conf == 'Daily') {
@@ -381,7 +375,8 @@ if ($action == "save") {
         //echo "query2:".print_r($query2,1);
     }
 
-    if ($demo_recording == 'yes') {
+    /*
+	if ($demo_recording == 'yes') {
         $record_qry = "insert into $Call_Handler_DB.outdialque set MSISDN = '$room_number',DisplayAno = '$long_code',OriginalAno = '2008',
 ServiceId = 'record_conference', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$conference_id', OutDialTime = '$start_date_time'";
         $run_record_qry = true;
@@ -397,8 +392,7 @@ ServiceId = 'record_conference', OutDialStatus = 'QUE', RetTryCount='1',UserId =
             $is_error = 1;
             $msg = $e;
         }
-    }
-
+    }*/
 
     try {
         $update_result = Sql_exec($cn, $query2);
@@ -430,7 +424,7 @@ $_SESSION['conference']['current_conference_instance']['weblink'] = $web_link;
 if ($is_error == 0) {
     $return_data = array('status' => true, 'query1' => $query1, 'query2' => $query2, 'conf_id' => $conf_id, 'Name' => $demo_name, 'UserID' => $user_id, 'Long_Number' => $long_number, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
         'Code' => $conference_code, 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants, 'Recording' => $demo_recording,
-        'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf);
+        'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf,'notifications'=>$flag);
 
 } else if ($is_error == 2) {
     $return_data = array('status' => true, 'query3' => $query3, 'message' => $msg);

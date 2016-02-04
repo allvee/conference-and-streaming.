@@ -36,7 +36,7 @@ function conference_done_popup()
     }
     console.log(len+notice);
 
-    custom_alertMessage(this, 'green', 'Successful',conference_notice+notice);
+    custom_alertMessage(this, 'green', 'Conference Details',conference_notice+notice);
     showUserMenu('enterprise_conference');
 }
 

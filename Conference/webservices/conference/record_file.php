@@ -6,32 +6,23 @@
  * Time: 8:24 PM
  */
 include_once "../lib/common.php";
-$cn = connectDB();
 
-$tbl = "tbl_conference_recorded_file";
+$file_location = '/ismp/shared/test/recordings/record_conference/';
+$file_location_test='/ismp/shared/test/recordings/test_asterisk/';
 
-$msisda=
-$arrayInput = array();
-$query = "SELECT `record_file_path` FROM tbl_conference_recorded_file ";
-$result = Sql_exec($cn, $query);
+$dir='/cs/Demo/conference/webservices/conference/download.php';
+
 
 $data = array();
-$name="";
-$i=0;
-while ($row = Sql_fetch_array($result)) {
+$a = scandir($file_location_test,1);
+
+    for($i=0; $i<(count($a)-2);$i++)
+    {
     $j=0;
+    $data[$i][$j] = '<a style="color:green;" href="'.$dir.'?name='.$a[$i].'">' .$a[$i].'</a>';
+    $j++;
+    }
 
-    $name= Sql_Result($row, "record_file_path");
-    $date_wav = explode('/', $name);
-$dir='/cs/Demo/Conference/webservices/conference/download.php';
-    $data[$i][$j++] = '<a style="color:green;" href="'.$dir.'?name='.$date_wav[6].'">' . $date_wav[6].'\'</a>';
-
-
-    $i++;
-}
-Sql_Free_Result($result);
-
-ClosedDBConnection($cn);
 echo json_encode($data);
 
 ?>
