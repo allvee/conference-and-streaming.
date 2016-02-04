@@ -109,3 +109,34 @@ function updateDashboardInfo(balance) {
 
     showDashboardInfo();
 }
+
+function UserLoginActionAuto(uid, pass) {
+    var dataInfo = {};
+    dataInfo['uid'] = uid;
+    dataInfo['pass'] = pass;
+    var returnValue;
+    returnValue = $.post(cms_url['UserLogin'], dataInfo)
+        .done(function (data) {
+            returnValue = data;
+            console.log(JSON.stringify(returnValue));
+            returnValue = JSON.parse(returnValue);
+            if (returnValue.status) {
+                //alertMessage(this, 'green', 'Congratulation', returnValue.msg);
+                var auth_session_data = JSON.stringify(returnValue.read);
+                setSession(auth_session_data, 'cms_auth');
+
+                //create_recharge_history_table();
+                /*setTimeout(function () {
+                 redirect_to(site_host)
+                 }, 1000);*/
+                redirect_to(site_host);
+            } else {
+                message_alert(returnValue.msg, 'error');
+                //alertMessage(this, 'red', 'Failed', returnValue.msg);
+            }
+        });
+    //var returnValue = connectServer(cms_url['UserLogin'], dataInfo);
+    //returnValue = JSON.parse(returnValue);
+}
+
+

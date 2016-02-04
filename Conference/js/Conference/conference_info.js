@@ -130,9 +130,12 @@ function conference_create_edit() {
 	//alert("Room Found:"+Check_response.Room_Number);
     if (Check_response.status && Check_response.Room_Number) {
 
-        //alert("before php Hit js");
-        check_box_check();
+        alert("after php Hit js and conference_id:"+conference_id);
+        dataInfo = conference_id;
+        var response = connectServer(cms_url['update_conference'], dataInfo);
+        alert("I am after php");
 
+       /* check_box_check();
         var response = connectServerWithForm(cms_url['conference_info'], form_id);
         //alert("after php Hit js");
         console.log("get: "+response +" found");
@@ -165,7 +168,7 @@ function conference_create_edit() {
         else
         {
             alertMessage(this, 'red', 'Unsuccessful' , response.message);
-        }
+        }*/
 
     }
 
@@ -276,8 +279,9 @@ function edit_conference_list(obj, info, room_number, weblink) {
      $('#action_id').val(data[0]);
      var str1=data[1].split(">");
      var str2=str1[1].split("'");
-     console.log(str2);
-     $('#demo_name').val(str2[1]);
+     var str3=str2[0].split("<");
+     //alert(str3[0]);
+     $('#demo_name').val(str3[0]);
      $('#user_id').val(data[2]);
      var datetime=data[3].split(" ");
      var date=datetime[0].split("-");

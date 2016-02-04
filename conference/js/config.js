@@ -410,6 +410,7 @@ cms_url['conference_get_view_report_list'] = cms_url['cms_host']+'conference/get
 cms_url['get_single_conference_report'] = cms_url['cms_host']+'conference/get_single_conference_report.php';
 cms_url['download'] = cms_url['cms_host']+ 'conference/download.php';
 cms_url['record_file'] = cms_url['cms_host']+ 'conference/record_file.php';
+cms_url['update_conference'] = cms_url['cms_host']+ 'conference/update_conference.php';
 
 /* =====================================
  * Enterprise Conference Platform End...
