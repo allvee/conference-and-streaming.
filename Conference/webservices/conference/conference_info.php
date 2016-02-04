@@ -196,7 +196,6 @@ if ($action != 'delete') {
     }
 
 
-
 } else {
     /*===============================  for Delete =====================*/
     $action = $data_info['action'];
@@ -411,6 +410,22 @@ ServiceId = 'record_conference', OutDialStatus = 'QUE', RetTryCount='1',UserId =
 }
 
 ClosedDBConnection($cn);
+
+$_SESSION['conference']['current_conference_instance']['ID'] = $conf_id;
+$_SESSION['conference']['current_conference_instance']['Conf_Name'] = $demo_name;
+$_SESSION['conference']['current_conference_instance']['long_number'] = $long_number;
+$_SESSION['conference']['current_conference_instance']['room_number'] = $room_number;
+$_SESSION['conference']['current_conference_instance']['Code'] = $conference_code;
+$_SESSION['conference']['current_conference_instance']['Start_Time'] = $start;
+$_SESSION['conference']['current_conference_instance']['End_Time'] = $end;
+$_SESSION['conference']['current_conference_instance']['Conference_Duration'] = $dteDiff;
+$_SESSION['conference']['current_conference_instance']['Participants'] = $demo_participants;
+$_SESSION['conference']['current_conference_instance']['Recording'] = $demo_recording;
+$_SESSION['conference']['current_conference_instance']['Status'] = $demo_active;
+$_SESSION['conference']['current_conference_instance']['Schedule_Conf'] =$schedule_conf;
+$_SESSION['conference']['current_conference_instance']['Notification_Channel'] = $notification_channel;
+$_SESSION['conference']['current_conference_instance']['weblink'] = $web_link;
+
 
 if ($is_error == 0) {
     $return_data = array('status' => true, 'query1' => $query1, 'query2' => $query2, 'conf_id' => $conf_id, 'Name' => $demo_name, 'UserID' => $user_id, 'Long_Number' => $long_number, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
