@@ -27,59 +27,60 @@ $cn = connectDB();
 $Start_Time=" ";
 $End_Time =" ";
 
- $query = "SELECT Start_Time, End_Time FROM tbl_conference WHERE `ID` = '$conference_id'";
+ $query = "SELECT Start_Time, room_number, End_Time, Schedule_Conf FROM tbl_conference WHERE `ID` = '$conference_id'";
 $result = Sql_exec($cn, $query);
 $data = array();
 
 while ($row = Sql_fetch_array($result)) {
-    $Start_Time = Sql_Result($row, "Start_Time");
-    $End_Time = Sql_Result($row, "End_Time");
+    $Start_Date_Time = Sql_Result($row, "Start_Time");
+    $End_Date_Time = Sql_Result($row, "End_Time");
+    $room_number = Sql_Result($row, "room_number");
+    $Schedule_Conf = Sql_Result($row, "Schedule_Conf");
 }
 Sql_Free_Result($result);
 
-echo print_r($Start_Time);
-echo print_r($End_Time);
 /*================================== Set conference id to Scheduler table ======================================================*/
 
-
-$date_split = explode(" ", $Start_Time);
+$date_split = explode(" ", $Start_Date_Time);
 $start_date = $date_split[0];
 
-echo print_r($start_date);
-
-$str_time = $date_split[1];
-$start_time =$str_time[0].":".$str_time[1];
-
-echo print_r($start_time);
-echo print_r("/and/");
+$str_time =  explode(':', $date_split[1]);
+$start_time = $str_time[0].":".$str_time[1];
 
 $date_split = explode('-', $start_date);
-$sDay = $date_split[2];
-$sMonth = $date_split[1];
-$sYear = $date_split[0];
+$sDay = (int) $date_split[2];
+$sMonth = (int) $date_split[1];
+$sYear = (int) $date_split[0];
 
 
-$edate_split = explode(" ", $End_Time);
+$edate_split = explode(" ", $End_Date_Time);
 $end_date = $edate_split[0];
-echo print_r($end_date);
 
-echo print_r("/and/");
+$e_time =  explode(':', $edate_split[1]);
+$end_time =  $e_time[0].":".$e_time[1];
 
-$e_time = $edate_split[1];
-$end_time =$e_time[0].":".$e_time[1];
-echo print_r($end_time);
-echo print_r("/and/");
 $date_split = explode('-', $end_date);
-$eDay = $date_split[2];
-$eMonth = $date_split[1];
-$eYear = $date_split[0];
+$eDay = (int) $date_split[2];
+$eMonth = (int) $date_split[1];
+$eYear = (int) $date_split[0];
+
+/*echo print_r($start_time);
+echo print_r("/and/");
+echo print_r($end_time);*/
+
+$interval = " ";
+for ($i = (int)$sDay, $j = 0; $i <= $valid_day; $i = $i + 7) {
+    if ($i < 24)
+        $interval = $interval . "'$i'" . ",";
+    else
+        $interval = $interval . "'$i'";
+
+}
+$day = "`Day`" . " " . "in" . "(" . $interval . ")";
+
 
 $key1 = array_search($start_time, $start_array);
 $key2 = array_search($end_time, $end_array);
-
-echo print_r($start_time);
-echo print_r("and");
-echo print_r($end_time);
 
 $total_column_set = "";
 $total_column_was = "";
@@ -87,12 +88,11 @@ for ($i = $key1; $i <= $key2; $i++) {
     $column = $start_array[$i] . "_" . $end_array[$i];
     if ($i < $key2) {
         $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'Free'" . " , ";
-        $total_column_was = $total_column_was . "`" . $column . "`" . "=" . "'$action_id'" . " AND ";
+        $total_column_was = $total_column_was . "`" . $column . "`" . "=" . "'$conference_id'" . " AND ";
     } else {
         $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'Free'";
-        $total_column_was = $total_column_was . "`" . $column . "`" . "=" . "'$action_id'";
+        $total_column_was = $total_column_was . "`" . $column . "`" . "=" . "'$conference_id'";
     }
-
 }
 if ($Schedule_Conf == 'Daily') {
     $query3 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day AND $total_column_was AND  `room_number`='$room_number' ";

@@ -73,9 +73,9 @@ if ($action != 'delete') {
     $end = $end_date . " " . $end_time;
 
     $date_split = explode('-', $start_date);
-    $sDay = $date_split[2];
-    $sMonth = $date_split[1];
-    $sYear = $date_split[0];
+    $sDay = (int) $date_split[2];
+    $sMonth = (int) $date_split[1];
+    $sYear = (int) $date_split[0];
 
     $date_split = explode('-', $end_date);
     $eDay = $date_split[2];
@@ -243,6 +243,33 @@ if ($action == "update") {
     $_SESSION['conference']['conf_id'] = $action_id;
 
     $qry_to_room = "UPDATE $room_tbl SET `room_pass`='$conference_code',`last_update` ='$last_updated', `conference_name` = '$demo_name' WHERE `room_number` ='$room_number'";
+
+   $total_column_set = "";
+    for ($i = $key1; $i <= $key2; $i++) {
+        $column = $start_array[$i] . "_" . $end_array[$i];
+        if ($i < $key2)
+            $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'$action_id'" . " , ";
+        else
+            $total_column_set = $total_column_set . "`" . $column . "`" . "=" . "'$action_id'";
+    }
+
+    if ($schedule_conf == 'Daily') {
+        $query2 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  `Day` BETWEEN $sDay AND $valid_day  $total_column AND  `room_number`='$room_number' ";
+        //echo "query2:".print_r($query2,1);
+    } else if ($schedule_conf == 'Weekly') {
+        $query2 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND  $day  $total_column AND  `room_number`='$room_number' ";
+        //echo "query2:".print_r($query2,1);
+    } else {
+        $query2 = "UPDATE tbl_conference_scheduler set  $total_column_set WHERE `Year` = '$sYear' AND `Month` = '$sMonth' AND `Day`= '$sDay'  $total_column AND  `room_number`='$room_number' ";
+        //echo "query2:".print_r($query2,1);
+    }
+    
+    try {
+        $update_result = Sql_exec($cn, $query2);
+        $is_error = 0;
+    } catch (Exception $e) {
+        $is_error = 1;
+    }
 
     if ($demo_recording == 'no') {
         $record_qry = "Delete from $Call_Handler_DB.outdialque where UserId = $conf_id";

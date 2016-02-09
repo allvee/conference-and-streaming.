@@ -124,18 +124,24 @@ function from_backend(){
 function conference_create_edit() {
 
     form_id = "conference_create_edit";
-    var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
-	
-    Check_response = JSON.parse(Check_response);
-	//alert("Room Found:"+Check_response.Room_Number);
-    if (Check_response.status && Check_response.Room_Number) {
 
-        alert("after php Hit js and conference_id:"+conference_id);
+    if ( conference_id != null )
+    {
+        alert("before php Hit js and conference_id:"+conference_id);
         dataInfo = conference_id;
         var response = connectServer(cms_url['update_conference'], dataInfo);
-        alert("I am after php");
+        alert("I am after update.php");
+    }
 
-       /* check_box_check();
+    var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
+    Check_response = JSON.parse(Check_response);
+	//alert("Room Found:"+Check_response.Room_Number);
+
+
+
+    if (Check_response.status && Check_response.Room_Number) {
+
+        check_box_check();
         var response = connectServerWithForm(cms_url['conference_info'], form_id);
         //alert("after php Hit js");
         console.log("get: "+response +" found");
@@ -168,7 +174,7 @@ function conference_create_edit() {
         else
         {
             alertMessage(this, 'red', 'Unsuccessful' , response.message);
-        }*/
+        }
 
     }
 
