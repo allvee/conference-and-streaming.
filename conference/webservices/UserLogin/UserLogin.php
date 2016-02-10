@@ -5,9 +5,11 @@
  * Date: 1/12/2016
  * Time: 7:13 PM
  */
+require_once "../lib/common.php";
 
-include_once "../lib/common.php";
 require_once "../lib/functions.php";
+
+
 
 $log_file_name = "logs_User_login".date("Y-m-d H:i:s").".txt";
 $print_log = 0;
@@ -18,10 +20,9 @@ function logcats($parameter) {
     if($print_log==1) file_put_contents($log_file_name, strval($parameter) . "\n", FILE_APPEND);
 }
 
+
 $cn = connectDB();
-
 $arrayInput = $_REQUEST;
-
 
 if (!isset($arrayInput['uid']) || !isset($arrayInput['pass'])) {
     $returnValue['msg'] = 'User name and password are required';
@@ -34,6 +35,7 @@ if (!isset($arrayInput['uid']) || !isset($arrayInput['pass'])) {
     /*logcats(Marketplace_Login_USER);
     logcats(__FILE__.__LINE__.":".print_r($result,1));*/
     $result_array = json_decode($result, true);
+
 
     if($result_array['status'] == false) {
         /*Failed LOGIN */

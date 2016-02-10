@@ -73,14 +73,14 @@ if ($action != 'delete') {
     $end = $end_date . " " . $end_time;
 
     $date_split = explode('-', $start_date);
-    $sDay = (int) $date_split[2];
+    $sDay =  (int) $date_split[2];
     $sMonth = (int) $date_split[1];
     $sYear = (int) $date_split[0];
 
     $date_split = explode('-', $end_date);
-    $eDay = $date_split[2];
-    $eMonth = $date_split[1];
-    $eYear = $date_split[0];
+    $eDay = (int) $date_split[2];
+    $eMonth = (int) $date_split[1];
+    $eYear = (int) $date_split[0];
 
     $interval = " ";
     for ($i = (int)$sDay, $j = 0; $i <= $valid_day; $i = $i + 7) {
@@ -244,7 +244,7 @@ if ($action == "update") {
 
     $qry_to_room = "UPDATE $room_tbl SET `room_pass`='$conference_code',`last_update` ='$last_updated', `conference_name` = '$demo_name' WHERE `room_number` ='$room_number'";
 
-   $total_column_set = "";
+$total_column_set = "";
     for ($i = $key1; $i <= $key2; $i++) {
         $column = $start_array[$i] . "_" . $end_array[$i];
         if ($i < $key2)
@@ -446,6 +446,7 @@ $_SESSION['conference']['current_conference_instance']['Status'] = $demo_active;
 $_SESSION['conference']['current_conference_instance']['Schedule_Conf'] =$schedule_conf;
 $_SESSION['conference']['current_conference_instance']['Notification_Channel'] = $notification_channel;
 $_SESSION['conference']['current_conference_instance']['weblink'] = $web_link;
+$_SESSION['conference']['current_conference_instance']['action'] = $action;
 
 
 if ($is_error == 0) {

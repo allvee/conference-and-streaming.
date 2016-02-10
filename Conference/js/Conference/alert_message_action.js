@@ -104,8 +104,9 @@ function display_alert_email()
 function save_alert_mail() {
 
     var form_id = 'alert_email_config';
-    var response = JSON.parse(connectServerWithForm(cms_url['alert_msg_email_add'], form_id));
-
+    var response = connectServerWithForm(cms_url['alert_msg_email_add'], form_id);
+     alert(response);
+     var response = JSON.parse(response);
     if (response.status) {
         alertMessage(this, 'green', 'Successful', response.message);
     } else {
@@ -234,7 +235,8 @@ function delete_confirm_alert_msg_event(event) {
 
 function email_subject_send(id) {
     
-//console.log(id);
+   console.log(id);
+    //alert(id);
 
    // console.log("Body:"+$("input#body").prop("checked"));
    // console.log("Subject:"+$("input#subject").prop("checked"));

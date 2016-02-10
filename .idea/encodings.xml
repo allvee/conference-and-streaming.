@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/Conference/js/Conference/alert_message_action.js" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/alert_message/save_alert_email.php" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/alert_message/save_alert_sms.php" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/conference/save_alert_email.php" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/conference/save_alert_sms.php" charset="windows-1252" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

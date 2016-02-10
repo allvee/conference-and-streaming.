@@ -21,11 +21,11 @@ $temp_Password = '';
 $temp_Server = '';
 $temp_Database = '';
 
-
+/*
 $log_file_name = "Enterprise_conference.txt";
 $print_log = 1;
 if($print_log==1) file_put_contents("$log_file_name", "***New_Call****\n", FILE_APPEND);
 function logcats($parameter) {
     global $log_file_name,$print_log;
     if($print_log==1) file_put_contents($log_file_name, strval($parameter)."\n", FILE_APPEND);
-}
+}*/

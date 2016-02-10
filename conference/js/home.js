@@ -159,7 +159,7 @@ function showUserMenu(field_name) {
 
         }
 
-        else if (field_name == 'alert_mgt_config_email') {
+else if (field_name == 'alert_mgt_config_email') {
            // write_activity_log('EMAIL_CONFIG', 'Email Configuration', cms_url['activity_log']);
             display_content_custom('1824', '#modalData');
            /* var permission;
@@ -187,8 +187,8 @@ function showUserMenu(field_name) {
             }*/
             var inputarray = [["Email", "alert_mgt_config_email", "deactive"], ["SMS", "alert_mgt_config_sms", "active"]];
             tab_custom(inputarray, "tab_view");
-           // display_alert_sms();
-            $("#set_title").html('<span style="font-weight:bold;">SMS Configuration</span>');
+            display_alert_sms();
+            $("#set_title").html(' <span style="font-weight:bold;">SMS Configuration</span>');
         }
 
         /////////////////////////*** Role Management Start ******/
