@@ -42,7 +42,7 @@
       <file leaf-file-name="conference_info.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_info.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="14.636364">
+            <state vertical-scroll-proportion="0.0">
               <caret line="259" column="36" selection-start-line="246" selection-start-column="3" selection-end-line="271" selection-end-column="5" />
               <folding>
                 <marker date="1455006153000" expanded="true" signature="10175:10230" placeholder="Delete from ..." />
@@ -67,7 +67,7 @@
       <file leaf-file-name="update_conference.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/update_conference.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.072727">
+            <state vertical-scroll-proportion="0.0">
               <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
                 <marker date="1455004433000" expanded="true" signature="1221:1326" placeholder="SELECT Start..tbl_conference..." />
@@ -82,7 +82,7 @@
       <file leaf-file-name="participant_list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/participant_list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6153846">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
               <folding>
                 <marker date="1455006420543" expanded="true" signature="328:478" placeholder="SELECT ID, p..." />
@@ -94,10 +94,44 @@
       <file leaf-file-name="conference_info.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Conference/js/Conference/conference_info.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48387095">
-              <caret line="129" column="41" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+            <state vertical-scroll-proportion="2.5537634">
+              <caret line="195" column="1" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
               <folding>
-                <marker date="1455005009488" expanded="true" signature="5972:6039" placeholder="..." />
+                <marker date="1455095687920" expanded="true" signature="8638:8705" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ismp.1.0.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Conference/js/ismp.1.0.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Conference/js/home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="190" column="34" selection-start-line="190" selection-start-column="34" selection-end-line="190" selection-end-column="34" />
+              <folding>
+                <element signature="n#!!doc;n#defaultViewController#0" expanded="false" />
+                <element signature="n#!!block;n#set_brust_change#0" expanded="false" />
+                <marker date="1455013197205" expanded="true" signature="2865:2882" placeholder="..." />
+                <marker date="1455013197205" expanded="true" signature="3272:3289" placeholder="..." />
+                <marker date="1455013197205" expanded="true" signature="4172:4189" placeholder="..." />
+                <marker date="1455013197205" expanded="true" signature="4595:4612" placeholder="..." />
+                <marker date="1455013197205" expanded="true" signature="5009:5026" placeholder="..." />
+                <marker date="1455013197205" expanded="true" signature="6105:6122" placeholder="..." />
+                <marker date="1455013197205" expanded="true" signature="6972:6989" placeholder="..." />
+                <marker date="1455013197205" expanded="true" signature="13709:13721" placeholder="..." />
+                <marker date="1455013197205" expanded="true" signature="16546:16558" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -106,7 +140,7 @@
       <file leaf-file-name="UserLogin_original.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Conference/webservices/UserLogin/UserLogin_original.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <marker date="1452418282000" expanded="true" signature="399:480" placeholder="SELECT * FRO..." />
@@ -145,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/conference/js/conference/participant_info.js" />
         <option value="$PROJECT_DIR$/Conference/js/Conference/participant_info.js" />
         <option value="$PROJECT_DIR$/conference/js/conference/conference_info.js" />
         <option value="$PROJECT_DIR$/conference/webservices/UserLogin/is_session_exist.php" />
@@ -193,9 +226,10 @@
         <option value="$PROJECT_DIR$/conference/js/UserLogin.js" />
         <option value="$PROJECT_DIR$/conference/webservices/UserLogin/UserLogin.php" />
         <option value="$PROJECT_DIR$/Conference/webservices/conference/update_conference.php" />
-        <option value="$PROJECT_DIR$/Conference/js/Conference/conference_info.js" />
         <option value="$PROJECT_DIR$/Conference/webservices/conference/conference_info.php" />
         <option value="$PROJECT_DIR$/Conference/webservices/conference/participant_list.php" />
+        <option value="$PROJECT_DIR$/Conference/js/home.js" />
+        <option value="$PROJECT_DIR$/Conference/js/Conference/conference_info.js" />
       </list>
     </option>
   </component>
@@ -224,7 +258,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1370" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -250,8 +284,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -386,14 +418,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo_conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Conference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="F:/gcportal" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SoftSwitch/server/Web Application/softswitch" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="SearchEverywhereHistoryKey" value="edit_firewall_&#9;null&#9;null&#10;edit_firewall_role&#9;null&#9;null&#10;loadCms&#9;null&#9;null&#10;getCMSDa&#9;null&#9;null&#10;defaultview&#9;null&#9;null&#10;connectS&#9;null&#9;null&#10;conference_&#9;null&#9;null&#10;frmLblNameAcc col-md-3&#9;null&#9;null&#10;dataTables_softswitch_gw_wrapper&#9;null&#9;null&#10;index&#9;FILE&#9;file://E:/OCM/ocmportal/server/Web Application/softswitch/index.html&#10;home&#9;FILE&#9;file://E:/OCM/ocmportal/server/Web Application/softswitch/softswitch/js/home.js" />
@@ -477,10 +529,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18854962" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18986385" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982906" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -504,7 +556,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34017095" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34700856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34641638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -579,34 +631,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/token.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1153846">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/img/datatable/swf/copy_csv_xls_pdf.swf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/webservices/lib/client_ip_addr.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/js/Conference/role_management/firewall_user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Conference/js/Conference/role_management/firewall_rule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3680431">
@@ -632,17 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="118" column="32" selection-start-line="118" selection-start-column="32" selection-end-line="118" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Conference/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="234" column="134" selection-start-line="234" selection-start-column="109" selection-end-line="234" selection-end-column="134" />
-          <folding>
-            <element signature="n#!!doc;n#defaultViewController#0" expanded="false" />
-            <element signature="n#!!block;n#set_brust_change#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -784,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="70" column="45" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -799,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,7 +818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -850,7 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,7 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="124" column="60" selection-start-line="124" selection-start-column="60" selection-end-line="124" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -866,7 +874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -874,7 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.521576">
           <caret line="120" column="8" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -882,11 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="19" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
-          <folding>
-            <marker date="1454231388000" expanded="true" signature="-1:-1" placeholder="UPDATE `${$t..." />
-            <marker date="1454231388000" expanded="true" signature="-1:-1" placeholder="UPDATE `${$t..." />
-            <marker date="1454231388000" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -894,7 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25515947">
           <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -902,10 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding>
-            <marker date="1454578470000" expanded="true" signature="-1:-1" placeholder="SELECT ID, C..." />
-            <marker date="1454578470000" expanded="true" signature="-1:-1" placeholder="SELECT ID, C..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -923,18 +919,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.5834897">
           <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding>
-            <element signature="e#3160#4066#0#PHP" expanded="false" />
-            <element signature="e#4070#4124#0#PHP" expanded="false" />
-            <marker date="1454312620000" expanded="true" signature="-1:-1" placeholder="SELECT roles..roles..." />
-            <marker date="1454312620000" expanded="true" signature="-1:-1" placeholder="SELECT GROUP..org_users..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/participant_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
           <folding>
             <marker date="1455006420543" expanded="true" signature="328:478" placeholder="SELECT ID, p..." />
@@ -952,7 +942,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/update_conference.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.072727">
+        <state vertical-scroll-proportion="0.0">
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
             <marker date="1455004433000" expanded="true" signature="1221:1326" placeholder="SELECT Start..tbl_conference..." />
@@ -965,7 +955,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Conference/webservices/conference/conference_info.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="14.636364">
+        <state vertical-scroll-proportion="0.0">
           <caret line="259" column="36" selection-start-line="246" selection-start-column="3" selection-end-line="271" selection-end-column="5" />
           <folding>
             <marker date="1455006153000" expanded="true" signature="10175:10230" placeholder="Delete from ..." />
@@ -986,12 +976,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/js/ismp.1.0.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/img/icon-setting.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conference/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="190" column="34" selection-start-line="190" selection-start-column="34" selection-end-line="190" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!doc;n#defaultViewController#0" expanded="false" />
+            <element signature="n#!!block;n#set_brust_change#0" expanded="false" />
+            <marker date="1455013197205" expanded="true" signature="2865:2882" placeholder="..." />
+            <marker date="1455013197205" expanded="true" signature="3272:3289" placeholder="..." />
+            <marker date="1455013197205" expanded="true" signature="4172:4189" placeholder="..." />
+            <marker date="1455013197205" expanded="true" signature="4595:4612" placeholder="..." />
+            <marker date="1455013197205" expanded="true" signature="5009:5026" placeholder="..." />
+            <marker date="1455013197205" expanded="true" signature="6105:6122" placeholder="..." />
+            <marker date="1455013197205" expanded="true" signature="6972:6989" placeholder="..." />
+            <marker date="1455013197205" expanded="true" signature="13709:13721" placeholder="..." />
+            <marker date="1455013197205" expanded="true" signature="16546:16558" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Conference/js/Conference/conference_info.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48387095">
-          <caret line="129" column="41" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+        <state vertical-scroll-proportion="2.5537634">
+          <caret line="195" column="1" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
           <folding>
-            <marker date="1455005009488" expanded="true" signature="5972:6039" placeholder="..." />
+            <marker date="1455095687920" expanded="true" signature="8638:8705" placeholder="..." />
           </folding>
         </state>
       </provider>

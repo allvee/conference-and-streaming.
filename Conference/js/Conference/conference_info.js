@@ -120,8 +120,84 @@ function from_backend(){
     console.log(field.value);
 }
 
+function notify_channel(){
+    var notify_channel = document.getElementById("notification_channel").value;
+
+    var notification_channel = $('#notification_channel').val();
+
+    var isEmail='no',isSMS='no',isIVR='no';
+
+    /*if(notify_channel=='SMS')
+     document.getElementById('sms_div').style.display = 'block';
+
+     else if(notify_channel=='EMAIL')
+     document.getElementById('email_div').style.display = 'block';
+
+     else if(notify_channel== null || notify_channel=='IVR')
+     {
+     document.getElementById('email_div').style.display = 'none';
+     document.getElementById('sms_div').style.display = 'none';
+     }
+
+     else {
+     document.getElementById('email_div').style.display = 'none';
+     document.getElementById('sms_div').style.display = 'none';
+     }*/
+    if(notification_channel != null)
+    {
+        for(var i=0;i<notification_channel.length;i++)
+        {
+            if(notification_channel[i]=='EMAIL')
+                isEmail ='yes';
+            if(notification_channel[i]=='SMS')
+                isSMS ='yes';
+            if(notification_channel[i]=='IVR')
+                isIVR='yes';
+
+        }
+
+        if((isEmail =='yes') && (isSMS =='yes'))
+        {
+            document.getElementById('email_div').style.display = 'block';
+            document.getElementById('sms_div').style.display = 'block';
+            $("#notification_channel option[value='" + "SMS"+","+"EMAIL"+ "']").attr('selected', true);
+            //    alert("SMS and EMAIL");
+        }
+        else if(isEmail == 'yes')
+        {
+            document.getElementById('email_div').style.display = 'block';
+            document.getElementById('sms_div').style.display = 'none';
+            $("#notification_channel option[value='" +"EMAIL"+ "']").attr('selected', true);
+            //    alert("EMAIL");
+        }
+        else if(isSMS =='yes')
+        {
+            document.getElementById('sms_div').style.display = 'block';
+            document.getElementById('email_div').style.display = 'none';
+            $("#notification_channel option[value='" + "SMS"+ "']").attr('selected', true);
+            //     alert("SMS ");
+        }
+        else if(isSMS =='no' && isEmail =='no' && isIVR =='yes')
+        {
+
+            document.getElementById('email_div').style.display = 'none';
+            document.getElementById('sms_div').style.display = 'none';
+            $("#notification_channel").attr('selected', false);
+        }
+    }
+    else
+    {
+
+        document.getElementById('email_div').style.display = 'none';
+        document.getElementById('sms_div').style.display = 'none';
+        $("#notification_channel").attr('selected', false);
+    }
+
+}
+
 
 function conference_create_edit() {
+
 
     form_id = "conference_create_edit";
 
@@ -314,6 +390,13 @@ function edit_conference_list(obj, info, room_number, weblink) {
      var track_array = data[7].split(',');
      for (var i = 0; i < track_array.length; i++) {
         $("#notification_channel option[value='" + track_array[i] + "']").attr('selected', true);
+
+             if (track_array[i]=='EMAIL')
+                 document.getElementById('email_div').style.display = 'block';
+
+             else if(track_array[i]=='SMS')
+                 document.getElementById('sms_div').style.display = 'block';
+
      }
      $('#status').val(data[8]);
      $('#schedule_conf_dropdown').val(data[9]);
