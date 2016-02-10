@@ -190,6 +190,8 @@ if ($action != 'delete') {
             $_SESSION['conference']['notification']['EMAIL'] = true;
         }
     }
+    $sms_body = $data['sms_body'];
+    $email_body = $data['email_body'];
 
 } else {
     /*===============================  for Delete =====================*/
@@ -447,7 +449,8 @@ $_SESSION['conference']['current_conference_instance']['Schedule_Conf'] =$schedu
 $_SESSION['conference']['current_conference_instance']['Notification_Channel'] = $notification_channel;
 $_SESSION['conference']['current_conference_instance']['weblink'] = $web_link;
 $_SESSION['conference']['current_conference_instance']['action'] = $action;
-
+$_SESSION['conference']['current_conference_instance']['sms_body'] =$sms_body;
+$_SESSION['conference']['current_conference_instance']['email_body'] = $email_body;
 
 if ($is_error == 0) {
     $return_data = array('status' => true, 'query1' => $query1, 'query2' => $query2, 'conf_id' => $conf_id, 'Name' => $demo_name, 'UserID' => $user_id, 'Long_Number' => $long_number, 'Web_Link' => $web_link, 'Room_Number' => $room_number,

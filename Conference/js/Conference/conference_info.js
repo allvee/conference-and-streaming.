@@ -124,14 +124,14 @@ function conference_create_edit() {
 
     form_id = "conference_create_edit";
     var org_name = $('#notification_channel').val();
-    alert(org_name);
+    //alert(org_name);
 
     if ( conference_id != null )
     {
-        alert("before php Hit js and conference_id:"+conference_id);
+       // alert("before php Hit js and conference_id:"+conference_id);
         dataInfo = conference_id;
         var response = connectServer(cms_url['update_conference'], dataInfo);
-        alert("I am after update.php");
+       // alert("I am after update.php");
     }
 
     var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
