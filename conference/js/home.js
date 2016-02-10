@@ -171,7 +171,7 @@ function showUserMenu(field_name) {
             }*/
             var inputarray = [["Email", "alert_mgt_config_email", "active"], ["SMS", "alert_mgt_config_sms", "deactive"]];
             tab_custom(inputarray, "tab_view");
-            //display_alert_email();
+            display_alert_email();
             $("#set_title").html('<span style="font-weight:bold;">Email Configuration</span>');
         }
 
