@@ -14,16 +14,18 @@ var d = new Date,
             d.getDate(),
             ].join('-');
 
-if(d.getMinutes()>31)
+if(parseInt(d.getMinutes())>31)
     str_minute=31;
-else if(d.getMinutes()<30)
-    str_minute=01;
+else if(parseInt(d.getMinutes())<30)
+    str_minute=1;
 
-var d = new Date();
-     start_time = [( d.getHours()<10)? str_hour="0"+d.getHours() : str_hour=d.getHours(),
-         ( d.getMinutes()<10)? str_min="01" : str_min = str_minute ].join(':');
+     start_time = [(parseInt(d.getHours()) <10)? str_hour="0"+d.getHours().toString() : str_hour=d.getHours().toString(),
+         ( (parseInt(str_minute)<10)? str_min="01": str_min = str_minute.toString() )].join(':');
 
-    console.log("Ready"+start_time);
+    console.log("Ready start_time:"+start_time);
+
+console.log(dformat + " "+ start_time);
+console.log("Start_time: "+start_time);
 
     month = d.getMonth()+1;
     day = d.getDate();
@@ -53,8 +55,8 @@ lastDate = [
         (d.getMonth()+1),
         day, ].join('-');
 
-   end_time= [ ( hour <10)? end_hour="0"+hour : end_hour= hour, ( minute <10)? end_min="00" : end_min= minute].join(':');
-
+   end_time= [ ( parseInt(hour) <10)? end_hour="0"+hour.toString() : end_hour= hour.toString(),
+                ( parseInt(minute) <10)? end_min="00" : end_min= minute.toString()].join(':');
 
 function check_box_check(){
 
@@ -62,13 +64,13 @@ function check_box_check(){
     {
         var a= document.getElementById("demo_recording").checked = "yes";
         $('#demo_recording').val(a);
-        alert(a);
+        //alert(a);
     }
     else
     {
        var a= document.getElementById("demo_recording").unchecked = "no";
         $('#demo_recording').val(a);
-        alert(a);
+        //alert(a);
     }
 }
 
@@ -78,35 +80,37 @@ function check_box_value_changed(){
     if($("#meet_now").is(":checked"))
     {
         $('#start_date').val(dformat);
-
-        console.log(dformat + " "+ start_time);
-        console.log("Start_time: "+start_time);
-        //alert(start_time);
-        $("#start_time option[value='" + start_time + "']").attr('selected', true);
-        $("#start_time").trigger("chosen:updated");
         $('#end_date').val(lastDate);
 
-        console.log(lastDate+" "+end_time);
-        console.log("end_time: "+end_time);
-       // alert(end_time);
-        $("#end_time option[value='" + end_time + "']").attr('selected', true);
-        $("#end_time").trigger("chosen:updated");
+        
+	$("#start_time_chosen").hide();
+	$("#end_time_chosen").hide();
+      
+	$('#start_time').val(start_time);
+	$('#end_time').val(end_time);
 
-        alert(document.getElementById("start_time").selectedIndex);
-        alert(document.getElementById("end_time").selectedIndex);
+	// $("#start_time option[value='" + start_time + "']").attr('selected', true);
+        // $("#start_time").trigger("chosen:updated");
+        // $("#end_time option[value='" + end_time + "']").attr('selected', true);
+        // $("#end_time").trigger("chosen:updated");
+
         console.log(document.getElementById("start_time").selectedIndex);
         console.log(document.getElementById("end_time").selectedIndex);
+	$("#start_time").show();
+	$("#end_time").show();
+      
     }
 
     else
     {
-        $('#start_date').val(" ");
-        $('#start_time').val(" ");
-        alert("I am here!");
-        $("#start_time").trigger("chosen:updated");
-        $('#end_date').val(" ");
-        $('#end_time').val(" ");
-        $("#end_time").trigger("chosen:updated");
+        $('#start_date').val('');
+        $('#start_time').val('');
+       
+        $('#end_date').val('');
+        $('#end_time').val('');
+	//$("#start_time").trigger("chosen:updated");	
+        //$("#end_time").trigger("chosen:updated");
+
 
     }
 
@@ -125,21 +129,31 @@ function from_backend(){
     console.log(field.value);
 }
 
-
 function conference_create_edit() {
 
     form_id = "conference_create_edit";
+    var org_name = $('#notification_channel').val();
+    //alert(org_name);
+
+    if ( conference_id != null )
+    {
+       // alert("before php Hit js and conference_id:"+conference_id);
+        dataInfo = conference_id;
+        var response = connectServer(cms_url['update_conference'], dataInfo);
+       // alert("I am after update.php");
+    }
+
     var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
-    alert(Check_response);
     Check_response = JSON.parse(Check_response);
+	//alert("Room Found:"+Check_response.Room_Number);
+
+
 
     if (Check_response.status && Check_response.Room_Number) {
 
-        alert("before php Hit js");
         check_box_check();
-
         var response = connectServerWithForm(cms_url['conference_info'], form_id);
-        alert("after php Hit js");
+        //alert("after php Hit js");
         console.log("get: "+response +" found");
         response = JSON.parse(response);
         //alert("after php Hit js");
@@ -176,8 +190,83 @@ function conference_create_edit() {
 
     else
     {
-        alert("No Room!");
+        //alert("No Room!");
         alertMessage(this, 'red', 'Sorry!!' , Check_response.message);
+    }
+
+}
+
+function notify_channel(){
+    var notify_channel = document.getElementById("notification_channel").value;
+
+    var notification_channel = $('#notification_channel').val();
+
+    var isEmail='no',isSMS='no',isIVR='no';
+
+    /*if(notify_channel=='SMS')
+        document.getElementById('sms_div').style.display = 'block';
+
+   else if(notify_channel=='EMAIL')
+        document.getElementById('email_div').style.display = 'block';
+
+   else if(notify_channel== null || notify_channel=='IVR')
+    {
+        document.getElementById('email_div').style.display = 'none';
+        document.getElementById('sms_div').style.display = 'none';
+    }
+
+    else {
+        document.getElementById('email_div').style.display = 'none';
+        document.getElementById('sms_div').style.display = 'none';
+    }*/
+    if(notification_channel != null)
+    {
+        for(var i=0;i<notification_channel.length;i++)
+        {
+            if(notification_channel[i]=='EMAIL')
+                isEmail ='yes';
+            if(notification_channel[i]=='SMS')
+                isSMS ='yes';
+	    if(notification_channel[i]=='IVR')
+                isIVR='yes';
+
+        }
+
+        if((isEmail =='yes') && (isSMS =='yes'))
+        {
+            document.getElementById('email_div').style.display = 'block';
+            document.getElementById('sms_div').style.display = 'block';
+            $("#notification_channel option[value='" + "SMS"+","+"EMAIL"+ "']").attr('selected', true);
+            //    alert("SMS and EMAIL");
+        }
+        else if(isEmail == 'yes')
+        {
+            document.getElementById('email_div').style.display = 'block';
+            document.getElementById('sms_div').style.display = 'none';
+            $("#notification_channel option[value='" +"EMAIL"+ "']").attr('selected', true);
+            //    alert("EMAIL");
+        }
+        else if(isSMS =='yes')
+        {
+            document.getElementById('sms_div').style.display = 'block';
+            document.getElementById('email_div').style.display = 'none';
+            $("#notification_channel option[value='" + "SMS"+ "']").attr('selected', true);
+            //     alert("SMS ");
+        }
+        else if(isSMS =='no' && isEmail =='no' && isIVR =='yes')
+        {
+            
+            document.getElementById('email_div').style.display = 'none';
+            document.getElementById('sms_div').style.display = 'none';
+            $("#notification_channel").attr('selected', false);
+        }
+    }   
+    else
+    {
+       
+        document.getElementById('email_div').style.display = 'none';
+        document.getElementById('sms_div').style.display = 'none';
+        $("#notification_channel").attr('selected', false);
     }
 
 }
@@ -243,7 +332,7 @@ function table_data_conference_list(dataSet) {
         "order": [[0, "asc"]],
         dom: 'T<"clear">lfrtip',
         tableTools: {
-            "sSwfPath": "conference\img\datatable\swf\copy_csv_xls_pdf.swf",
+            "sSwfPath": "conference/img/datatable/swf/copy_csv_xls_pdf.swf",
             "sRowSelect": "multi",
             "aButtons": [
                 "copy", "csv",
@@ -281,8 +370,9 @@ function edit_conference_list(obj, info, room_number, weblink) {
      $('#action_id').val(data[0]);
      var str1=data[1].split(">");
      var str2=str1[1].split("'");
-     console.log(str2);
-     $('#demo_name').val(str2[1]);
+     var str3=str2[0].split("<");
+     //alert(str3[0]);
+     $('#demo_name').val(str3[0]);
      $('#user_id').val(data[2]);
      var datetime=data[3].split(" ");
      var date=datetime[0].split("-");
@@ -309,6 +399,12 @@ function edit_conference_list(obj, info, room_number, weblink) {
      var track_array = data[7].split(',');
      for (var i = 0; i < track_array.length; i++) {
         $("#notification_channel option[value='" + track_array[i] + "']").attr('selected', true);
+
+       if (track_array[i]=='EMAIL')
+                 document.getElementById('email_div').style.display = 'block';
+
+             else if(track_array[i]=='SMS')
+                 document.getElementById('sms_div').style.display = 'block';
      }
      $('#status').val(data[8]);
      $('#schedule_conf_dropdown').val(data[9]);
@@ -336,7 +432,7 @@ function conference_details(obj, conf_id){
         +"<br/>End Time    : "+ response.End_Time +"<br/>Conference Duration     : " +response.Conference_Duration
         +"<br/>Recording     : " + response.Recording +"<br/>Stats   : "+ response.STATUS +"<br/>Notification Channel     : " + response.Notification_Channel
         +"<br/>Schedule Conf   : "+ response.Schedule_Conf
-        +"<br/><b>Participants :</b> "+ response.Participants+"<br/>";
+        +"<br/><b>Participants :</b> "+"Max Limit "+ response.Participants+"<br/>";
 
     var dataSet = [[]];
     var participant= [];
@@ -362,7 +458,7 @@ function conference_details(obj, conf_id){
    //  alert(notice);
 
     } else {
-        alert("No Data");
+        //alert("No Data");
     }
 
     if (response.status) {
@@ -419,8 +515,3 @@ function delete_confirm_conference_list(event) {
 
 }
 
-function conference_record_download(){
-
-    alert("i am here!");
-
-}

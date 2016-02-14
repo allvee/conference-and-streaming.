@@ -8,6 +8,8 @@ var waitforCMSData;
 var CMS_CATEGORY_URL = "";
 var CMS_CONTENT_URL="";
 
+var cmsConferenceContent,cmsConferenceCategory;
+
 /*=====================================================================================
 *
 * For common functions
@@ -31,12 +33,12 @@ var CMS_CONTENT_URL="";
 //The output of the URLs are stored in localStore and global structures/variables respectively
 function getCMSData()
 {
-    var localCMSCat=localStorage.cmsCategory;
-    var localCMSCont=localStorage.cmsContent;
+    var localCMSCat=localStorage.cmsConferenceCategory;
+    var localCMSCont=localStorage.cmsConferenceContent;
 
     if(localCMSCat!=null)
     {
-        cmsCategory=JSON.parse(localCMSCat);
+        cmsConferenceCategory=JSON.parse(localCMSCat);
         cmsCategoryLoaded=true;
     }
 
@@ -44,22 +46,22 @@ function getCMSData()
 
     if(localCMSCont!=null)
     {
-        cmsContent=JSON.parse(localCMSCont);
+        cmsConferenceContent=JSON.parse(localCMSCont);
         cmsContentLoaded=true;
     }
 
     $.get(CMS_CATEGORY_URL, function(data, status){
 
-        cmsCategory=JSON.parse(data);
-        localStorage.cmsCategory=data;
+        cmsConferenceCategory=JSON.parse(data);
+        localStorage.cmsConferenceCategory=data;
         cmsCategoryLoaded=true;
     });
 
     
     $.get(CMS_CONTENT_URL, function(data, status) {
         //JSON.stringify(data)
-        cmsContent = JSON.parse(data);
-        localStorage.cmsContent = data;
+        cmsConferenceContent = JSON.parse(data);
+        localStorage.cmsConferenceContent = data;
         cmsContentLoaded = true;
     });
 }
@@ -92,11 +94,11 @@ function displayCategoryList(parent, target, layout, parentTarget, nCol, separat
 	//console.log(cmsCategory);
 
     $(target).html("");
-    for (var i = 0; i < cmsCategory.length; i++) {
+    for (var i = 0; i < cmsConferenceCategory.length; i++) {
 
-        if (cmsCategory[i].parent == parent) {
+        if (cmsConferenceCategory[i].parent == parent) {
             dispCount++;
-            var cnt = cmsCategory[i];
+            var cnt = cmsConferenceCategory[i];
 
             var keys = getKeys(cnt);
 
@@ -255,27 +257,27 @@ function displayContent(key, target, layout, keyType, readMore) {
     if(keyType=="ArrayIndex"){
         i=key;
     }else if(keyType=="ContentID"){
-        for(i=0; i<cmsContent.length; i++)
+        for(i=0; i<cmsConferenceContent.length; i++)
         {
-            if(cmsContent[i].id==key)
+            if(cmsConferenceContent[i].id==key)
                 break;
         }
     } else {
         return;
     }
 
-    var phID="content_id_" + cmsContent[i].id;;
-    var tmp = JSON.stringify(cmsContent[i]);
+    var phID="content_id_" + cmsConferenceContent[i].id;;
+    var tmp = JSON.stringify(cmsConferenceContent[i]);
     
     
-    if (cmsContent[i].type == "URL") {
+    if (cmsConferenceContent[i].type == "URL") {
         content = "<div id=\"" + phID + "\"><div>";
         $(target).append(content);
         $("#" + phID).hide();
-        $.get(cmsContent[i].url+"target="+phID+"&layout="+layout.substr(1,100), handleURLContentData);
+        $.get(cmsConferenceContent[i].url+"target="+phID+"&layout="+layout.substr(1,100), handleURLContentData);
     }
-    else if (cmsContent[i].type == "FORM") {
-        loadFormContent(cmsContent[i].id, target, layout);
+    else if (cmsConferenceContent[i].type == "FORM") {
+        loadFormContent(cmsConferenceContent[i].id, target, layout);
     }
     else {
         loadContent(tmp, target, layout, readMore);
@@ -289,8 +291,8 @@ function displayOnlyContentList( target, layout, numOfContent, readMore ) {
 
     $(target).html("");
 
-    for (var i = 0; i < cmsContent.length; i++) {
-        if ( cmsContent[i].type != "FORM") {
+    for (var i = 0; i < cmsConferenceContent.length; i++) {
+        if ( cmsConferenceContent[i].type != "FORM") {
             displayContent(i, target, layout, "ArrayIndex",readMore);
 
         }
@@ -311,15 +313,15 @@ function displayContentList(catid, target, layout, nCol, separator) {
         separator="";
 
     $(target).html("");
-    for (var i = 0; i < cmsContent.length; i++) {
-        if ( cmsContent[i].catid == catid) {
+    for (var i = 0; i < cmsConferenceContent.length; i++) {
+        if ( cmsConferenceContent[i].catid == catid) {
             //console.log(cmsContent[i].catid);
             dispCount++;
             displayContent(i, target, layout, "ArrayIndex","");
             if(nCol>0){
-                if (dispCount % nCol == 0 || cmsContent[i].isHighlited == "YES") {
+                if (dispCount % nCol == 0 || cmsConferenceContent[i].isHighlited == "YES") {
                     $(target).append(separator);
-                    if (cmsContent[i].isHighlited == "YES")
+                    if (cmsConferenceContent[i].isHighlited == "YES")
                         dispCount--;
                 }
             }
@@ -330,9 +332,9 @@ function displayContentList(catid, target, layout, nCol, separator) {
 
 //function loadCMSParent: Loads the parent of specified category in the specified target
 function loadCMSParent(catID, target) {
-    for (var i = 0; i < cmsCategory.length; i++) {
-        if (cmsCategory[i].id == catID) {
-            loadCMSCategory(cmsCategory[i].parent, target);
+    for (var i = 0; i < cmsConferenceCategory.length; i++) {
+        if (cmsConferenceCategory[i].id == catID) {
+            loadCMSCategory(cmsConferenceCategory[i].parent, target);
             break;
         }
     }
@@ -361,15 +363,15 @@ function loadCMSCategory(catID, target) {
         $(targetBackID).show();
 
 
-    for (var i = 0; i < cmsCategory.length; i++) {
-        if (cmsCategory[i].id == catID) {
+    for (var i = 0; i < cmsConferenceCategory.length; i++) {
+        if (cmsConferenceCategory[i].id == catID) {
             var hidden = "<div style=\"display: none\" id=\"CMS_HIDDEN\"></div>";
             $("#CMS_HIDDEN").remove();
             $("body").append(hidden);
 
-            $("#CMS_HIDDEN").html(cmsCategory[i].catLayout);
-            $("#CMS_HIDDEN").append(cmsCategory[i].catListLayout);
-            $("#CMS_HIDDEN").append(cmsCategory[i].contentListLayout);
+            $("#CMS_HIDDEN").html(cmsConferenceCategory[i].catLayout);
+            $("#CMS_HIDDEN").append(cmsConferenceCategory[i].catListLayout);
+            $("#CMS_HIDDEN").append(cmsConferenceCategory[i].contentListLayout);
             /*
             displayCategoryList(catID, cmsCategory[i].catListTarget, cmsCategory[i].catListLayoutName, target, cmsCategory[i].columnNo, cmsCategory[i].rowSep);
             displayContentList(catID, cmsCategory[i].contentListTarget, cmsCategory[i].contentListLayoutName, cmsCategory[i].columnNo, cmsCategory[i].rowSep);
@@ -567,7 +569,7 @@ function buildDynamicForm(formContentData){
  */
 function parseGetFormContentData(formContentID){
 
-    $.each(cmsContent,function(index,val){
+    $.each(cmsConferenceContent,function(index,val){
         if( val.id == formContentID ){
           contentFormData = JSON.parse(val.formData);
         }
@@ -582,7 +584,7 @@ function parseGetFormContentData(formContentID){
 
 function loadFormContent( formContentID, target ){
 
-    $.each(cmsContent,function(index,val){
+    $.each(cmsConferenceContent,function(index,val){
         if( val.id == formContentID ){
           cmsFormHtml = buildDynamicForm(val);
           title = val.title;
@@ -921,7 +923,7 @@ function contentView(target,type,id){
     //$(".success").hide("slow");
 	if( type == 'add'){
 
-          generateContentForm(type,id,cmsCategory);
+          generateContentForm(type,id,cmsConferenceCategory);
 
           var cms_auth = checkSession('cms_auth');
           var userInfo = JSON.parse(cms_auth);
@@ -932,7 +934,7 @@ function contentView(target,type,id){
 	}else
     {
 
-            var catList = cmsCategory;
+            var catList = cmsConferenceCategory;
 
 			getJson('',CMS_CONTENT_URL, function(data){
 				if(data.readyState == 4){
@@ -1152,9 +1154,11 @@ function userContents(target,type,id){
 function cmsLogout(redirect_url) {
     $.each(sessionStorage, function (ind, val) {
         destroySession(ind);
-    })
-	
-	redirect_to(redirect_url)
+    });
+    localStorage.removeItem(cmsConferenceCategory);
+    localStorage.removeItem(cmsConferenceContent);
+    localStorage.removeItem('sso_auth_token');
+	redirect_to(redirect_url);
 }
 
 //user cmsLoginView @ zubayer

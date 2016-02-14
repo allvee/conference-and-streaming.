@@ -36,7 +36,7 @@ function conference_done_popup()
     }
     console.log(len+notice);
 
-    custom_alertMessage(this, 'green', 'Successful',conference_notice+notice);
+    custom_alertMessage(this, 'green', 'Conference Details',conference_notice+notice);
     showUserMenu('enterprise_conference');
 }
 
@@ -58,7 +58,7 @@ function participant_add_edit(){
    // alert("before php Hit js");
 
     var response = connectServerWithForm(cms_url['participant_info'], form_id);
-   // alert("after php Hit js: "+response + "   found");
+    //alert("after php Hit js: "+response + "   found");
 
     console.log("get: "+response +" found");
 
@@ -97,7 +97,7 @@ function add_new_participant() {
 
     if(No_of_participants<=count_response)
     {
-        alert("No_of_participants:"+No_of_participants +" And I find count:"+count_response);
+        //alert("No_of_participants:"+No_of_participants +" And I find count:"+count_response);
         alertMessage(this, 'red', "   Sorry!!!", "Number of Participants of this Conference is Limited as: "+No_of_participants+"</br> Please Increase the Number of Participants !!");
         showUserMenu('participants_list');
     }
@@ -157,7 +157,7 @@ function table_data_participant_list(dataSet) {
         "order": [[0, "asc"]],
         dom: 'T<"clear">lfrtip',
         tableTools: {
-            "sSwfPath": "conference\img\datatable\swf\copy_csv_xls_pdf.swf",
+            "sSwfPath": "conference/img/datatable/swf/copy_csv_xls_pdf.swf",
             "sRowSelect": "multi",
             "aButtons": [
                 "copy", "csv",

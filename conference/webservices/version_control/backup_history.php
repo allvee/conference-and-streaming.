@@ -44,9 +44,9 @@ while ($row = Sql_fetch_array($result)) {
     $data[$i][$j++] = Sql_Result($row, "last_updated");
     $data[$i][$j++] = Sql_Result($row, "last_updated_by");
     
-    ///'<span onclick="restore_backup(this,' . "'" . Sql_Result($row, "id") . "'" . '); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="rcportal/img/download.png" ></span>'
+    ///'<span onclick="restore_backup(this,' . "'" . Sql_Result($row, "id") . "'" . '); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="vpn/img/download.png" ></span>'
 
-    $data[$i][$j++] = '<span onclick="delete_backup_history(this,' . "'" . Sql_Result($row, "id") . "'" . '); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="rcportal/img/cancel.png" ></span>';
+    $data[$i][$j++] = '<span onclick="delete_backup_history(this,' . "'" . Sql_Result($row, "id") . "'" . '); return false;">&nbsp;<img style="position: relative; cursor: pointer; top: 4px" width="16" height="16" border="0" src="vpn/img/cancel.png" ></span>';
 
     $i++;
 }

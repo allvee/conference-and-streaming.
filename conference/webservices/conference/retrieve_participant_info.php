@@ -24,12 +24,13 @@ if (isset($_REQUEST['info'])) {
 $arrayInput = array();
 $query = "SELECT  participant_name, msisdn, email FROM $tbl where conference_ID ='$conference_id'";
 $result = Sql_exec($cn, $query);
+//exit(__LINE__."$query");
 /*if (!$result) {
     echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;
     exit;
 }*/
 
-
+//echo __FILE__.__LINE__;
 $data = array();
 $i = 0;
 while ($row = Sql_fetch_array($result)) {
@@ -47,9 +48,9 @@ while ($row = Sql_fetch_array($result)) {
         $qry = "insert into $Call_Handler_DB.outdialque set MSISDN = '$msisdn',DisplayAno = '$long_code',OriginalAno = '2008',
 ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$conference_id', OutDialTime = NOW()";
         //echo $qry.__LINE__.__FILE__."\n";
-        logcats("Query: ".$qry);
+        //logcats("Query: ".$qry);
         $ret = Sql_exec($cn,$qry);
-        logcats("Insert: ".$ret);
+        //logcats("Insert: ".$ret);
         //echo $ret.__LINE__.__FILE__."\n";
         Sql_Free_Result($ret);
 
@@ -59,7 +60,7 @@ ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$confer
 Sql_Free_Result($result);
 ClosedDBConnection($cn);
 //$json_data = json_encode($data);
-
+//echo __FILE__.__LINE__;
 if ($is_error == 0) {
     $return_data = array('status' => true, 'data' => $data);
 } else {

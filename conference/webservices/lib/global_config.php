@@ -1,111 +1,54 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Talemul
+ * User: Monowar
  * Date: 5/5/2015
  * Time: 2:05 PM
  */
+$protocol = '';
+if(isset($_SERVER['HTTPS'])) {
+    $protocol = "https";
+} else{
+    $protocol = 'http';
+}
+$localhost = $_SERVER['HTTP_HOST'];
+$baseURL = $protocol.'://'.$_SERVER['HTTP_HOST'];
+$CURRENT_FILE_HOSTING_PATH = dirname(dirname(dirname(dirname ( __FILE__ )))).DIRECTORY_SEPARATOR;
+
+$file_dir = "/tmp/" ;
+$dir_firewall_backup_file = $CURRENT_FILE_HOSTING_PATH."backup/";
+$dir_firewall_upload_dir = $CURRENT_FILE_HOSTING_PATH.'backup/uploaded/';
+
+//Local MarketPlace Dashboard Integration
+define('Marketplace_Login_USER', $baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/UserLogin.php');
+define('Marketplace_USER_LIST', $baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/user_list.php');
+
+//define('Marketplace_Login_USER', $baseURL.'/doze_internet_new_site/webservices/request_doze/UserLogin.php');
+//define('Marketplace_USER_LIST', $baseURL.'/doze_internet_new_site/webservices/request_doze/user_list.php');
+
+define('Marketplace_Add_ORG_API','/firewall/rcportal/webservices/firewall/role_sync/save_sync_organization.php');
+define('Marketplace_Add_ROLE_API','/firewall/rcportal/webservices/firewall/role_sync/save_sync_user_role.php');
+define('Marketplace_Add_ROLE_MENUS_API','/firewall/rcportal/webservices/firewall/role_sync/save_sync_role_menu.php');
 
 
- /*
-  * for check session just call
-  * checkSession();
-  *
-  * */
-$TBL_USER='tbl_user'; //SQL Server [User]
-$TBL_ROLE = 'roleinfo'; // role table
+define('VERSION_UPDATE_SERVER', '192.168.245.40');
+$version_check_url = 'http://'.VERSION_UPDATE_SERVER.'/version_checker/?';
+define('VERSION_CHECK_URL', $version_check_url);
 
+define('CP_DIR_FOR_UPDATE', 'firewall_as_service/*');
+define('DB_FILE_NAME', 'firewall_as_service/db/firewall_as_service.sql');
+define('DB_NAME', 'firewall_service');
 
-// HOSTING
-//$host_drive = "http://".$_SERVER['HTTP_HOST']."/rcportal/";
-$CURRENT_FILE_HOSTING_PATH = "/var/www/html/ocmportal/";
+define('Synchronize','http://192.168.245.34/group_server/get_firewall_groups.php');
 
-// Upgrade Source & Destination File Directory
-//$UPGRADE_VERSION_SEARCH_URL = "http://ssd-tech.com/unifiedgw/ugw/check_upgraded_version.php";
-//$UPGRADE_SOURCE_FILE_PATH = "http://ssd-tech.com/unifiedgw/ugw/download/";
-//$UPGRADE_DESTINATION_FILE_PATH = "/home/download_files/rcportal.zip";
+$get_group_content = "http://192.168.245.34/group_server/get_firewall_group_content.php?group_name=";
+$get_group_description = "http://192.168.245.34/group_server/get_firewall_group_description.php?group_name=";
+$get_gatewayFromMac = "http://192.168.245.40/ocmportal/rcportal/webservices/api/get_gateway.php?mac=";
 
-// UGW RollBack Default VERSION BACKUP Directory
-//$LATEST_FILES_BACKUP_PATH = "/home/ROLLBACK_VERSION/";
-//$DEFAULT_SOURCE_FILES = "/home/UGW_BACKUP/";
-//$SHELL_FILE_URL = $CURRENT_FILE_HOSTING_PATH."ssh/file_write.sh";
-
-// Log File
-//$LOG_FILE = "/home/LOG/ugw.log";
-$LOG_TYPE = "FILE";  // FOR file writing >> "FILE", FOR Database >> "DB"
-$LOG_HOLDER = "/home/LOG/";  // FOR file writing >> FILE_DIR_PATH, FOR Database >> Table_Name (or, DB_NAME.TABLE_NAME)
+$dest_file_dir = "/mnt/BWP/fireWall/";
+$dir_config_file="/ocmp/app/firewall_as_service/";
+$firewall_app_port = 3448;
+$parental_firewall_service = 0;
 
 
 
-$dir = "/etc/sysconfig/network-scripts/";
-$dir_dhcp = "/etc/dhcpd.swf";
-$dir_dhcp_lease = "/var/lib/dhcpd/dhcpd.leases";
-$dir_dhcp_interface = "/etc/sysconfig/dhcpd";
-$dir_firewall = "/etc/sysconfig/iptables";
-$dir_hosts = "/etc/hosts";
-$dir_dns_servers = "/etc/resolv.swf";
-$dir_bwm = "/var/www/html/bw/xml/";
-$dir_network_host = "/etc/sysconfig/network";
-$dir_proxy = "/etc/squid/squid.swf";
-$dir_proxy_browsing_history = "/var/log/squid/access.log";
-$dir_vpn_ipsec = "/etc/ipsec.d/ugw.swf";
-$dir_vpn_ipsec_secret = "/etc/ipsec.d/ugw.secrets";
-$dir_vpn_pptp_server = "/etc/pptpd.swf";
-$dir_vpn_pptp_client = "/etc/ppp/chap-secrets";
-$dir_ippbx_extension = "/etc/asterisk/extensions_additional.swf";
-$dir_ippbx_sip = "/etc/asterisk/sip_additional.swf";
-$p_of_static_routing = "/etc/quagga/zebra.swf";
-$zebra_shell_path = "/var/tmp/zebra.sh";
-$p_of_dynamic_rip_routing = "/etc/quagga/ripd.swf";
-$rip_shell_path = "/var/tmp/rip.sh";
-$p_of_dynamic_ospf_routing = "/etc/quagga/ospfd.swf";
-$ospf_shell_path = "/var/tmp/ospf.sh";
-$dir_bgp = "/etc/quagga/bgpd.swf";
-$stop_bgp_path = "/var/tmp/stop_bgp.sh";
-$bgp_current_config_path ="/var/tmp/bgp.txt";
-$running_bgp_path = "/var/tmp/bgp.sh";
-$dir_vrrp = "/etc/keepalived/keepalived.swf";
-$dir_vpn_xl2tp = "/etc/xl2tpd/xl2tpd.swf";
-$dir_vpn_ms_dns = "/etc/ppp/options.xl2tpd";
-$dir_vpn_xl2tp_client = "/etc/ppp/chap-secrets";
-$dir_firewall_group = "/ocmp/test/bwp/firewallRules/";
-$remove_lease = ">/var/lib/dhcpd/dhcpd.leases";
-$tcp_dump_path = "/var/tmp/tcpdump/";
-$pageTitle = "Onubha Gateway";
-$page_title_value = "";
-$hostPath = "http://". $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-$dir_bwp="/bwp/"; 
-$dir_firewall_config="/firewall/"; 
-$path_of_smsgw_configuration = "/var/www/html/ocmportal_new/rcportal/webservices/smsgw/smsgw.ini";
-
-/***
- * configuration file location 
- */
-
-// Call Handler
-
-$dir_call_handler_test = "/ocmp/test/callhandler/";
-$dir_call_handler_production = "/ocmp/production/callhandler/";
-
-// Signaling Gateway
-
-$dir_sgw_test = "/ocmp/test/sgw/";
-$dir_sgw_production = "/ocmp/production/sgw/";
-
-// BWP
-
-$dir_bwp_test = "/ocmp/test/bwp/";
-$dir_bwp_production = "/ocmp/production/bwp/";
-
-// Firewall
-
-$dir_firewall_test = "/ocmp/test/fw/";
-$dir_firewall_production = "/ocmp/production/fw/";
-
-//softswitch Maintenance
-$dir_softswitch_stop = "sudo /Softswitch1/Softswitch/stop.sh";
-$dir_softswitch_start = "sudo -u root /Softswitch1/Softswitch/start.sh 2>&1";
-$dir_softswitch_restart="sudo -u root /Softswitch1/Softswitch/restart.sh";
-
-//$dir_softswitch_ippbx_config = "/var/www/html/softswitch/softswitch/webservices/softswitch/";
-$dir_softswitch_ippbx_config="/Softswitch1/Softswitch/";

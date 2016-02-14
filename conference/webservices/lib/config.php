@@ -9,8 +9,9 @@ error_reporting(0);
 $dbtype = 'mysql';
 $UserID = 'root';
 $Password = 'nopass';
-$Server = '192.168.245.46';
-$Database = 'conference_demo';
+$Server = 'localhost';
+$SMS_server = 'localhost';
+$Database = 'conference';
 $Call_Handler_DB = 'vsdp_2_1_1';
 
 $salt = 'DjhG83b0QyJfIxfs2gsVoUubWwVniR2G0FgaC9ny';
@@ -20,11 +21,11 @@ $temp_Password = '';
 $temp_Server = '';
 $temp_Database = '';
 
-
+/*
 $log_file_name = "Enterprise_conference.txt";
 $print_log = 1;
 if($print_log==1) file_put_contents("$log_file_name", "***New_Call****\n", FILE_APPEND);
 function logcats($parameter) {
     global $log_file_name,$print_log;
     if($print_log==1) file_put_contents($log_file_name, strval($parameter)."\n", FILE_APPEND);
-}
+}*/

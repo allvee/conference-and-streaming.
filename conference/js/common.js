@@ -1,24 +1,69 @@
-/**
- * Created by Mazhar on 10/2/2014.
- */
 $('document').ready(function () {
-
     /*
      * Global verible for getting web content
      */
     CMS_CATEGORY_URL = cms_service_url['cms_service_host'] + "CMSWebService/getCMSCategoryList.php";
     CMS_CONTENT_URL = cms_service_url['cms_service_host'] + "CMSWebService/getCMSContentList.php";
 
+    var session_data = connectServer( cms_url['get_session_data'], null, false);
+
+    session_data = JSON.parse(session_data);
+
+    if( session_data.status ){
+
+        setSession(JSON.stringify(session_data.UserData), 'cms_auth');
+
+    }else{
+        //redirect_to(cms_url['MarketplaceURL'] + "marketplace/index.php");
+    }
+    console.log("Session Data",session_data);
     /*
      * function initCMS
      * source : cmscore.js
      * input : a call back function
      */
-      $.ajaxSetup({timeout: 20000000});
-      initCMS("onCMSDataReceived");
-     
-   
+    /*    
+    var auth_session_data = checkSession('cms_auth');
+    if(auth_session_data == null) {
+        var ssotoken_status = checklocalStorage('sso_auth_token');
+        if (ssotoken_status != null) {
+            console.log('ssotoken_status', ssotoken_status);
+            ssotoken_status = $.parseJSON(ssotoken_status);
+            UserLoginActionAuto(ssotoken_status.uid, ssotoken_status.pwd);
+        }
+    }  
+    */
+
+    $.ajaxSetup({timeout: 20000000});
+
+        setTimeout(function(){
+
+        initCMS("onCMSDataReceived");
+    },1000);
+
+
+    var timerID = setInterval(function(){
+
+        var is_exist = connectServer( cms_url['check_server_session'], null, false);
+        is_exist = JSON.parse(is_exist);
+
+        if( !is_exist.status ){
+            clearInterval(timerID);
+            //confirm_with_yes(this, 'yes_expired', 'Session Expired Message',"Your Session has been expired or destroyed. Log in again!!");
+            //$('#yes_expired').click(null, yes_expired_clicked);
+			//alert("Sessin Expired");
+        }
+    },5000);
+    
+   //initCMS("onCMSDataReceived");
+
+
 });
+
+
+function yes_expired_clicked(event){
+    showUserMenu("signOut");
+}
 
 
 /*
@@ -38,7 +83,7 @@ function onCMSDataReceived() {
         var auth_data = JSON.parse(auth_session_data);
 
         if (parseInt(auth_data.layoutId) > 0) {
-            var layoutId = 8;
+            var layoutId = auth_data.layoutId;
             cms_service_url['get_header_footer'] = cms_service_url['cms_service_host'] + 'CMSWebService/getHeaderFooter.php?layoutid=' + layoutId;
         }
     }
@@ -47,10 +92,27 @@ function onCMSDataReceived() {
     //display content
     defaultViewController();
 
-   // $('.graph-content').loadDashboardGraph();
+    //$('.graph-content').loadDashboardGraph();
 }
 
+function Conference_DatePicker(input_id) {
+    //alert('enter here');
+    input_id='#'+input_id;
+    $(input_id).datepicker({
+        format: "yyyy-mm-dd",
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        autoclose: true,
+        todayHighlight: true
+    });
+}
 
+function gcportal_DateTimePicker(input_id){
+
+    input_id = '#'+input_id;
+    $(input_id).datetimepicker();
+
+}
 /* =========================================================
  * Created by Mazhar on 10/25/2014.
  *
@@ -62,7 +124,7 @@ function onCMSDataReceived() {
  * ========================================================= */
 function connectServer(fetchURL, dataInfo, asyncFlag) {
 
-    var returnValue;
+    var returnValue = undefined;
     if (asyncFlag == undefined) {
         asyncFlag = false;
     }
@@ -199,17 +261,17 @@ function message_clear() {
 function getBalance(){
     $.post(cms_url['dhakagate_get_balance'], function(response){
         updateDashboardInfo(response)
-       // return response;
+        // return response;
     });
 }
 
 /*===============================data picker function ===========================================
-* to use this data picker just call the function with id
-* ===============================================================================================*/
+ * to use this data picker just call the function with id
+ * ===============================================================================================*/
 
 
-function Conference_DatePicker(input_id) {
-   // alert('enter here');
+function rcportal_DatePicker(input_id) {
+    //alert('enter here');
     input_id='#'+input_id;
     $(input_id).datepicker({
         format: "yyyy-mm-dd",
@@ -220,27 +282,10 @@ function Conference_DatePicker(input_id) {
     });
 }
 
-function Conference_DateTimePicker(input_id){
-                
-                input_id = '#'+input_id;
-                $(input_id).datetimepicker(
-                    {
-                        format:"Y/m/d H:m"
-}
-                );
-
-}
-
-
-function Conference_TimePicker(input_id){
+function rcportal_DateTimePicker(input_id){
 
     input_id = '#'+input_id;
-    $(input_id).datetimepicker(
-        {
-            datepicker:false,
-            format:'H:i'
-        }
-    );
+    $(input_id).datetimepicker();
 
 }
 
@@ -251,10 +296,12 @@ function Conference_TimePicker(input_id){
 
 function display_content_custom(id, target) {
 
-    var cmsContentData = localStorage.cmsContent;
+    var cmsContentData = localStorage.cmsConferenceContent;
+
 
     if (cmsContentData != null) {
         var cmsContentData = JSON.parse(cmsContentData);
+        //console.log("cmsContentData3::", cmsContentData);
         for (i = 0; i < cmsContentData.length; i++)
         {
             if (cmsContentData[i].id == cmsContentData[i].cid && cmsContentData[i].cid == id) {
@@ -268,19 +315,19 @@ function display_content_custom(id, target) {
 }
 /* default menu */
 
-    function default_menu () {
-        $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            $(this).parent().siblings().removeClass('open');
-            $(this).parent().toggleClass('open');
-        });
-    }
+function default_menu () {
+    $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $(this).parent().siblings().removeClass('open');
+        $(this).parent().toggleClass('open');
+    });
+}
 /*
-*
-* datatable responsive plugin
+ *
+ * datatable responsive plugin
  * just call this function after prepare table content
-* */
+ * */
 
 
 function data_table_responsive(){
@@ -329,12 +376,12 @@ function data_table_responsive(){
 
     function setCellHeights(original, copy) {
         var tr = original.find('tr'),
-            tr_copy = copy.find('tr'),
-            heights = [];
+                tr_copy = copy.find('tr'),
+                heights = [];
 
         tr.each(function (index) {
             var self = $(this),
-                tx = self.find('th, td');
+                    tx = self.find('th, td');
 
             tx.each(function () {
                 var height = $(this).outerHeight(true);
@@ -360,13 +407,13 @@ function IPAddressOnly(val,type){
     type = typeof type !== 'undefined' ? type : "ip";
     var val_arr = val.split(".");
     if( val_arr.length != 4 ||
-        (parseInt(val_arr[0])< 1 || parseInt(val_arr[0]) > 255) ||
-        (parseInt(val_arr[1])< 0 || parseInt(val_arr[1]) > 255) ||
-        (parseInt(val_arr[2])< 0 || parseInt(val_arr[2]) > 255) ||
-        (type == "g" && (parseInt(val_arr[3]) < 1 || parseInt(val_arr[3]) > 254)) ||
-        (type == "ip" && (parseInt(val_arr[3]) < 0 || parseInt(val_arr[3]) > 255))
+            (parseInt(val_arr[0])< 0 || parseInt(val_arr[0]) > 255) ||
+            (parseInt(val_arr[1])< 0 || parseInt(val_arr[1]) > 255) ||
+            (parseInt(val_arr[2])< 0 || parseInt(val_arr[2]) > 255) ||
+            (type == "g" && (parseInt(val_arr[3]) < 1 || parseInt(val_arr[3]) > 254)) ||
+            (type == "ip" && (parseInt(val_arr[3]) < 0 || parseInt(val_arr[3]) > 255))
     ){
-        alertMessage(this,'yellow','',"Wrong IP address " + val);
+        // alertMessage(this,'yellow','',"Wrong IP address " + val);
         return false;
     }
     return true;
@@ -383,6 +430,27 @@ function MACAddressOnly(val){
 
     if(mac_format.test(val)==false){
         alert("Wrong MAC or Ethernet address "+val);
+        return false;
+    }
+    return true;
+}
+function BandwidthCheck(val){
+    val = typeof val !== 'undefined' ? val : "";
+
+
+    if(val%64!=0 || val==''){
+        alertMessage(this,'yellow','',"Wrong Bandwidth Value.Value Must be divisible by 64 " + val);
+        return false;
+    }
+    return true;
+}
+
+function Max_BandwidthCheck(val){
+    val = typeof val !== 'undefined' ? val : "";
+
+
+    if(val%64!=0 || val==''){
+        alertMessage(this,'yellow','',"Wrong Max Bandwidth Value.Value Must be divisible by 64 " + val);
         return false;
     }
     return true;
@@ -410,7 +478,7 @@ function tab_custom(inputarray, tarhgetName) {
     var tab_deactive_custom = 'tab_deactive_custom';
     if (len < 4) {
         len = 3;
-    } else if (len < 7) {
+    } else if (len < 8) {
         len = 2;
         tab_active_custom='tab_active_custom_m';
         tab_deactive_custom='tab_deactive_custom_m';
@@ -431,4 +499,73 @@ function tab_custom(inputarray, tarhgetName) {
     }
 
     $('#' + tarhgetName).html(html_string);
+}
+
+function check_interfaces() {
+    var dataInfo = {};
+    var response = connectServer(cms_url['rcportal_check_interfaces'], dataInfo);
+
+    var obj = jQuery.parseJSON(response);
+    var i = 1;
+    $.each(obj, function( key, value ) {
+
+        if(value == 'Activate') {
+            $('.home-bottommenu ul li:nth-child('+i+') a').addClass('home-bottommenu-active');
+        } else {
+            $('.home-bottommenu ul li:nth-child('+i+') a').addClass('home-bottommenu-inactive');
+        }
+        ++i;
+    });
+}
+
+function validateUsername(str) {
+    var regexp = /^[A-Za-z0-9_]{3,20}$/;
+    if (regexp.test(str))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+
+
+
+
+function has_menu_permission(url, menu_name) {
+    var returnValue;
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        async: false,
+        data: {'menu_name': menu_name},
+        success: function (value) {
+            returnValue = $.parseJSON(value);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            genericError(jqXHR, textStatus, errorThrown);
+        }
+    });
+    return returnValue;
+}
+
+function write_activity_log(menu_name, component, url) {
+    var returnValue;
+    $.ajax({
+        type: 'POST',
+        url: url,
+        async: false,
+        data: {'menu_name': menu_name, 'component' : component},
+        success: function (value) {
+            returnValue = value;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            genericError(jqXHR, textStatus, errorThrown);
+        }
+    });
+    return returnValue;
 }
