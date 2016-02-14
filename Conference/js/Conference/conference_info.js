@@ -134,6 +134,17 @@ function conference_create_edit() {
     form_id = "conference_create_edit";
     var org_name = $('#notification_channel').val();
     //alert(org_name);
+    if($("#demo_name").val().trim()=='') {
+        alert("Enter Conference Name");
+    } else if($("#start_date").val().trim()=='') {
+        alert("Enter start date");
+    } else if($("#conf_code").val().trim()=='') {
+        alert("Enter conference code");
+    } else if($("#demo_participants").val().trim()=='') {
+        alert("Enter participants number");
+    } else if($("#notification_channel").val().trim()=='') {
+        alert("Select notification channel");
+    }
 
     if ( conference_id != null )
     {
@@ -364,7 +375,7 @@ function edit_conference_list(obj, info, room_number, weblink) {
     showUserMenu('edit_conference');
     document.getElementById("conference_id").textContent=data[0];
     conference_id =data[0];
-    console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9], room_number, weblink );
+    console.log(data[6] );
 
      $('#action').val("update");
      $('#action_id').val(data[0]);
@@ -392,11 +403,22 @@ function edit_conference_list(obj, info, room_number, weblink) {
      $("#end_time option[value='" + hourmin[0]+":"+hourmin[1] + "']").attr('selected', true);
 
      $('#demo_participants').val(data[5]);
-    /*
-     $('#demo_recording').val(data[6]);
-     if(data[6]=='yes') $('#demo_recording').attr("checked",checked);*/
-
-     var track_array = data[7].split(',');
+    if(data[6]!='no')
+    {
+        var str1=data[6].split(">");
+        var str2 = str1[1].split("<");
+        $('#demo_recording').val(str2[0]);
+        if(str2[0]=='yes')
+        {
+            document.getElementById("demo_recording").checked = true;
+            // $('#demo_recording').attr("checked",checked);
+        }
+    }
+    else
+    {
+        $('#demo_recording').val(data[6]);
+    }
+    var track_array = data[7].split(',');
      for (var i = 0; i < track_array.length; i++) {
         $("#notification_channel option[value='" + track_array[i] + "']").attr('selected', true);
 

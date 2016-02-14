@@ -31,7 +31,7 @@ while ($row = Sql_fetch_array($result)) {
     $j=0;
     $data[$i][$j++] = Sql_Result($row, "ID");
    // $data[$i][$j++] = Sql_Result($row, "Conf_Name");
-    $data[$i][$j++] = '<span style="color:green;"  onclick="conference_details(this,  \'' . Sql_Result($row, "ID") .'\'); return false;"> ' . Sql_Result($row, "Conf_Name") .'</span>';
+    $data[$i][$j++] = '<span style="color:green;"  onclick="conference_details(this,  \'' . Sql_Result($row, "ID") .'\'); return false;">' . Sql_Result($row, "Conf_Name") .'</span>';
     $data[$i][$j++] = Sql_Result($row, "USER");
     $data[$i][$j++] = Sql_Result($row, "Start_Time");
     $data[$i][$j++] = Sql_Result($row, "End_Time");
@@ -39,7 +39,7 @@ while ($row = Sql_fetch_array($result)) {
     // $data[$i][$j++] = Sql_Result($row, "Recording");
     $check=Sql_Result($row, "Recording");
     if($check=="yes")
-    $data[$i][$j++] = '<span style="color:blue;"  onclick="conference_record_download(this,  \'' . Sql_Result($row, "ID") .'\'); return false;"> ' . Sql_Result($row, "Recording") .'</span>';
+    $data[$i][$j++] = '<span style="color:blue;"  onclick="conference_record_download(this,  \'' . Sql_Result($row, "ID") .'\'); return false;">' . Sql_Result($row, "Recording") .'</span>';
     else
     $data[$i][$j++] = Sql_Result($row, "Recording");
     $data[$i][$j++] = Sql_Result($row, "Notification_Channel");
