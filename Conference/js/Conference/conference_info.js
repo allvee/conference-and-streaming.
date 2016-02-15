@@ -133,76 +133,85 @@ function conference_create_edit() {
 
     form_id = "conference_create_edit";
     var org_name = $('#notification_channel').val();
-    //alert(org_name);
+    //alert("Befor");
+    alert($("#notification_channel").val());
+    //alert("after");
     if($("#demo_name").val().trim()=='') {
         alert("Enter Conference Name");
     } else if($("#start_date").val().trim()=='') {
         alert("Enter start date");
-    } else if($("#conf_code").val().trim()=='') {
-        alert("Enter conference code");
+    } else if($("#start_time").val().trim()=='') {
+        alert("Enter start time");
+    }else if($("#end_time").val().trim()=='') {
+        alert("Enter end time");
+    }else if($("#conf_code").val().trim()==''|| $("#conf_code").val().length !=4) {
+        alert("Enter conference code exactly 4 digit length");
     } else if($("#demo_participants").val().trim()=='') {
         alert("Enter participants number");
-    } else if($("#notification_channel").val().trim()=='') {
+    } else if($("#notification_channel").val()== null) {
         alert("Select notification channel");
     }
+     else{
+        if ( conference_id != null )
+        {
+            // alert("before php Hit js and conference_id:"+conference_id);
+            dataInfo = conference_id;
+            var response = connectServer(cms_url['update_conference'], dataInfo);
+            // alert("I am after update.php");
+        }
 
-    if ( conference_id != null )
-    {
-       // alert("before php Hit js and conference_id:"+conference_id);
-        dataInfo = conference_id;
-        var response = connectServer(cms_url['update_conference'], dataInfo);
-       // alert("I am after update.php");
-    }
-
-    var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
-    Check_response = JSON.parse(Check_response);
-	//alert("Room Found:"+Check_response.Room_Number);
+        var Check_response = connectServerWithForm(cms_url['check_room_number'], form_id);
+        Check_response = JSON.parse(Check_response);
+        //alert("Room Found:"+Check_response.Room_Number);
 
 
 
-    if (Check_response.status && Check_response.Room_Number) {
+        if (Check_response.status && Check_response.Room_Number) {
 
-        check_box_check();
-        var response = connectServerWithForm(cms_url['conference_info'], form_id);
-        //alert("after php Hit js");
-        console.log("get: "+response +" found");
-        response = JSON.parse(response);
-        //alert("after php Hit js");
+            check_box_check();
+            var response = connectServerWithForm(cms_url['conference_info'], form_id);
+            //alert("after php Hit js");
+            console.log("get: "+response +" found");
+            response = JSON.parse(response);
+            //alert("after php Hit js");
 
-        conference_name=response.Name;
-        No_of_participants=response.No_of_Participants;
+            conference_name=response.Name;
+            No_of_participants=response.No_of_Participants;
 
-        conference_id = response.conf_id;
+            conference_id = response.conf_id;
 
-        // alert("conference_id:"+conference_id);
+            // alert("conference_id:"+conference_id);
 
-        conference_notice="<br/>Conference Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-            +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-            +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
-            +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
-            +"<br/>Code    : "+ response.Code +"<br/>Start Time     : " + response.Start_Time
-            +"<br/>End Time    : "+ response.End_Time +"<br/>Conference Duration     : " +response.Conference_Duration.h+" : "+ response.Conference_Duration.i
-            +"<br/>Recording     : " + response.Recording +"<br/>Stats   : "+ response.Stats +"<br/>Notification Channel     : " + response.Notification_Channel
-            +"<br/>Schedule Conf   : "+ response.Schedule_Conf
-            +"<br/><b>Participants :</b> <br/>";
+            conference_notice="<br/>Conference Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
+                +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
+                +"<br/>Code    : "+ response.Code +"<br/>Start Time     : " + response.Start_Time
+                +"<br/>End Time    : "+ response.End_Time +"<br/>Conference Duration     : " +response.Conference_Duration.h+" : "+ response.Conference_Duration.i
+                +"<br/>Recording     : " + response.Recording +"<br/>Stats   : "+ response.Stats +"<br/>Notification Channel     : " + response.Notification_Channel
+                +"<br/>Schedule Conf   : "+ response.Schedule_Conf
+                +"<br/><b>Participants :</b> <br/>";
 
-        if (response.status) {
+            if (response.status) {
 
-            // alertMessage(this, 'green', '           Conference Conformation', conference_notice );
-            showUserMenu('participants_list');
+                // alertMessage(this, 'green', '           Conference Conformation', conference_notice );
+                showUserMenu('participants_list');
+            }
+
+            else
+            {
+                alertMessage(this, 'red', 'Unsuccessful' , response.message);
+            }
+
         }
 
         else
         {
-            alertMessage(this, 'red', 'Unsuccessful' , response.message);
+            //alert("No Room!");
+            alertMessage(this, 'red', 'Sorry!!' , Check_response.message);
         }
 
-    }
 
-    else
-    {
-        //alert("No Room!");
-        alertMessage(this, 'red', 'Sorry!!' , Check_response.message);
     }
 
 }

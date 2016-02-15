@@ -50,34 +50,43 @@ function Participant_from_backend(){
 }
 
 function participant_add_edit(){
-
     form_id = "participant_add_edit";
-    $('#conference_id').val(conference_id);
-
-
-   // alert("before php Hit js");
-
-    var response = connectServerWithForm(cms_url['participant_info'], form_id);
-    //alert("after php Hit js: "+response + "   found");
-
-    console.log("get: "+response +" found");
-
-    response = JSON.parse(response);
-    //alert("after php Hit js: "+response.status);
-
-    notice="<br/>Participant Name    : "+response.participant_name +"<br/>Mobile Number     : " + response.msisdn +"<br/>Email  : "+ response.participant_email
-        +"<br/>Participant Type : "+ response.participant_type +"<br/>Listed to Conference    : " + response.participant_conference_name;
-
-    if (response.status) {
-
-        alertMessage(this, 'green', 'Participant Conformation',notice );
-        notice=" ";
-        showUserMenu('participants_list');
+    alert($("#participant_type").val());
+    if($("#participant_name").val().trim()=='') {
+        alert("Enter participant Name");
+    } else if($("#participant_msisdn").val().trim()=='' ||$("#participant_msisdn").val().trim().length < 4 ) {
+        alert("Enter participant mobile number correctly (Max 13 digit and Min 4 digit)");
+    } else if($("#participant_email").val().trim()=='') {
+        alert("Enter participant email");
+    }else if($("#participant_type").val()=='') {
+        alert("Select participant type");
     }
+    else {
 
-    else
-    {
-        alertMessage(this, 'red', 'Unsuccessful' , response.message);
+        $('#conference_id').val(conference_id);
+
+        var response = connectServerWithForm(cms_url['participant_info'], form_id);
+        //alert("after php Hit js: "+response + "   found");
+
+        console.log("get: " + response + " found");
+
+        response = JSON.parse(response);
+        //alert("after php Hit js: "+response.status);
+
+        notice = "<br/>Participant Name    : " + response.participant_name + "<br/>Mobile Number     : " + response.msisdn + "<br/>Email  : " + response.participant_email
+            + "<br/>Participant Type : " + response.participant_type + "<br/>Listed to Conference    : " + response.participant_conference_name;
+
+        if (response.status) {
+
+            alertMessage(this, 'green', 'Participant Conformation', notice);
+            notice = " ";
+            showUserMenu('participants_list');
+        }
+
+        else {
+            alertMessage(this, 'red', 'Unsuccessful', response.message);
+        }
+
     }
 }
 
