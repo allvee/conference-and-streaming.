@@ -63,7 +63,6 @@ function showUserMenu(field_name) {
     var cms_auth = checkSession('cms_auth');
     if (cms_auth != null) {
         $('#id_loading_image').hide();
-
         $("#nav-navbar-collapse-1").removeClass("in");
         if (field_name == 'index') {
             $('#id_loading_image').hide();

@@ -5,7 +5,7 @@
    session_start();
    echo "<pre>";
    print_r($_SESSION);
-
+/*
 echo __LINE__."</br>";
 
 require_once "./conference/webservices/lib/common.php";
@@ -20,5 +20,5 @@ $result = Sql_exec($cn, $qry);
 echo __LINE__.":".$result;
 
 ClosedDBConnection($cn);
-
+*/
 ?>

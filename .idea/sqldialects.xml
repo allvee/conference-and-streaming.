@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/Conference/webservices/UserLogin/UserLogin.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/conference/conference_info.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/conference/participant_info.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/organization/save_organization.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/organization_user/view_organization_user.php" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/conference/role_management/role_menu/get_all_roles_option.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/Conference/webservices/menu/view_vpn_menu.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/conference/webservices/UserLogin/UserLogin.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/conference/webservices/conference/conference_info.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/conference/webservices/conference/participant_info.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/conference/webservices/conference/role_management/organization/save_organization.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/conference/webservices/conference/role_management/organization_user/view_organization_user.php" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/conference/webservices/conference/role_management/role_menu/get_all_roles_option.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/conference/webservices/menu/view_vpn_menu.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/token.php" dialect="MySQL" />
   </component>
 </project>
