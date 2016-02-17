@@ -196,12 +196,12 @@ else if (field_name == 'alert_mgt_config_email') {
             write_activity_log('Organization', 'FIREWALL ORGANIZATION', cms_url['activity_log']);
             display_content_custom("100", "#modalData");
             if (superUser) {
-                var inputarray = [["Organization", "firewall_organization_view", "active"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "deactive"]];
+                var inputarray = [["Organization", "firewall_organization_view", "active"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
                 tab_custom(inputarray, "tab_view");
                 table_initialize_firewall_organization();
                 report_menu_start_firewall_organization();
             } else {
-                var inputarray = [["Role", "firewall_role_view", "active"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "inactive"]];
+                var inputarray = [["Role", "firewall_role_view", "active"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
                 tab_custom(inputarray, "tab_view");
                 table_initialize_firewall_role();
                 report_menu_start_firewall_role();
@@ -216,9 +216,9 @@ else if (field_name == 'alert_mgt_config_email') {
             write_activity_log('Organization_User', 'FIREWALL ORGANIZATION USER', cms_url['activity_log']);
             display_content_custom("100", "#modalData");
             if (superUser) {
-                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "deactive"]];
+                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
             } else {
-                var inputarray = [["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "inactive"]];
+                var inputarray = [["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
             }
 
             tab_custom(inputarray, "tab_view");
@@ -242,9 +242,9 @@ else if (field_name == 'alert_mgt_config_email') {
             write_activity_log('Organization_Role', 'FIREWALL ORGANIZATION ROLE', cms_url['activity_log']);
             display_content_custom("100", "#modalData");
             if (superUser) {
-                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "active"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "deactive"]];
+                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "active"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
             } else {
-                var inputarray = [["Role", "firewall_role_view", "active"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "inactive"]];
+                var inputarray = [["Role", "firewall_role_view", "active"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
             }
 
             tab_custom(inputarray, "tab_view");
@@ -254,9 +254,9 @@ else if (field_name == 'alert_mgt_config_email') {
             write_activity_log('Organization_User_Role', 'FIREWALL ORGANIZATION USER ROLE', cms_url['activity_log']);
             display_content_custom("100", "#modalData");
             if (superUser) {
-                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "active"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "deactive"]];
+                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "active"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
             } else {
-                var inputarray = [["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "active"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "inactive"]];
+                var inputarray = [["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "active"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
             }
             tab_custom(inputarray, "tab_view");
             table_initialize_firewall_user_role_association();
@@ -267,9 +267,9 @@ else if (field_name == 'alert_mgt_config_email') {
 
             display_content_custom("100", "#modalData");
             if (superUser) {
-                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "active"],["Sync Log", "role_mgmt_sync_status_log", "deactive"]];
+                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "active"]];
             } else {
-                var inputarray = [["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "active"],["Sync Log", "role_mgmt_sync_status_log", "inactive"]];
+                var inputarray = [["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "active"]];
             }
 
             tab_custom(inputarray, "tab_view");
@@ -285,27 +285,29 @@ else if (field_name == 'alert_mgt_config_email') {
         } else if (field_name == 'org_user') {
             display_content_custom("100", "#modalData");
             if (superUser) {
-                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "active"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "deactive"]];
+                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "active"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
             } else {
-                var inputarray = [["Org User", "org_user", "active"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "inactive"]];
+                var inputarray = [["Org User", "org_user", "active"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"]];
             }
 
             tab_custom(inputarray, "tab_view");
             table_initialize_firewall_org_user();
             report_menu_start_firewall_org_user();
 
-        } else if (field_name == 'role_mgmt_sync_status_log') {
-            write_activity_log('ROLE_SYNC_LOG', 'ROLE SYNC LOG', cms_url['activity_log']);
-            display_content_custom("150", "#modalData");
-            if (superUser) {
-                var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "active"]];
-            } else {
-                var inputarray = [["Role", "firewall_role_view", "deactive"], ["User Role ", "firewall_user_role_association", "deactive"], ["Role Menu", "firewall_role_menu_association", "deactive"], ["Sync Log", "role_mgmt_sync_status_log", "active"]];
-            }
-            tab_custom(inputarray, "tab_view");
-            table_initialize_role_mngmt_sync_log();
-            report_menu_start_role_mngmt_sync_log();
-        }
+        } /*else if (field_name == 'role_mgmt_sync_status_log') {
+         write_activity_log('ROLE_SYNC_LOG', 'ROLE SYNC LOG', cms_url['activity_log']);
+         display_content_custom("150", "#modalData");
+         if (superUser) {
+         var inputarray = [["Organization", "firewall_organization_view", "inactive"], ["Org User", "org_user", "inactive"], ["Role", "firewall_role_view", "inactive"], ["User Role ", "firewall_user_role_association", "inactive"], ["Role Menu", "firewall_role_menu_association", "inactive"],["Sync Log", "role_mgmt_sync_status_log", "active"]];
+         } else {
+         var inputarray = [["Role", "firewall_role_view", "deactive"], ["User Role ", "firewall_user_role_association", "deactive"], ["Role Menu", "firewall_role_menu_association", "deactive"], ["Sync Log", "role_mgmt_sync_status_log", "active"]];
+         }
+         tab_custom(inputarray, "tab_view");
+         table_initialize_role_mngmt_sync_log();
+         report_menu_start_role_mngmt_sync_log();
+         }
+
+         */
 
 
         /////////////////////////*** Role Management END ******/

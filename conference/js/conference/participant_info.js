@@ -50,8 +50,9 @@ function Participant_from_backend(){
 }
 
 function participant_add_edit(){
+
     form_id = "participant_add_edit";
-    alert($("#participant_type").val());
+
     if($("#participant_name").val().trim()=='') {
         alert("Enter participant Name");
     } else if($("#participant_msisdn").val().trim()=='' ||$("#participant_msisdn").val().trim().length < 4 ) {
@@ -64,7 +65,6 @@ function participant_add_edit(){
     else {
 
         $('#conference_id').val(conference_id);
-
         var response = connectServerWithForm(cms_url['participant_info'], form_id);
         //alert("after php Hit js: "+response + "   found");
 
@@ -88,6 +88,7 @@ function participant_add_edit(){
         }
 
     }
+
 }
 
 function add_new_participant() {

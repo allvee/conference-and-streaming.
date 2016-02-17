@@ -133,9 +133,7 @@ function conference_create_edit() {
 
     form_id = "conference_create_edit";
     var org_name = $('#notification_channel').val();
-    //alert("Befor");
-    alert($("#notification_channel").val());
-    //alert("after");
+
     if($("#demo_name").val().trim()=='') {
         alert("Enter Conference Name");
     } else if($("#start_date").val().trim()=='') {
@@ -151,7 +149,7 @@ function conference_create_edit() {
     } else if($("#notification_channel").val()== null) {
         alert("Select notification channel");
     }
-     else{
+    else{
         if ( conference_id != null )
         {
             // alert("before php Hit js and conference_id:"+conference_id);
@@ -215,6 +213,7 @@ function conference_create_edit() {
     }
 
 }
+
 
 function notify_channel(){
     var notify_channel = document.getElementById("notification_channel").value;
@@ -384,7 +383,7 @@ function edit_conference_list(obj, info, room_number, weblink) {
     showUserMenu('edit_conference');
     document.getElementById("conference_id").textContent=data[0];
     conference_id =data[0];
-    console.log(data[6] );
+    console.log(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9], room_number, weblink );
 
      $('#action').val("update");
      $('#action_id').val(data[0]);
@@ -412,7 +411,9 @@ function edit_conference_list(obj, info, room_number, weblink) {
      $("#end_time option[value='" + hourmin[0]+":"+hourmin[1] + "']").attr('selected', true);
 
      $('#demo_participants').val(data[5]);
-    if(data[6]!='no')
+
+	console.log(data[6]);
+   if(data[6]!='no')
     {
         var str1=data[6].split(">");
         var str2 = str1[1].split("<");
@@ -427,7 +428,8 @@ function edit_conference_list(obj, info, room_number, weblink) {
     {
         $('#demo_recording').val(data[6]);
     }
-    var track_array = data[7].split(',');
+
+     var track_array = data[7].split(',');
      for (var i = 0; i < track_array.length; i++) {
         $("#notification_channel option[value='" + track_array[i] + "']").attr('selected', true);
 

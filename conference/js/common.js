@@ -51,7 +51,7 @@ $('document').ready(function () {
             clearInterval(timerID);
             //confirm_with_yes(this, 'yes_expired', 'Session Expired Message',"Your Session has been expired or destroyed. Log in again!!");
             //$('#yes_expired').click(null, yes_expired_clicked);
-			//alert("Sessin Expired");
+			alert("Sessin Expired");
         }
     },5000);
     

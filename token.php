@@ -13,6 +13,16 @@ header('Content-Length: '.strlen($data));
 header('Connection: Close');
 print $data;
 
+
+$log_file_name = "token_php_sessions.txt";
+$print_log = 1;
+if($print_log==1) file_put_contents("$log_file_name", "***New_Call****\n", FILE_APPEND);
+function logcats($parameter) {
+    global $log_file_name,$print_log;
+    if($print_log==1) file_put_contents($log_file_name, strval($parameter)."\n", FILE_APPEND);
+}
+
+
 $token = $_GET['token'];
 
 $data = decrypt_json($token);
@@ -23,7 +33,7 @@ $user_id = $data_array['read']['data']['id'];
 
 
 $_SESSION['conference'] = $data_array['read']['data'];
-
+$query = "SELECT org_id FROM org_users WHERE user_id = '".$user_id."'";
 
 $query_roles = "SELECT roles.`name`, role_menus.`permissions`, menus.name
                         FROM roles, user_role_association, role_menus, menus
@@ -34,8 +44,15 @@ $query_roles = "SELECT roles.`name`, role_menus.`permissions`, menus.name
 
 $cn = connectDB();
 
+$result = Sql_exec($cn, $query);
 $result_roles = Sql_exec($cn, $query_roles);
-//$row_rules = Sql_fetch_assoc($result_roles);
+$arr = array();
+
+while($data = Sql_fetch_array($result)){
+    $arr[] = $data['org_id'];
+}
+$_SESSION['conference']['org_ids'] = implode(",",$arr);
+
 while($row_rules = Sql_fetch_assoc($result_roles)) {
     $_SESSION['conference']['rules'][$row_rules['name']] = $row_rules['permissions'];
 }

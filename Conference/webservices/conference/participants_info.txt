@@ -1,0 +1,135 @@
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801911200762
+)
+
+SMS RETURN: 404
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801911200762
+    [body] => You have got a conference invitation: Schedule and details: Long No: 3101 Start Time: 2016-02-17 02:31 End Time: 2016-02-17 03:00
+)
+
+SMS RETURN: 404
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801911200762
+    [body] => You have got a conference invitation: axfbgnh Schedule and details: Long No: 3101 Start Time: 2016-02-17 02:31 End Time: 2016-02-17 03:00
+)
+
+SMS RETURN: 404
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801911200762
+    [body] => You have got a conference invitation: axfbgnh Schedule and details: Long No: 3101 Start Time: 2016-02-17 02:31 End Time: 2016-02-17 03:00
+)
+
+SMS RETURN: SUCCESS | a3e6be55d06df3a42d145f4e8f41f7ac | 888
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801911200762
+    [body] => You have got a conference invitation:: axfbgnh --Schedule and details-- Long No: 3101 Start Time: 2016-02-17 02:31 End Time: 2016-02-17 03:00
+)
+
+SMS RETURN: SUCCESS | 1b433e1f4f9827725c1b8c49dcfd5401 | 887.5
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801674174924
+    [body] => You have got a conference invitation:: This is a test conference
+ --Schedule and details-- Long No: 3101 Start Time: 2016-02-17 02:31 End Time: 2016-02-17 03:00
+)
+
+SMS RETURN: FAILED | SMS length exceeds maximum limit | 887.50
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801674174924
+    [body] => You have got a conference invitation:: test conf --Schedule and details-- Long No: 3101 Start Time: 2016-02-17 02:31 End Time: 2016-02-17 03:00
+)
+
+SMS RETURN: SUCCESS | 946d82e476b8c498de34e8747c95894c | 887
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801911890878
+    [body] => You have got a conference invitation::  --Schedule and details-- Long No: 09612332211 Start Time: 2016-02-17 07:01 End Time: 2016-02-17 11:00
+)
+
+SMS RETURN: SUCCESS | 50350619706068389a7d711276bd2acf | 886.5
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801521498113
+    [body] => You have got a conference invitation:: fds --Schedule and details-- Long No: 09612332211 Start Time: 2016-02-17 07:01 End Time: 2016-02-17 11:00
+)
+
+SMS RETURN: SUCCESS | 872f54edc6c82a6462aec7ee555aea26 | 886
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801521498113
+    [body] => You have got a conference invitation::  --Schedule and details-- Long No: 09612332211 Start Time: 2016-02-17 11:31 End Time: 2016-02-17 12:00
+)
+
+SMS RETURN: 
+***New_Call****
+***New_Call****
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801831408078
+    [body] => You have got a conference invitation::  --Schedule and details-- Long No: 09612332211 Start Time: 2016-02-17 16:01 End Time: 2016-02-17 20:00
+)
+
+SMS RETURN: 
+***New_Call****
+Array
+(
+    [username] => sakil@ssd-tech.com
+    [password] => Nopass1234
+    [mask ] => conferenceInvitation
+    [destination] => 8801677747494
+    [body] => You have got a conference invitation::  --Schedule and details-- Long No: 09612332211 Start Time: 2016-02-17 16:01 End Time: 2016-02-17 20:00
+)
+
+SMS RETURN: 
+***New_Call****

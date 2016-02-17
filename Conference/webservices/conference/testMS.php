@@ -21,7 +21,7 @@
 	
 	
 	$mail = new PHPMailer(true);
-	$config_details = array("email"=>"support","password"=>"Nopass1234","smtp_account"=>"103.239.252.132","smtp_port"=>"25");
+	$config_details = array("email"=>"support","password"=>"Nopass1234","smtp_account"=>"monitor.dozeinternet.com","smtp_port"=>"25");
 	$mail_receiver = array("shiam@ssd-tech.com","alamin@ssd-tech.com","laboni@ssd-tech.com");
 	//array_push($mail_receiver,$participant_email);
 	$email_ret = sendEmail($cn,$mail,"Test Mail","This is a conference mail",$mail_receiver,$config_details);

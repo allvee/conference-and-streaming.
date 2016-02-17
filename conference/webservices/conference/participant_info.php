@@ -9,10 +9,21 @@
 $data = $_REQUEST;
 //exit( json_encode( array("alamin"=>"one","message"=>"No reasone","status"=>false) ));
 //echo json_encode( array($data) );
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 require_once "../lib/common.php";
 require_once "../lib/functions.php";
 require_once "../lib/asmp_lib.php";
+
+
+$log_file_name = "participants_info.txt";
+$print_log = 1;
+if($print_log==1) file_put_contents("$log_file_name", "***New_Call****\n", FILE_APPEND);
+function logcats($parameter) {
+    global $log_file_name,$print_log;
+    if($print_log==1) file_put_contents($log_file_name, strval($parameter)."\n", FILE_APPEND);
+}
+
 
 $cn = connectDB();
 
@@ -64,7 +75,7 @@ if ($action == "update") {
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
 
     $qry = "UPDATE $tbl set `participant_name`='$participant_name',`msisdn`='$participant_msisdn', `email`='$participant_email',`conference_ID`='$conference_id', `conference_name`='$participant_conference_name',
-           `long_code`='$long_code', `organization`='$participant_organization', `participant_type` ='$participant_type', `conference_status`= '$conference_status', `conference_start_time` = '$conference_start_time', `conference_end_time` = '$conference_end_time' ";
+           `long_code`='$long_code', `organization`='$participant_organization', `participant_type` ='$participant_type', `conference_status`= '$conference_status', `conference_start_time` = '$conference_start_time', `conference_end_time` = '$conference_end_time'";
     $qry .= " WHERE ID='$action_id'";
 
 
@@ -80,9 +91,9 @@ if ($action == "update") {
 } else {
     $msg = "Successfully Saved";
     $qry = "INSERT INTO `$tbl` (`participant_name`, `msisdn`, `email`,`conference_ID`, `conference_name`, `long_code`,`organization`, `participant_type`, `conference_status`, `conference_start_time`, `conference_end_time`)
-	VALUES('$participant_name', '$participant_msisdn', '$participant_email','$conference_id', '$participant_conference_name','$long_code', '$participant_organization', '$participant_type', '$conference_status', '$conference_start_time','$conference_end_time' )";
+	VALUES('$participant_name', '$participant_msisdn', '$participant_email','$conference_id', '$participant_conference_name','$long_code', '$participant_organization', '$participant_type', '$conference_status', '$conference_start_time','$conference_end_time')";
 }
-
+//echo __LINE__."</br>";
 try {
     $res = Sql_exec($cn, $qry);
     if ($flag == 'delete')
@@ -101,22 +112,65 @@ if($action=="save" || $action=="update") {
         $IVR_qry = "insert into $Call_Handler_DB.outdialque set MSISDN = '$participant_msisdn',DisplayAno = '2008',OriginalAno = '2008', ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$conference_id', OutDialTime = now()";
         Sql_exec($cn, $IVR_qry);
     }
+	
+	//echo __LINE__."</br>";
     if ($_SESSION['conference']['notification']['SMS']) {
+		//echo __LINE__."</br>";
         $sms_data = array();
         $sms_data['username'] = "sakil@ssd-tech.com";
         $sms_data['password'] = "Nopass1234";
-		$sms_data['mask '] = "conferenceInvitation";
-        $sms_data['destination'] = "88".$participant_msisdn;
-		$sms_data['body'] = "You have got a conference invitation. Room No: ".$_SESSION['conference']['room_caller']." Start Time: " . $_SESSION['conference']['start_date'] . " End Time: " . $_SESSION['conference']['end_date'];
-        $SMS_URL = "http://sms.doze.my/send.php";
-        $SMS_ret = curlRequest('GET', $SMS_URL, $sms_data);
+		$sms_data['mask '] = "conferenceInvitation";//echo __LINE__."</br>";
+        $sms_data['destination'] = "88".$participant_msisdn;//echo __LINE__."</br>";
+		$sms_data['body'] = "You have got a conference invitation:: ".$_SESSION['conference']['current_conference_instance']['sms_body']." --Schedule and details-- Long No: ".$_SESSION['conference']['current_conference_instance']['long_number']." Start Time: " . $_SESSION['conference']['current_conference_instance']['Start_Time'] . " End Time: " . $_SESSION['conference']['current_conference_instance']['End_Time'];
+        $SMS_URL = "http://sms.doze.my/send.php?";
+      //  $SMS_ret = curlRequest('GET', $SMS_URL, $sms_data);
+		//echo __LINE__."</br>";
+		logcats(print_r($sms_data,1));
+		logcats("SMS RETURN: ".$SMS_ret);		
+		//echo __LINE__."</br>";
     }
     if ($_SESSION['conference']['notification']['EMAIL']) {
+		/*
 		$mail = new PHPMailer(true);
 		$config_details = array("email"=>"support","password"=>"Nopass1234","smtp_account"=>"monitor.dozeinternet.com","smtp_port"=>"25");
 		$mail_receiver = array();
 		array_push($mail_receiver,$participant_email);
 		//$email_ret = sendEmail($cn,$mail,"Test Mail","This is a conference mail",$mail_receiver,$config_details);
+		*/
+		$mail = new PHPMailer(true);
+        $email_config_object = retrive_configuration($cn, "email");
+        $email_subject_string = $email_config_object->email_subject;
+        $email_body_string = $email_config_object->email_body;
+
+        $start_time = trim( $_SESSION['conference']['current_conference_instance']['Start_Time'] );
+        $end_time = trim(   $_SESSION['conference']['current_conference_instance']['End_Time'] );
+        $conf_name = trim(  $_SESSION['conference']['current_conference_instance']['Conf_Name'] );
+        $user_name = trim(  $_SESSION['conference']['Name'] );
+
+        $email_body_main = trim(  $_SESSION['conference']['current_conference_instance']['email_body'] );
+
+        $data = array(
+                        "start_time"=>$start_time,
+                        "end_time"=>$end_time,
+                        "conf_name"=>$conf_name,
+                       "user_name"=> $user_name
+        );
+		
+        $email_subject_string = Parse_field( $email_subject_string, $data );
+        $email_body_string  = Parse_field( $email_body_string, $data );
+
+        if( !empty($email_body_main) ) {
+            $email_body_string = $email_body_main ." <br/>".$email_body_string;
+        }
+		$mail_receivers = array();
+		array_push($mail_receivers,$participant_email);
+        foreach($mail_receivers as $email){
+            if( $m = filter_var($email,FILTER_VALIDATE_EMAIL) ){
+              //  $send_status = SendEmails($mail,$mail_receivers,$email_subject_string,$email_body_string);
+            }else{
+                echo "Invalid email. Email=> ".$mail."\n";
+            }
+        }
     }
 }
 

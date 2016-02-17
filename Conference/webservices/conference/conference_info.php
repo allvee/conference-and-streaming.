@@ -193,7 +193,7 @@ if ($action != 'delete') {
     }
 	$email_body = $data['email_body'];
 	$sms_body = $data['sms_body'];
-	
+	$UserOrg = $_SESSION['conference']['org_ids'];	
 //echo __LINE__."</br>";
 } else {
     /*===============================  for Delete =====================*/
@@ -336,8 +336,8 @@ else if ($action == "delete") {
     $msg = "Successfully Deleted";
 } else {
 
-    $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Conference_Duration, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel, email_body, sms_body)
-	VALUES('$demo_name', '$long_number', '$user_id', '$room_number', '$web_link', '$conference_code', '$start', '$end', '$duration' ,'$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel', '$email_body','$sms_body')";
+    $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Conference_Duration, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel, email_body, sms_body,UserOrg)
+	VALUES('$demo_name', '$long_number', '$user_id', '$room_number', '$web_link', '$conference_code', '$start', '$end', '$duration' ,'$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel', '$email_body','$sms_body','$UserOrg')";
 
     $qry_to_room = "UPDATE $room_tbl SET last_update='$last_updated',conference_name= '$demo_name' WHERE room_number='$room_number'";
 //echo __LINE__."qry: ".$qry."</br>";
@@ -463,7 +463,7 @@ $_SESSION['conference']['current_conference_instance']['sms_body'] = $sms_body;
 
 
 if ($is_error == 0) {
-    $return_data = array('status' => true, 'query1' => $query1, 'query2' => $query2, 'conf_id' => $conf_id, 'Name' => $demo_name, 'UserID' => $user_id, 'Long_Number' => $long_number, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
+    $return_data = array('status' => true, 'UserOrg'=>$UserOrg,'query1' => $query1, 'query2' => $query2, 'conf_id' => $conf_id, 'Name' => $demo_name, 'UserID' => $user_id, 'Long_Number' => $long_number, 'Web_Link' => $web_link, 'Room_Number' => $room_number,
         'Code' => $conference_code, 'Start_Time' => $start, 'End_Time' => $end, 'Conference_Duration' => $dteDiff, 'No_of_Participants' => $demo_participants, 'Recording' => $demo_recording,
         'Stats' => $demo_active, 'Notification_Channel' => $notification_channel, 'Schedule_Conf' => $schedule_conf,'notifications'=>$flag,'email_body'=>$email_body,'sms_body'=>$sms_body);
 

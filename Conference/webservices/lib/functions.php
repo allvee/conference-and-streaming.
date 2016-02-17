@@ -1,29 +1,19 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Shiam
- * Date: 1/12/2016
- * Time: 7:33 PM
- */
 
-/**
- * @param $method
- * @param $url
- * @param array $vars
- * @return mixed
- */
+include('client_ip_addr.php');
+
 function curlRequest($method, $url, array $vars)
 {
     $encoded = http_build_query($vars, null, '&');
-
     if($method == "GET")
         $url .= $encoded;
-
-
+  
+    
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_PORT, 80);
     curl_setopt($curl, CURLOPT_HEADER, 0);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 10);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 
@@ -40,7 +30,10 @@ function curlRequest($method, $url, array $vars)
 
     if(FALSE === ($result = curl_exec($curl))) $curlError = curl_error($curl);
 
-    //$responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    if($responseCode != 200) {
+        return $responseCode;
+    }
 
     curl_close($curl);
     return $result;
@@ -49,9 +42,11 @@ function curlRequest($method, $url, array $vars)
 
 function encrypt_json($string) {
     $output = false;
+
     $encrypt_method = "AES-256-CBC";
     $secret_key = '23DE2213AD7087B8BA98082B384006EDBB40D74269F0A554';
     $secret_iv = 'CAA15947783CD929040E6AA2AD3CEC1F';
+
 // hash
     $key = hash('sha256', $secret_key);
 
@@ -71,6 +66,7 @@ function decrypt_json($string) {
     $encrypt_method = "AES-256-CBC";
     $secret_key = '23DE2213AD7087B8BA98082B384006EDBB40D74269F0A554';
     $secret_iv = 'CAA15947783CD929040E6AA2AD3CEC1F';
+
     // hash
     $key = hash('sha256', $secret_key);
 
@@ -124,11 +120,13 @@ function generateInsertQuery($vars, $table, $connection, $exclude = ''){
 
 function write_activity_log_data($connection, $data)
 {
-    $client_ip = '192.168.245.46';//ClientIpAddr::getClientIpAddr();
+    $client_ip = ClientIpAddr::getClientIpAddr();
     $data['origin'] =  $client_ip;
     $data['created_date'] = date('Y-m-d H:i:s');
     $exclude = array();
     $InsertQuery = generateInsertQuery($data, 'activity_log', $connection, $exclude);
+    // echo $InsertQuery;
+    //exit;
     Sql_exec($connection, $InsertQuery);
-    return true;
+    // return true;
 }
