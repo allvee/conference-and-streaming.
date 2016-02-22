@@ -50,7 +50,7 @@ if ($action != 'delete') {
 
     $start_date = $data['start_date'];
     $_SESSION['conference']['start_date'] = $start_date;
-    $end_date = $data['end_date'];
+    $end_date = $data['start_date'];
     $_SESSION['conference']['end_date'] = $end_date;
     $start_time = $data['start_time'];
     $end_time = $data['end_time'];

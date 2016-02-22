@@ -1,4 +1,5 @@
 $('document').ready(function () {
+
     /*
      * Global verible for getting web content
      */
@@ -33,6 +34,14 @@ $('document').ready(function () {
         }
     }  
     */
+   /* $(document).ajaxSuccess(function() {
+        var a = $('#start_date').val;
+        //alert(a);
+        $('#end_date').html(a);
+       // document.getElementById("end_date").innerHTML = a ;
+        //document.getElementById("end_date").style.backgroundColor = 'white';
+    });*/
+
 
     $.ajaxSetup({timeout: 20000000});
 
@@ -106,7 +115,9 @@ function Conference_DatePicker(input_id) {
         autoclose: true,
         todayHighlight: true
     });
+
 }
+
 
 function gcportal_DateTimePicker(input_id){
 
