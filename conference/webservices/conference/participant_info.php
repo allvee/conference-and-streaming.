@@ -17,7 +17,7 @@ require_once "../lib/asmp_lib.php";
 
 
 $log_file_name = "participants_info.txt";
-$print_log = 1;
+$print_log = 0;
 if($print_log==1) file_put_contents("$log_file_name", "***New_Call****\n", FILE_APPEND);
 function logcats($parameter) {
     global $log_file_name,$print_log;
@@ -109,8 +109,8 @@ if($action=="save" || $action=="update") {
     $get_inside_notification = "yes";
     
     if ($_SESSION['conference']['notification']['IVR']) {
-        $IVR_qry = "insert into $Call_Handler_DB.outdialque set MSISDN = '$participant_msisdn',DisplayAno = '2008',OriginalAno = '2008', ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$conference_id', OutDialTime = now()";
-        Sql_exec($cn, $IVR_qry);
+       // $IVR_qry = "insert into $Call_Handler_DB.outdialque set MSISDN = '$participant_msisdn',DisplayAno = '2008',OriginalAno = '2008', ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$conference_id', OutDialTime = now()";
+        //Sql_exec($cn, $IVR_qry);
     }
 	
 	//echo __LINE__."</br>";
@@ -166,7 +166,7 @@ if($action=="save" || $action=="update") {
 		array_push($mail_receivers,$participant_email);
         foreach($mail_receivers as $email){
             if( $m = filter_var($email,FILTER_VALIDATE_EMAIL) ){
-                $send_status = SendEmails($mail,$mail_receivers,$email_subject_string,$email_body_string);
+              //  $send_status = SendEmails($mail,$mail_receivers,$email_subject_string,$email_body_string);
             }else{
                 echo "Invalid email. Email=> ".$mail."\n";
             }

@@ -81,9 +81,6 @@ function check_box_value_changed(){
     {
         $('#start_date').val(dformat);
         $('#end_date').val(lastDate);
-        document.getElementById("end_date").innerHTML = lastDate;
-        document.getElementById("end_date").style.backgroundColor = 'white';
-
 
         
 	$("#start_time_chosen").hide();
@@ -97,6 +94,8 @@ function check_box_value_changed(){
         // $("#end_time option[value='" + end_time + "']").attr('selected', true);
         // $("#end_time").trigger("chosen:updated");
 
+        console.log(document.getElementById("start_time").selectedIndex);
+        console.log(document.getElementById("end_time").selectedIndex);
 	$("#start_time").show();
 	$("#end_time").show();
       
@@ -107,9 +106,7 @@ function check_box_value_changed(){
         $('#start_date').val('');
         $('#start_time').val('');
        
-       // $('#end_date').val('');
-        document.getElementById("end_date").innerHTML = '';
-        document.getElementById("end_date").style.backgroundColor = '';
+        $('#end_date').val('');
         $('#end_time').val('');
 	//$("#start_time").trigger("chosen:updated");	
         //$("#end_time").trigger("chosen:updated");
@@ -171,10 +168,10 @@ function conference_create_edit() {
 
             check_box_check();
             var response = connectServerWithForm(cms_url['conference_info'], form_id);
-            //alert("after php Hit js");
+          //  alert("after php Hit js");
             console.log("get: "+response +" found");
             response = JSON.parse(response);
-            //alert("after php Hit js");
+           // alert("after php Hit js");
 
             conference_name=response.Name;
             No_of_participants=response.No_of_Participants;

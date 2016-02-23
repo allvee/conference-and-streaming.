@@ -1,5 +1,4 @@
 $('document').ready(function () {
-
     /*
      * Global verible for getting web content
      */
@@ -34,14 +33,6 @@ $('document').ready(function () {
         }
     }  
     */
-   /* $(document).ajaxSuccess(function() {
-        var a = $('#start_date').val;
-        //alert(a);
-        $('#end_date').html(a);
-       // document.getElementById("end_date").innerHTML = a ;
-        //document.getElementById("end_date").style.backgroundColor = 'white';
-    });*/
-
 
     $.ajaxSetup({timeout: 20000000});
 
@@ -60,7 +51,6 @@ $('document').ready(function () {
             clearInterval(timerID);
             //confirm_with_yes(this, 'yes_expired', 'Session Expired Message',"Your Session has been expired or destroyed. Log in again!!");
             //$('#yes_expired').click(null, yes_expired_clicked);
-			//alert("Sessin Expired");
             alertMessage(this, 'blue', 'Session Expired Message', 'Your Session has been expired or destroyed. Log in again!!');
         }
     },5000);
@@ -115,9 +105,7 @@ function Conference_DatePicker(input_id) {
         autoclose: true,
         todayHighlight: true
     });
-
 }
-
 
 function gcportal_DateTimePicker(input_id){
 

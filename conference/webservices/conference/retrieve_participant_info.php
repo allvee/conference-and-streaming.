@@ -33,7 +33,7 @@ if (isset($_REQUEST['info'])) {
 //$mask = $sms_config_object->mask;
 //$sms_text = $sms_config_object->sms_text;
 
-$conf_user_name = $_SESSION['conference']['Name'];
+$conf_user_name = $_SESSION['conference']['Name'];		
 $conf_name = $_SESSION['conference']['current_conference_instance']['Conf_Name'];
 $start_time = $_SESSION['conference']['current_conference_instance']['Start_Time'];
 $end_time = $_SESSION['conference']['current_conference_instance']['End_Time'];
@@ -50,12 +50,14 @@ $result = Sql_exec($cn, $query);
 $data = array();
 $i = 0;
 $participant_msisdn = array();
+$mail_receivers = array();
 
 while ( $row = Sql_fetch_array($result) ) {
     $j = 0;
     $data[$i][$j++] = Sql_Result($row, "participant_name");
     $data[$i][$j++] = Sql_Result($row, "msisdn");
     $participant_msisdn[$i] = Sql_Result($row, "msisdn");
+    $mail_receivers[$i] = Sql_Result($row, "email");
     $data[$i][$j++] = Sql_Result($row, "email");
     $i++;
     if ($_SESSION['conference']['notification']['IVR'] == true) {
@@ -63,21 +65,24 @@ while ( $row = Sql_fetch_array($result) ) {
         $msisdn = $row['msisdn'];
         $long_code = $_SESSION['conference']['long_code'];
 
-        $qry = "insert into $Call_Handler_DB.outdialque set MSISDN = '$msisdn',DisplayAno = '$long_code',OriginalAno = '2008',
-        ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$conference_id', OutDialTime = NOW()";
+       // $qry = "insert into $Call_Handler_DB.outdialque set MSISDN = '$msisdn',DisplayAno = '$long_code',OriginalAno = '2008',
+       // ServiceId = 'OBD_Test', OutDialStatus = 'QUE', RetTryCount='1',UserId = '$conference_id', OutDialTime = NOW()";
         //echo $qry.__LINE__.__FILE__."\n";
         //logcats("Query: ".$qry);
-        $ret = Sql_exec($cn,$qry);
+       // $ret = Sql_exec($cn,$qry);
         //logcats("Insert: ".$ret);
         //echo $ret.__LINE__.__FILE__."\n";
-        Sql_Free_Result($ret);
+        //Sql_Free_Result($ret);
 
     }
 
 
 }
+//echo "receiver Mail:";
+//print_r($mail_receivers); 
 
 $total_sent = array();
+$total_sent_email = array();
 if($send_sms_email == true){
 
     if ($_SESSION['conference']['notification']['SMS']) {
@@ -95,16 +100,55 @@ if($send_sms_email == true){
 
         $sms_data['body'] = $sms_text;
         $SMS_URL = $sms_config_object->api_url;
+
         // mobile number with country code
-       
         foreach( $participant_msisdn as $number ){
 
             $sms_data['destination'] = "88".$number;
-            $SMS_ret = curlRequest('GET', $SMS_URL, $sms_data);
+           // $SMS_ret = curlRequest('GET', $SMS_URL, $sms_data);
            // echo " Sms res for ".$number. " = ".$SMS_ret."<br/>";
-           // array_push($total_sent, $sms_data);
+            array_push($total_sent, $sms_data);
         }
     }
+	
+if ($_SESSION['conference']['notification']['EMAIL']) {
+		
+		$mail = new PHPMailer(true);
+		$email_subject_string = $email_config_object->email_subject;
+		echo  "email_subject_string:";
+		print_r($email_subject_string);
+        $email_body_string = $email_config_object->email_body;
+		echo  "email_body_string:";
+		print_r($email_body_string);		
+
+       $user_name = trim(  $_SESSION['conference']['Name'] );
+
+        $email_body_main = trim( $_SESSION['conference']['current_conference_instance']['email_body'] );
+
+        $data_info = array(
+                       "conf_name"=>$conf_name,
+					   "long_number"=>$long_number,
+					   "start_time"=>$start_time,
+					   "end_time"=>$end_time,
+					   "email_body"=>$email_body_main,
+                       "conf_user_name"=> $conf_user_name
+        );
+		
+        $email_subject_string = Parse_field( $email_subject_string, $data_info );
+        
+		echo  "email_subject_string:";
+		print_r($email_subject_string);
+		
+		$email_body_string  = Parse_field( $email_body_string, $data_info );
+		echo  "email_body_string:";
+		print_r($email_body_string);
+		/*
+        if( !empty($email_body_main) ) {
+            $email_body_string = $email_body_main ." <br/>".$email_body_string;
+        }
+		*/
+		$send_status = SendEmails($mail,$email_config_object,$mail_receivers,$email_subject_string,$email_body_string);
+    }	
 
 }
 
@@ -113,9 +157,9 @@ ClosedDBConnection($cn);
 //$json_data = json_encode($data);
 //echo __FILE__.__LINE__;
 if ($is_error == 0) {
-    $return_data = array('status' => true, 'data' => $data, 'participant_msisdn' => $participant_msisdn, 'sms_data_sent'=>$total_sent);
+    $return_data = array('status' => true, 'data' => $data, 'email_Send_status' =>$send_status, 'sms_data_sent'=>$total_sent);
 } else {
     $return_data = array('status' => false, 'message' => 'Data Not Send.');
 }
-//echo json_encode($return_data);
+
 echo json_encode($return_data);

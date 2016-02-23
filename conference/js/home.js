@@ -93,8 +93,8 @@ function showUserMenu(field_name) {
 
         else if (field_name == 'new_conference') {
             display_content_custom('1811', '#modalData');
-            $('.tabtitle').hide();
-            $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Conference </span>');
+           // $('.tabtitle').hide();
+          //  $("#set_title").html('<img width="3%" src="conference/img/icon-setting.png"> <span style="font-weight:bold;">Conference </span>');
 
             var inputarray = [["Conference", "enterprise_conference", "active"]];
             tab_custom(inputarray, "tab_view");
@@ -104,8 +104,8 @@ function showUserMenu(field_name) {
 
         else if (field_name == 'edit_conference') {
             display_content_custom('1818', '#modalData');
-            //$('.tabtitle').hide();
-            $("#set_title").html(' <span style="font-weight:bold;">Edit Conference</span>');
+          //  $('.tabtitle').hide();
+            //$("#set_title").html(' <span style="font-weight:bold;">Edit Conference</span>');
 
             var inputarray = [["Conference", "enterprise_conference", "active"]];
             tab_custom(inputarray, "tab_view");
@@ -128,8 +128,8 @@ function showUserMenu(field_name) {
 
         else if (field_name == 'add_new_participant') {
             display_content_custom('1820', '#modalData');
-            $('.tabtitle').hide();
-            $("#set_title").html(' <span style="font-weight:bold;">Add New Participant</span>');
+          //  $('.tabtitle').hide();
+           // $("#set_title").html(' <span style="font-weight:bold;">Add New Participant</span>');
 
             var inputarray = [["Participants", "participants_list", "active"]];
             tab_custom(inputarray, "tab_view");
@@ -138,8 +138,8 @@ function showUserMenu(field_name) {
 
         else if (field_name == 'edit_participant') {
             display_content_custom('1821', '#modalData');
-            $('.tabtitle').hide();
-            $("#set_title").html(' <span style="font-weight:bold;">Edit Participant</span>');
+           // $('.tabtitle').hide();
+            //$("#set_title").html(' <span style="font-weight:bold;">Edit Participant</span>');
 
             var inputarray = [["Participants", "participants_list", "active"]];
             tab_custom(inputarray, "tab_view");
@@ -149,7 +149,7 @@ function showUserMenu(field_name) {
  	 else if (field_name == 'download_list') {
             display_content_custom('1822', '#modalData');
             //$('.tabtitle').hide();
-            $("#set_title").html(' <span style="font-weight:bold;">Download record</span>');
+           // $("#set_title").html(' <span style="font-weight:bold;">Download record</span>');
 
             var inputarray = [["Conference", "enterprise_conference", "active"]];
             tab_custom(inputarray, "tab_view");
@@ -171,7 +171,7 @@ else if (field_name == 'alert_mgt_config_email') {
             var inputarray = [["Email", "alert_mgt_config_email", "active"], ["SMS", "alert_mgt_config_sms", "deactive"]];
             tab_custom(inputarray, "tab_view");
             display_alert_email();
-            $("#set_title").html('<span style="font-weight:bold;">Email Configuration</span>');
+          //  $("#set_title").html('<span style="font-weight:bold;">Email Configuration</span>');
         }
 
         else if (field_name == 'alert_mgt_config_sms') {
@@ -187,7 +187,7 @@ else if (field_name == 'alert_mgt_config_email') {
             var inputarray = [["Email", "alert_mgt_config_email", "deactive"], ["SMS", "alert_mgt_config_sms", "active"]];
             tab_custom(inputarray, "tab_view");
             display_alert_sms();
-            $("#set_title").html(' <span style="font-weight:bold;">SMS Configuration</span>');
+          //  $("#set_title").html(' <span style="font-weight:bold;">SMS Configuration</span>');
         }
 
         /////////////////////////*** Role Management Start ******/
