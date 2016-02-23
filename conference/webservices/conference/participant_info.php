@@ -166,7 +166,7 @@ if($action=="save" || $action=="update") {
 		array_push($mail_receivers,$participant_email);
         foreach($mail_receivers as $email){
             if( $m = filter_var($email,FILTER_VALIDATE_EMAIL) ){
-              //  $send_status = SendEmails($mail,$mail_receivers,$email_subject_string,$email_body_string);
+                $send_status = SendEmails($mail,$mail_receivers,$email_subject_string,$email_body_string);
             }else{
                 echo "Invalid email. Email=> ".$mail."\n";
             }

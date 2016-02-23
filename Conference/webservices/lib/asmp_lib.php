@@ -58,8 +58,8 @@ function retrive_configuration($cn, $type = "email")
 
 function Parse_field( $str_raw, $dt_values )
 {
-    $map_field = array( 'conf_name', 'long_number', 'start_time', 'end_time' );
-    $map_key = array( 0 => "[ConferenceName]", 1 => "[LongNumber]", 2 => "[StartTime]", 3 => "[EndTime]" );
+    $map_field = array( 'conf_name', 'long_number', 'start_time', 'end_time','email_body','conf_user_name' );
+    $map_key = array( 0 => "[ConferenceName]", 1 => "[LongNumber]", 2 => "[StartTime]", 3 => "[EndTime]", 4 => "[email_body]", 4 => "[conf_user_name]" );
     foreach ($map_key as $key => $val) {
         $pos = FALSE;
         $pos = strpos($str_raw, $val);
