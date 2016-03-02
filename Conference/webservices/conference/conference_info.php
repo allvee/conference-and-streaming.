@@ -42,16 +42,9 @@ $end_array = array("00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30"
 
 $valid_day = 30;
 //echo __LINE__."</br>";
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
 if ($action != 'delete') {
 //echo __LINE__."</br>";
-    $demo_name = test_input($data['demo_name']);
+    $demo_name = $data['demo_name'];
     $_SESSION['conference']['conf_name'] = $demo_name;
     $user_id = $_SESSION['conference']['id'];
 
@@ -249,9 +242,9 @@ if ($action == "update") {
 //echo __LINE__ ."</br>";
     $action_id = mysql_real_escape_string(htmlspecialchars($_REQUEST['action_id']));
 
-    $qry = "UPDATE $tbl set `Conf_Name`='$demo_name',`USER`='$user_id', `room_number`='$room_number', `weblink`='$web_link',
+    $qry = "UPDATE $tbl set `Conf_Name`='$demo_name', `room_number`='$room_number', `weblink`='$web_link',
             `CODE`='$conference_code',`Start_Time`='$start',`End_Time`='$end',`Conference_Duration`='$duration',`Participants`='$demo_participants',`Recording`='$demo_recording', `email_body` = '$email_body',`sms_body` = '$sms_body',
-            `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel' WHERE ID='$action_id'";
+            `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel', `last_updated_by`= '$user_id'  WHERE ID='$action_id'";
     //echo __LINE__.$qry;
     $conf_id = $action_id;
     $_SESSION['conference']['conf_id'] = $action_id;

@@ -47,11 +47,11 @@ while ($row = Sql_fetch_array($result)) {
 
     $data[$i][$j++] = $parent_name;
     if(Sql_Result($row, "master_company_id")=="1") {
-        $data[$i][$j++] = "SSD-Tech";
+       // $data[$i][$j++] = "SSD-Tech";
     } else {
-        $data[$i][$j++] = "Unknown";
+        //$data[$i][$j++] = "Unknown";
     }
-   // $data[$i][$j++] = Sql_Result($row, "ip_addresses");
+    //$data[$i][$j++] = Sql_Result($row, "ip_addresses");
    // $data[$i][$j++] = Sql_Result($row, "mac_addresses");
 
 

@@ -29,7 +29,7 @@ cms_service_url['get_header_footer'] = cms_service_url['cms_service_host'] + 'CM
  */
 cms_url = new Array();
 
-cms_url['MarketplaceURL'] = 'http://192.168.245.34/';
+cms_url['MarketplaceURL'] = 'http://45.125.222.163/';
 cms_url['get_cms_url'] = site_host + 'conference/'; // change with your folder name
 cms_url['cms_host'] = cms_url['get_cms_url'] + 'webservices/';
  

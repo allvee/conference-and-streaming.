@@ -13,9 +13,13 @@ $conference_id = $info['conference_id'];
 
 $arrayInput = array();
 $UserID = $_SESSION['conference']['id'];
-$query = "SELECT conference.ID, cdr1.ANo, conference.Conf_Name,cdr1.startTime,cdr1.endTime,conference.Conference_Duration AS Conference_Total_Duration
-FROM $Database.tbl_conference AS conference, $Call_Handler_DB.cdr AS cdr1
-WHERE conference.long_number= cdr1.BNo and conference.ID = '$conference_id'";
+$query = "SELECT conference.ID, cdr1.ANo,cdr1.BNo, conference.Conf_Name,cdr1.startTime,cdr1.endTime,conference.Start_Time AS Conference_Strat,conference.End_Time AS Conference_End,conference.Conference_Duration AS Conference_Total_Duration
+FROM conference_demo.tbl_conference AS conference, vsdp_2_1_1.cdr AS cdr1
+WHERE cdr1.ANo IN(
+SELECT msisdn 
+FROM conference_demo.tbl_participant
+WHERE conference_ID=24)
+";
 
 $result = Sql_exec($cn, $query);
 
@@ -30,7 +34,14 @@ while ($row = Sql_fetch_array($result)) {
     $data[$i][$j++] = Sql_Result($row, "Conf_Name");
     $data[$i][$j++] = Sql_Result($row, "startTime");
     $data[$i][$j++] = Sql_Result($row, "endTime");
-    $data[$i][$j++] = Sql_Result($row, "Conference_Total_Duration");
+	date_default_timezone_set('Asia/Dhaka');
+	$start= Sql_Result($row, "startTime");
+    $dteStart = new DateTime($start);
+    $dteEnd = new DateTime(Sql_Result($row, "endTime"));
+    $dteDiff = $dteStart->diff($dteEnd);
+    $duration = (string)$dteDiff->format("%H:%I:%S");
+    $data[$i][$j++] = $duration;
+    //$data[$i][$j++] = Sql_Result($row, "Conference_Total_Duration");
     $i++;
 }
 Sql_Free_Result($result);

@@ -116,7 +116,7 @@ function check_box_value_changed(){
 
 }
 
-//$('#end_time option[value="00:30]').prop('disabled', true);
+
 function add_new_conference() {
     showUserMenu('new_conference');
 
@@ -133,8 +133,7 @@ function conference_create_edit() {
 
     form_id = "conference_create_edit";
     var org_name = $('#notification_channel').val();
-
-    var getDate = $("#start_date").val().trim();
+var getDate = $("#start_date").val().trim();
     var setDate = new Date(getDate);
     var d =new Date;
     var month, day;
@@ -153,7 +152,6 @@ function conference_create_edit() {
             month,day,
         ].join('-');
 
-     console.log("dformat"+dformat);
     var nowDate = new Date(dformat);
 
     var startTime = $("#start_time").val().trim();
@@ -168,18 +166,9 @@ function conference_create_edit() {
     var endTime_hour = parseInt(str2[0]);
     var endTime_min = parseInt(str2[1]);
 
-    console.log("setDate:"+setDate);
-    console.log("nowDate:"+nowDate);
-    console.log("startTime_hour:"+startTime_hour);
-    console.log("startTime_min:"+startTime_min);
-    console.log("endTime_hour:"+endTime_hour);
-    console.log("endTime_min:"+endTime_min);
-
     var date_diff = setDate < nowDate;
     var time_diff = startTime_hour < endTime_hour;
-    console.log("date_diff:"+date_diff);
-    console.log("time_diff:"+time_diff);
-
+   
     if($("#demo_name").val().trim()=='') {
         alertMessage(this, 'red', 'Opps!' , "Enter Conference Name");
        // alert("Enter Conference Name");
@@ -228,10 +217,10 @@ function conference_create_edit() {
 
             check_box_check();
             var response = connectServerWithForm(cms_url['conference_info'], form_id);
-          //  alert("after php Hit js");
+            //alert("after php Hit js");
             console.log("get: "+response +" found");
             response = JSON.parse(response);
-           // alert("after php Hit js");
+            //alert("after php Hit js");
 
             conference_name=response.Name;
             No_of_participants=response.No_of_Participants;
@@ -242,7 +231,7 @@ function conference_create_edit() {
 
             conference_notice="<br/>Conference Name    : "+response.Name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
+                +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"UserID    : "+ response.UserID
                 +"<br/>Long Number     : " + response.Long_Number +"<br/>Web Link    : "+ response.Web_Link
                 +"<br/>Code    : "+ response.Code +"<br/>Start Time     : " + response.Start_Time
                 +"<br/>End Time    : "+ response.End_Time +"<br/>Conference Duration     : " +response.Conference_Duration.h+" : "+ response.Conference_Duration.i

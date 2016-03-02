@@ -33,6 +33,8 @@ $user_id = $data_array['read']['data']['id'];
 
 
 $_SESSION['conference'] = $data_array['read']['data'];
+
+
 $query = "SELECT org_id FROM org_users WHERE user_id = '".$user_id."'";
 
 $query_roles = "SELECT roles.`name`, role_menus.`permissions`, menus.name

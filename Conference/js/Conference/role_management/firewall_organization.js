@@ -44,9 +44,9 @@ function table_data_firewall_organization(dataSet) {
         "columns": [
             {"title": "Name", "class": "center"},
             {"title": "Parent Organization", "class": "center"},
-            {"title": "Master Organization", "class": "center"},
+            /*{"title": "Master Organization", "class": "center"},
             {"title": "IP Addresses", "class": "center"},
-            {"title": "MAC Addresses", "class": "center"},
+            {"title": "MAC Addresses", "class": "center"},*/
             {"title": "Action", "class": "center"}
         ],
         "order": [[0, "asc"]],
@@ -77,7 +77,7 @@ function edit_firewall_organization(obj, action_id) {
     var table = document.getElementById('dataTables_firewall_organization');
     var index = obj.parentNode.parentNode.rowIndex;
     var i = 0;
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 2; i++) {
         dataArray[i] = table.rows[index].cells[i].innerHTML;
     }
     display_content_custom('1574', '#modalData');
@@ -93,7 +93,7 @@ function edit_firewall_organization(obj, action_id) {
     $("#parent_id option").filter(function() {
         return this.text == parent;
     }).attr('selected', true);
-
+/*
     var master_company = dataArray[2];
     $("#master_company_id option").filter(function() {
         return this.text == master_company;
@@ -101,7 +101,7 @@ function edit_firewall_organization(obj, action_id) {
 
     $('#organization_ip').val(dataArray[3]);
     $('#organization_mac').val(dataArray[4]);
-
+*/
     $("#parent_id").trigger("chosen:updated");
     dropdown_chosen_style();
 }

@@ -12,10 +12,8 @@ function conference_done_popup()
     var participant= [];
     var dataInfo = {};
     dataSet = connectServer(cms_url['retrieve_participant_info'], dataInfo);
-  //  alert(dataSet);
     dataSet = JSON.parse(dataSet);
-	
-      //  alert(dataSet.data.length);
+    //alert(dataSet.data.length);
     len=0;
     if(dataSet.status){
         for(i=0;i<dataSet.data.length; i++)

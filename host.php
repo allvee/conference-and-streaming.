@@ -1,5 +1,5 @@
 <?php
 
-define("MARKETPLACE_IP","192.168.245.34");
+define("MARKETPLACE_IP","45.125.222.163");
 
 ?>

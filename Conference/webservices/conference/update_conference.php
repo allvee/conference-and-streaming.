@@ -113,6 +113,6 @@ try {
     $is_error = 1;
 }
 
-echo "query3:".print_r($query3,1);
+echo json_encode($query3);
 
 ClosedDBConnection($cn);

@@ -20,9 +20,12 @@ if($data_info!='action') {
 
 $name = mysql_real_escape_string(htmlspecialchars($_REQUEST['organization_name']));
 $parent_id=mysql_real_escape_string(htmlspecialchars($_REQUEST['parent_id']));
-$master_company_id=mysql_real_escape_string(htmlspecialchars($_REQUEST['master_company_id']));
-$ip=mysql_real_escape_string(htmlspecialchars($_REQUEST['organization_ip']));
-$mac=mysql_real_escape_string(htmlspecialchars($_REQUEST['organization_mac']));
+//$master_company_id=mysql_real_escape_string(htmlspecialchars($_REQUEST['master_company_id']));
+//$ip=mysql_real_escape_string(htmlspecialchars($_REQUEST['organization_ip']));
+//$mac=mysql_real_escape_string(htmlspecialchars($_REQUEST['organization_mac']));
+$master_company_id= "ssd-tech";
+$ip = "192.168.0.1";
+$mac = "192.168.0.1";
 $last_updated=date('Y-m-d H:i:s');
 $last_updated_by = $_SESSION["vpn"]['id'];
 $is_error=0;

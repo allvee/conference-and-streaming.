@@ -106,23 +106,20 @@ if($send_sms_email == true){
 
             $sms_data['destination'] = "88".$number;
             $SMS_ret = curlRequest('GET', $SMS_URL, $sms_data);
-           // echo " Sms res for ".$number. " = ".$SMS_ret."<br/>";
+            //echo "SMS_ret:";
+			//print_r($SMS_ret);
+			
             array_push($total_sent, $sms_data);
         }
     }
 	
 if ($_SESSION['conference']['notification']['EMAIL']) {
+	/*
 		
 		$mail = new PHPMailer(true);
 		$email_subject_string = $email_config_object->email_subject;
-		//echo  "email_subject_string:";
-		//print_r($email_subject_string);
         $email_body_string = $email_config_object->email_body;
-	//	echo  "email_body_string:";
-	//	print_r($email_body_string);
-
-       $user_name = trim(  $_SESSION['conference']['Name'] );
-
+		
         $email_body_main = trim( $_SESSION['conference']['current_conference_instance']['email_body'] );
 
         $data_info = array(
@@ -135,20 +132,16 @@ if ($_SESSION['conference']['notification']['EMAIL']) {
         );
 		
         $email_subject_string = Parse_field( $email_subject_string, $data_info );
-        
-		//echo  "email_subject_string:";
-		//print_r($email_subject_string);
-		
 		$email_body_string  = Parse_field( $email_body_string, $data_info );
-		//echo  "email_body_string:";
-		//print_r($email_body_string);
-		/*
+		
+		
         if( !empty($email_body_main) ) {
             $email_body_string = $email_body_main ." <br/>".$email_body_string;
         }
-		*/
+		
 		$send_status = SendEmails($mail,$email_config_object,$mail_receivers,$email_subject_string,$email_body_string);
-    }	
+    */
+	}	
 
 }
 
@@ -157,7 +150,7 @@ ClosedDBConnection($cn);
 //$json_data = json_encode($data);
 //echo __FILE__.__LINE__;
 if ($is_error == 0) {
-    $return_data = array('status' => true, 'data' => $data, 'email_Send_status' =>$send_status, 'sms_data_sent'=>$total_sent);
+    $return_data = array('status' => true, 'data' => $data, 'SMS_ret'=>$SMS_ret, 'email_status'=>$send_status, 'email_Send_status' =>$send_status, 'sms_data_sent'=>$total_sent);
 } else {
     $return_data = array('status' => false, 'message' => 'Data Not Send.');
 }
