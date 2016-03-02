@@ -168,11 +168,27 @@ else if (field_name == 'alert_mgt_config_email') {
             } else {
                 $('#hidden_div_when_not_permitted').show();
             }*/
-            var inputarray = [["Email", "alert_mgt_config_email", "active"], ["SMS", "alert_mgt_config_sms", "deactive"]];
+            var inputarray = [["Email", "alert_mgt_config_email", "active"], ["SMS", "alert_mgt_config_sms", "deactive"],["Email Setting", "alert_mgt_config_email_setting", "deactive"],["SMS Setting", "alert_mgt_config_sms_setting", "deactive"]];
             tab_custom(inputarray, "tab_view");
             display_alert_email();
           //  $("#set_title").html('<span style="font-weight:bold;">Email Configuration</span>');
         }
+        else if (field_name == 'alert_mgt_config_email_setting') {
+            // write_activity_log('EMAIL_CONFIG', 'Email Configuration', cms_url['activity_log']);
+            display_content_custom('1824', '#modalData');
+            /* var permission;
+             permission = has_menu_permission(cms_url['firewall_has_menu_permission'], 'Configuration');
+             if (permission.add_permission != 'yes') {
+             $('#hidden_btn_when_not_permitted').hide();
+             } else {
+             $('#hidden_div_when_not_permitted').show();
+             }*/
+            var inputarray = [["Email", "alert_mgt_config_email", "active"], ["SMS", "alert_mgt_config_sms", "deactive"]];
+            tab_custom(inputarray, "tab_view");
+            display_alert_email();
+            //  $("#set_title").html('<span style="font-weight:bold;">Email Configuration</span>');
+        }
+
 
         else if (field_name == 'alert_mgt_config_sms') {
             //write_activity_log('SMS_CONFIG', 'SMS Configuration', cms_url['activity_log']);
@@ -189,7 +205,21 @@ else if (field_name == 'alert_mgt_config_email') {
             display_alert_sms();
           //  $("#set_title").html(' <span style="font-weight:bold;">SMS Configuration</span>');
         }
-
+        else if (field_name == 'alert_mgt_config_sms_setting') {
+            //write_activity_log('SMS_CONFIG', 'SMS Configuration', cms_url['activity_log']);
+            display_content_custom('1825', '#modalData');
+            /* var permission;
+             permission = has_menu_permission(cms_url['firewall_has_menu_permission'], 'Configuration');
+             if (permission.add_permission != 'yes') {
+             $('#hidden_btn_when_not_permitted').hide();
+             } else {
+             $('#hidden_div_when_not_permitted').show();
+             }*/
+            var inputarray = [["Email", "alert_mgt_config_email", "deactive"], ["SMS", "alert_mgt_config_sms", "active"]];
+            tab_custom(inputarray, "tab_view");
+            display_alert_sms();
+            //  $("#set_title").html(' <span style="font-weight:bold;">SMS Configuration</span>');
+        }
         /////////////////////////*** Role Management Start ******/
 
         else if (field_name == 'firewall_organization_view') {

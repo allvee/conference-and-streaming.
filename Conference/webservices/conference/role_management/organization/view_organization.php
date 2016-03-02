@@ -51,8 +51,8 @@ while ($row = Sql_fetch_array($result)) {
     } else {
         $data[$i][$j++] = "Unknown";
     }
-    $data[$i][$j++] = Sql_Result($row, "ip_addresses");
-    $data[$i][$j++] = Sql_Result($row, "mac_addresses");
+   // $data[$i][$j++] = Sql_Result($row, "ip_addresses");
+   // $data[$i][$j++] = Sql_Result($row, "mac_addresses");
 
 
     $action_data = '';

@@ -38,8 +38,8 @@ function table_data_firewall_organization(dataSet) {
             {"title": "Name", "class": "center"},
             {"title": "Parent Organization", "class": "center"},
             {"title": "Master Organization", "class": "center"},
-            {"title": "IP Addresses", "class": "center"},
-            {"title": "MAC Addresses", "class": "center"},
+            /*{"title": "IP Addresses", "class": "center"},
+            {"title": "MAC Addresses", "class": "center"}, */
             {"title": "Action", "class": "center"}
         ],
         "order": [[0, "asc"]],
@@ -92,8 +92,8 @@ function edit_firewall_organization(obj, action_id) {
         return this.text == master_company;
     }).attr('selected', true);
 
-    $('#organization_ip').val(dataArray[3]);
-    $('#organization_mac').val(dataArray[4]);
+   // $('#organization_ip').val(dataArray[3]);
+   // $('#organization_mac').val(dataArray[4]);
 
     $("#parent_id").trigger("chosen:updated");
     dropdown_chosen_style();

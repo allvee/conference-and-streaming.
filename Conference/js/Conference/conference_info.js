@@ -116,7 +116,7 @@ function check_box_value_changed(){
 
 }
 
-
+//$('#end_time option[value="00:30]').prop('disabled', true);
 function add_new_conference() {
     showUserMenu('new_conference');
 
@@ -134,20 +134,80 @@ function conference_create_edit() {
     form_id = "conference_create_edit";
     var org_name = $('#notification_channel').val();
 
+    var getDate = $("#start_date").val().trim();
+    var setDate = new Date(getDate);
+    var d =new Date;
+    var month, day;
+    if((d.getMonth()+1)<10)
+        month= "0"+(d.getMonth()+1);
+    else
+        month =(d.getMonth()+1);
+
+    if(d.getDate()<10)
+       day = "0"+d.getDate();
+    else
+       day = d.getDate();
+
+        dformat = [
+            d.getFullYear(),
+            month,day,
+        ].join('-');
+
+     console.log("dformat"+dformat);
+    var nowDate = new Date(dformat);
+
+    var startTime = $("#start_time").val().trim();
+    var str1 = startTime.split(":");
+
+    var endTime = $("#end_time").val().trim();
+    var str2 = endTime.split(":");
+
+    var startTime_hour = parseInt(str1[0]);
+    var startTime_min = parseInt(str1[1]);
+
+    var endTime_hour = parseInt(str2[0]);
+    var endTime_min = parseInt(str2[1]);
+
+    console.log("setDate:"+setDate);
+    console.log("nowDate:"+nowDate);
+    console.log("startTime_hour:"+startTime_hour);
+    console.log("startTime_min:"+startTime_min);
+    console.log("endTime_hour:"+endTime_hour);
+    console.log("endTime_min:"+endTime_min);
+
+    var date_diff = setDate < nowDate;
+    var time_diff = startTime_hour < endTime_hour;
+    console.log("date_diff:"+date_diff);
+    console.log("time_diff:"+time_diff);
+
     if($("#demo_name").val().trim()=='') {
-        alert("Enter Conference Name");
+        alertMessage(this, 'red', 'Opps!' , "Enter Conference Name");
+       // alert("Enter Conference Name");
     } else if($("#start_date").val().trim()=='') {
-        alert("Enter start date");
-    } else if($("#start_time").val().trim()=='') {
-        alert("Enter start time");
+        alertMessage(this, 'red', 'Opps!' , "Enter start date");
+       // alert("Enter start date");
+    } else if(date_diff) {
+        alertMessage(this, 'red', 'Opps!' , "You have entered back Date from Today");
+    }
+    else if($("#start_time").val().trim()=='') {
+        alertMessage(this, 'red', 'Opps!' , "Enter start time");
+       // alert("Enter start time");
     }else if($("#end_time").val().trim()=='') {
-        alert("Enter end time");
-    }else if($("#conf_code").val().trim()==''|| $("#conf_code").val().length !=4) {
-        alert("Enter conference code exactly 4 digit length");
+        alertMessage(this, 'red', 'Opps!' , "Enter end time");
+        //alert("Enter end time");
+    }else if(startTime_hour > endTime_hour){
+        alertMessage(this, 'red', 'Opps!' , "Entered End Time is back from Start Time");
+    } else if((startTime_hour == endTime_hour) && (startTime_min >= (endTime_min+1))){
+        alertMessage(this, 'red', 'Opps!' , "Entered End Time is back from Start Time");
+    } else if($("#conf_code").val().trim()==''|| $("#conf_code").val().length !=4) {
+        alertMessage(this, 'red', 'Opps!' , "Enter conference code exactly 4 digit length");
+       // alert("Enter conference code exactly 4 digit length");
     } else if($("#demo_participants").val().trim()=='') {
-        alert("Enter participants number");
+        alertMessage(this, 'red', 'Opps!' , "Enter participants number");
+       // alert("Enter participants number");
     } else if($("#notification_channel").val()== null) {
-        alert("Select notification channel");
+        alertMessage(this, 'red', 'Opps!' , "Select notification channel at least one");
+        //alert("Select notification channel");
     }
     else{
         if ( conference_id != null )

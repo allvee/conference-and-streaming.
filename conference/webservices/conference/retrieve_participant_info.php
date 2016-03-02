@@ -105,7 +105,7 @@ if($send_sms_email == true){
         foreach( $participant_msisdn as $number ){
 
             $sms_data['destination'] = "88".$number;
-           // $SMS_ret = curlRequest('GET', $SMS_URL, $sms_data);
+            $SMS_ret = curlRequest('GET', $SMS_URL, $sms_data);
            // echo " Sms res for ".$number. " = ".$SMS_ret."<br/>";
             array_push($total_sent, $sms_data);
         }
@@ -115,11 +115,11 @@ if ($_SESSION['conference']['notification']['EMAIL']) {
 		
 		$mail = new PHPMailer(true);
 		$email_subject_string = $email_config_object->email_subject;
-		echo  "email_subject_string:";
-		print_r($email_subject_string);
+		//echo  "email_subject_string:";
+		//print_r($email_subject_string);
         $email_body_string = $email_config_object->email_body;
-		echo  "email_body_string:";
-		print_r($email_body_string);		
+	//	echo  "email_body_string:";
+	//	print_r($email_body_string);
 
        $user_name = trim(  $_SESSION['conference']['Name'] );
 
@@ -136,12 +136,12 @@ if ($_SESSION['conference']['notification']['EMAIL']) {
 		
         $email_subject_string = Parse_field( $email_subject_string, $data_info );
         
-		echo  "email_subject_string:";
-		print_r($email_subject_string);
+		//echo  "email_subject_string:";
+		//print_r($email_subject_string);
 		
 		$email_body_string  = Parse_field( $email_body_string, $data_info );
-		echo  "email_body_string:";
-		print_r($email_body_string);
+		//echo  "email_body_string:";
+		//print_r($email_body_string);
 		/*
         if( !empty($email_body_main) ) {
             $email_body_string = $email_body_main ." <br/>".$email_body_string;

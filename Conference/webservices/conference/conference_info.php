@@ -42,9 +42,16 @@ $end_array = array("00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30"
 
 $valid_day = 30;
 //echo __LINE__."</br>";
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 if ($action != 'delete') {
 //echo __LINE__."</br>";
-    $demo_name = $data['demo_name'];
+    $demo_name = test_input($data['demo_name']);
     $_SESSION['conference']['conf_name'] = $demo_name;
     $user_id = $_SESSION['conference']['id'];
 
