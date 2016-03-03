@@ -244,7 +244,7 @@ if ($action == "update") {
 
     $qry = "UPDATE $tbl set `Conf_Name`='$demo_name', `room_number`='$room_number', `weblink`='$web_link',
             `CODE`='$conference_code',`Start_Time`='$start',`End_Time`='$end',`Conference_Duration`='$duration',`Participants`='$demo_participants',`Recording`='$demo_recording', `email_body` = '$email_body',`sms_body` = '$sms_body',
-            `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel', `last_updated_by`= '$user_id'  WHERE ID='$action_id'";
+            `STATUS`='$demo_active',`Schedule_Conf`='$schedule_conf',`Notification_Channel`='$notification_channel', `last_updated_by`= '$user_id', `isDeleted` = 'No' WHERE ID='$action_id'";
     //echo __LINE__.$qry;
     $conf_id = $action_id;
     $_SESSION['conference']['conf_id'] = $action_id;
@@ -291,10 +291,11 @@ else if ($action == "delete") {
     $flag = 'delete';
 
     $action_id = $deleted_id;
-    $qry = "DELETE from $tbl where ID ='$action_id'";
-
-    $qry_participant = "DELETE from tbl_participant WHERE conference_ID ='$action_id'";
-
+   // $qry = "DELETE from $tbl where ID ='$action_id'";
+   // $qry_participant = "DELETE from tbl_participant WHERE conference_ID ='$action_id'";
+	$qry = "UPDATE $tbl SET `isDeleted`= 'Yes' where ID ='$action_id'";
+    $qry_participant = "UPDATE tbl_participant SET `Conf_deleted`= 'Yes' WHERE conference_ID ='$action_id'";
+	
     $qry_to_room = "UPDATE $room_tbl SET last_update ='$last_updated',`conference_name` = ' ' WHERE room_number='$room_number'";
 
 
@@ -336,8 +337,8 @@ else if ($action == "delete") {
     $msg = "Successfully Deleted";
 } else {
 
-    $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Conference_Duration, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel, email_body, sms_body,UserOrg)
-	VALUES('$demo_name', '$long_number', '$user_id', '$room_number', '$web_link', '$conference_code', '$start', '$end', '$duration' ,'$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel', '$email_body','$sms_body','$UserOrg')";
+    $qry = "INSERT INTO $tbl (Conf_Name, long_number, USER, room_number, weblink, CODE, Start_Time, End_Time, Conference_Duration, Participants, Recording, STATUS, Schedule_Conf, Notification_Channel, email_body, sms_body,UserOrg, `isDeleted`)
+	VALUES('$demo_name', '$long_number', '$user_id', '$room_number', '$web_link', '$conference_code', '$start', '$end', '$duration' ,'$demo_participants', '$demo_recording', '$demo_active', '$schedule_conf', '$notification_channel', '$email_body','$sms_body','$UserOrg', 'No')";
 
     $qry_to_room = "UPDATE $room_tbl SET last_update='$last_updated',conference_name= '$demo_name' WHERE room_number='$room_number'";
 //echo __LINE__."qry: ".$qry."</br>";

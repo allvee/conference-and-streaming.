@@ -15,7 +15,7 @@ $conference_id = $_SESSION['conference']['conf_id'];
 
 $arrayInput = array();
 $query = "SELECT ID, participant_name, msisdn, email, conference_name, organization, participant_type FROM $tbl
-          where  conference_ID ='$conference_id'";
+          where  conference_ID ='$conference_id' and `Conf_deleted`= 'No'";
 $result = Sql_exec($cn, $query);
 if (!$result) {
     echo "err+" . $query . " in line " . __LINE__ . " of file" . __FILE__;

@@ -133,7 +133,7 @@ function conference_create_edit() {
 
     form_id = "conference_create_edit";
     var org_name = $('#notification_channel').val();
-var getDate = $("#start_date").val().trim();
+	var getDate = $("#start_date").val().trim();
     var setDate = new Date(getDate);
     var d =new Date;
     var month, day;
@@ -168,34 +168,37 @@ var getDate = $("#start_date").val().trim();
 
     var date_diff = setDate < nowDate;
     var time_diff = startTime_hour < endTime_hour;
+	
+	//if($("#schedule_conf_dropdown").val().trim()=='Once')
+	//alertMessage(this, 'blue', 'Schedule', "Once");
    
     if($("#demo_name").val().trim()=='') {
-        alertMessage(this, 'red', 'Opps!' , "Enter Conference Name");
+        alertMessage(this, 'red', 'Warning!' , "Enter Conference Name");
        // alert("Enter Conference Name");
     } else if($("#start_date").val().trim()=='') {
-        alertMessage(this, 'red', 'Opps!' , "Enter start date");
+        alertMessage(this, 'red', 'Warning!' , "Enter start date");
        // alert("Enter start date");
-    } else if(date_diff) {
-        alertMessage(this, 'red', 'Opps!' , "You have entered back Date from Today");
+    } else if(setDate < nowDate) {
+        alertMessage(this, 'red', 'Warning!' , "You have entered back Date from Today");
     }
     else if($("#start_time").val().trim()=='') {
-        alertMessage(this, 'red', 'Opps!' , "Enter start time");
+        alertMessage(this, 'red', 'Warning!' , "Enter start time");
        // alert("Enter start time");
     }else if($("#end_time").val().trim()=='') {
-        alertMessage(this, 'red', 'Opps!' , "Enter end time");
+        alertMessage(this, 'red', 'Warning!' , "Enter end time");
         //alert("Enter end time");
     }else if(startTime_hour > endTime_hour){
-        alertMessage(this, 'red', 'Opps!' , "Entered End Time is back from Start Time");
+        alertMessage(this, 'red', 'Warning!' , "Entered End Time is back from Start Time");
     } else if((startTime_hour == endTime_hour) && (startTime_min >= (endTime_min+1))){
-        alertMessage(this, 'red', 'Opps!' , "Entered End Time is back from Start Time");
+        alertMessage(this, 'red', 'Warning!' , "Entered End Time is back from Start Time");
     } else if($("#conf_code").val().trim()==''|| $("#conf_code").val().length !=4) {
-        alertMessage(this, 'red', 'Opps!' , "Enter conference code exactly 4 digit length");
+        alertMessage(this, 'red', 'Warning!' , "Enter conference code exactly 4 digit length");
        // alert("Enter conference code exactly 4 digit length");
     } else if($("#demo_participants").val().trim()=='') {
-        alertMessage(this, 'red', 'Opps!' , "Enter participants number");
+        alertMessage(this, 'red', 'Warning!' , "Enter participants number");
        // alert("Enter participants number");
     } else if($("#notification_channel").val()== null) {
-        alertMessage(this, 'red', 'Opps!' , "Select notification channel at least one");
+        alertMessage(this, 'red', 'Warning!' , "Select notification channel at least one");
         //alert("Select notification channel");
     }
     else{
@@ -217,7 +220,7 @@ var getDate = $("#start_date").val().trim();
 
             check_box_check();
             var response = connectServerWithForm(cms_url['conference_info'], form_id);
-            //alert("after php Hit js");
+           // alert("after php Hit js");
             console.log("get: "+response +" found");
             response = JSON.parse(response);
             //alert("after php Hit js");

@@ -18,10 +18,11 @@ $CURRENT_FILE_HOSTING_PATH = dirname(dirname(dirname(dirname ( __FILE__ )))).DIR
 $file_dir = "/tmp/" ;
 $dir_firewall_backup_file = $CURRENT_FILE_HOSTING_PATH."backup/";
 $dir_firewall_upload_dir = $CURRENT_FILE_HOSTING_PATH.'backup/uploaded/';
-
+//http://marketplace.dozeinternet.com/webservices/req_doze_marketplace/user_list.php
+$baseURL_1 = $protocol.'://'.'marketplace.dozeinternet.com';
 //Local MarketPlace Dashboard Integration
 define('Marketplace_Login_USER', $baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/UserLogin.php');
-define('Marketplace_USER_LIST', $baseURL.'/marketplace/SubscriptionServices/services/cgwAuth/user_list.php');
+define('Marketplace_USER_LIST', $baseURL_1.'/webservices/req_doze_marketplace/user_list.php');
 
 //define('Marketplace_Login_USER', $baseURL.'/doze_internet_new_site/webservices/request_doze/UserLogin.php');
 //define('Marketplace_USER_LIST', $baseURL.'/doze_internet_new_site/webservices/request_doze/user_list.php');

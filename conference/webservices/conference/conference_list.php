@@ -22,11 +22,11 @@ if($conf_session['user_type'] == 'Super User')
 $permission_array = json_decode($conf_session['rules']['Role Management'], true);
 
 if($_SESSION['conference']['user_type']=="Super User") {
-    $query = "SELECT ID, Conf_Name, USER, Start_Time, End_Time, Participants, Recording, Notification_Channel, STATUS,room_number, weblink, Schedule_Conf FROM $tbl";
+    $query = "SELECT ID, Conf_Name, USER, Start_Time, End_Time, Participants, Recording, Notification_Channel, STATUS,room_number, weblink, Schedule_Conf FROM $tbl  where `isDeleted` = 'No' ";
 } else if($_SESSION['conference']['user_type']=="Administrator") {
-	$query = "SELECT ID, Conf_Name, USER, Start_Time, End_Time, Participants, Recording, Notification_Channel, STATUS,room_number, weblink, Schedule_Conf FROM $tbl where UserOrg ='$org_ID'";
+	$query = "SELECT ID, Conf_Name, USER, Start_Time, End_Time, Participants, Recording, Notification_Channel, STATUS,room_number, weblink, Schedule_Conf FROM $tbl where `isDeleted` = 'No' and UserOrg ='$org_ID'";
 } else {
-    $query = "SELECT ID, Conf_Name, USER, Start_Time, End_Time, Participants, Recording, Notification_Channel, STATUS,room_number, weblink, Schedule_Conf FROM $tbl where USER ='$UserID'";
+    $query = "SELECT ID, Conf_Name, USER, Start_Time, End_Time, Participants, Recording, Notification_Channel, STATUS,room_number, weblink, Schedule_Conf FROM $tbl where`isDeleted` = 'No' and  USER ='$UserID'";
 }
 $result = Sql_exec($cn, $query);
 /*if (!$result) {
