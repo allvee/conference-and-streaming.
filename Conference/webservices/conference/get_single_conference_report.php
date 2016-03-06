@@ -18,8 +18,7 @@ FROM conference_demo.tbl_conference AS conference, vsdp_2_1_1.cdr AS cdr1
 WHERE cdr1.ANo IN(
 SELECT msisdn 
 FROM conference_demo.tbl_participant
-WHERE conference_ID=24)
-";
+WHERE conference_ID ='$conference_id')";
 
 $result = Sql_exec($cn, $query);
 

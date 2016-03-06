@@ -5,9 +5,31 @@ var conference_notice;
 var conference_name;
 var conference_id;
 var No_of_participants;
+var generalUser = "no";
 
-var minDuration=29;
-var d = new Date,
+
+function check_box_check(){
+
+    if($("#demo_recording").is(":checked"))
+    {
+        var a= document.getElementById("demo_recording").checked = "yes";
+        $('#demo_recording').val(a);
+        //alert(a);
+    }
+    else
+    {
+       var a= document.getElementById("demo_recording").unchecked = "no";
+        $('#demo_recording').val(a);
+        //alert(a);
+    }
+}
+
+
+function check_box_value_changed(){
+	
+	var minDuration=29;
+	var str_minute=1;
+	var d = new Date,
     dformat = [
             d.getFullYear(),
             (d.getMonth()+1),
@@ -22,9 +44,6 @@ else if(parseInt(d.getMinutes())<30)
      start_time = [(parseInt(d.getHours()) <10)? str_hour="0"+d.getHours().toString() : str_hour=d.getHours().toString(),
          ( (parseInt(str_minute)<10)? str_min="01": str_min = str_minute.toString() )].join(':');
 
-    console.log("Ready start_time:"+start_time);
-
-console.log(dformat + " "+ start_time);
 console.log("Start_time: "+start_time);
 
     month = d.getMonth()+1;
@@ -58,24 +77,6 @@ lastDate = [
    end_time= [ ( parseInt(hour) <10)? end_hour="0"+hour.toString() : end_hour= hour.toString(),
                 ( parseInt(minute) <10)? end_min="00" : end_min= minute.toString()].join(':');
 
-function check_box_check(){
-
-    if($("#demo_recording").is(":checked"))
-    {
-        var a= document.getElementById("demo_recording").checked = "yes";
-        $('#demo_recording').val(a);
-        //alert(a);
-    }
-    else
-    {
-       var a= document.getElementById("demo_recording").unchecked = "no";
-        $('#demo_recording').val(a);
-        //alert(a);
-    }
-}
-
-
-function check_box_value_changed(){
 
     if($("#meet_now").is(":checked"))
     {
@@ -93,9 +94,9 @@ function check_box_value_changed(){
         // $("#start_time").trigger("chosen:updated");
         // $("#end_time option[value='" + end_time + "']").attr('selected', true);
         // $("#end_time").trigger("chosen:updated");
-
-        console.log(document.getElementById("start_time").selectedIndex);
-        console.log(document.getElementById("end_time").selectedIndex);
+        //console.log(document.getElementById("start_time").selectedIndex);
+        //console.log(document.getElementById("end_time").selectedIndex);
+		
 	$("#start_time").show();
 	$("#end_time").show();
       
@@ -108,9 +109,8 @@ function check_box_value_changed(){
        
         $('#end_date').val('');
         $('#end_time').val('');
-	//$("#start_time").trigger("chosen:updated");	
+	    //$("#start_time").trigger("chosen:updated");	
         //$("#end_time").trigger("chosen:updated");
-
 
     }
 
@@ -129,30 +129,25 @@ function from_backend(){
     console.log(field.value);
 }
 
+ $(function() {
+    $( "#start_date" ).datepicker();
+  });
+
 function conference_create_edit() {
 
     form_id = "conference_create_edit";
     var org_name = $('#notification_channel').val();
 	var getDate = $("#start_date").val().trim();
-    var setDate = new Date(getDate);
-    var d =new Date;
-    var month, day;
-    if((d.getMonth()+1)<10)
-        month= "0"+(d.getMonth()+1);
-    else
-        month =(d.getMonth()+1);
 
-    if(d.getDate()<10)
-       day = "0"+d.getDate();
-    else
-       day = d.getDate();
+	var splitDate = getDate.split("-");
+	var year = parseInt(splitDate[0]);
+	var month = parseInt(splitDate[1]);
+	var day = parseInt(splitDate[2]);
+	
+    var setDate = new Date(year,month-1,day);
 
-        dformat = [
-            d.getFullYear(),
-            month,day,
-        ].join('-');
-
-    var nowDate = new Date(dformat);
+    var nowDate = new Date;
+	nowDate.setHours(0,0,0,0);
 
     var startTime = $("#start_time").val().trim();
     var str1 = startTime.split(":");
@@ -169,6 +164,9 @@ function conference_create_edit() {
     var date_diff = setDate < nowDate;
     var time_diff = startTime_hour < endTime_hour;
 	
+	console.log("setDate:"+setDate);
+	console.log("nowDate:"+nowDate);
+	console.log("date_diff:"+date_diff);
 	//if($("#schedule_conf_dropdown").val().trim()=='Once')
 	//alertMessage(this, 'blue', 'Schedule', "Once");
    
@@ -188,9 +186,9 @@ function conference_create_edit() {
         alertMessage(this, 'red', 'Warning!' , "Enter end time");
         //alert("Enter end time");
     }else if(startTime_hour > endTime_hour){
-        alertMessage(this, 'red', 'Warning!' , "Entered End Time is back from Start Time");
+        alertMessage(this, 'red', 'Warning!' , "You Entered End Time Which is back from Start Time");
     } else if((startTime_hour == endTime_hour) && (startTime_min >= (endTime_min+1))){
-        alertMessage(this, 'red', 'Warning!' , "Entered End Time is back from Start Time");
+        alertMessage(this, 'red', 'Warning!' , "You Entered End Time Which is back from Start Time");
     } else if($("#conf_code").val().trim()==''|| $("#conf_code").val().length !=4) {
         alertMessage(this, 'red', 'Warning!' , "Enter conference code exactly 4 digit length");
        // alert("Enter conference code exactly 4 digit length");
@@ -378,8 +376,55 @@ function report_menu_start_conference_list() {
 }
 
 
-function table_data_conference_list(dataSet) {
 
+function table_data_conference_list(dataSet) {
+	
+    $.get(cms_url['rcportal_firewall_check_if_gerneral_user'], function (data) {
+	
+        var if_general_user = $.parseJSON(data);
+      
+        if (if_general_user.gereral_user == 'yes') {
+            //start tbl data
+    $('#dataTables_conference_list').dataTable({
+
+        "data": dataSet,
+        "columns": [
+            {"title": "ID", "class": "center"},
+            {"title": "Conference Name", "class": "center"},
+            {"title": "User", "class": "center"},
+            {"title": "Start Time", "class": "center"},
+            {"title": "End Time", "class": "center"},
+            {"title": "Participants", "class": "center"},
+            {"title": "Recording", "class": "center"},
+            {"title": "Notification Channel", "class": "center"},
+            {"title": "Status", "class": "center"},
+            {"title": "Conference Schedule", "class": "center"},
+            /*{"title": "Room Number", "class": "center"},
+            {"title": "Web Link", "class": "center"},
+            {"title": "Edit/Delete", "class": "center"},*/
+
+
+        ],
+        "order": [[0, "asc"]],
+        dom: 'T<"clear">lfrtip',
+        tableTools: {
+            "sSwfPath": "conference/img/datatable/swf/copy_csv_xls_pdf.swf",
+            "sRowSelect": "multi",
+            "aButtons": [
+                "copy", "csv",
+                {
+                    "sExtends": "xls",
+                    "sFileName": "*.xls"
+                }
+            ],
+            "filter": "applied"
+        },
+
+    });
+	//end tbl data
+        }
+	else {
+            //start tbl
     $('#dataTables_conference_list').dataTable({
 
         "data": dataSet,
@@ -415,12 +460,11 @@ function table_data_conference_list(dataSet) {
             "filter": "applied"
         },
 
-       /* "aoColumnDefs": [
-            { "bSearchable": false, "bVisible": false, "aTargets": [ 9 ] },
-            { "bSearchable": false, "bVisible": false, "aTargets": [ 10 ] }
-        ]*/
-
     });
+	//end tbl
+		}
+    });
+	
 }
 
 function edit_conference_list(obj, info, room_number, weblink) {

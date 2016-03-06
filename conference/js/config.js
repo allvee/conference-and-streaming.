@@ -477,6 +477,7 @@ cms_url['view_users'] = cms_url['cms_host'] + 'conference/role_management/users/
 cms_url['get_users'] = cms_url['cms_host'] + 'conference/role_management/users/get_users.php';
 cms_url['get_user_type'] = cms_url['cms_host'] + 'conference/role_management/users/get_user_type.php';
 cms_url['rcportal_firewall_check_if_superuser'] =  cms_url['cms_host'] + 'conference/role_management/users/check_if_superuser.php';
+cms_url['rcportal_firewall_check_if_gerneral_user'] =  cms_url['cms_host'] + 'conference/role_management/users/check_if_gerneral_user.php';
 
 
 cms_url['firewall_config'] = cms_url['cms_host'] +'conference/role_management/firewall_config.php';

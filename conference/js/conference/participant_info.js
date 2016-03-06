@@ -54,13 +54,17 @@ function participant_add_edit(){
     form_id = "participant_add_edit";
 
     if($("#participant_name").val().trim()=='') {
-        alert("Enter participant Name");
+        //alert("Enter participant Name");
+		alertMessage(this, 'red', 'Warning!' , "Enter participant Name");
     } else if($("#participant_msisdn").val().trim()=='' ||$("#participant_msisdn").val().trim().length < 4 ) {
-        alert("Enter participant mobile number correctly (Max 13 digit and Min 4 digit)");
+       // alert("Enter participant mobile number correctly ( Max 11 digit and Min 4 digit  without Country Code ).");
+	   alertMessage(this, 'red', 'Warning!' , "Enter participant mobile number correctly <br/>(Max 13 digit and Min 4 digit)");
     } else if($("#participant_email").val().trim()=='') {
-        alert("Enter participant email");
+       // alert("Enter participant email");
+	   alertMessage(this, 'red', 'Warning!' , "Enter participant email Address");
     }else if($("#participant_type").val()=='') {
-        alert("Select participant type");
+        //alert("Select participant type");
+		alertMessage(this, 'red', 'Warning!' , "Select participant type");
     }
     else {
 

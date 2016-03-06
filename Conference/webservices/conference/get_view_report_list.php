@@ -16,11 +16,11 @@ $is_super_admin = false;
 if ($vpn_session['user_type'] == 'Super User') {
     $is_super_admin = true;
     //$permission_array = json_decode($vpn_session['rules']['Role Management'], true);
-    $query = "SELECT id, Conf_name FROM tbl_conference";
+    $query = "SELECT id, Conf_name FROM tbl_conference where `isDeleted`= 'No'";
     $res = Sql_exec($cn, $query);
 } else {
     //$permission_array = json_decode($vpn_session['rules']['Role Management'], true);
-    $query = "SELECT id,Conf_name FROM tbl_conference where USER = '$value'";
+    $query = "SELECT id,Conf_name FROM tbl_conference where USER = '$value' and `isDeleted`= 'No'";
     $res = Sql_exec($cn, $query);
 }
 
